@@ -1,0 +1,173 @@
+---
+title: 'Company results template: headline numbers'
+author: Michael
+date: '2020-05-27'
+slug: company-results-template-headline-numbers
+categories:
+  - R
+tags:
+  - Finance
+  - Investment research
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(tidy = FALSE)
+options(htmltools.dir.version = FALSE)
+```
+
+```{r packages, include=FALSE}
+# Packages used
+pkgs = c("tidyverse", 
+         "tidyquant", 
+         "magrittr", 
+         "data.table", 
+         "fBasics", 
+         "gdata",
+         "dplyr",
+         "ggplot2",
+         "spelling") 
+#package names: 
+#tidyverse for operations using dplyr's piping feature; 
+#magrittr %<>% function pipes left hand data to right side and returns result to left hand overwriting original contents on left hand
+#data.table for fast csv save
+#gdata has keep function for permitting convenient trim of env objects with sure=TRUE
+
+install.packages(pkgs, repos="https://cran.r-project.org")
+
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+
+```
+
+```{r topchunkdata, include=FALSE}
+topchunk <- read.csv("/Users/michaelleary/Dropbox/Rwork/michaelLeary-io-site/data/topchunk.csv", stringsAsFactors = TRUE)
+
+head(topchunk)
+
+```
+
+```{r topchunkdataset, include=FALSE}
+# examine variables and variable types
+class(topchunk)
+glimpse(topchunk)
+str(topchunk)
+topchunkcol <- colnames(topchunk)
+
+```
+
+```{r columnset, include=FALSE}
+top.col <- topchunk[,c("period", 
+                     "net_sales",
+                     "op_inc",
+                     "ord_inc",
+                     "net_inc",
+                     "div_amt",
+                     "avg_sharesiss",
+                     "tot_ass",
+                     "share_eq",
+                     "liquid_ass",
+                     "tot_debt",
+                     "ppe",
+                     "cost_sales",
+                     "sga",
+                     "car_sales",
+                     "bike_sales",
+                     "marine_sales",
+                     "car_opinc",
+                     "bike_opinc",
+                     "marine_opinc",
+                     "jp_sales",
+                     "india_sales",
+                     "other_sales",
+                     "jp_ppe",
+                     "india_ppe",
+                     "others_ppe"
+                     )]
+
+```
+
+```{r calculatedvariables, include=FALSE}
+# items to be computed and added to input data include:
+# eps
+# dps
+# roe
+# bvps
+# net debt / sh.equity
+# dupont analysis 
+# margins
+
+fullset.topcol <- mutate(top.col,
+                    eps = round((net_inc / avg_sharesiss),1), 
+                    dps = round((div_amt / avg_sharesiss),1),
+                    bvps = round((share_eq / avg_sharesiss),),
+                    roe = round(100 * (net_inc / share_eq),2),
+                    assetturnover = round((net_sales / tot_ass),2),
+                    leverage = round((tot_ass / share_eq),2),
+                    netmargin = round((net_inc / net_sales),2),
+                    dupont_roe = round(100 * (netmargin * assetturnover * leverage),2))
+
+# company net debt
+
+codebt <- fullset.topcol[,c("period", "tot_debt")]
+co_debt <- mutate(codebt)
+rownames(co_debt) <- co_debt$period
+co_debt$period <- NULL
+co_debt_transpose <- as.data.frame(t(as.matrix(co_debt)))
+
+# company liquidity
+
+coliquid <- fullset.topcol[,c("period", "liquid_ass")]
+co_liquid <- mutate(coliquid)
+rownames(co_liquid) <- co_liquid$period
+co_liquid$period <- NULL
+co_liquid_transpose <- as.data.frame(t(as.matrix(co_liquid)))
+
+# company net debt mutated onto fullset.top
+
+fs.top <- mutate(fullset.topcol,
+                    debt = co_debt$tot_debt,
+                    liquidtassets = co_liquid$liquid_ass,  
+                    net_debt = debt - liquidtassets,
+                    Pct_Net_D_of_E = round(100*(net_debt/share_eq),))
+
+```
+
+
+```{r fullsettranspose, include=FALSE}
+# Dataset includes computed items and d/e and transpose and added column for yoy change
+
+tvultable <- fs.top[c(1:38)]
+
+rownames(tvultable) <- tvultable$period
+tvultable$period <- NULL
+
+t_transpose <- as.data.frame(t(as.matrix(tvultable)))
+
+fullset <- setDT(t_transpose, keep.rownames = TRUE)[]
+
+# rename auto generated column name with previously saved label
+
+names(fullset)[1] <- "Item"
+
+fs.yoy <- fullset %>%
+  mutate(abschange = round((fullset$FY2019 - fullset$FY2018),),
+         pct = round(100 * (abschange / fullset$FY2018),1)) %>%
+  select("Item", "FY2019", "FY2018", "pct", "abschange")
+
+```
+
+
+```{r fullsettable, include=FALSE}
+
+fs.yoy
+
+```
+
+## Headine figures 
+
+Suzuki announced a 10% reduction in net sales for the year to JPY `r round(fs.yoy[1,2]/1000)` billion or US\$32.4 billion. Operating income fell 34% to JPY `r round(fs.yoy[2,2]/1000)` billion or US\$2 billion. Earnings per share declined 28% to JPY286/share. Despite the reported decline registered and further weakness projected ahead the company balance sheet remains strong and management declared a special dividend. 
+
+```{r headlinenos, echo=FALSE}
+#subset out the rows needed and then transpose
+headnos <- fs.yoy[c(1:4, 26:28),]
+headnos
+```

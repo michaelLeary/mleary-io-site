@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Investment research on Thoughts</title>
+    <link>/tags/investment-research/</link>
+    <description>Recent content in Investment research on Thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/investment-research/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Company results template: balance sheet</title>
+      <link>/post/2020/05/27/company-results-template-balance-sheet/</link>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/27/company-results-template-balance-sheet/</guid>
+      <description>Balance sheet secure Even though there was a draw down of cash during the year Suzuki’s balance sheet remains strong with ending net cash and securities of JPY1677 billion or US$15 billion equivalent to JPY3,579/share.
+In light of ongoing uncertainties in the durability of future demand management has flagged that it intends to continue to strengthen the balance sheet.
+## Item FY2019 FY2018 pct abschange ## 34 debt 404193 375437 7.</description>
+    </item>
+    
+    <item>
+      <title>Company results template: headline numbers</title>
+      <link>/post/2020/05/27/company-results-template-headline-numbers/</link>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/27/company-results-template-headline-numbers/</guid>
+      <description>Headine figures Suzuki announced a 10% reduction in net sales for the year to JPY 3488 billion or US$32.4 billion. Operating income fell 34% to JPY 215 billion or US$2 billion. Earnings per share declined 28% to JPY286/share. Despite the reported decline registered and further weakness projected ahead the company balance sheet remains strong and management declared a special dividend.
+## Item FY2019 FY2018 pct abschange ## 1 net_sales 3488433.</description>
+    </item>
+    
+    <item>
+      <title>Company results template: initial financial prep</title>
+      <link>/post/2020/05/27/company-results-template-initial-financial-prep/</link>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/27/company-results-template-initial-financial-prep/</guid>
+      <description>Financials Suzuki Motors (7269.T, JPY3700) announced year end FY2019 (April 2019 through March 2020) results that show a decline in net sales and earnings. In the following articles will examine.
+headline earnings; revenue and operating profit mix; balance sheet position; cash flow generation and use; ratio analysis; consensus earnings outlook; valuation.  But for now will assemble input data that will then wrangle into a form suitable for future analysis and presentation.</description>
+    </item>
+    
+    <item>
+      <title>Company results template: share price</title>
+      <link>/post/2020/05/27/company-results-template/</link>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/27/company-results-template/</guid>
+      <description>Purpose Thought process and actions steps following on earnings announcement. The example am using is the fourth quarter results posted by Suzuki Motors (7269.T, JPY3700) for period ended 2020-03-31.
+Recent price performance Recent price analysis versus benchmarks show the shares of Suzuki remain 26% below the peak in the year and below that of the Nikkei and Dow Jones.
+## # A tibble: 3 x 6 ## # Groups: symbol [3] ## symbol company curr_price min_price max_price pctchange_from_max ## &amp;lt;fct&amp;gt; &amp;lt;fct&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; ## 1 ^N225 N225 Index 21419.</description>
+    </item>
+    
+  </channel>
+</rss>

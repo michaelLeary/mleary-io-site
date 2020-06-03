@@ -1,0 +1,131 @@
+---
+title: S&P500 performance
+author: michael
+date: '2020-05-29'
+slug: s-p500-performance
+categories:
+  - R
+tags:
+  - Finance
+---
+
+```{r knitrsetup, include=FALSE}
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+```
+
+```{r pkgs, include = FALSE}
+pkgs = c("data.table", "readr", "dplyr", "ggplot2", "tidyverse", "tidyquant", "magrittr", "knitr", "kableExtra") 
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+```{r symbolsector, eval=TRUE, include = FALSE}
+constit <- read_csv("/Users/michaelleary/Dropbox/Rwork/workingdata/constit.csv")
+
+stocks <- c(constit$symbol)
+sector <- c(constit$sector)
+#Map a tibble with selected variables companies and index items
+stock_list <- tibble(symbol = stocks,
+                     sector = sector)
+# companies excluding indexes
+stock.list.co <- filter(stock_list, 
+                    c(!(symbol=="^DJI" | symbol=="^GSPC" )))
+
+```
+
+```{r pricespull, eval = TRUE, include=FALSE}
+
+#extract prices
+sp500.sp <- stock_list %>% tq_get(get = "stock.prices", from = "2020-01-01", to = Sys.Date())
+
+# In tibble data frame price data for company is stacked on each other.  
+```
+
+```{r reclassvars, include = FALSE}
+
+#list column names
+colnames <- colnames(sp500.sp)
+
+# prepare to convert character variables symbol, company to factors
+
+sp500.spf <- sp500.sp
+
+# save character variables
+sp500.spf %>%
+sapply(is.character) %>%
+which() %>%
+print() ->
+chari
+
+# alternate save of character variable names
+sp500.spf %>%
+names() %>%
+'['(chari) %>%
+print() ->
+charc
+
+# convert character variables to factors
+sp500.spf[charc] %<>% map(factor)  #uncheck
+str(sp500.spf)
+glimpse(sp500.spf)
+
+```
+
+```{r tablevalues, echo=FALSE, include=FALSE}
+sum.sp500 <- sp500.spf %>%
+  group_by(symbol,sector) %>%
+  summarise(curr_price = last(adjusted), 
+            min_price = round(min(adjusted),2), 
+            max_price = round(max(adjusted),2),
+            pctchange_from_max = round(100 * (curr_price-max_price)/max_price)) %>%
+  arrange((pctchange_from_max))
+
+```
+
+```{r}
+
+# chart triggers
+
+fromMax = -60
+  
+```
+
+```{r include=FALSE}
+
+# subset of records from summary table that meet criteria based on summary column
+sub <- sum.sp500 %>%
+  filter(pctchange_from_max < fromMax)
+
+# extract out symbol of companies that match condition fromMax
+subsymb <- sub[,1]
+
+# filter main price set by symbols selected
+sample <- sp500.spf %>%
+  filter(symbol == subsymb$symbol) 
+
+adj.plot <- ggplot(data=sample, 
+      aes(date, adjusted, group = 1))
+lag60plot <- adj.plot + geom_line() + facet_wrap(~symbol, scales = "free")
+
+```
+
+## laggards
+
+```{r lag60plot, echo=FALSE, warning=FALSE}
+
+lag60plot
+```
+
+## by constituent
+
+```{r sum.sp500, echo=FALSE, warning=FALSE}
+
+knitr::kable(sum.sp500, "html",
+             caption = "Price change for sp500 constituents since start 2020",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+

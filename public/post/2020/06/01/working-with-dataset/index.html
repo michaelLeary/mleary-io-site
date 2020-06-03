@@ -1,0 +1,3009 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Column add and reorder | Thoughts</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+      <li><a href="/index.xml">Subscribe</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">Column add and reorder</span></h1>
+<h2 class="author">michael</h2>
+<h2 class="date">2020/06/01</h2>
+</div>
+
+<main>
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<div id="task" class="section level2">
+<h2>Task:</h2>
+<ul>
+<li>Extract table data from <a href="https://en.wikipedia.org/wiki/List_of_skeletal_muscles_of_the_human_body">Wikipedia</a>;</li>
+<li>Combine table rows into one data frame;</li>
+<li>Add a column to combined data frame that provides name of original dataframe - so as to facilitate identifying source of data</li>
+<li>Reorder the columns in expanded data frame to put orgin data frame column first.</li>
+</ul>
+<p>There are 48 tables of muscle groups in the human body listed on the wikipedia page. Each table was extracted and stored in a separate data frame. A comma separated list of individual data frames was put into a vector. And a function then appended a column with the name of individual source data frame to each row of data. After that the individual data frames were bounded into one object. After the appended column and merged data frame operations was complete the variable columns were reordered.</p>
+<div id="future" class="section level3">
+<h3>Future</h3>
+<p>add a fresh column with recategorised groups</p>
+<div style="page-break-after: always;"></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tabtable">Table 1: </span>Body muscles
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+source
+</th>
+<th style="text-align:left;">
+Muscle
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+132
+</td>
+<td style="text-align:left;">
+abdomen
+</td>
+<td style="text-align:left;">
+cremaster
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+135
+</td>
+<td style="text-align:left;">
+abdomen
+</td>
+<td style="text-align:left;">
+external
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+136
+</td>
+<td style="text-align:left;">
+abdomen
+</td>
+<td style="text-align:left;">
+internal
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+134
+</td>
+<td style="text-align:left;">
+abdomen
+</td>
+<td style="text-align:left;">
+Oblique muscles
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+131
+</td>
+<td style="text-align:left;">
+abdomen
+</td>
+<td style="text-align:left;">
+pyramidalis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+133
+</td>
+<td style="text-align:left;">
+abdomen
+</td>
+<td style="text-align:left;">
+quadratus lumborum
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+130
+</td>
+<td style="text-align:left;">
+abdomen
+</td>
+<td style="text-align:left;">
+rectus abdominis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+129
+</td>
+<td style="text-align:left;">
+abdomen
+</td>
+<td style="text-align:left;">
+transversus abdominis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+128
+</td>
+<td style="text-align:left;">
+chest
+</td>
+<td style="text-align:left;">
+diaphragm
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+119
+</td>
+<td style="text-align:left;">
+chest
+</td>
+<td style="text-align:left;">
+external
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+126
+</td>
+<td style="text-align:left;">
+chest
+</td>
+<td style="text-align:left;">
+inferior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+121
+</td>
+<td style="text-align:left;">
+chest
+</td>
+<td style="text-align:left;">
+innermost
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+118
+</td>
+<td style="text-align:left;">
+chest
+</td>
+<td style="text-align:left;">
+intercostals
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+120
+</td>
+<td style="text-align:left;">
+chest
+</td>
+<td style="text-align:left;">
+internal
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+124
+</td>
+<td style="text-align:left;">
+chest
+</td>
+<td style="text-align:left;">
+levatores costarum
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+125
+</td>
+<td style="text-align:left;">
+chest
+</td>
+<td style="text-align:left;">
+Serratus posterior muscles
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+122
+</td>
+<td style="text-align:left;">
+chest
+</td>
+<td style="text-align:left;">
+subcostales
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+127
+</td>
+<td style="text-align:left;">
+chest
+</td>
+<td style="text-align:left;">
+superior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+123
+</td>
+<td style="text-align:left;">
+chest
+</td>
+<td style="text-align:left;">
+transversus thoracis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+ear
+</td>
+<td style="text-align:left;">
+Auriculares
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19
+</td>
+<td style="text-align:left;">
+ear
+</td>
+<td style="text-align:left;">
+auricularis anterior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21
+</td>
+<td style="text-align:left;">
+ear
+</td>
+<td style="text-align:left;">
+auricularis posterior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:left;">
+ear
+</td>
+<td style="text-align:left;">
+auricularis superior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+ear
+</td>
+<td style="text-align:left;">
+Muscles of inner ear
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23
+</td>
+<td style="text-align:left;">
+ear
+</td>
+<td style="text-align:left;">
+stapedius
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+17
+</td>
+<td style="text-align:left;">
+ear
+</td>
+<td style="text-align:left;">
+temporoparietalis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:left;">
+ear
+</td>
+<td style="text-align:left;">
+tensor tympani
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+extraocular
+</td>
+<td style="text-align:left;">
+inferior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:left;">
+extraocular
+</td>
+<td style="text-align:left;">
+inferior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+extraocular
+</td>
+<td style="text-align:left;">
+lateral
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+extraocular
+</td>
+<td style="text-align:left;">
+levator palpebrae superioris
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+extraocular
+</td>
+<td style="text-align:left;">
+medial
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+extraocular
+</td>
+<td style="text-align:left;">
+Oblique muscles
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+extraocular
+</td>
+<td style="text-align:left;">
+Rectus muscles
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+extraocular
+</td>
+<td style="text-align:left;">
+superior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+extraocular
+</td>
+<td style="text-align:left;">
+superior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+extraocular
+</td>
+<td style="text-align:left;">
+superior tarsal
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+256
+</td>
+<td style="text-align:left;">
+footdorsal
+</td>
+<td style="text-align:left;">
+Dorsal interossei of the foot
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+254
+</td>
+<td style="text-align:left;">
+footdorsal
+</td>
+<td style="text-align:left;">
+extensor digitorum brevis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+255
+</td>
+<td style="text-align:left;">
+footdorsal
+</td>
+<td style="text-align:left;">
+extensor hallucis brevis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+259
+</td>
+<td style="text-align:left;">
+footplantarfirstlayer
+</td>
+<td style="text-align:left;">
+abductor digiti minimi
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+257
+</td>
+<td style="text-align:left;">
+footplantarfirstlayer
+</td>
+<td style="text-align:left;">
+abductor hallucis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+258
+</td>
+<td style="text-align:left;">
+footplantarfirstlayer
+</td>
+<td style="text-align:left;">
+flexor digitorum brevis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+265
+</td>
+<td style="text-align:left;">
+footplantarfourthlayer
+</td>
+<td style="text-align:left;">
+Plantar interossei muscles
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+261
+</td>
+<td style="text-align:left;">
+footplantarsecondlayer
+</td>
+<td style="text-align:left;">
+lumbrical muscle
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+260
+</td>
+<td style="text-align:left;">
+footplantarsecondlayer
+</td>
+<td style="text-align:left;">
+quadratus plantae
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+263
+</td>
+<td style="text-align:left;">
+footplantarthirdlayer
+</td>
+<td style="text-align:left;">
+adductor hallucis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+264
+</td>
+<td style="text-align:left;">
+footplantarthirdlayer
+</td>
+<td style="text-align:left;">
+flexor digiti minimi brevis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+262
+</td>
+<td style="text-align:left;">
+footplantarthirdlayer
+</td>
+<td style="text-align:left;">
+flexor hallucis brevis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+180
+</td>
+<td style="text-align:left;">
+forearmanteriorcompartment.deep
+</td>
+<td style="text-align:left;">
+flexor digitorum profundus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+181
+</td>
+<td style="text-align:left;">
+forearmanteriorcompartment.deep
+</td>
+<td style="text-align:left;">
+flexor pollicis longus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+179
+</td>
+<td style="text-align:left;">
+forearmanteriorcompartment.deep
+</td>
+<td style="text-align:left;">
+pronator quadratus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+175
+</td>
+<td style="text-align:left;">
+forearmanteriorcompartment.superficial
+</td>
+<td style="text-align:left;">
+flexor carpi radialis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+177
+</td>
+<td style="text-align:left;">
+forearmanteriorcompartment.superficial
+</td>
+<td style="text-align:left;">
+flexor carpi ulnaris
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+178
+</td>
+<td style="text-align:left;">
+forearmanteriorcompartment.superficial
+</td>
+<td style="text-align:left;">
+flexor digitorum superficialis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+176
+</td>
+<td style="text-align:left;">
+forearmanteriorcompartment.superficial
+</td>
+<td style="text-align:left;">
+palmaris longus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+174
+</td>
+<td style="text-align:left;">
+forearmanteriorcompartment.superficial
+</td>
+<td style="text-align:left;">
+pronator teres
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+192
+</td>
+<td style="text-align:left;">
+forearmposteriorcompartment.deep
+</td>
+<td style="text-align:left;">
+abductor pollicis longus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+191
+</td>
+<td style="text-align:left;">
+forearmposteriorcompartment.deep
+</td>
+<td style="text-align:left;">
+Anatomical snuff box
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+190
+</td>
+<td style="text-align:left;">
+forearmposteriorcompartment.deep
+</td>
+<td style="text-align:left;">
+extensor indicis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+193
+</td>
+<td style="text-align:left;">
+forearmposteriorcompartment.deep
+</td>
+<td style="text-align:left;">
+extensor pollicis brevis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+194
+</td>
+<td style="text-align:left;">
+forearmposteriorcompartment.deep
+</td>
+<td style="text-align:left;">
+extensor pollicis longus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+189
+</td>
+<td style="text-align:left;">
+forearmposteriorcompartment.deep
+</td>
+<td style="text-align:left;">
+supinator
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+186
+</td>
+<td style="text-align:left;">
+forearmposteriorcompartment.superficial
+</td>
+<td style="text-align:left;">
+brachioradialis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+188
+</td>
+<td style="text-align:left;">
+forearmposteriorcompartment.superficial
+</td>
+<td style="text-align:left;">
+extensor carpi radialis brevis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+187
+</td>
+<td style="text-align:left;">
+forearmposteriorcompartment.superficial
+</td>
+<td style="text-align:left;">
+extensor carpi radialis longus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+184
+</td>
+<td style="text-align:left;">
+forearmposteriorcompartment.superficial
+</td>
+<td style="text-align:left;">
+extensor carpi ulnaris
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+183
+</td>
+<td style="text-align:left;">
+forearmposteriorcompartment.superficial
+</td>
+<td style="text-align:left;">
+extensor digiti minimi
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+182
+</td>
+<td style="text-align:left;">
+forearmposteriorcompartment.superficial
+</td>
+<td style="text-align:left;">
+extensor digitorum
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+185
+</td>
+<td style="text-align:left;">
+forearmposteriorcompartment.superficial
+</td>
+<td style="text-align:left;">
+Mobile wad
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+forehead
+</td>
+<td style="text-align:left;">
+corrugator supercilii
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+forehead
+</td>
+<td style="text-align:left;">
+depressor supercilii
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+forehead
+</td>
+<td style="text-align:left;">
+frontalis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+forehead
+</td>
+<td style="text-align:left;">
+occipitalis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+forehead
+</td>
+<td style="text-align:left;">
+occipitofrontalis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+forehead
+</td>
+<td style="text-align:left;">
+orbicularis oculi
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+205
+</td>
+<td style="text-align:left;">
+handintermediate
+</td>
+<td style="text-align:left;">
+dorsal interossei
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+204
+</td>
+<td style="text-align:left;">
+handintermediate
+</td>
+<td style="text-align:left;">
+lumbrical
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+206
+</td>
+<td style="text-align:left;">
+handintermediate
+</td>
+<td style="text-align:left;">
+palmar interossei
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+197
+</td>
+<td style="text-align:left;">
+handlateralcolarthenar
+</td>
+<td style="text-align:left;">
+abductor pollicis brevis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+198
+</td>
+<td style="text-align:left;">
+handlateralcolarthenar
+</td>
+<td style="text-align:left;">
+adductor pollicis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+196
+</td>
+<td style="text-align:left;">
+handlateralcolarthenar
+</td>
+<td style="text-align:left;">
+flexor pollicis brevis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+195
+</td>
+<td style="text-align:left;">
+handlateralcolarthenar
+</td>
+<td style="text-align:left;">
+opponens pollicis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+201
+</td>
+<td style="text-align:left;">
+handmedialvolar
+</td>
+<td style="text-align:left;">
+abductor digiti minimi
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+202
+</td>
+<td style="text-align:left;">
+handmedialvolar
+</td>
+<td style="text-align:left;">
+flexor digiti minimi brevis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+200
+</td>
+<td style="text-align:left;">
+handmedialvolar
+</td>
+<td style="text-align:left;">
+Hypothenar
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+203
+</td>
+<td style="text-align:left;">
+handmedialvolar
+</td>
+<td style="text-align:left;">
+opponens digiti minimi
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+199
+</td>
+<td style="text-align:left;">
+handmedialvolar
+</td>
+<td style="text-align:left;">
+palmaris brevis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+68
+</td>
+<td style="text-align:left;">
+larynx
+</td>
+<td style="text-align:left;">
+arytenoid
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+70
+</td>
+<td style="text-align:left;">
+larynx
+</td>
+<td style="text-align:left;">
+Cricoarytenoid muscles
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+67
+</td>
+<td style="text-align:left;">
+larynx
+</td>
+<td style="text-align:left;">
+cricothyroid
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+72
+</td>
+<td style="text-align:left;">
+larynx
+</td>
+<td style="text-align:left;">
+lateral
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+71
+</td>
+<td style="text-align:left;">
+larynx
+</td>
+<td style="text-align:left;">
+posterior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+69
+</td>
+<td style="text-align:left;">
+larynx
+</td>
+<td style="text-align:left;">
+thyroarytenoid
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+241
+</td>
+<td style="text-align:left;">
+leganteriorcompartment
+</td>
+<td style="text-align:left;">
+extensor digitorum longus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+240
+</td>
+<td style="text-align:left;">
+leganteriorcompartment
+</td>
+<td style="text-align:left;">
+extensor hallucis longus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+242
+</td>
+<td style="text-align:left;">
+leganteriorcompartment
+</td>
+<td style="text-align:left;">
+Peroneus tertius
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+239
+</td>
+<td style="text-align:left;">
+leganteriorcompartment
+</td>
+<td style="text-align:left;">
+tibialis anterior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+253
+</td>
+<td style="text-align:left;">
+leglateralcompartmentdeep
+</td>
+<td style="text-align:left;">
+Peroneus brevis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+252
+</td>
+<td style="text-align:left;">
+leglateralcompartmentdeep
+</td>
+<td style="text-align:left;">
+Peroneus longus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+250
+</td>
+<td style="text-align:left;">
+legposteriorcompartmentdeep
+</td>
+<td style="text-align:left;">
+flexor digitorum longus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+249
+</td>
+<td style="text-align:left;">
+legposteriorcompartmentdeep
+</td>
+<td style="text-align:left;">
+flexor hallucis longus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+247
+</td>
+<td style="text-align:left;">
+legposteriorcompartmentdeep
+</td>
+<td style="text-align:left;">
+popliteus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+248
+</td>
+<td style="text-align:left;">
+legposteriorcompartmentdeep
+</td>
+<td style="text-align:left;">
+tarsal tunnel
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+251
+</td>
+<td style="text-align:left;">
+legposteriorcompartmentdeep
+</td>
+<td style="text-align:left;">
+tibialis posterior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+244
+</td>
+<td style="text-align:left;">
+legposteriorcompartmentsuperficial
+</td>
+<td style="text-align:left;">
+gastrocnemius
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+246
+</td>
+<td style="text-align:left;">
+legposteriorcompartmentsuperficial
+</td>
+<td style="text-align:left;">
+plantaris
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+245
+</td>
+<td style="text-align:left;">
+legposteriorcompartmentsuperficial
+</td>
+<td style="text-align:left;">
+soleus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+243
+</td>
+<td style="text-align:left;">
+legposteriorcompartmentsuperficial
+</td>
+<td style="text-align:left;">
+triceps surae
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+212
+</td>
+<td style="text-align:left;">
+lowergluteal
+</td>
+<td style="text-align:left;">
+Gluteal muscles
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+213
+</td>
+<td style="text-align:left;">
+lowergluteal
+</td>
+<td style="text-align:left;">
+gluteus maximus muscle
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+214
+</td>
+<td style="text-align:left;">
+lowergluteal
+</td>
+<td style="text-align:left;">
+gluteus medius muscle
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+220
+</td>
+<td style="text-align:left;">
+lowergluteal
+</td>
+<td style="text-align:left;">
+inferior gemellus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+216
+</td>
+<td style="text-align:left;">
+lowergluteal
+</td>
+<td style="text-align:left;">
+lateral rotator group
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+215
+</td>
+<td style="text-align:left;">
+lowergluteal
+</td>
+<td style="text-align:left;">
+minimus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+218
+</td>
+<td style="text-align:left;">
+lowergluteal
+</td>
+<td style="text-align:left;">
+obturator externus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+219
+</td>
+<td style="text-align:left;">
+lowergluteal
+</td>
+<td style="text-align:left;">
+obturator internus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+217
+</td>
+<td style="text-align:left;">
+lowergluteal
+</td>
+<td style="text-align:left;">
+piriformis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+222
+</td>
+<td style="text-align:left;">
+lowergluteal
+</td>
+<td style="text-align:left;">
+quadratus femoris
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+221
+</td>
+<td style="text-align:left;">
+lowergluteal
+</td>
+<td style="text-align:left;">
+superior gemellus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+211
+</td>
+<td style="text-align:left;">
+lowergluteal
+</td>
+<td style="text-align:left;">
+tensor fasciae latae
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+210
+</td>
+<td style="text-align:left;">
+loweriliac
+</td>
+<td style="text-align:left;">
+iliacus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+207
+</td>
+<td style="text-align:left;">
+loweriliac
+</td>
+<td style="text-align:left;">
+iliopsoas
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+208
+</td>
+<td style="text-align:left;">
+loweriliac
+</td>
+<td style="text-align:left;">
+psoas major
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+209
+</td>
+<td style="text-align:left;">
+loweriliac
+</td>
+<td style="text-align:left;">
+psoas minor
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+45
+</td>
+<td style="text-align:left;">
+mastication
+</td>
+<td style="text-align:left;">
+lateral
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+42
+</td>
+<td style="text-align:left;">
+mastication
+</td>
+<td style="text-align:left;">
+masseter
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+46
+</td>
+<td style="text-align:left;">
+mastication
+</td>
+<td style="text-align:left;">
+medial
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+44
+</td>
+<td style="text-align:left;">
+mastication
+</td>
+<td style="text-align:left;">
+Pterygoid muscles
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+43
+</td>
+<td style="text-align:left;">
+mastication
+</td>
+<td style="text-align:left;">
+temporalis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+36
+</td>
+<td style="text-align:left;">
+mouth
+</td>
+<td style="text-align:left;">
+buccinator
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+32
+</td>
+<td style="text-align:left;">
+mouth
+</td>
+<td style="text-align:left;">
+depressor anguli oris(triangularis)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+34
+</td>
+<td style="text-align:left;">
+mouth
+</td>
+<td style="text-align:left;">
+depressor labii inferioris
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+31
+</td>
+<td style="text-align:left;">
+mouth
+</td>
+<td style="text-align:left;">
+levator anguli oris(caninus)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+33
+</td>
+<td style="text-align:left;">
+mouth
+</td>
+<td style="text-align:left;">
+levator labii superioris
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+40
+</td>
+<td style="text-align:left;">
+mouth
+</td>
+<td style="text-align:left;">
+major
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+35
+</td>
+<td style="text-align:left;">
+mouth
+</td>
+<td style="text-align:left;">
+mentalis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+41
+</td>
+<td style="text-align:left;">
+mouth
+</td>
+<td style="text-align:left;">
+minor
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+37
+</td>
+<td style="text-align:left;">
+mouth
+</td>
+<td style="text-align:left;">
+orbicularis oris
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+38
+</td>
+<td style="text-align:left;">
+mouth
+</td>
+<td style="text-align:left;">
+risorius
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+39
+</td>
+<td style="text-align:left;">
+mouth
+</td>
+<td style="text-align:left;">
+Zygomatic muscles
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+84
+</td>
+<td style="text-align:left;">
+neck.anterior
+</td>
+<td style="text-align:left;">
+longus capitis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+83
+</td>
+<td style="text-align:left;">
+neck.anterior
+</td>
+<td style="text-align:left;">
+longus colli
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+85
+</td>
+<td style="text-align:left;">
+neck.anterior
+</td>
+<td style="text-align:left;">
+rectus capitis anterior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+86
+</td>
+<td style="text-align:left;">
+neck.anterior
+</td>
+<td style="text-align:left;">
+rectus capitis lateralis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+73
+</td>
+<td style="text-align:left;">
+neck.clavicular
+</td>
+<td style="text-align:left;">
+platysma
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+74
+</td>
+<td style="text-align:left;">
+neck.clavicular
+</td>
+<td style="text-align:left;">
+sternocleidomastoid
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+82
+</td>
+<td style="text-align:left;">
+neck.infrahyoid
+</td>
+<td style="text-align:left;">
+omohyoid
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+79
+</td>
+<td style="text-align:left;">
+neck.infrahyoid
+</td>
+<td style="text-align:left;">
+sternohyoid
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+80
+</td>
+<td style="text-align:left;">
+neck.infrahyoid
+</td>
+<td style="text-align:left;">
+sternothyroid
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+81
+</td>
+<td style="text-align:left;">
+neck.infrahyoid
+</td>
+<td style="text-align:left;">
+thyrohyoid
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+88
+</td>
+<td style="text-align:left;">
+neck.lateral
+</td>
+<td style="text-align:left;">
+anterior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+91
+</td>
+<td style="text-align:left;">
+neck.lateral
+</td>
+<td style="text-align:left;">
+levator scapulae
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+89
+</td>
+<td style="text-align:left;">
+neck.lateral
+</td>
+<td style="text-align:left;">
+medius
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+94
+</td>
+<td style="text-align:left;">
+neck.lateral
+</td>
+<td style="text-align:left;">
+obliquus capitis inferior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+93
+</td>
+<td style="text-align:left;">
+neck.lateral
+</td>
+<td style="text-align:left;">
+obliquus capitis superior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+90
+</td>
+<td style="text-align:left;">
+neck.lateral
+</td>
+<td style="text-align:left;">
+posterior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+92
+</td>
+<td style="text-align:left;">
+neck.lateral
+</td>
+<td style="text-align:left;">
+rectus capitis lateralis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+87
+</td>
+<td style="text-align:left;">
+neck.lateral
+</td>
+<td style="text-align:left;">
+scalene muscles
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+98
+</td>
+<td style="text-align:left;">
+neck.posterior
+</td>
+<td style="text-align:left;">
+longissimus capitis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+101
+</td>
+<td style="text-align:left;">
+neck.posterior
+</td>
+<td style="text-align:left;">
+obliquus capitis inferior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+100
+</td>
+<td style="text-align:left;">
+neck.posterior
+</td>
+<td style="text-align:left;">
+obliquus capitis superior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+96
+</td>
+<td style="text-align:left;">
+neck.posterior
+</td>
+<td style="text-align:left;">
+rectus capitis posterior major
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+95
+</td>
+<td style="text-align:left;">
+neck.posterior
+</td>
+<td style="text-align:left;">
+rectus capitis posterior minor
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+97
+</td>
+<td style="text-align:left;">
+neck.posterior
+</td>
+<td style="text-align:left;">
+semispinalis capitis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+99
+</td>
+<td style="text-align:left;">
+neck.posterior
+</td>
+<td style="text-align:left;">
+splenius capitis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+75
+</td>
+<td style="text-align:left;">
+neck.suprahyoid
+</td>
+<td style="text-align:left;">
+digastric
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+78
+</td>
+<td style="text-align:left;">
+neck.suprahyoid
+</td>
+<td style="text-align:left;">
+geniohyoid
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+77
+</td>
+<td style="text-align:left;">
+neck.suprahyoid
+</td>
+<td style="text-align:left;">
+mylohyoid
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+76
+</td>
+<td style="text-align:left;">
+neck.suprahyoid
+</td>
+<td style="text-align:left;">
+stylohyoid
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+30
+</td>
+<td style="text-align:left;">
+nose
+</td>
+<td style="text-align:left;">
+alar part
+     (dilator naris)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+26
+</td>
+<td style="text-align:left;">
+nose
+</td>
+<td style="text-align:left;">
+depressor septi nasi
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+27
+</td>
+<td style="text-align:left;">
+nose
+</td>
+<td style="text-align:left;">
+levator labii superioris alaeque nasi
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+28
+</td>
+<td style="text-align:left;">
+nose
+</td>
+<td style="text-align:left;">
+nasalis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+25
+</td>
+<td style="text-align:left;">
+nose
+</td>
+<td style="text-align:left;">
+processs muscle process
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+nose
+</td>
+<td style="text-align:left;">
+transverse part
+     (compressor naris)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+137
+</td>
+<td style="text-align:left;">
+pelvis
+</td>
+<td style="text-align:left;">
+coccygeus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+139
+</td>
+<td style="text-align:left;">
+pelvis
+</td>
+<td style="text-align:left;">
+iliococcygeus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+138
+</td>
+<td style="text-align:left;">
+pelvis
+</td>
+<td style="text-align:left;">
+Levator ani
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+140
+</td>
+<td style="text-align:left;">
+pelvis
+</td>
+<td style="text-align:left;">
+pubococcygeus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+141
+</td>
+<td style="text-align:left;">
+pelvis
+</td>
+<td style="text-align:left;">
+puborectalis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+147
+</td>
+<td style="text-align:left;">
+perineum
+</td>
+<td style="text-align:left;">
+bulbospongiosus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+149
+</td>
+<td style="text-align:left;">
+perineum
+</td>
+<td style="text-align:left;">
+Deep perineal pouch
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+143
+</td>
+<td style="text-align:left;">
+perineum
+</td>
+<td style="text-align:left;">
+externus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+144
+</td>
+<td style="text-align:left;">
+perineum
+</td>
+<td style="text-align:left;">
+internus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+148
+</td>
+<td style="text-align:left;">
+perineum
+</td>
+<td style="text-align:left;">
+ischiocavernosus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+142
+</td>
+<td style="text-align:left;">
+perineum
+</td>
+<td style="text-align:left;">
+Sphincter ani
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+151
+</td>
+<td style="text-align:left;">
+perineum
+</td>
+<td style="text-align:left;">
+sphincter urethrae membranaceae
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+145
+</td>
+<td style="text-align:left;">
+perineum
+</td>
+<td style="text-align:left;">
+Superficial perineal pouch
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+150
+</td>
+<td style="text-align:left;">
+perineum
+</td>
+<td style="text-align:left;">
+transversus perinei profundus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+146
+</td>
+<td style="text-align:left;">
+perineum
+</td>
+<td style="text-align:left;">
+transversus perinei superficialis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+64
+</td>
+<td style="text-align:left;">
+pharynx
+</td>
+<td style="text-align:left;">
+inferior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+65
+</td>
+<td style="text-align:left;">
+pharynx
+</td>
+<td style="text-align:left;">
+middle
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+63
+</td>
+<td style="text-align:left;">
+pharynx
+</td>
+<td style="text-align:left;">
+Pharyngeal muscles
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+62
+</td>
+<td style="text-align:left;">
+pharynx
+</td>
+<td style="text-align:left;">
+salpingopharyngeus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+61
+</td>
+<td style="text-align:left;">
+pharynx
+</td>
+<td style="text-align:left;">
+stylopharyngeus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+66
+</td>
+<td style="text-align:left;">
+pharynx
+</td>
+<td style="text-align:left;">
+superior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+56
+</td>
+<td style="text-align:left;">
+softpalate
+</td>
+<td style="text-align:left;">
+levator veli palatini
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+58
+</td>
+<td style="text-align:left;">
+softpalate
+</td>
+<td style="text-align:left;">
+musculus uvulae
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+59
+</td>
+<td style="text-align:left;">
+softpalate
+</td>
+<td style="text-align:left;">
+palatoglossus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+60
+</td>
+<td style="text-align:left;">
+softpalate
+</td>
+<td style="text-align:left;">
+palatopharyngeus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+57
+</td>
+<td style="text-align:left;">
+softpalate
+</td>
+<td style="text-align:left;">
+tensor veli palatini
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+223
+</td>
+<td style="text-align:left;">
+thighanteriorcompartment
+</td>
+<td style="text-align:left;">
+articularis genus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+225
+</td>
+<td style="text-align:left;">
+thighanteriorcompartment
+</td>
+<td style="text-align:left;">
+quadriceps femoris
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+226
+</td>
+<td style="text-align:left;">
+thighanteriorcompartment
+</td>
+<td style="text-align:left;">
+rectus femoris
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+224
+</td>
+<td style="text-align:left;">
+thighanteriorcompartment
+</td>
+<td style="text-align:left;">
+sartorius
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+228
+</td>
+<td style="text-align:left;">
+thighanteriorcompartment
+</td>
+<td style="text-align:left;">
+vastus intermedius
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+227
+</td>
+<td style="text-align:left;">
+thighanteriorcompartment
+</td>
+<td style="text-align:left;">
+vastus lateralis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+229
+</td>
+<td style="text-align:left;">
+thighanteriorcompartment
+</td>
+<td style="text-align:left;">
+vastus medialis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+236
+</td>
+<td style="text-align:left;">
+thighmedialcompartment
+</td>
+<td style="text-align:left;">
+adductor brevis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+237
+</td>
+<td style="text-align:left;">
+thighmedialcompartment
+</td>
+<td style="text-align:left;">
+adductor longus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+238
+</td>
+<td style="text-align:left;">
+thighmedialcompartment
+</td>
+<td style="text-align:left;">
+adductor magnus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+233
+</td>
+<td style="text-align:left;">
+thighmedialcompartment
+</td>
+<td style="text-align:left;">
+adductor muscles of the hip
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+234
+</td>
+<td style="text-align:left;">
+thighmedialcompartment
+</td>
+<td style="text-align:left;">
+gracilis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+235
+</td>
+<td style="text-align:left;">
+thighmedialcompartment
+</td>
+<td style="text-align:left;">
+pectineus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+230
+</td>
+<td style="text-align:left;">
+thighposteriorcompartment
+</td>
+<td style="text-align:left;">
+biceps femoris
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+232
+</td>
+<td style="text-align:left;">
+thighposteriorcompartment
+</td>
+<td style="text-align:left;">
+semimembranosus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+231
+</td>
+<td style="text-align:left;">
+thighposteriorcompartment
+</td>
+<td style="text-align:left;">
+semitendinosus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+49
+</td>
+<td style="text-align:left;">
+tongueextrinsic
+</td>
+<td style="text-align:left;">
+chondroglossus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+47
+</td>
+<td style="text-align:left;">
+tongueextrinsic
+</td>
+<td style="text-align:left;">
+genioglossus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+48
+</td>
+<td style="text-align:left;">
+tongueextrinsic
+</td>
+<td style="text-align:left;">
+hyoglossus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+51
+</td>
+<td style="text-align:left;">
+tongueextrinsic
+</td>
+<td style="text-align:left;">
+palatoglossus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+50
+</td>
+<td style="text-align:left;">
+tongueextrinsic
+</td>
+<td style="text-align:left;">
+styloglossus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+54
+</td>
+<td style="text-align:left;">
+tongueintrinsic
+</td>
+<td style="text-align:left;">
+inferior longitudinal
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:left;">
+tongueintrinsic
+</td>
+<td style="text-align:left;">
+superior longitudinal
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+tongueintrinsic
+</td>
+<td style="text-align:left;">
+transversus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+55
+</td>
+<td style="text-align:left;">
+tongueintrinsic
+</td>
+<td style="text-align:left;">
+verticalis muscle
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+116
+</td>
+<td style="text-align:left;">
+torso.back
+</td>
+<td style="text-align:left;">
+capitis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+torso.back
+</td>
+<td style="text-align:left;">
+cervicis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+102
+</td>
+<td style="text-align:left;">
+torso.back
+</td>
+<td style="text-align:left;">
+erector spinae
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+103
+</td>
+<td style="text-align:left;">
+torso.back
+</td>
+<td style="text-align:left;">
+iliocostalis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+113
+</td>
+<td style="text-align:left;">
+torso.back
+</td>
+<td style="text-align:left;">
+interspinales
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+114
+</td>
+<td style="text-align:left;">
+torso.back
+</td>
+<td style="text-align:left;">
+intertransversarii
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+106
+</td>
+<td style="text-align:left;">
+torso.back
+</td>
+<td style="text-align:left;">
+latissimus dorsi
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+104
+</td>
+<td style="text-align:left;">
+torso.back
+</td>
+<td style="text-align:left;">
+longissimus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+111
+</td>
+<td style="text-align:left;">
+torso.back
+</td>
+<td style="text-align:left;">
+multifidus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+112
+</td>
+<td style="text-align:left;">
+torso.back
+</td>
+<td style="text-align:left;">
+rotatores
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+torso.back
+</td>
+<td style="text-align:left;">
+semispinalis capitis(complexus)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+109
+</td>
+<td style="text-align:left;">
+torso.back
+</td>
+<td style="text-align:left;">
+semispinalis cervicis(colli)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+108
+</td>
+<td style="text-align:left;">
+torso.back
+</td>
+<td style="text-align:left;">
+semispinalis thoracis(dorsi)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+105
+</td>
+<td style="text-align:left;">
+torso.back
+</td>
+<td style="text-align:left;">
+spinalis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+115
+</td>
+<td style="text-align:left;">
+torso.back
+</td>
+<td style="text-align:left;">
+Splenius muscles
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+107
+</td>
+<td style="text-align:left;">
+torso.back
+</td>
+<td style="text-align:left;">
+transversospinales
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+162
+</td>
+<td style="text-align:left;">
+upperlimb.shoulder
+</td>
+<td style="text-align:left;">
+deltoid
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+166
+</td>
+<td style="text-align:left;">
+upperlimb.shoulder
+</td>
+<td style="text-align:left;">
+infraspinatus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+164
+</td>
+<td style="text-align:left;">
+upperlimb.shoulder
+</td>
+<td style="text-align:left;">
+Rotator cuff
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+168
+</td>
+<td style="text-align:left;">
+upperlimb.shoulder
+</td>
+<td style="text-align:left;">
+subscapularis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+165
+</td>
+<td style="text-align:left;">
+upperlimb.shoulder
+</td>
+<td style="text-align:left;">
+supraspinatus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+163
+</td>
+<td style="text-align:left;">
+upperlimb.shoulder
+</td>
+<td style="text-align:left;">
+teres major
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+167
+</td>
+<td style="text-align:left;">
+upperlimb.shoulder
+</td>
+<td style="text-align:left;">
+teres minor
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+158
+</td>
+<td style="text-align:left;">
+upperlimb.thoracicwall
+</td>
+<td style="text-align:left;">
+pectoralis major
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+159
+</td>
+<td style="text-align:left;">
+upperlimb.thoracicwall
+</td>
+<td style="text-align:left;">
+pectoralis minor
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+161
+</td>
+<td style="text-align:left;">
+upperlimb.thoracicwall
+</td>
+<td style="text-align:left;">
+serratus anterior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+160
+</td>
+<td style="text-align:left;">
+upperlimb.thoracicwall
+</td>
+<td style="text-align:left;">
+subclavius
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+153
+</td>
+<td style="text-align:left;">
+upperlimb.vertebralcol
+</td>
+<td style="text-align:left;">
+latissimus dorsi
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+157
+</td>
+<td style="text-align:left;">
+upperlimb.vertebralcol
+</td>
+<td style="text-align:left;">
+levator scapulae
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+155
+</td>
+<td style="text-align:left;">
+upperlimb.vertebralcol
+</td>
+<td style="text-align:left;">
+rhomboid major
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+156
+</td>
+<td style="text-align:left;">
+upperlimb.vertebralcol
+</td>
+<td style="text-align:left;">
+rhomboid minor
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+154
+</td>
+<td style="text-align:left;">
+upperlimb.vertebralcol
+</td>
+<td style="text-align:left;">
+rhomboids
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+152
+</td>
+<td style="text-align:left;">
+upperlimb.vertebralcol
+</td>
+<td style="text-align:left;">
+trapezius
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+170
+</td>
+<td style="text-align:left;">
+upperlimbarmanterior.arm
+</td>
+<td style="text-align:left;">
+biceps brachii
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+171
+</td>
+<td style="text-align:left;">
+upperlimbarmanterior.arm
+</td>
+<td style="text-align:left;">
+brachialis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+169
+</td>
+<td style="text-align:left;">
+upperlimbarmanterior.arm
+</td>
+<td style="text-align:left;">
+coracobrachialis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+173
+</td>
+<td style="text-align:left;">
+upperlimbarmposterior.arm
+</td>
+<td style="text-align:left;">
+anconeus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+172
+</td>
+<td style="text-align:left;">
+upperlimbarmposterior.arm
+</td>
+<td style="text-align:left;">
+triceps brachii
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</main>
+
+  <footer>
+  <script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+  
+  <hr/>
+  © <a href="https://github.com/michaelleary">Github</a>
+  
+  </footer>
+  </body>
+</html>
+

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Moving grains - dry bulk | Thoughts</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+      <li><a href="/index.xml">Subscribe</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">Moving grains - dry bulk</span></h1>
+<h2 class="author">Michael</h2>
+<h2 class="date">2020/05/14</h2>
+</div>
+
+<main>
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<ul>
+<li>initial examination of one balance sheet item for dry goods shipping sector shows that most companies carry a reasonably high debt load.</li>
+<li>GNK emerges as one of the stronger company balance sheets. SHIP among the weakest.</li>
+<li>Further analysis on assets and cash flow will follow.</li>
+</ul>
+</div>
+<div id="trigger-to-enquiry" class="section level2">
+<h2>Trigger to enquiry</h2>
+<p>The decline in the Baltic Dry Index (BDI) to below 400 caught attention this morning. That level approaches a 25 year low and compares to 1000 in january 2020 and 2500 in september 2019 (representing an 84% decline). The index went below 400 in the depths of the financial crisis of 2008/2009.</p>
+<p>I wondered that if the index had fallen that low what had happened to companies that exist in that industry? And then of these companies would there be any that may offer attractive opportunities to invest?</p>
+</div>
+<div id="significance" class="section level2">
+<h2>Significance</h2>
+<p>The level and movement of the index has been examined by academics (<a href="https://files.stlouisfed.org/files/htdocs/publications/es/09/ES0912.pdf">Sengupta - 2009</a>, <a href="https://ideas.repec.org/a/asi/aeafrj/2020p340-351.html">Kuo, Chiu, Chen, Wang - 2020</a>), in the past as an indicator of economic performance with some leading characteristics.</p>
+<p>The index measures freight rates shippers pay to transport dry goods by sea. Such goods include Iron Ore, Coal, Grains, Soybeans, fertilizer, cement among others. Should economic growth begin to revive and in the absence of significant new ship construction then freight rates would be expected to rise and the index rise.</p>
+<p>Because it is not possible to invest in the index directly we look at shares of listed dry bulk shipping companies as proxies for the index and whose performance may be expected to track that of the index. (Separate later research may examine commodity producers along similar lines).</p>
+<p>For the stocks identified aim here to carry out a limited cross sectional analysis of various financial metrics. That would require extracting certain information from their latest published financial accounts and tabulating that information. On the data gathered several computations will be made that should provide an initial screen as to which of the companies merit more detailed financial analysis.</p>
+</div>
+<div id="other-facts" class="section level2">
+<h2>Other facts</h2>
+<ul>
+<li>The chief executive of GNK (a major dry bulk shipper) has stated that “some 90% of world’s goods ship by sea. And of these some 50% are dry goods” (media interview, Aug 2019).</li>
+</ul>
+</div>
+<div id="reference" class="section level1">
+<h1>Reference</h1>
+<ul>
+<li><a href="https://www.sec.gov/edgar/searchedgar/companysearch.html">sec edgar - financial reports</a></li>
+<li><a href="https://finance.yahoo.com/">yahoo finance - share prices</a></li>
+<li><a href="https://tradingeconomics.com/commodity/baltic">trading economics</a></li>
+<li><a href="http://www.andrew.cmu.edu/user/achoulde/94842/">Carnegie Mellon R notes</a>.</li>
+</ul>
+<div id="getting-started" class="section level3">
+<h3>Getting started</h3>
+<p>General reading around the subject suggested that shares of dry bulk shipping companies may serve as proxies for BDI.</p>
+<p>Initial focus was on 8 companies most readily identifiable from web search. Share price declines have been marked with a percentage decline of between 52-77% since the start of year - well below that of the S&amp;P500 and Dow Jones Industrial indexes.</p>
+<pre><code>## # A tibble: 10 x 6
+## # Groups:   symbol [10]
+##    symbol company               curr_price min_price max_price pctchange_from_m…
+##    &lt;fct&gt;  &lt;fct&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;             &lt;dbl&gt;
+##  1 ^GSPC  S&amp;P 500 Index            3036.     2237.     3386.                 -10
+##  2 ^DJI   Dow Jones Industrial…   25548.    18592.    29551.                 -14
+##  3 SB     Safe Bulkers, Inc           0.98      0.84      1.74               -44
+##  4 CMRE   Costamare Inc.              5.1       3.48     10.4                -51
+##  5 GNK    Genco Shipping &amp; Tra…       4.99      4.49     10.1                -51
+##  6 DSX    Diana Shipping Inc.         1.44      1.27      3.08               -53
+##  7 EGLE   Eagle Bulk Shipping …       2.05      1.38      4.51               -55
+##  8 SBLK   Star Bulk Carriers C…       5.19      3.92     11.7                -56
+##  9 SALT   Scorpio Bulkers            18.6      14.5      63.1                -71
+## 10 SHIP   Seanergy Maritime Ho…       0.13      0.13      0.54               -76</code></pre>
+<p>That decline is evident in the following plots that chart the trend in share price since the start of 2020.</p>
+<p><img src="/post/2020-05-14-moving-grains-dry-bulk_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>One gauge of financial strength is taken as how much debt the company carries relative to its cash and liquid resources. The latest data for that was extracted from each company’s financial accounts. After computing the difference between debt and liquid assets the result was compared to the shareholders equity for each company.</p>
+</div>
+<div id="examine-data-set" class="section level3">
+<h3>Examine data set</h3>
+</div>
+<div id="set-up-vulnerability-analysis" class="section level2">
+<h2>Set up vulnerability analysis</h2>
+<pre class="r"><code># debt position
+
+co_debt_transpose</code></pre>
+<pre><code>##                           EGLE   GNK SBLK  SALT  SB SHIP CMRE DSX
+## short.term.debt.mil       37.1  72.9  150  36.6  64    0  212   0
+## othershort.term.debt.mil   2.3   0.0    0   0.0   0    0    0   0
+## bonds.convert.debt.mil   269.9   0.0   48   0.0   0   15    0   0
+## long.term.debt.mil       179.3 403.7  961 352.9 537  201 1196 465
+## Total_Debt               488.6 476.6 1159 389.5 601  216 1408 465
+## Pct_st_to_totaldebt        8.0  15.0   13   9.0  11    0   15   0</code></pre>
+<p>More granular analysis on each debt’s maturity schedule in relation to projected cash flows will follow should any of the shares be considered worth pursing.</p>
+<pre class="r"><code># liquidity
+
+co_liquid_transpose</code></pre>
+<pre><code>##                         EGLE   GNK SBLK SALT  SB SHIP CMRE DSX
+## cash.mil                69.2 134.3  118   50  78   13  189  90
+## restricted.cash.mil      2.9  14.8    7    0  27    0    9  20
+## investments.mil          0.0   0.0    0    0   0    0    0   0
+## non.curr.securities.mil  0.0   0.0    0    0   0    0    0   0
+## Total_Liquid            72.1 149.1  125   50 105   13  198 110</code></pre>
+<pre class="r"><code># Financial strength of company
+
+t_transpose</code></pre>
+<pre><code>##                          EGLE   GNK SBLK  SALT  SB SHIP CMRE DSX
+## debt                    488.6 476.6 1159 389.5 601  216 1408 465
+## liquidtassets            72.1 149.1  125  50.0 105   13  198 110
+## net_debt                416.5 327.5 1034 339.5 496  203 1210 355
+## shareholders.equity.mil 477.0 850.0 1544 751.0 472   30 1422 457
+## Pct_Net_D_of_E           87.0  39.0   67  45.0 105  677   85  78</code></pre>
+<p>The net debt position shows that companies within the dry bulk shipping industry tend to carry quite high leverage. And so there will be persistent need for financial management to monitor the roll over and maturity of loan obligations. At the same time high levels of debt coupled with fragility over revenue may constrain significant capital expenditure. These factors are likely to have contributed to recent performance of the shares.</p>
+<p>By the single metric of net debt to equity GNK emerges as one of the strongest in the group with a ratio of 39%. And by the same token SHIP one of the weakest with 677%.</p>
+</div>
+</div>
+
+</main>
+
+  <footer>
+  <script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+  
+  <hr/>
+  © <a href="https://github.com/michaelleary">Github</a>
+  
+  </footer>
+  </body>
+</html>
+

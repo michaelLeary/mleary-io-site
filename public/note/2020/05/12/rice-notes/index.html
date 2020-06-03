@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Learning R - Rice | Thoughts</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+      <li><a href="/index.xml">Subscribe</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">Learning R - Rice</span></h1>
+<h2 class="author">Michael</h2>
+<h2 class="date">2020/05/12</h2>
+</div>
+
+<main>
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="conclusions" class="section level2">
+<h2>Conclusions</h2>
+<ul>
+<li><p>Estimated farmer pretax in India of around US$84 per 20 foot container of shipped rough raw rice.</p></li>
+<li><p>That represents a 78% reduction in take home pretax profit since start of 2020 when estimated pretax stood at US$340/container.</p></li>
+<li><p>Despite some increase in price since the start of 2020 farming profitability has fallen sharply.</p></li>
+</ul>
+<div id="trigger-to-enquiry" class="section level3">
+<h3>Trigger to enquiry</h3>
+<p>Article in Economic Times of India (accessed: 2020-05-12) that reported <a href="https://economictimes.indiatimes.com/news/economy/agriculture/basmati-export-down-due-to-shortage-of-cargo-containers/articleshow/75689413.cms">today</a> that Basmati rice exporters are suffering from higher shipping costs as a result of lack of containers. 20 foot container rates from India to Dubai and India to Europe up around 30%. Rates to Dubai now stand at Rs 82k vs Rs60k at start of year.</p>
+</div>
+<div id="significance-of-news-item" class="section level3">
+<h3>Significance of news item</h3>
+<p>India along with Thailand is a major exporter of rice. And rice is a significant contributor of household income in India where 1 in every 2 households are farmers.</p>
+</div>
+<div id="other-facts" class="section level3">
+<h3>Other facts</h3>
+<p>“Some 4-4.5 lakh tonne rice shipped monthly to Middle East during Ramadan. Lack of containers has halved that amount” (Economic Times article).</p>
+<p>1 lakh is a unit of measure of 100,000 units. So 4 lakh tonnes is 400,000 tonnes per month.</p>
+<p>Most shipments pass through container terminals at Mundra and Kandla <a href="https://www.google.com/maps/d/drive?state=%7B%22ids%22%3A%5B%221kiFLkKP1cLJbRZ3y_LttNOvZhnadzs6-%22%5D%2C%22action%22%3A%22open%22%2C%22userId%22%3A%22106492157068712305754%22%7D&amp;usp=sharing">ports</a> in Gujarat.</p>
+</div>
+<div id="container-dimensions" class="section level3">
+<h3>Container dimensions</h3>
+<p>A standard 20 foot container has volume of 33.2 m3 based on the following dimensions.</p>
+<pre class="r"><code>vol &lt;- data.frame(&quot;Dimension&quot;=c(&quot;width&quot;, &quot;height&quot;, &quot;length&quot;), 
+                     &quot;external_m2&quot; = c(2.440, 2.6, 6.058),
+                     &quot;internal_m2&quot; = c(2.352, 2.395, 5.89))
+vol</code></pre>
+<pre><code>##   Dimension external_m2 internal_m2
+## 1     width       2.440       2.352
+## 2    height       2.600       2.395
+## 3    length       6.058       5.890</code></pre>
+<pre class="r"><code>container_volume_m3 = vol[1,3]*vol[2,3]*vol[3,3]
+container_volume_m3</code></pre>
+<pre><code>## [1] 33.17861</code></pre>
+</div>
+<div id="rice-volume-in-20-foot-container" class="section level3">
+<h3>Rice volume in 20 foot container</h3>
+<p>7.2 tonnes of rice theoretically fit into a 20 foot container.</p>
+<p>The weight of medium rough grain raw rice equates to 1 metric cup or 206g. The volume of rice in 1 cup is equivalent to 0.00095 m3. So in 1 m3 there are 216 kg of rice (taken as 206g/0.00095m3) or 1052 cups (1/0.00095) of rice. Based on the volume of a 20 foot equivalent container of 33.2 m3 there is then potential capacity in the container of 7194 kgs or approximately 7.2 tonnes of rice.</p>
+<pre class="r"><code>riceweight_g = 206
+cupvol_m3 = 0.00095
+rice_vol_kg &lt;- (riceweight_g/cupvol_m3)/1000
+container_volume_m3</code></pre>
+<pre><code>## [1] 33.17861</code></pre>
+<pre class="r"><code>ricepercontainer_kg &lt;- (container_volume_m3*rice_vol_kg)
+no.of.tonnes&lt;-ricepercontainer_kg/1000
+no.of.tonnes</code></pre>
+<pre><code>## [1] 7.194519</code></pre>
+<p>Based on the reported 4 lakh tonne of rice exported from India per month to the middle east (400,000 tonnes) suggests a container demand for 55,597 containers per month.</p>
+<pre class="r"><code># calculate number of containers for export volume in tonnes
+no.of.containers &lt;- function(n) {
+  n/no.of.tonnes
+}
+#enter volume in tonnes
+no.of.containers(400000)</code></pre>
+<pre><code>## [1] 55597.88</code></pre>
+</div>
+<div id="shipping-rice-cost-to-dubai" class="section level3">
+<h3>Shipping rice cost to Dubai</h3>
+<p>Based on the reported shipping container rate of R82000/container for the India-Dubai route implies total shipping container cost monthly of Rs 4.6 billion/month or US$60 million per month.</p>
+<pre class="r"><code>valueshipDubai &lt;- function(p,q) {
+  (((p*q)/10^6)/75)
+}
+#enter no of containers and rate in Rs per container
+valueshipDubai(55597,82000)</code></pre>
+<pre><code>## [1] 60.78605</code></pre>
+</div>
+<div id="rice-selling-price" class="section level3">
+<h3>Rice selling price</h3>
+<p>Rice price at present is $16.8/cwt (Bloomberg).
+The quantity that rice prices are quoted in is cwt that stands for 1 nr. hundred weight.</p>
+<p>A mass measurement equal to 100 pounds of rough rice (2.22 bushels) in US definition (short hundred weight or central). In UK a 100 weight is a unit of mass equal to 112 pounds ( the long hundred weight).</p>
+<p>In US terms:
+1 cwt = 100 lbs = 0.0453 metric tonnes = 2.2 bushels.
+1 metric tonne = 2204 lbs = 22.04 cwt (hundred weight)
+Therefore 1 container of 7.2 tonnes = 158.9 cwt.</p>
+</div>
+<div id="rice-economics-from-indian-farmer-lens" class="section level3">
+<h3>Rice economics from Indian farmer lens</h3>
+<p>The revenue to farmer is computed as the price per hundred weight of rice by one container. At US$16.8/cwt and the container volume of 158 cwt (7.2 tonnes) and an exchange rate of 75 INR to 1 USD revenue per container in rupee is 199795.</p>
+<pre class="r"><code>#revenue to farmer
+no.of.tonnes</code></pre>
+<pre><code>## [1] 7.194519</code></pre>
+<pre class="r"><code>cwt_per_ton=22.04
+cwt_per_container=no.of.tonnes*cwt_per_ton
+rice_price_cwt = 16.8 #Rice price at present is $16.8/cwt (Bloomberg) accessed 2020-05-12
+rice_rev_per_container_usd = rice_price_cwt*cwt_per_container
+revenue_rp = rice_rev_per_container_usd*75
+revenue_rp</code></pre>
+<pre><code>## [1] 199794.7</code></pre>
+<p>Based on 2014/15 production <a href="http://agritech.tnau.ac.in/agriculture/agri_costofcultivation_rice.html">cost</a> per quintal of rice of Rs 1549 total production costs total Rp 111443. A quintal is taken as 100 kg. So one container of 7.2 tonnes is around 72 quintals. To these costs are added shipping cost of Rs 82000 per container.</p>
+<pre class="r"><code>#costs borne by farmer
+cost_per_quintal_rp=1549
+quintal_in_kg = 100
+no_of_quintal_per_container=ricepercontainer_kg/quintal_in_kg
+rice_cost_rp = no_of_quintal_per_container*cost_per_quintal_rp
+shipping_cost=82000
+localcosts = rice_cost_rp+shipping_cost
+localcosts</code></pre>
+<pre><code>## [1] 193443.1</code></pre>
+<p>The result of subtracting revenue per container from its associated costs of production and shipping costs is US$84. That is based on current shipping rate and the current price of rice.</p>
+<pre class="r"><code>#farming rice pretax profit
+pretax_rp = revenue_rp-localcosts
+pretax_rp</code></pre>
+<pre><code>## [1] 6351.567</code></pre>
+<pre class="r"><code>#US 
+pretax_usd = pretax_rp/75
+pretax_usd</code></pre>
+<pre><code>## [1] 84.68756</code></pre>
+</div>
+<div id="historic-rice-prices" class="section level3">
+<h3>Historic rice prices</h3>
+<p>Further examination is made on the trend in rice price over time to better appreciate farmer profitability at the top line.</p>
+<p>Rice price data is quoted in two different ways. Thailand rice prices which are quoted in US$/metric tonne ie. by the St Louis Federal Reserve of <a href="https://fred.stlouisfed.org/series/PRICENPQUSDM">FRED</a> that shows a March 2020 Thai rice price at US<span class="math inline">\(470/tonne. And prices quoted by Bloomberg that are in US\)</span>/cwt.</p>
+<p>Given the ratio of 1 tonne to 22 cwt the Thai price is equivalent to US$21/cwt (470/22) that compares to the Bloomberg rice price of US$16.80/cwt.</p>
+</div>
+<div id="plotting-with-tidyquant" class="section level3">
+<h3>Plotting with tidyquant</h3>
+</div>
+<div id="add-the-200-period-simple-moving-average-to-panel-1-of-the-plot" class="section level3">
+<h3>add the 200 period simple moving average to panel 1 of the plot</h3>
+<pre class="r"><code>ricep %&gt;% 
+  ggplot(aes(x=date, y=value))+
+  geom_line() +
+  labs(title=&quot;CBOT Rough Rice price&quot;, y=&quot;US$.cwt&quot;, x=&quot;&quot;) +
+  theme_tq()</code></pre>
+<p><img src="/note/2020-05-12-rice-notes_files/figure-html/rp20-1.png" width="672" /></p>
+</div>
+<div id="focus-on-2019-2020-data" class="section level3">
+<h3>focus on 2019-2020 data</h3>
+</div>
+<div id="add-50-day-simple-moving-average" class="section level3">
+<h3>add 50 day simple moving average</h3>
+<pre class="r"><code>#mytheme &lt;- theme_grey()+theme(legend.position=&quot;right&quot;)
+#theme_set(mytheme)
+
+ricep %&gt;%
+    ggplot(aes(x = date, y = value)) +
+    geom_line() +
+    geom_ma(ma_fun = SMA, n = 50, color = &#39;blue&#39;, linetype = 3, size = 1) +
+    geom_ma(ma_fun = SMA, n = 200, color = &quot;red&quot;, linetype= 5, size = 1) +
+  scale_color_manual(name=&quot;&quot;, values=c(&quot;Important line&quot;=&#39;grey&#39;, &quot;50ma&quot;=&#39;red&#39;, &quot;200ms&quot;=&#39;green&#39;))+
+  labs(title=&quot;CBOT Rough Rice price&quot;, 
+       subtitle=&quot;50 and 200 day SMA&quot;,
+       y=&quot;US$.cwt&quot;, x=&quot;&quot;) +
+  coord_x_date(xlim=c(&quot;2019-01-01&quot;, &quot;2020--05-10&quot;),
+                ylim=c(5,20))+
+  theme_tq()</code></pre>
+<p><img src="/note/2020-05-12-rice-notes_files/figure-html/50daysma-1.png" width="672" /></p>
+</div>
+<div id="add-exponential-moving-average" class="section level3">
+<h3>add exponential moving average</h3>
+<pre class="r"><code>ricep %&gt;%
+    ggplot(aes(x = date, y = value)) +
+    geom_line() +
+    geom_ma(ma_fun = EMA, n = 50, linetype = 5, size = 1.25) +
+    geom_ma(ma_fun = EMA, n = 200, color = &quot;red&quot;, size = 1.25) + 
+    labs(title=&quot;CBOT Rough Rice price&quot;, 
+       subtitle=&quot;50 and 200 day EMA&quot;,
+       y=&quot;US$.cwt&quot;, x=&quot;&quot;) +
+  coord_x_date(xlim=c(&quot;2019-01-01&quot;, &quot;2020--05-10&quot;),
+                ylim=c(5,20)) +
+  theme_tq()</code></pre>
+<p><img src="/note/2020-05-12-rice-notes_files/figure-html/expmovgavg-1.png" width="672" /></p>
+</div>
+<div id="continuous-scale" class="section level3">
+<h3>continuous scale</h3>
+<pre class="r"><code>ricep %&gt;%
+    ggplot(aes(x = date, y = value)) +
+    geom_line(color = palette()[[1]]) +
+  scale_y_continuous() +
+  labs(title=&quot;CBOT Rough Rice price&quot;, 
+       subtitle=&quot;Continuous scale&quot;,
+       y=&quot;US$.cwt&quot;, x=&quot;&quot;) +
+  theme_tq()</code></pre>
+<p><img src="/note/2020-05-12-rice-notes_files/figure-html/continu-1.png" width="672" /></p>
+</div>
+<div id="log-scale" class="section level3">
+<h3>Log scale</h3>
+<pre class="r"><code>ricep %&gt;%
+    ggplot(aes(x = date, y = value)) +
+    geom_line(color = palette()[[1]]) +
+  scale_y_log10() +
+  labs(title=&quot;CBOT Rough Rice price&quot;, 
+       subtitle=&quot;Log scale&quot;,
+       y=&quot;US$.cwt&quot;, x=&quot;&quot;) +
+  theme_tq()</code></pre>
+<p><img src="/note/2020-05-12-rice-notes_files/figure-html/logscalericep-1.png" width="672" /></p>
+</div>
+<div id="regression-trend-lines" class="section level3">
+<h3>Regression trend lines</h3>
+<pre class="r"><code>ricep %&gt;%
+    ggplot(aes(x = date, y = value)) +
+    geom_line(color = palette()[[1]]) +
+  scale_y_log10() +
+  geom_smooth(method=&quot;lm&quot;)+
+  labs(title=&quot;CBOT Rough Rice price&quot;, 
+       subtitle=&quot;Log scale, Applying linear trend line&quot;,
+       y=&quot;US$.cwt&quot;, x=&quot;&quot;) +
+  theme_tq()</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/note/2020-05-12-rice-notes_files/figure-html/trendlineprice-1.png" width="672" /></p>
+</div>
+</div>
+
+</main>
+
+  <footer>
+  <script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+  
+  <hr/>
+  © <a href="https://github.com/michaelleary">Github</a>
+  
+  </footer>
+  </body>
+</html>
+

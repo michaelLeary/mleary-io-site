@@ -1,0 +1,229 @@
+---
+title: 'Company results template: share price'
+author: "Michael"
+date: '2020-05-27'
+slug: Company results template
+categories: R
+tags:
+- Finance
+- Investment research
+- Tools
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+```
+
+```{r packages, include=FALSE}
+# Packages used
+pkgs = c("tidyverse", 
+         "tidyquant", 
+         "magrittr", 
+         "data.table", 
+         "fBasics", 
+         "gdata",
+         "dplyr",
+         "ggplot2",
+         "spelling",
+         "tufte") 
+#package names: 
+#tidyverse for operations using dplyr's piping feature; 
+#magrittr %<>% function pipes left hand data to right side and returns result to left hand overwriting original contents on left hand
+#data.table for fast csv save
+#gdata has keep function for permitting convenient trim of env objects with sure=TRUE
+
+install.packages(pkgs, repos="https://cran.r-project.org")
+
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+
+```
+
+```{r, include = FALSE}
+symbol <- c('7269.T', '^N225', '^DJI')
+company <- c("Suzuki", "N225 Index","Dow Jones Index")
+
+
+#Map a tibble with selected variables companies and index items
+stock_list <- tibble(symbol = symbol,
+                     company = company)
+# companies excluding indexes
+stock.list.co <- filter(stock_list, 
+                    c(!(symbol=="^DJI" | symbol=="^N225" )))
+
+```
+
+```{r, echo = FALSE}
+
+#extract prices
+p <- stock_list %>% tq_get(get = "stock.prices", from = "2020-01-01", to = Sys.Date())
+
+# In tibble data frame price data for company is stacked on each other.  
+```
+
+```{r organizedata, include = FALSE}
+
+motor.sp <- p
+
+#list column names
+colnames <- colnames(motor.sp)
+names(motor.sp)[3] <- "t"
+
+# prepare to convert character variables symbol, company to factors
+
+motor.spf <- motor.sp
+
+# save character variables
+motor.spf %>%
+sapply(is.character) %>%
+which() %>%
+print() ->
+chari
+
+# alternate save of character variable names
+motor.spf %>%
+names() %>%
+'['(chari) %>%
+print() ->
+charc
+
+# convert character variables to factors
+motor.spf[charc] %<>% map(factor)  #uncheck
+str(motor.spf)
+glimpse(motor.spf)
+
+```
+
+# Purpose
+
+Thought process and actions steps following on earnings announcement. The example am using is the fourth quarter results posted by Suzuki Motors (7269.T, JPY3700) for period ended 2020-03-31.
+
+## Recent price performance
+
+Recent price analysis versus benchmarks show the shares of Suzuki remain 26% below the peak in the year and below that of the Nikkei and Dow Jones.   
+
+```{r summarytable, echo=FALSE}
+sum.motor <- motor.spf %>%
+  group_by(symbol, company) %>%
+  summarize(curr_price = last(adjusted), 
+            min_price = round(min(adjusted),2), 
+            max_price = round(max(adjusted),2),
+            pctchange_from_max = round(100 * (curr_price-max_price)/max_price)) %>%
+  arrange(desc(pctchange_from_max))
+
+sum.motor
+
+```
+
+```{r shareplot, echo=FALSE}
+
+# https://ggplot2-book.org/facet.html
+adj.plot <- ggplot(data=motor.spf, 
+      aes(t, adjusted))
+adj.plot + geom_line() + facet_wrap(~symbol, scales = "free")
+
+```
+```{r 5dayperf, echo=FALSE, include=FALSE}
+
+head(motor.spf)
+str(motor.spf)
+
+motor.spf %>%
+  dplyr::filter(t == c("2020-05-20")) %>%
+  select(symbol, t, adjusted)
+
+todate <- Sys.Date()-5
+t5day <- seq(Sys.Date(), todate, by = -1)
+
+motor.spf %>%
+  select(symbol, t, adjusted) %>%
+  dplyr::filter(symbol == "7269.T",
+                t >= "2020-05-20")
+
+# date vector of every date betwee these two date and includes days of no shares
+datevector <- seq(Sys.Date(), Sys.Date()-6, by=-1)
+
+
+sh5day <- motor.spf %>%
+  select(symbol, t, volume, adjusted) %>%
+  dplyr::filter(symbol == "7269.T",
+                t >= Sys.Date()-6)
+
+```
+
+Ahead of the results the shares have picked up modestly. 
+
+```{r dh5day, echo=FALSE}
+sh5day
+```
+
+That price and volume performance compares with average, median, sd, min and max since start of year. 
+
+```{r sumdji, include=FALSE}
+
+# summary values for grouped symbols
+
+mean_a <- tapply(motor.spf$adjusted, motor.spf$symbol, mean)
+median_b <- tapply(motor.spf$adjusted, motor.spf$symbol, median)
+sd_c <- tapply(motor.spf$adjusted, motor.spf$symbol, sd)
+min_d <- tapply(motor.spf$adjusted, motor.spf$symbol, min)
+max_e <- tapply(motor.spf$adjusted, motor.spf$symbol, max)
+
+f <- rbind(mean_a,median_b,sd_c,min_d,max_e)
+
+```
+
+```{r ytdperf, echo=FALSE}
+f
+```
+
+```{r relperffullperiod, echo=FALSE, include=FALSE}
+
+ds1 <- motor.spf
+stk <- ds1 %>% dplyr::filter((symbol=="7269.T") )
+stkn225 <- ds1 %>% dplyr::filter((symbol=="^N225") )
+stkdji <- ds1 %>% dplyr::filter((symbol=="^DJI") )
+
+head(stk)
+teststrip2 <- stk[,-c(1:2, 4:8)]
+stka <- rename(teststrip2, sa=adjusted)
+
+head(stkn225)
+teststrip2 <- stkn225[,-c(1:2, 4:8)]
+stkn <- rename(teststrip2, n225a=adjusted)
+
+head(stkdji)
+teststrip2 <- stkdji[,-c(1:2, 4:8)]
+stkd <- rename(teststrip2, djia=adjusted)
+
+#https://jozef.io/r006-merge/
+# merge tibbles on date column
+
+dst <- dplyr::full_join(stka, stkn, by="t")
+head(dst)
+dstall <- dplyr::full_join(dst, stkd, by="t")
+head(dstall)
+d <- dstall
+head(d)
+
+dst <- transform(d, sa.idx=100*d$sa/d$sa[1], n.idx=100*d$n225a/d$n225a[1], d.idx=100*d$djia/d$djia[1])
+head(dst)
+
+```
+
+```{r relperforchart, echo=FALSE, include=FALSE}
+basketplot <- ggplot(dst, aes(t)) +
+  geom_line(aes(y=sa.idx, color="Suzuki")) + 
+  geom_line(aes(y=n.idx, color="N225")) +
+  geom_line(aes(y=d.idx, color="DJIA")) +
+  scale_x_date(date_breaks = "months" , date_labels = "%m") +
+  labs(title = "Suzuki, N225 and DJIA index", x="Months", y="Index", color="legend") +
+  theme_minimal()
+  
+```
+
+With the price of the shares and the Dow Jones and Nikkei indexed to 100 at the start of the year the shares have lagged.  
+
+```{r basketplot, echo=FALSE, warning=FALSE}
+plot(basketplot)
+```

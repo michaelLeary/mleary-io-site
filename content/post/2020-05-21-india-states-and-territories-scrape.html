@@ -1,0 +1,659 @@
+---
+title: India states and territories
+author: Michael
+date: '2020-05-21'
+slug: India states and territories
+categories:
+  - R
+tags:
+  - India
+  - Tools
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<div id="project" class="section level1">
+<h1>Project</h1>
+<p>This project aimed to use R to extract India state and territory names from a wikipedia page.</p>
+<div style="page-break-after: always;"></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tabtable">Table 1: </span>India states and territories
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+part
+</th>
+<th style="text-align:left;">
+veh_code
+</th>
+<th style="text-align:right;">
+pop
+</th>
+<th style="text-align:right;">
+area_km2
+</th>
+<th style="text-align:left;">
+id
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Uttar Pradesh
+</td>
+<td style="text-align:left;">
+UP
+</td>
+<td style="text-align:right;">
+199812341
+</td>
+<td style="text-align:right;">
+243286
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Maharashtra
+</td>
+<td style="text-align:left;">
+MH
+</td>
+<td style="text-align:right;">
+112374333
+</td>
+<td style="text-align:right;">
+307713
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bihar
+</td>
+<td style="text-align:left;">
+BR
+</td>
+<td style="text-align:right;">
+104099452
+</td>
+<td style="text-align:right;">
+94163
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+West Bengal
+</td>
+<td style="text-align:left;">
+WB
+</td>
+<td style="text-align:right;">
+91276115
+</td>
+<td style="text-align:right;">
+88752
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Madhya Pradesh
+</td>
+<td style="text-align:left;">
+MP
+</td>
+<td style="text-align:right;">
+72626809
+</td>
+<td style="text-align:right;">
+308252
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tamil Nadu
+</td>
+<td style="text-align:left;">
+TN
+</td>
+<td style="text-align:right;">
+72147030
+</td>
+<td style="text-align:right;">
+130058
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rajasthan
+</td>
+<td style="text-align:left;">
+RJ
+</td>
+<td style="text-align:right;">
+68548437
+</td>
+<td style="text-align:right;">
+342269
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Karnataka
+</td>
+<td style="text-align:left;">
+KA
+</td>
+<td style="text-align:right;">
+61095297
+</td>
+<td style="text-align:right;">
+191791
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gujarat
+</td>
+<td style="text-align:left;">
+GJ
+</td>
+<td style="text-align:right;">
+60439692
+</td>
+<td style="text-align:right;">
+196024
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Andhra Pradesh
+</td>
+<td style="text-align:left;">
+AP
+</td>
+<td style="text-align:right;">
+49506799
+</td>
+<td style="text-align:right;">
+160205
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Odisha
+</td>
+<td style="text-align:left;">
+OD
+</td>
+<td style="text-align:right;">
+41974218
+</td>
+<td style="text-align:right;">
+155820
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Telangana
+</td>
+<td style="text-align:left;">
+TS
+</td>
+<td style="text-align:right;">
+35193978
+</td>
+<td style="text-align:right;">
+114840
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kerala
+</td>
+<td style="text-align:left;">
+KL
+</td>
+<td style="text-align:right;">
+33406061
+</td>
+<td style="text-align:right;">
+38863
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jharkhand
+</td>
+<td style="text-align:left;">
+JH
+</td>
+<td style="text-align:right;">
+32988134
+</td>
+<td style="text-align:right;">
+74677
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Assam
+</td>
+<td style="text-align:left;">
+AS
+</td>
+<td style="text-align:right;">
+31205576
+</td>
+<td style="text-align:right;">
+78550
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Punjab
+</td>
+<td style="text-align:left;">
+PB
+</td>
+<td style="text-align:right;">
+27743338
+</td>
+<td style="text-align:right;">
+50362
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chhattisgarh
+</td>
+<td style="text-align:left;">
+CG
+</td>
+<td style="text-align:right;">
+25545198
+</td>
+<td style="text-align:right;">
+135194
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Haryana
+</td>
+<td style="text-align:left;">
+HR
+</td>
+<td style="text-align:right;">
+25351462
+</td>
+<td style="text-align:right;">
+44212
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Delhi
+</td>
+<td style="text-align:left;">
+DL
+</td>
+<td style="text-align:right;">
+16787941
+</td>
+<td style="text-align:right;">
+1490
+</td>
+<td style="text-align:left;">
+terr
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jammu and Kashmir
+</td>
+<td style="text-align:left;">
+JK
+</td>
+<td style="text-align:right;">
+12258433
+</td>
+<td style="text-align:right;">
+55538
+</td>
+<td style="text-align:left;">
+terr
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Uttarakhand
+</td>
+<td style="text-align:left;">
+UK
+</td>
+<td style="text-align:right;">
+10086292
+</td>
+<td style="text-align:right;">
+53483
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Himachal Pradesh
+</td>
+<td style="text-align:left;">
+HP
+</td>
+<td style="text-align:right;">
+6864602
+</td>
+<td style="text-align:right;">
+55673
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tripura
+</td>
+<td style="text-align:left;">
+TR
+</td>
+<td style="text-align:right;">
+3673917
+</td>
+<td style="text-align:right;">
+10492
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Meghalaya
+</td>
+<td style="text-align:left;">
+ML
+</td>
+<td style="text-align:right;">
+2966889
+</td>
+<td style="text-align:right;">
+22720
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Manipur
+</td>
+<td style="text-align:left;">
+MN
+</td>
+<td style="text-align:right;">
+2855794
+</td>
+<td style="text-align:right;">
+22347
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nagaland
+</td>
+<td style="text-align:left;">
+NL
+</td>
+<td style="text-align:right;">
+1978502
+</td>
+<td style="text-align:right;">
+16579
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Goa
+</td>
+<td style="text-align:left;">
+GA
+</td>
+<td style="text-align:right;">
+1458545
+</td>
+<td style="text-align:right;">
+3702
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Arunachal Pradesh
+</td>
+<td style="text-align:left;">
+AR
+</td>
+<td style="text-align:right;">
+1383727
+</td>
+<td style="text-align:right;">
+83743
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Puducherry
+</td>
+<td style="text-align:left;">
+PY
+</td>
+<td style="text-align:right;">
+1247953
+</td>
+<td style="text-align:right;">
+492
+</td>
+<td style="text-align:left;">
+terr
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mizoram
+</td>
+<td style="text-align:left;">
+MZ
+</td>
+<td style="text-align:right;">
+1097206
+</td>
+<td style="text-align:right;">
+21081
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chandigarh
+</td>
+<td style="text-align:left;">
+CH
+</td>
+<td style="text-align:right;">
+1055450
+</td>
+<td style="text-align:right;">
+114
+</td>
+<td style="text-align:left;">
+terr
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sikkim
+</td>
+<td style="text-align:left;">
+SK
+</td>
+<td style="text-align:right;">
+610577
+</td>
+<td style="text-align:right;">
+7096
+</td>
+<td style="text-align:left;">
+state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dadra and Nagar Haveli and Daman and Diu
+</td>
+<td style="text-align:left;">
+DD
+</td>
+<td style="text-align:right;">
+586956
+</td>
+<td style="text-align:right;">
+603
+</td>
+<td style="text-align:left;">
+terr
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Andaman and Nicobar Islands
+</td>
+<td style="text-align:left;">
+AN
+</td>
+<td style="text-align:right;">
+380581
+</td>
+<td style="text-align:right;">
+8249
+</td>
+<td style="text-align:left;">
+terr
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ladakh
+</td>
+<td style="text-align:left;">
+LA
+</td>
+<td style="text-align:right;">
+290492
+</td>
+<td style="text-align:right;">
+174852
+</td>
+<td style="text-align:left;">
+terr
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lakshadweep
+</td>
+<td style="text-align:left;">
+LD
+</td>
+<td style="text-align:right;">
+64473
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:left;">
+terr
+</td>
+</tr>
+</tbody>
+</table>
+</div>

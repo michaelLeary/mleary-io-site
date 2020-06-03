@@ -1,0 +1,279 @@
+---
+title: 'Company announcement template: revenue mix'
+author: Michael
+date: '2020-05-28'
+slug: 'Company announcement template: revenue mix'
+categories:
+  - R
+tags:
+  - Finance
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(tidy = FALSE)
+options(htmltools.dir.version = FALSE)
+```
+
+```{r packages, include=FALSE}
+# Packages used
+pkgs = c("tidyverse", 
+         "tidyquant", 
+         "magrittr", 
+         "data.table", 
+         "fBasics", 
+         "gdata",
+         "dplyr",
+         "ggplot2",
+         "spelling",
+         "reshape2",
+         "reshape",
+         "expss") 
+#package names: 
+#tidyverse for operations using dplyr's piping feature; 
+#magrittr %<>% function pipes left hand data to right side and returns result to left hand overwriting original contents on left hand
+#data.table for fast csv save
+#gdata has keep function for permitting convenient trim of env objects with sure=TRUE
+
+install.packages(pkgs, repos="https://cran.r-project.org")
+
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+
+```
+
+```{r topchunkdata, include=FALSE}
+#topchunk <- read.csv("/Users/michaelleary/Dropbox/Rwork/michaelLeary-io-site/data/topchunk.csv", stringsAsFactors = TRUE)
+
+#head(topchunk)
+
+topchunk1 <- read_csv("/Users/michaelleary/Dropbox/Rwork/michaelLeary-io-site/data/topchunk.csv")
+
+```
+
+```{r topchunkdataset, include=FALSE}
+# examine variables and variable types
+class(topchunk1)
+glimpse(topchunk1)
+str(topchunk1)
+topchunkcol <- colnames(topchunk1)
+
+```
+
+```{r columnset, include=FALSE}
+top.col <- topchunk1[,c("period", 
+                     "net_sales",
+                     "op_inc",
+                     "ord_inc",
+                     "net_inc",
+                     "div_amt",
+                     "avg_sharesiss",
+                     "tot_ass",
+                     "share_eq",
+                     "liquid_ass",
+                     "tot_debt",
+                     "ppe",
+                     "cost_sales",
+                     "sga",
+                     "car_sales",
+                     "bike_sales",
+                     "marine_sales",
+                     "car_opinc",
+                     "bike_opinc",
+                     "marine_opinc",
+                     "jp_sales",
+                     "india_sales",
+                     "other_sales",
+                     "jp_ppe",
+                     "india_ppe",
+                     "others_ppe",
+                     "cvolsale",
+                     "bvolsale",
+                     "cvolprod",
+                     "bvolprod"
+                     )]
+
+```
+
+```{r calculatedvariables, include=FALSE}
+# items to be computed and added to input data include:
+# eps
+# dps
+# roe
+# bvps
+# net debt / sh.equity
+# dupont analysis 
+# margins
+
+fullset.topcol <- mutate(top.col,
+                    eps = round((net_inc / avg_sharesiss),1), 
+                    dps = round((div_amt / avg_sharesiss),1),
+                    bvps = round((share_eq / avg_sharesiss),),
+                    roe = round(100 * (net_inc / share_eq),2),
+                    assetturnover = round((net_sales / tot_ass),2),
+                    leverage = round((tot_ass / share_eq),2),
+                    netmargin = round((net_inc / net_sales),2),
+                    dupont_roe = round(100 * (netmargin*assetturnover*leverage),2),
+                    carprice = round((car_sales / cvolsale),),
+                    bikeprice = round((bike_sales / bvolsale),))
+
+# company net debt
+
+codebt <- fullset.topcol[,c("period", "tot_debt")]
+co_debt <- mutate(codebt)
+rownames(co_debt) <- co_debt$period
+co_debt$period <- NULL
+co_debt_transpose <- as.data.frame(t(as.matrix(co_debt)))
+
+# company liquidity
+
+coliquid <- fullset.topcol[,c("period", "liquid_ass")]
+co_liquid <- mutate(coliquid)
+rownames(co_liquid) <- co_liquid$period
+co_liquid$period <- NULL
+co_liquid_transpose <- as.data.frame(t(as.matrix(co_liquid)))
+
+# company net debt mutated onto fullset.top
+
+fs.top <- mutate(fullset.topcol,
+                    debt = co_debt$tot_debt,
+                    liquidtassets = co_liquid$liquid_ass,  
+                    net_debt = debt - liquidtassets,
+                    Pct_Net_D_of_E = round(100*(net_debt/share_eq),))
+
+```
+
+
+```{r fullsettranspose, include=FALSE}
+# Dataset includes computed items and d/e and transpose and added column for yoy change
+
+tvultable <- fs.top[c(1:44)]
+
+rownames(tvultable) <- tvultable$period
+tvultable$period <- NULL
+
+t_transpose <- round(as.data.frame(t(as.matrix(tvultable))),1)
+
+# make row namea a column
+
+fullset <- setDT(t_transpose, keep.rownames = TRUE)
+
+
+# rename auto generated column name with previously saved label
+
+names(fullset)[1] <- c("Item")
+names(fullset)[2] <- c("FY2019")
+names(fullset)[3] <- c("FY2018")
+
+
+fs.yoy <- fullset %>%
+  mutate(abschange = round((fullset$FY2019 - fullset$FY2018),),
+         pct = 100 * (abschange / fullset$FY2018)) %>%
+  select("Item", "FY2019", "FY2018", "pct", "abschange")
+
+```
+
+
+```{r fullsettable, include=FALSE}
+
+fs.yoy
+print(str(fs.yoy))
+
+```
+
+```{r revcomposition, echo=FALSE, include=FALSE}
+#subset out the rows needed and then transpose
+revcomposition <- fs.yoy[c(14:16,1),]
+revcomposition
+```
+
+```{r opincshare, echo=FALSE, include=FALSE}
+#subset out the rows needed and then transpose
+opincshare <- fs.yoy[c(17:19,2),]
+opincshare
+```
+
+```{r margintrend, echo=FALSE, include=FALSE}
+#subset out the rows needed and then transpose
+
+d <- cbind(revcomposition,opincshare)
+e2019 <- d[,c(1,2,7)]
+colnames(e2019)[2] <- "2019rev"
+colnames(e2019)[3] <- "2019opinc"
+revopmar19 <- e2019 %>% mutate(marPct2019 = round(100*(e2019[,3] / e2019[,2]),1))
+
+e2018 <- d[,c(1,3,8)]
+colnames(e2018)[2] <- "2018rev"
+colnames(e2018)[3] <- "2018opinc"
+revopmar18 <- e2018 %>% mutate(marPct2018 = round(100*(e2018[,3] / e2018[,2]),1))
+
+```
+
+```{r margin, include=FALSE}
+margintab <- cbind(revopmar19, revopmar18)
+margintab
+m.table <- margintab[,c(1:4,8)]
+margin <- m.table %>% mutate(chg.marg = m.table[,4] - m.table[,5])
+
+
+```
+
+```{r revshare, include=FALSE}
+
+revshare <- revcomposition[,-c(4:5)]
+revsharetable <- revshare %>%
+  mutate(sharePct19 = round(100 * (revshare[,2] / revshare[4,2]),1),
+         sharePct18 = round(100 * (revshare[,3] / revshare[4,3]),1))
+
+```
+
+```{r opshare, include=FALSE}
+
+opshare <- opincshare[,-c(4:5)]
+opsharetable <- opshare %>%
+  mutate(sharePct19 = round(100 * (opshare[,2] / opshare[4,2]),1),
+         sharePct18 = round(100 * (opshare[,3] / opshare[4,3]),1))
+
+```
+
+```{r carpri.m, echo=FALSE, include=FALSE}
+#subset out the rows needed and then transpose
+
+carpri <- fs.yoy[c(14,26,38), -c(4:5)]
+
+carpri.m <- carpri %>% mutate(chg.pct = round(100 * ((carpri[,2] - carpri[,3])/carpri[,3]),1))
+carpri.m
+```
+
+
+
+```{r bikepri.m, echo=FALSE, include=FALSE}
+
+bikepri <- fs.yoy[c(15,27, 39),-c(4:5)]
+bikepri
+bikepri.m <- bikepri %>% mutate(chg.pct = round(100 * ((bikepri[,2] - bikepri[,3])/bikepri[,3]),1))
+bikepri.m
+
+
+```
+
+## Mix
+
+Suzuki generated operating profit of US\$2 billion from sales of US$32 billion in FY19 for a year on year decline of 34%. Management attributes the fall in revenue in FY19 to the slow down in India's economy, the relative strength of the JPY to other currencies, and, the Coronavirus lock downs. 
+
+The composition of Suzuki's revenue and operating profit show clearly that car manufacturing is the core business for the group. That component contributes over 90% of total sales and operating profits with the balance motorcycles and marine motors. 
+
+`r knitr::kable(revsharetable, caption = 'Revenue share')`
+
+`r knitr::kable(opsharetable, caption = 'Operating profit share')`
+
+There was a significant reduction in operating profit margins during the fiscal year to 6% from 8%. Even though the relative size of margin from the marine business is significant that chunk along with the contribution from motorcycles remains a small part of Suzuki earnings.  
+
+`r knitr::kable(margin, caption = 'Margin by revenue source')`
+
+More granular analysis on the car component is possible given information in the earnings statement on the number of cars sold in the year. From these we have computed the average sales price achieved and compared it to the prior year. 
+
+That analysis shows that the 11% decline in reported sales (to US$29billion) is accompanied by a 12% reduction in sold units to 2.9 million year on year that more than outweighed a 4% gain in average achieved sales price to \$10,300 per unit. The relative increase in price per unit may have something to do with the changing mix of vehicles that are growing in popularity and may be examined in future.  
+
+`r knitr::kable(revcomposition, caption = 'Sales mix')`
+
+`r knitr::kable(carpri.m, caption = 'FY19 revenue drivers')`
+

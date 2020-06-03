@@ -1,0 +1,444 @@
+---
+title: Learning R - Rice
+author: Michael
+date: '2020-05-12'
+slug: Rice notes
+categories:
+  - R
+tags:
+  - India
+  - Agriculture
+---
+
+```{r pkgs, include=FALSE}
+pkgs = c("readr", "tidyverse", "tbl2xts", "PerformanceAnalytics", "TTR", "quantmod", "tidyquant", "lubridate") 
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+## Conclusions
+
+* Estimated farmer pretax in India of around US$84 per 20 foot container of shipped rough raw rice.
+
+* That represents a 78% reduction in take home pretax profit since start of 2020 when estimated pretax stood at US$340/container.
+
+* Despite some increase in price since the start of 2020 farming profitability has fallen sharply. 
+
+### Trigger to enquiry
+
+Article in Economic Times of India (accessed: 2020-05-12) that reported [today](https://economictimes.indiatimes.com/news/economy/agriculture/basmati-export-down-due-to-shortage-of-cargo-containers/articleshow/75689413.cms) that Basmati rice exporters are suffering from higher shipping costs as a result of lack of containers. 20 foot container rates from India to Dubai and India to Europe up around 30%. Rates to Dubai now stand at Rs 82k vs Rs60k at start of year. 
+
+### Significance of news item 
+
+India along with Thailand is a major exporter of rice. And rice is a significant contributor of household income in India where 1 in every 2 households are farmers. 
+
+### Other facts
+
+"Some 4-4.5 lakh tonne rice shipped monthly to Middle East during Ramadan. Lack of containers has halved that amount" (Economic Times article). 
+
+1 lakh is a unit of measure of 100,000 units. So 4 lakh tonnes is 400,000 tonnes per month. 
+
+Most shipments pass through container terminals at Mundra and Kandla [ports](https://www.google.com/maps/d/drive?state=%7B%22ids%22%3A%5B%221kiFLkKP1cLJbRZ3y_LttNOvZhnadzs6-%22%5D%2C%22action%22%3A%22open%22%2C%22userId%22%3A%22106492157068712305754%22%7D&usp=sharing) in Gujarat. 
+
+
+### Container dimensions
+
+A standard 20 foot container has volume of 33.2 m3 based on the following dimensions. 
+
+```{r vol}
+vol <- data.frame("Dimension"=c("width", "height", "length"), 
+                     "external_m2" = c(2.440, 2.6, 6.058),
+                     "internal_m2" = c(2.352, 2.395, 5.89))
+vol
+container_volume_m3 = vol[1,3]*vol[2,3]*vol[3,3]
+container_volume_m3
+
+```
+
+### Rice volume in 20 foot container
+
+7.2 tonnes of rice theoretically fit into a 20 foot container.
+
+The weight of medium rough grain raw rice equates to 1 metric cup or 206g. The volume of rice in 1 cup is equivalent to 0.00095 m3. So in 1 m3 there are 216 kg of rice (taken as 206g/0.00095m3) or 1052 cups (1/0.00095) of rice.  Based on the volume of a 20 foot equivalent container of 33.2 m3 there is then potential capacity in the container of 7194 kgs or approximately 7.2 tonnes of rice. 
+
+```{r no.tonnes}
+riceweight_g = 206
+cupvol_m3 = 0.00095
+rice_vol_kg <- (riceweight_g/cupvol_m3)/1000
+container_volume_m3
+ricepercontainer_kg <- (container_volume_m3*rice_vol_kg)
+no.of.tonnes<-ricepercontainer_kg/1000
+no.of.tonnes
+
+```
+
+Based on the reported 4 lakh tonne of rice exported from India per month to the middle east (400,000 tonnes) suggests a container demand for 55,597 containers per month. 
+
+```{r no.containers}
+# calculate number of containers for export volume in tonnes
+no.of.containers <- function(n) {
+  n/no.of.tonnes
+}
+#enter volume in tonnes
+no.of.containers(400000)
+```
+
+### Shipping rice cost to Dubai
+
+Based on the reported shipping container rate of R82000/container for the India-Dubai route implies total shipping container cost monthly of Rs 4.6 billion/month or US$60 million per month. 
+
+```{r valueDubai}
+valueshipDubai <- function(p,q) {
+  (((p*q)/10^6)/75)
+}
+#enter no of containers and rate in Rs per container
+valueshipDubai(55597,82000)
+
+```
+
+### Rice selling price
+
+Rice price at present is $16.8/cwt (Bloomberg).
+The quantity that rice prices are quoted in is cwt that stands for 1 nr. hundred weight.
+
+A mass measurement equal to 100 pounds of rough rice (2.22 bushels) in US definition (short hundred weight or central). In UK a 100 weight is a unit of mass equal to 112 pounds ( the long hundred weight). 
+
+In US terms:
+1 cwt = 100 lbs = 0.0453 metric tonnes = 2.2 bushels.
+1 metric tonne = 2204 lbs = 22.04 cwt (hundred weight)
+Therefore 1 container of 7.2 tonnes = 158.9 cwt. 
+
+### Rice economics from Indian farmer lens
+
+The revenue to farmer is computed as the price per hundred weight of rice by one container. At US$16.8/cwt and the container volume of 158 cwt (7.2 tonnes) and an exchange rate of 75 INR to 1 USD revenue per container in rupee is 199795.
+
+```{r f.econ}
+#revenue to farmer
+no.of.tonnes
+cwt_per_ton=22.04
+cwt_per_container=no.of.tonnes*cwt_per_ton
+rice_price_cwt = 16.8 #Rice price at present is $16.8/cwt (Bloomberg) accessed 2020-05-12
+rice_rev_per_container_usd = rice_price_cwt*cwt_per_container
+revenue_rp = rice_rev_per_container_usd*75
+revenue_rp
+```
+
+Based on 2014/15 production [cost](http://agritech.tnau.ac.in/agriculture/agri_costofcultivation_rice.html) per quintal of rice of Rs 1549 total production costs total Rp 111443. A quintal is taken as 100 kg. So one container of 7.2 tonnes is around 72 quintals. To these costs are added shipping cost of Rs 82000 per container. 
+
+```{r f.costs}
+#costs borne by farmer
+cost_per_quintal_rp=1549
+quintal_in_kg = 100
+no_of_quintal_per_container=ricepercontainer_kg/quintal_in_kg
+rice_cost_rp = no_of_quintal_per_container*cost_per_quintal_rp
+shipping_cost=82000
+localcosts = rice_cost_rp+shipping_cost
+localcosts
+```
+
+The result of subtracting revenue per container from its associated costs of production and shipping costs is US$84. That is based on current shipping rate and the current price of rice. 
+
+```{r f.pretax}
+#farming rice pretax profit
+pretax_rp = revenue_rp-localcosts
+pretax_rp
+```
+
+```{r pretaxusd}
+#US 
+pretax_usd = pretax_rp/75
+pretax_usd
+```
+
+### Historic rice prices 
+
+Further examination is made on the trend in rice price over time to better appreciate farmer profitability at the top line. 
+
+
+Rice price data is quoted in two different ways. Thailand rice prices which are quoted in US$/metric tonne ie. by the St Louis Federal Reserve of [FRED](https://fred.stlouisfed.org/series/PRICENPQUSDM) that shows a March 2020 Thai rice price at US$470/tonne. And prices quoted by Bloomberg that are in US$/cwt. 
+
+Given the ratio of 1 tonne to 22 cwt the Thai price is equivalent to US$21/cwt (470/22) that compares to the Bloomberg rice price of US$16.80/cwt. 
+
+
+
+```{r rp, include=FALSE}
+### read in data
+ricep <- read_csv("~/Downloads/roughrice.csv")
+
+### view data as tibble df
+
+ricep
+
+###  confirm time variabe is present in tibble (TRUE confirms) 
+
+
+ricep[,"date"] %>% .[[1]] %>% timeBased()
+
+###  set variable to represent data set
+
+tbldata <- ricep
+
+###  convert dataset from tibble to xts
+
+datats <- xtsdata <- ricep %>% 
+  tbl_xts(., cols_to_xts = "value")
+
+###  review structure of data set
+
+str(datats)
+class(datats)
+
+###  to transform back to tibble object
+
+# datats %>% xts_tbl()
+#str(datats)
+
+###  To generate metrics
+
+tbldata %>% 
+  tbl_xts(., cols_to_xts = "value") %>% 
+  lapply(.,Return.calculate, "discrete") %>% Reduce(merge,.) %>% table.DownsideRisk(.)
+
+###  Yearly returns
+
+yearrtn <- ricep %>% tbl_xts(.) %>%  
+  PerformanceAnalytics::Return.calculate(.) %>% 
+  xts::apply.yearly(., FUN = PerformanceAnalytics::StdDev.annualized) %>% 
+  xts_tbl
+
+tail(yearrtn,14)
+
+
+###  Chart of CVaR
+
+ricep %>% tbl_xts(.) %>%  
+  PerformanceAnalytics::Return.calculate(.) %>% 
+  xts::apply.yearly(., FUN = PerformanceAnalytics::CVaR) %>% 
+  xts_tbl %>% tidyr::gather(value, CVaR, -date) %>% 
+  ggplot() + geom_line(aes(date, CVaR)) + theme_bw() + facet_wrap(~value)
+
+
+###  Time plot hisory using XTS
+
+# glimpse(datats)
+#head(datats)
+
+# plot the Close
+#plot(datats[,"value"])
+
+# plot a subset of the data
+#plot(datats[,"value"], subset="2020-01-01/2020-05-01")
+
+#simple.ret <- function(x, col.name){
+#  x[,col.name] / lag(x[,col.name]) - 1
+#}
+
+# pass in the simple.ret function and plot the output
+#plot(datats, FUN=simple.ret, col.name="value")
+
+# plot the close and add a panel with the simple returns
+#plot(datats[,"value"])
+#R <- simple.ret(datats, "value")
+#lines(R, type="h")
+
+# add the 200 period simple moving average to panel 1 of the plot
+#plot(datats[,"value"], main="CBOT rough rice US$/cwt")
+#lines(SMA(datats[,"value"], n = 200), on=1, col="blue")
+
+
+# add year end points to the chart
+#points(datats[endpoints(datats[,"value"], on = "years"), "value"], 
+#       col="red", pch=17, on=1)
+
+# add legend to panel 1
+#addLegend("topright", on=1, 
+#          legend.names = c("value", "SMA(200)"), 
+#          lty=c(1, 1), lwd=c(2, 1),
+#          col=c("black", "blue", "red"))
+
+
+# Time plot 2020
+
+#glimpse(datats)
+#head(datats)
+#x <- datats['2019/2020'] # All of 2019 and 2020
+
+# plot the Close
+#plot(x[,"value"])
+
+# plot a subset of the data
+#x <- plot(x[,"value"], subset="2019-01-01/2020-05-01")
+
+#simple.ret <- function(x, col.name){
+#  x[,col.name] / lag(x[,col.name]) - 1
+#}
+
+# pass in the simple.ret function and plot the output
+#plot(x, FUN=simple.ret, col.name="value")
+
+# plot the close and add a panel with the simple returns
+#plot(x[,"value"])
+#R <- simple.ret(x, "value")
+#lines(R, type="h")
+
+# add the 50 period simple moving average to panel 1 of the plot
+#plot(x[,"value"], 
+#     main="CBOT rough rice US$/cwt")
+#    lines(SMA(x[,"value"], n = 50), on=1, col="blue")
+
+# add month end points to the chart
+#points(x[endpoints(x[,"value"], on = "months"), "value"], 
+#       col="red", pch=17, on=1)
+
+# add legend to panel 1
+#addLegend("topleft", on=1, 
+#          legend.names = c("value", "SMA(50)"), 
+#          lty=c(1, 1), lwd=c(2, 1),
+#          col=c("black", "blue", "red"))
+
+```
+
+###  Plotting with tidyquant
+
+###  add the 200 period simple moving average to panel 1 of the plot
+
+```{r rp20}
+ricep %>% 
+  ggplot(aes(x=date, y=value))+
+  geom_line() +
+  labs(title="CBOT Rough Rice price", y="US$.cwt", x="") +
+  theme_tq()
+```
+
+###  focus on 2019-2020 data
+
+```{r ricepr, include=FALSE}
+ricep %>% 
+  ggplot(aes(x=date, y=value))+
+  geom_line() +
+  labs(title="CBOT Rough Rice price", 
+       subtitle="2019-2020 trend",
+       y="US$.cwt", x="") +
+  coord_x_date(xlim=c("2019-01-01", "2020--05-10"),
+                ylim=c(5,20)) +
+  theme_tq()
+```
+
+###  add 50 day simple moving average
+
+```{r 50daysma}
+#mytheme <- theme_grey()+theme(legend.position="right")
+#theme_set(mytheme)
+
+ricep %>%
+    ggplot(aes(x = date, y = value)) +
+    geom_line() +
+    geom_ma(ma_fun = SMA, n = 50, color = 'blue', linetype = 3, size = 1) +
+    geom_ma(ma_fun = SMA, n = 200, color = "red", linetype= 5, size = 1) +
+  scale_color_manual(name="", values=c("Important line"='grey', "50ma"='red', "200ms"='green'))+
+  labs(title="CBOT Rough Rice price", 
+       subtitle="50 and 200 day SMA",
+       y="US$.cwt", x="") +
+  coord_x_date(xlim=c("2019-01-01", "2020--05-10"),
+                ylim=c(5,20))+
+  theme_tq()
+
+```
+
+```{r legendricepr,  echo=FALSE, Include=FALSE}
+
+# test plot with legend
+#https://ggplot2-book.org/scales.html
+df <- data.frame(x = 1:3, y = 1:3, z = c("a", "b", "c"))
+base <- ggplot(df, aes(x, y)) + 
+  geom_point(aes(colour = z), size = 3) + 
+  xlab(NULL) + 
+  ylab(NULL)
+```
+
+```{r echo=FALSE, Include=FALSE}
+#base + theme(legend.position = "right") # the default 
+#base + theme(legend.position = "bottom")
+#base + theme(legend.position = "none")
+```
+
+###  add exponential moving average
+
+```{r expmovgavg}
+ricep %>%
+    ggplot(aes(x = date, y = value)) +
+    geom_line() +
+    geom_ma(ma_fun = EMA, n = 50, linetype = 5, size = 1.25) +
+    geom_ma(ma_fun = EMA, n = 200, color = "red", size = 1.25) + 
+    labs(title="CBOT Rough Rice price", 
+       subtitle="50 and 200 day EMA",
+       y="US$.cwt", x="") +
+  coord_x_date(xlim=c("2019-01-01", "2020--05-10"),
+                ylim=c(5,20)) +
+  theme_tq()
+```
+
+###  continuous scale
+
+```{r continu}
+ricep %>%
+    ggplot(aes(x = date, y = value)) +
+    geom_line(color = palette()[[1]]) +
+  scale_y_continuous() +
+  labs(title="CBOT Rough Rice price", 
+       subtitle="Continuous scale",
+       y="US$.cwt", x="") +
+  theme_tq()
+
+```
+
+###  Log scale
+
+```{r logscalericep}
+ricep %>%
+    ggplot(aes(x = date, y = value)) +
+    geom_line(color = palette()[[1]]) +
+  scale_y_log10() +
+  labs(title="CBOT Rough Rice price", 
+       subtitle="Log scale",
+       y="US$.cwt", x="") +
+  theme_tq()
+
+```
+
+###  Regression trend lines
+
+```{r trendlineprice}
+ricep %>%
+    ggplot(aes(x = date, y = value)) +
+    geom_line(color = palette()[[1]]) +
+  scale_y_log10() +
+  geom_smooth(method="lm")+
+  labs(title="CBOT Rough Rice price", 
+       subtitle="Log scale, Applying linear trend line",
+       y="US$.cwt", x="") +
+  theme_tq()
+```
+
+```{r echo=FALSE, include=FALSE}
+###  Themes
+n_200 <- 200 # Number of periods (days) for moving average
+n_50 <- 50 # Number of periods (days) for moving average
+ricep %>%
+    ggplot(aes(x = date, y = value)) +
+    geom_line(size = 1) +
+  geom_ma(n=15, color="darkblue", size=1)+
+  geom_ma(n=n_50, color="green", size=0.5)+
+  geom_ma(n=n_200, color="red", size=1)+
+    labs(title = "CBOT Rough Rice price", 
+       y = "US$/cwt")+
+  coord_x_date(xlim = c("2007-01-01", "2020-05-10"))+
+    theme_tq_dark() +
+    scale_color_tq(theme = "dark") +
+    scale_y_continuous(labels = scales::dollar)
+```
+
+
+
+
+

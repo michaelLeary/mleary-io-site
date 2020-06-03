@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>India on Thoughts</title>
+    <link>/tags/india/</link>
+    <description>Recent content in India on Thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/india/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Learning about wheat and India</title>
+      <link>/post/2020/05/28/india-and-wheat/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/28/india-and-wheat/</guid>
+      <description>Background This report focuses on India’s share in the world’s grains industry. It is based on data provided by the United States Department of Agriculture’s Foreign Agricultural Service (FAS) with specific focus on India1.
+The May 2020 global market analysis report suggests that - so far - ``the COVID-19 impact on overall global consumption of wheat for food use has been minimal to date&#34;2. It goes further to project that wheat production and consumption, along with corn and rice, will break record levels in excess of 768 million tons and 748 million tons in 2020/20213.</description>
+    </item>
+    
+    <item>
+      <title>India states and territories</title>
+      <link>/post/2020/05/21/india-states-and-territories/</link>
+      <pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/21/india-states-and-territories/</guid>
+      <description>   Project This project aimed to use R to extract India state and territory names from a wikipedia page.
+  Table 1: India states and territories    part  veh_code  pop  area_km2  id      Uttar Pradesh  UP  199812341  243286  state    Maharashtra  MH  112374333  307713  state    Bihar  BR  104099452  94163  state    West Bengal  WB  91276115  88752  state    Madhya Pradesh  MP  72626809  308252  state    Tamil Nadu  TN  72147030  130058  state    Rajasthan  RJ  68548437  342269  state    Karnataka  KA  61095297  191791  state    Gujarat  GJ  60439692  196024  state    Andhra Pradesh  AP  49506799  160205  state    Odisha  OD  41974218  155820  state    Telangana  TS  35193978  114840  state    Kerala  KL  33406061  38863  state    Jharkhand  JH  32988134  74677  state    Assam  AS  31205576  78550  state    Punjab  PB  27743338  50362  state    Chhattisgarh  CG  25545198  135194  state    Haryana  HR  25351462  44212  state    Delhi  DL  16787941  1490  terr    Jammu and Kashmir  JK  12258433  55538  terr    Uttarakhand  UK  10086292  53483  state    Himachal Pradesh  HP  6864602  55673  state    Tripura  TR  3673917  10492  state    Meghalaya  ML  2966889  22720  state    Manipur  MN  2855794  22347  state    Nagaland  NL  1978502  16579  state    Goa  GA  1458545  3702  state    Arunachal Pradesh  AR  1383727  83743  state    Puducherry  PY  1247953  492  terr    Mizoram  MZ  1097206  21081  state    Chandigarh  CH  1055450  114  terr    Sikkim  SK  610577  7096  state    Dadra and Nagar Haveli and Daman and Diu  DD  586956  603  terr    Andaman and Nicobar Islands  AN  380581  8249  terr    Ladakh  LA  290492  174852  terr    Lakshadweep  LD  64473  32  terr      </description>
+    </item>
+    
+    <item>
+      <title>India wheat markets - work in progress</title>
+      <link>/post/2020/05/21/india-wheat-markets-work-in-progress/</link>
+      <pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/21/india-wheat-markets-work-in-progress/</guid>
+      <description>Objective India is one of the world’s largest producers of wheat. There are two harvests in a year - the rabi harvest between May and June - and the kharif harvest in October and November. Several important festivals take place around the october harvest period.
+Given the significance of the farming sector to India in terms of consumption as well as employment have sought to examine quantities of wheat deliveries to market at harvest.</description>
+    </item>
+    
+    <item>
+      <title>Learning R - Rice</title>
+      <link>/note/2020/05/12/rice-notes/</link>
+      <pubDate>Tue, 12 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/note/2020/05/12/rice-notes/</guid>
+      <description>Conclusions  Estimated farmer pretax in India of around US$84 per 20 foot container of shipped rough raw rice.
+ That represents a 78% reduction in take home pretax profit since start of 2020 when estimated pretax stood at US$340/container.
+ Despite some increase in price since the start of 2020 farming profitability has fallen sharply.
+  Trigger to enquiry Article in Economic Times of India (accessed: 2020-05-12) that reported today that Basmati rice exporters are suffering from higher shipping costs as a result of lack of containers.</description>
+    </item>
+    
+  </channel>
+</rss>

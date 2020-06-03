@@ -1,0 +1,241 @@
+---
+title: India wheat markets - work in progress
+author: Michael
+date: '2020-05-21'
+slug: india-wheat-markets-work-in-progress
+categories:
+  - R
+tags:
+  - Agriculture
+  - India
+---
+
+## Objective
+
+India is one of the world's largest producers of wheat. There are two harvests in a year - the rabi harvest between May and June - and the kharif harvest in October and November. Several important festivals take place around the october harvest period.
+
+Given the significance of the farming sector to India in terms of consumption as well as employment have sought to examine quantities of wheat deliveries to market at harvest. Harvest represents the time when growers receive a cash return that will provide the means to finance the next grow cycle.    
+
+This report is focused on deliveries of wheat to markets. Daily wheat delivery reports are produced by the Ministry of Agriculture and uploaded to a website. That data has been aggregated to generate a picture of daily  deliveries by market. The report table ranks deliveries by market to provide a sense of market scale and distribution of wheat markets. 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include=FALSE}
+pkgs = c("readxl", "readr", "lubridate", "dplyr", "janitor", "data.table", "purrr", "magrittr", "Hmisc", "summarytools", "knitr", "kableExtra")
+
+## packages for processing and tools
+# magrittr package for %T>% function
+# janitor package for taby
+
+## packages for summarization
+# Hmisc for describing data
+# pastecs package summary stats on numeric variables
+# psych package summary table - take care on conversion of categoric variables
+# skimr package favored
+
+## packages for tables
+# epidisplay for table showing frequency count, cum, percent, visual
+# summarytools generates a frequency table
+# gmodels offers a cross table generator
+
+#https://dabblingwithdata.wordpress.com/2017/12/20/my-favourite-r-package-for-frequency-tables/
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+### Data
+
+In India control of the wheat crop is maintained by government who mandates that the majority of the crop be delivered to wholesale markets. From the market the wheat crop is respectively channeled to meet the needs of: (a) domestic consumption; (b) domestic storage; or (c) exported. The information collected and disseminated by the government is tonnage of wheat that arrives at the market and the indicative price paid. 
+
+The website for data is provided by Ministry of Agriculture and Farmers Welfare's directorate of marketing and inspection [DMI](https://agmarknet.gov.in/Default.aspx)
+
+Within the select boxes the following are checked:
+- price/arrivals = both are selected.\
+- commodity = wheat\
+- state = Uttar Pradesh\
+- date from = enter date\
+- date to = enter date
+
+The data that is collected from website is then saved as an excel file locally. As the downloaded file is in htm format it is necessary to convert it to xlsx before importing into R. The changes in the excel file include removal of the blank header row and two subtotal rows at the end of the data. After these changes the file is saved in xlsx format and is ready for import into R. 
+
+##### Reference
+[R suggestions](https://www.cyclismo.org/tutorial/R/linearLeastSquares.html)\
+[Summary tools](https://cran.r-project.org/web/packages/summarytools/vignettes/Introduction.html)
+
+```{r, include=FALSE}
+wheatapa <- read_excel("~/Documents/GitHub/indiaFood/data/wheat/wheatapa.xlsx", skip = 0)
+
+```
+
+```{r, include=FALSE}
+wm <- wheatapa
+```
+
+```{r, include=FALSE}
+# The structure command provides a glance at the data imported and variable types. 
+
+str(wm)
+```
+
+```{r, include=FALSE}
+#From the structure the column names are inconsistent with some capitalized and in some files with spaces in variable names. Use janitor package to tidy the column names. 
+
+wm <- wm %>% 
+  janitor::clean_names()
+
+```
+
+```{r, include=FALSE}
+# The date column is shown in POSIXct form that stores data in seconds from 1970. However the date type variable is supposed to be simpler to use and so will convert the variable to that type. 
+
+#wm <- wm %>%
+#  mutate(date_arrival = as_date(date_arrival, tz = NULL))
+```
+
+```{r, include=FALSE}
+str(wm)
+```
+
+```{r, include=FALSE}
+
+# checked with pivot table analysis and total columns check
+
+fwrite(wm, file = "/Users/michaelleary/Documents/GitHub/indiaFood/data/wmapa20200523.csv", row.names = TRUE) # in csv form
+
+```
+
+```{r, include=FALSE}
+# make all characters factors 
+
+# find chars
+
+wm %>%
+sapply(is.character) %>%
+which() %T>%
+print() ->
+chari
+
+wm %>%
+names() %>%
+'['(chari) %T>%
+print() ->
+charc
+
+# to convert all char variables from character to factor then use base::factor()
+
+wm[charc] %<>% map(factor)  #uncheck
+
+```
+
+```{r, include=FALSE}
+# shorten variable names
+
+colnames(wm)
+
+names(wm)[6] <- "qty_tons"
+
+```
+
+```{r, include=FALSE}
+str(wm)
+```
+
+```{r, echo=FALSE, include=FALSE}
+## Getting started summarizing data
+
+# using summarytools package
+summarytools::descr(wm)
+```
+
+```{r}
+# cast to Kable for printing out
+
+kable(as.data.frame(summarytools::descr(wm)))
+
+```
+
+```{r, include=FALSE}
+# attempt to add columns for days
+
+# change date type to as date
+
+wm1 <- wm %>%
+  mutate(date_arrival = as_date(date_arrival, tz = NULL))
+str(wm1)
+
+#https://stackoverflow.com/questions/42909334/in-r-use-mutate-to-create-a-new-column-based-on-conditions-by-group
+
+extend <- wm1 %>%
+  mutate(qty13 = ifelse(date_arrival=="2020-05-13", qty_tons,0)) %>%
+  mutate(qty14 = ifelse(date_arrival=="2020-05-14", qty_tons,0)) %>%
+  mutate(qty15 = ifelse(date_arrival=="2020-05-15", qty_tons,0)) %>%
+  mutate(qty16 = ifelse(date_arrival=="2020-05-16", qty_tons,0)) %>%
+  mutate(qty17 = ifelse(date_arrival=="2020-05-17", qty_tons,0)) %>%
+  mutate(qty18 = ifelse(date_arrival=="2020-05-18", qty_tons,0))
+
+fwrite(extend, file = "/Users/michaelleary/Documents/GitHub/indiaFood/data/extendapa20200523.csv", row.names = TRUE) # in csv form
+
+```
+
+```{r, include=FALSE}
+# group by market name and date
+m.table <- extend %>% 
+  dplyr::select(state_name, market_center_name, qty_tons, qty13, qty14, qty15, qty16, qty17, qty18) %>%
+  group_by(market_center_name) %>%
+  arrange(desc(qty_tons))
+
+fwrite(m.table, file = "/Users/michaelleary/Documents/GitHub/indiaFood/data/mtapa20200523.csv", row.names = TRUE) # in csv form
+
+```
+
+```{r, include=FALSE}
+# no of deliveries by day by market
+
+m.table %>%
+  group_by(state_name, market_center_name) %>%
+  summarise(sum_by_marketday = sum(qty_tons),
+            mean_qty = mean(qty_tons, na.rm=TRUE)) %>%
+  arrange(desc(sum_by_marketday))
+
+```
+
+
+```{r, include=FALSE}
+# alternate presentation
+
+# no of deliveries by day by market
+
+mm <- m.table %>%
+  group_by(state_name, market_center_name) %>%
+  summarise(may13qty = round(sum(qty13),),
+            may14qty = round(sum(qty14),),
+            may15qty = round(sum(qty15),),
+            may16qty = round(sum(qty16),),
+            may17qty = round(sum(qty17),),
+            may18qty = round(sum(qty18),),
+            total_tons = round(sum(qty_tons),)) %>%
+  arrange(desc(total_tons))
+
+c2.tot <- mm %>%
+  adorn_totals("row")
+
+fwrite(mm, file = "/Users/michaelleary/Documents/GitHub/indiaFood/data/mmapa20200523.csv", row.names = TRUE) # in csv form
+
+```
+
+\newpage
+
+### India major wheat markets 
+
+```{r, echo=FALSE, warning=FALSE}
+
+knitr::kable(c2.tot, "html",
+             caption = "Average volume of deliveries and average price by market center",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+

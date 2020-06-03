@@ -1,0 +1,241 @@
+---
+title: S&P component performance
+author: michael
+date: '2020-05-29'
+slug: s-p-component-performance
+categories:
+  - R
+tags:
+  - Finance
+---
+
+```{r knitrsetup, include=FALSE}
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+```
+
+```{r pkgs, include = FALSE}
+pkgs = c("data.table", "readr", "dplyr", "ggplot2", "tidyverse", "tidyquant", "magrittr", "knitr", "kableExtra") 
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+```{r symbolsector, eval=TRUE, include = FALSE}
+constit <- read_csv("/Users/michaelleary/Dropbox/Rwork/workingdata/constit.csv")
+
+stocks <- c(constit$symbol)
+sector <- c(constit$sector)
+#Map a tibble with selected variables companies and index items
+stock_list <- tibble(symbol = stocks,
+                     sector = sector)
+# companies excluding indexes
+stock.list.co <- filter(stock_list, 
+                    c(!(symbol=="^DJI" | symbol=="^GSPC" )))
+
+```
+
+```{r pricespull, eval = TRUE, include=FALSE}
+
+#extract prices
+sp500.sp <- stock_list %>% tq_get(get = "stock.prices", from = "2020-01-01", to = Sys.Date())
+
+# In tibble data frame price data for company is stacked on each other.  
+```
+
+```{r reclassvars, include = FALSE}
+
+#list column names
+colnames <- colnames(sp500.sp)
+
+# prepare to convert character variables symbol, company to factors
+
+sp500.spf <- sp500.sp
+
+# save character variables
+sp500.spf %>%
+sapply(is.character) %>%
+which() %>%
+print() ->
+chari
+
+# alternate save of character variable names
+sp500.spf %>%
+names() %>%
+'['(chari) %>%
+print() ->
+charc
+
+# convert character variables to factors
+sp500.spf[charc] %<>% map(factor)  #uncheck
+str(sp500.spf)
+glimpse(sp500.spf)
+
+```
+
+```{r tablevalues, echo=FALSE, include=FALSE}
+sum.sp500 <- sp500.spf %>%
+  group_by(symbol,sector) %>%
+  summarise(curr_price = last(adjusted), 
+            min_price = round(min(adjusted),2), 
+            max_price = round(max(adjusted),2),
+            pctchange_from_max = round(100 * (curr_price-max_price)/max_price)) %>%
+  arrange((pctchange_from_max))
+
+```
+
+```{r}
+
+# chart triggers
+
+fromMax = 0
+  
+```
+
+```{r include=FALSE}
+
+# subset of records from summary table that meet criteria based on summary column
+sub.cd <- sum.sp500 %>%
+  filter(sector == "Consumer Discretionary" & pctchange_from_max < fromMax)
+
+sub.comm <- sum.sp500 %>%
+  filter(sector == "Communication Services" & pctchange_from_max < fromMax)
+
+sub.cs <- sum.sp500 %>%
+  filter(sector == "Consumer Staples" & pctchange_from_max < fromMax)
+
+sub.f <- sum.sp500 %>%
+  filter(sector == "Financials" & pctchange_from_max < fromMax)
+
+sub.hc <- sum.sp500 %>%
+  filter(sector == "Health Care" & pctchange_from_max < fromMax)
+
+sub.i <- sum.sp500 %>%
+  filter(sector == "Industrials" & pctchange_from_max < fromMax)
+
+sub.it <- sum.sp500 %>%
+  filter(sector == "Information Technology" & pctchange_from_max < fromMax)
+
+sub.m <- sum.sp500 %>%
+  filter(sector == "Materials" & pctchange_from_max < fromMax)
+
+sub.re <- sum.sp500 %>%
+  filter(sector == "Real Estate" & pctchange_from_max < fromMax)
+
+sub.u <- sum.sp500 %>%
+  filter(sector == "Utilities" & pctchange_from_max < fromMax)
+
+sub.e <- sum.sp500 %>%
+  filter(sector == "Energy" & pctchange_from_max < fromMax)
+
+```
+
+
+```{r sub.itable, echo=FALSE, warning=FALSE}
+
+knitr::kable(sub.i, "html",
+             caption = "Industrials since start 2020",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+```{r sub.ittable, echo=FALSE, warning=FALSE}
+
+knitr::kable(sub.it, "html",
+             caption = "Information Technology since start 2020",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+```{r sub.ftable, echo=FALSE, warning=FALSE}
+
+knitr::kable(sub.f, "html",
+             caption = "Financials since start 2020",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+```{r sub.cdtable, echo=FALSE, warning=FALSE}
+
+knitr::kable(sub.cd, "html",
+             caption = "Consumer discretionary since start 2020",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+```{r sub.hctable, echo=FALSE, warning=FALSE}
+
+knitr::kable(sub.hc, "html",
+             caption = "Healthcare since start 2020",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+```{r sub.cstable, echo=FALSE, warning=FALSE}
+
+knitr::kable(sub.cs, "html",
+             caption = "Consumer staples since start 2020",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+```{r sub.retable, echo=FALSE, warning=FALSE}
+
+knitr::kable(sub.re, "html",
+             caption = "Real estate since start 2020",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+```{r sub.mtable, echo=FALSE, warning=FALSE}
+
+knitr::kable(sub.m, "html",
+             caption = "Materials since start 2020",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+```{r sub.utable, echo=FALSE, warning=FALSE}
+
+knitr::kable(sub.u, "html",
+             caption = "Utilities since start 2020",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+```{r sub.commtable, echo=FALSE, warning=FALSE}
+
+knitr::kable(sub.comm, "html",
+             caption = "Communication Services since start 2020",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+```{r sub.etable, echo=FALSE, warning=FALSE}
+
+knitr::kable(sub.e, "html",
+             caption = "Energy since start 2020",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```

@@ -1,0 +1,231 @@
+---
+title: 'Company announcement template: revenue mix'
+author: Michael
+date: '2020-05-28'
+slug: 'Company announcement template: revenue mix'
+categories:
+  - R
+tags:
+  - Finance
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="mix" class="section level2">
+<h2>Mix</h2>
+<p>Suzuki generated operating profit of US$2 billion from sales of US$32 billion in FY19 for a year on year decline of 34%. Management attributes the fall in revenue in FY19 to the slow down in India’s economy, the relative strength of the JPY to other currencies, and, the Coronavirus lock downs.</p>
+<p>The composition of Suzuki’s revenue and operating profit show clearly that car manufacturing is the core business for the group. That component contributes over 90% of total sales and operating profits with the balance motorcycles and marine motors.</p>
+<table>
+<caption>(#tab:bikepri.m)Revenue share</caption>
+<thead>
+<tr class="header">
+<th align="left">Item</th>
+<th align="right">FY2019</th>
+<th align="right">FY2018</th>
+<th align="right">sharePct19</th>
+<th align="right">sharePct18</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">car_sales</td>
+<td align="right">3157434</td>
+<td align="right">3532531</td>
+<td align="right">90.5</td>
+<td align="right">91.2</td>
+</tr>
+<tr class="even">
+<td align="left">bike_sales</td>
+<td align="right">242561</td>
+<td align="right">255071</td>
+<td align="right">7.0</td>
+<td align="right">6.6</td>
+</tr>
+<tr class="odd">
+<td align="left">marine_sales</td>
+<td align="right">88437</td>
+<td align="right">83893</td>
+<td align="right">2.5</td>
+<td align="right">2.2</td>
+</tr>
+<tr class="even">
+<td align="left">net_sales</td>
+<td align="right">3488433</td>
+<td align="right">3871496</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>(#tab:bikepri.m)Operating profit share</caption>
+<thead>
+<tr class="header">
+<th align="left">Item</th>
+<th align="right">FY2019</th>
+<th align="right">FY2018</th>
+<th align="right">sharePct19</th>
+<th align="right">sharePct18</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">car_opinc</td>
+<td align="right">197100</td>
+<td align="right">303731</td>
+<td align="right">91.6</td>
+<td align="right">93.6</td>
+</tr>
+<tr class="even">
+<td align="left">bike_opinc</td>
+<td align="right">693</td>
+<td align="right">3631</td>
+<td align="right">0.3</td>
+<td align="right">1.1</td>
+</tr>
+<tr class="odd">
+<td align="left">marine_opinc</td>
+<td align="right">17275</td>
+<td align="right">17003</td>
+<td align="right">8.0</td>
+<td align="right">5.2</td>
+</tr>
+<tr class="even">
+<td align="left">op_inc</td>
+<td align="right">215069</td>
+<td align="right">324365</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+</tr>
+</tbody>
+</table>
+<p>There was a significant reduction in operating profit margins during the fiscal year to 6% from 8%. Even though the relative size of margin from the marine business is significant that chunk along with the contribution from motorcycles remains a small part of Suzuki earnings.</p>
+<table>
+<caption>(#tab:bikepri.m)Margin by revenue source</caption>
+<thead>
+<tr class="header">
+<th align="left">Item</th>
+<th align="right">2019rev</th>
+<th align="right">2019opinc</th>
+<th align="right">marPct2019</th>
+<th align="right">marPct2018</th>
+<th align="right">chg.marg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">car_sales</td>
+<td align="right">3157434</td>
+<td align="right">197100</td>
+<td align="right">6.2</td>
+<td align="right">8.6</td>
+<td align="right">-2.4</td>
+</tr>
+<tr class="even">
+<td align="left">bike_sales</td>
+<td align="right">242561</td>
+<td align="right">693</td>
+<td align="right">0.3</td>
+<td align="right">1.4</td>
+<td align="right">-1.1</td>
+</tr>
+<tr class="odd">
+<td align="left">marine_sales</td>
+<td align="right">88437</td>
+<td align="right">17275</td>
+<td align="right">19.5</td>
+<td align="right">20.3</td>
+<td align="right">-0.8</td>
+</tr>
+<tr class="even">
+<td align="left">net_sales</td>
+<td align="right">3488433</td>
+<td align="right">215069</td>
+<td align="right">6.2</td>
+<td align="right">8.4</td>
+<td align="right">-2.2</td>
+</tr>
+</tbody>
+</table>
+<p>More granular analysis on the car component is possible given information in the earnings statement on the number of cars sold in the year. From these we have computed the average sales price achieved and compared it to the prior year.</p>
+<p>That analysis shows that the 11% decline in reported sales (to US$29billion) is accompanied by a 12% reduction in sold units to 2.9 million year on year that more than outweighed a 4% gain in average achieved sales price to $10,300 per unit. The relative increase in price per unit may have something to do with the changing mix of vehicles that are growing in popularity and may be examined in future.</p>
+<table>
+<caption>(#tab:bikepri.m)Sales mix</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">Item</th>
+<th align="right">FY2019</th>
+<th align="right">FY2018</th>
+<th align="right">pct</th>
+<th align="right">abschange</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>14</td>
+<td align="left">car_sales</td>
+<td align="right">3157434</td>
+<td align="right">3532531</td>
+<td align="right">-10.618364</td>
+<td align="right">-375097</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td align="left">bike_sales</td>
+<td align="right">242561</td>
+<td align="right">255071</td>
+<td align="right">-4.904517</td>
+<td align="right">-12510</td>
+</tr>
+<tr class="odd">
+<td>16</td>
+<td align="left">marine_sales</td>
+<td align="right">88437</td>
+<td align="right">83893</td>
+<td align="right">5.416423</td>
+<td align="right">4544</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td align="left">net_sales</td>
+<td align="right">3488433</td>
+<td align="right">3871496</td>
+<td align="right">-9.894444</td>
+<td align="right">-383063</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>(#tab:bikepri.m)FY19 revenue drivers</caption>
+<thead>
+<tr class="header">
+<th align="left">Item</th>
+<th align="right">FY2019</th>
+<th align="right">FY2018</th>
+<th align="right">chg.pct</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">car_sales</td>
+<td align="right">3157434.0</td>
+<td align="right">3532531.0</td>
+<td align="right">-10.6</td>
+</tr>
+<tr class="even">
+<td align="left">cvolsale</td>
+<td align="right">2.9</td>
+<td align="right">3.3</td>
+<td align="right">-12.1</td>
+</tr>
+<tr class="odd">
+<td align="left">carprice</td>
+<td align="right">1107872.0</td>
+<td align="right">1060820.0</td>
+<td align="right">4.4</td>
+</tr>
+</tbody>
+</table>
+</div>

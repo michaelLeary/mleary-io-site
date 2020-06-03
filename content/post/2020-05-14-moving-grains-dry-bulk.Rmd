@@ -1,0 +1,334 @@
+---
+title: Moving grains - dry bulk
+author: Michael
+date: '2020-05-14'
+slug: Moving grains - dry bulk
+categories:
+  - R
+tags:
+  - Agriculture
+  - Finance
+---
+
+## Conclusion
+- initial examination of one balance sheet item for dry goods shipping sector shows that most companies carry a reasonably high debt load.
+- GNK emerges as one of the stronger company balance sheets. SHIP among the weakest. 
+- Further analysis on assets and cash flow will follow. 
+
+## Trigger to enquiry
+
+The decline in the Baltic Dry Index (BDI) to below 400 caught attention this morning. That level approaches a 25 year low and compares to 1000 in january 2020 and 2500 in september 2019 (representing an 84% decline). The index went below 400 in the depths of the financial crisis of 2008/2009. 
+
+I wondered that if the index had fallen that low what had happened to companies that exist in that industry? And then of these companies would there be any that may offer attractive opportunities to invest?  
+
+## Significance
+The level and movement of the index has been examined by academics ([Sengupta - 2009](https://files.stlouisfed.org/files/htdocs/publications/es/09/ES0912.pdf), [Kuo, Chiu, Chen, Wang - 2020](https://ideas.repec.org/a/asi/aeafrj/2020p340-351.html)), in the past as an indicator of economic performance with some leading characteristics. 
+
+The index measures freight rates shippers pay to transport dry goods by sea. Such goods include Iron Ore, Coal, Grains, Soybeans, fertilizer, cement among others. Should economic growth begin to revive and in the absence of significant new ship construction then freight rates would be expected to rise and the index rise.
+
+Because it is not possible to invest in the index directly we look at shares of listed dry bulk shipping companies as proxies for the index and whose performance may be expected to track that of the index. (Separate later research may examine commodity producers along similar lines). 
+
+For the stocks identified aim here to carry out a limited cross sectional analysis of various financial metrics. That would require extracting certain information from their latest published financial accounts and tabulating that information. On the data gathered several computations will be made that should provide an initial screen as to which of the companies merit more detailed financial analysis.
+
+## Other facts
+- The chief executive of GNK (a major dry bulk shipper) has stated that "some 90% of world's goods ship by sea. And of these some 50% are dry goods" (media interview, Aug 2019).
+
+# Reference
+
+- [sec edgar - financial reports](https://www.sec.gov/edgar/searchedgar/companysearch.html)
+- [yahoo finance - share prices](https://finance.yahoo.com/) 
+- [trading economics](https://tradingeconomics.com/commodity/baltic) 
+- [Carnegie Mellon R notes](http://www.andrew.cmu.edu/user/achoulde/94842/).
+
+```{r pkgs, include = FALSE}
+
+# Packages
+
+pkgs = c("data.table", "readr", "dplyr", "ggplot2", "tidyverse", "tidyquant", "magrittr", "spelling") 
+# data.table package fast writes
+# data.table package file loads into data frame
+# readr package file loads into tibble 
+# ggplot2 package allows qplot and contains the data set mpg
+# tidyquant packages gets share prices
+# magrittr package extends piping
+# spelling package to help in editing document
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+### Getting started
+
+General reading around the subject suggested that shares of dry bulk shipping companies may serve as proxies for BDI.  
+
+```{r, include = FALSE}
+symbol <- c("EGLE", "GNK", "SB", "SALT", "SHIP", "SBLK", "CMRE", "DSX", "^DJI", "^GSPC")
+company <- c("Eagle Bulk Shipping Inc", "Genco Shipping & Trading Ltd","Safe Bulkers, Inc","Scorpio Bulkers", "Seanergy Maritime Holdings Corp", "Star Bulk Carriers Corp", "Costamare Inc.", "Diana Shipping Inc.", "Dow Jones Industrial Average", "S&P 500 Index")
+dry.bulk <- cbind(symbol, company)
+# Save to data file as csv file using data.table package
+fwrite(dry.bulk, file = "/Users/michaelleary/Documents/GitHub/financeScreen/data/drybulk.csv", row.names = TRUE) # in csv form
+
+dry.bulk.co <- read_csv("/Users/michaelleary/Documents/GitHub/financeScreen/data/drybulk.csv")
+
+stocks <- c(dry.bulk.co$symbol)
+company <- c(dry.bulk.co$company)
+#Map a tibble with selected variables companies and index items
+stock_list <- tibble(symbol = stocks,
+                     company = company)
+# companies excluding indexes
+stock.list.co <- filter(stock_list, 
+                    c(!(symbol=="^DJI" | symbol=="^GSPC" )))
+
+```
+
+Initial focus was on `r nrow(stock.list.co)` companies most readily identifiable from web search. Share price declines have been marked with a percentage decline of between 52-77% since the start of year - well below that of the S&P500 and Dow Jones Industrial indexes. 
+
+```{r, echo = FALSE}
+
+#extract prices
+dbulk.sp <- stock_list %>% tq_get(get = "stock.prices", from = "2020-01-01", to = Sys.Date())
+
+# In tibble data frame price data for company is stacked on each other.  
+```
+
+```{r, include = FALSE}
+
+#list column names
+colnames <- colnames(dbulk.sp)
+
+# prepare to convert character variables symbol, company to factors
+
+dbulk.spf <- dbulk.sp
+
+# save character variables
+dbulk.spf %>%
+sapply(is.character) %>%
+which() %>%
+print() ->
+chari
+
+# alternate save of character variable names
+dbulk.spf %>%
+names() %>%
+'['(chari) %>%
+print() ->
+charc
+
+# convert character variables to factors
+dbulk.spf[charc] %<>% map(factor)  #uncheck
+str(dbulk.spf)
+glimpse(dbulk.spf)
+
+```
+
+```{r, echo=FALSE}
+sum.dbulk <- dbulk.spf %>%
+  group_by(symbol, company) %>%
+  summarise(curr_price = last(adjusted), 
+            min_price = round(min(adjusted),2), 
+            max_price = round(max(adjusted),2),
+            pctchange_from_max = round(100 * (curr_price-max_price)/max_price)) %>%
+  arrange(desc(pctchange_from_max))
+
+sum.dbulk
+
+```
+
+That decline is evident in the following plots that chart the trend in share price since the start of 2020.   
+
+```{r, include = FALSE}
+# script to subset indexes only
+dbulk_index <- filter(dbulk.spf, 
+                    (symbol=="^DJI" | symbol=="^GSPC")) %>%
+             select(all_of(colnames))
+        
+# script to subset all except indexes            
+dbulkco <- filter(dbulk.spf, 
+                    c(!(symbol=="^DJI" | symbol=="^GSPC" ))) %>%
+             select(all_of(colnames))
+
+```
+
+```{r, echo=FALSE }
+# https://ggplot2-book.org/facet.html
+adj.plot <- ggplot(data=dbulk.spf, 
+      aes(date, adjusted))
+adj.plot + geom_line() + facet_wrap(~symbol, scales = "free")
+
+
+```
+
+One gauge of financial strength is taken as how much debt the company carries relative to its cash and liquid resources. The latest data for that was extracted from each company's financial accounts. After computing the difference between debt and liquid assets the result was compared to the shareholders equity for each company.  
+
+```{r, include=FALSE}
+tsnap <- read.csv("/Users/michaelleary/Documents/GitHub/financeScreen/data/tsnap.csv", stringsAsFactors = TRUE)
+
+```
+
+### Examine data set
+
+```{r, include=FALSE}
+# view first few rows of data
+
+head(tsnap)
+```
+
+```{r, include=FALSE}
+# identify data object that represents the data set
+
+class(tsnap)
+```
+
+```{r, include=FALSE}
+# examine variables and variable types
+glimpse(tsnap)
+```
+
+```{r, include=FALSE}
+# alternate presentation of data frame
+str(tsnap)
+```
+
+```{r, include=FALSE}
+# check number of rows (observations)
+nrow(tsnap)
+```
+
+```{r, include=FALSE}
+# check number of columns (variables)
+ncol(tsnap)
+```
+
+## Set up vulnerability analysis
+
+```{r, include=FALSE}
+# subset financial data 
+# mutate and add additional variables
+# perform computations
+# present results in table
+
+# select financial items of interest from balance sheet
+
+tsnapcol <- tsnap[,c("symbol", 
+                     "short.term.debt.mil",
+                     "othershort.term.debt.mil",
+                     "bonds.convert.debt.mil",
+                     "long.term.debt.mil",
+                     "cash.mil",
+                     "restricted.cash.mil",
+                     "investments.mil",
+                     "non.curr.securities.mil",
+                     "shareholders.equity.mil",
+                     "total.assets.mil",
+                     "total.liabilities.mil")]
+
+tsnapcol
+str(tsnapcol)
+
+```
+
+```{r, include=FALSE}
+# Company debt 
+
+codebt <- tsnap[,c("symbol", 
+                     "short.term.debt.mil",
+                     "othershort.term.debt.mil",
+                     "bonds.convert.debt.mil",
+                     "long.term.debt.mil"
+                     )]
+
+co_debt <- mutate(codebt,
+                  Total_Debt = 
+                    short.term.debt.mil +
+                    othershort.term.debt.mil +
+                    bonds.convert.debt.mil +
+                    long.term.debt.mil,
+                  Pct_st_to_totaldebt = 
+                    round(100*(short.term.debt.mil 
+                               + othershort.term.debt.mil)
+                          /Total_Debt),)
+
+co_debt
+rownames(co_debt) <- co_debt$symbol
+co_debt$symbol <- NULL
+head(co_debt)
+co_debt_transpose <- as.data.frame(t(as.matrix(co_debt)))
+```
+
+```{r}
+# debt position
+
+co_debt_transpose
+
+```
+
+More granular analysis on each debt's maturity schedule in relation to projected cash flows will follow should any of the shares be considered worth pursing. 
+
+```{r, include=FALSE}
+# Company liquidity
+coliquid <- tsnap[,c("symbol", 
+                     "cash.mil",
+                     "restricted.cash.mil",
+                     "investments.mil",
+                     "non.curr.securities.mil"
+                     )]
+
+co_liquid <- mutate(coliquid,
+                  Total_Liquid =
+                      cash.mil +
+                      restricted.cash.mil +
+                      investments.mil +
+                      non.curr.securities.mil 
+                  )
+
+co_liquid
+rownames(co_liquid) <- co_liquid$symbol
+co_liquid$symbol <- NULL
+head(co_liquid)
+co_liquid_transpose <- as.data.frame(t(as.matrix(co_liquid)))
+```
+
+```{r}
+# liquidity
+
+co_liquid_transpose
+
+```
+
+```{r, include=FALSE}
+# company net debt
+
+tsnap_vul <- mutate(tsnapcol,
+                    debt = co_debt$Total_Debt,
+                    liquidtassets = co_liquid$Total_Liquid,  
+                    net_debt = co_debt$Total_Debt - co_liquid$Total_Liquid,
+                    Pct_Net_D_of_E = round(100*(net_debt/shareholders.equity.mil),))
+
+tsnap_vul
+
+```
+
+```{r, include=FALSE}
+#subset out the rows needed and then transpose
+
+tvultable <- tsnap_vul[c(1,13:15,10,16)]
+  
+tvultable
+rownames(tvultable) <- tvultable$symbol
+tvultable$symbol <- NULL
+head(tvultable)
+t_transpose <- as.data.frame(t(as.matrix(tvultable)))
+
+```
+
+```{r}
+# Financial strength of company
+
+t_transpose
+
+```
+
+The net debt position shows that companies within the dry bulk shipping industry tend to carry quite high leverage. And so there will be persistent need for financial management to monitor the roll over and maturity of loan obligations. At the same time high levels of debt coupled with fragility over revenue may constrain significant capital expenditure. These factors are likely to have contributed to recent performance of the shares. 
+
+By the single metric of net debt to equity GNK emerges as one of the strongest in the group with a ratio of 39%. And by the same token SHIP one of the weakest with 677%.
+
+

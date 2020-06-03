@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Agriculture on Thoughts</title>
+    <link>/tags/agriculture/</link>
+    <description>Recent content in Agriculture on Thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/agriculture/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Learning about wheat and India</title>
+      <link>/post/2020/05/28/india-and-wheat/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/28/india-and-wheat/</guid>
+      <description>Background This report focuses on India’s share in the world’s grains industry. It is based on data provided by the United States Department of Agriculture’s Foreign Agricultural Service (FAS) with specific focus on India1.
+The May 2020 global market analysis report suggests that - so far - ``the COVID-19 impact on overall global consumption of wheat for food use has been minimal to date&#34;2. It goes further to project that wheat production and consumption, along with corn and rice, will break record levels in excess of 768 million tons and 748 million tons in 2020/20213.</description>
+    </item>
+    
+    <item>
+      <title>India wheat markets - work in progress</title>
+      <link>/post/2020/05/21/india-wheat-markets-work-in-progress/</link>
+      <pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/21/india-wheat-markets-work-in-progress/</guid>
+      <description>Objective India is one of the world’s largest producers of wheat. There are two harvests in a year - the rabi harvest between May and June - and the kharif harvest in October and November. Several important festivals take place around the october harvest period.
+Given the significance of the farming sector to India in terms of consumption as well as employment have sought to examine quantities of wheat deliveries to market at harvest.</description>
+    </item>
+    
+    <item>
+      <title>Moving grains - dry bulk</title>
+      <link>/post/2020/05/14/moving-grains-dry-bulk/</link>
+      <pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/14/moving-grains-dry-bulk/</guid>
+      <description>Conclusion  initial examination of one balance sheet item for dry goods shipping sector shows that most companies carry a reasonably high debt load. GNK emerges as one of the stronger company balance sheets. SHIP among the weakest. Further analysis on assets and cash flow will follow.   Trigger to enquiry The decline in the Baltic Dry Index (BDI) to below 400 caught attention this morning. That level approaches a 25 year low and compares to 1000 in january 2020 and 2500 in september 2019 (representing an 84% decline).</description>
+    </item>
+    
+    <item>
+      <title>Learning R - Rice</title>
+      <link>/note/2020/05/12/rice-notes/</link>
+      <pubDate>Tue, 12 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/note/2020/05/12/rice-notes/</guid>
+      <description>Conclusions  Estimated farmer pretax in India of around US$84 per 20 foot container of shipped rough raw rice.
+ That represents a 78% reduction in take home pretax profit since start of 2020 when estimated pretax stood at US$340/container.
+ Despite some increase in price since the start of 2020 farming profitability has fallen sharply.
+  Trigger to enquiry Article in Economic Times of India (accessed: 2020-05-12) that reported today that Basmati rice exporters are suffering from higher shipping costs as a result of lack of containers.</description>
+    </item>
+    
+  </channel>
+</rss>

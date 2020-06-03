@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on Thoughts</title>
+    <link>/</link>
+    <description>Recent content in Home on Thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 03 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>First post test</title>
+      <link>/post/2020/06/03/first-post-test/</link>
+      <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/06/03/first-post-test/</guid>
+      <description>This is a test note</description>
+    </item>
+    
+    <item>
+      <title>Remap factor levels</title>
+      <link>/post/2020/06/02/remap-factor-levels-column-add-reorder-df/</link>
+      <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/06/02/remap-factor-levels-column-add-reorder-df/</guid>
+      <description>Further to data extract of human muscle group from Wikipedia the goal here was to remap the factor levels in the variable source. The intention is to shrink down the number of categories from 48 to 5 to simplify understanding of statistics to be performed on muscle groups in future.
+To achieve that the source variable in the data frame was converted to factor type. It was then duplicated.</description>
+    </item>
+    
+    <item>
+      <title>Column add and reorder</title>
+      <link>/post/2020/06/01/working-with-dataset/</link>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/06/01/working-with-dataset/</guid>
+      <description>Task:  Extract table data from Wikipedia; Combine table rows into one data frame; Add a column to combined data frame that provides name of original dataframe - so as to facilitate identifying source of data Reorder the columns in expanded data frame to put orgin data frame column first.  There are 48 tables of muscle groups in the human body listed on the wikipedia page. Each table was extracted and stored in a separate data frame.</description>
+    </item>
+    
+    <item>
+      <title>S&amp;P component performance</title>
+      <link>/post/2020/05/29/s-p-component-performance/</link>
+      <pubDate>Fri, 29 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/29/s-p-component-performance/</guid>
+      <description># chart triggers fromMax = 0  (#tab:sub.itable)Industrials since start 2020    symbol  sector  curr_price  min_price  max_price  pctchange_from_max      UAL  Industrials  28.89  19.92  89.74  -68    AAL  Industrials  10.98  9.04  30.47  -64    DAL  Industrials  25.66  19.19  61.60  -58    BA  Industrials  149.</description>
+    </item>
+    
+    <item>
+      <title>S&amp;P500 performance</title>
+      <link>/post/2020/05/29/s-p500-performance/</link>
+      <pubDate>Fri, 29 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/29/s-p500-performance/</guid>
+      <description># chart triggers fromMax = -60 laggards  by constituent  (#tab:sum.sp500)Price change for sp500 constituents since start 2020    symbol  sector  curr_price  min_price  max_price  pctchange_from_max      NCLH  Consumer Discretionary  16.070  7.77  59.65  -73    OXY  Energy  13.640  9.69  45.87  -70    CCL  Consumer Discretionary  15.</description>
+    </item>
+    
+    <item>
+      <title>Company announcement template: revenue mix</title>
+      <link>/post/2020/05/28/company-announcement-template-revenue-mix/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/28/company-announcement-template-revenue-mix/</guid>
+      <description>Mix Suzuki generated operating profit of US$2 billion from sales of US$32 billion in FY19 for a year on year decline of 34%. Management attributes the fall in revenue in FY19 to the slow down in India’s economy, the relative strength of the JPY to other currencies, and, the Coronavirus lock downs.
+The composition of Suzuki’s revenue and operating profit show clearly that car manufacturing is the core business for the group.</description>
+    </item>
+    
+    <item>
+      <title>Learning about wheat and India</title>
+      <link>/post/2020/05/28/india-and-wheat/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/28/india-and-wheat/</guid>
+      <description>Background This report focuses on India’s share in the world’s grains industry. It is based on data provided by the United States Department of Agriculture’s Foreign Agricultural Service (FAS) with specific focus on India1.
+The May 2020 global market analysis report suggests that - so far - ``the COVID-19 impact on overall global consumption of wheat for food use has been minimal to date&#34;2. It goes further to project that wheat production and consumption, along with corn and rice, will break record levels in excess of 768 million tons and 748 million tons in 2020/20213.</description>
+    </item>
+    
+    <item>
+      <title>Company results template: balance sheet</title>
+      <link>/post/2020/05/27/company-results-template-balance-sheet/</link>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/27/company-results-template-balance-sheet/</guid>
+      <description>Balance sheet secure Even though there was a draw down of cash during the year Suzuki’s balance sheet remains strong with ending net cash and securities of JPY1677 billion or US$15 billion equivalent to JPY3,579/share.
+In light of ongoing uncertainties in the durability of future demand management has flagged that it intends to continue to strengthen the balance sheet.
+## Item FY2019 FY2018 pct abschange ## 34 debt 404193 375437 7.</description>
+    </item>
+    
+    <item>
+      <title>Company results template: headline numbers</title>
+      <link>/post/2020/05/27/company-results-template-headline-numbers/</link>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/27/company-results-template-headline-numbers/</guid>
+      <description>Headine figures Suzuki announced a 10% reduction in net sales for the year to JPY 3488 billion or US$32.4 billion. Operating income fell 34% to JPY 215 billion or US$2 billion. Earnings per share declined 28% to JPY286/share. Despite the reported decline registered and further weakness projected ahead the company balance sheet remains strong and management declared a special dividend.
+## Item FY2019 FY2018 pct abschange ## 1 net_sales 3488433.</description>
+    </item>
+    
+    <item>
+      <title>Company results template: initial financial prep</title>
+      <link>/post/2020/05/27/company-results-template-initial-financial-prep/</link>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/27/company-results-template-initial-financial-prep/</guid>
+      <description>Financials Suzuki Motors (7269.T, JPY3700) announced year end FY2019 (April 2019 through March 2020) results that show a decline in net sales and earnings. In the following articles will examine.
+headline earnings; revenue and operating profit mix; balance sheet position; cash flow generation and use; ratio analysis; consensus earnings outlook; valuation.  But for now will assemble input data that will then wrangle into a form suitable for future analysis and presentation.</description>
+    </item>
+    
+    <item>
+      <title>Company results template: share price</title>
+      <link>/post/2020/05/27/company-results-template/</link>
+      <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/27/company-results-template/</guid>
+      <description>Purpose Thought process and actions steps following on earnings announcement. The example am using is the fourth quarter results posted by Suzuki Motors (7269.T, JPY3700) for period ended 2020-03-31.
+Recent price performance Recent price analysis versus benchmarks show the shares of Suzuki remain 26% below the peak in the year and below that of the Nikkei and Dow Jones.
+## # A tibble: 3 x 6 ## # Groups: symbol [3] ## symbol company curr_price min_price max_price pctchange_from_max ## &amp;lt;fct&amp;gt; &amp;lt;fct&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; ## 1 ^N225 N225 Index 21419.</description>
+    </item>
+    
+    <item>
+      <title>India states and territories</title>
+      <link>/post/2020/05/21/india-states-and-territories/</link>
+      <pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/21/india-states-and-territories/</guid>
+      <description>   Project This project aimed to use R to extract India state and territory names from a wikipedia page.
+  Table 1: India states and territories    part  veh_code  pop  area_km2  id      Uttar Pradesh  UP  199812341  243286  state    Maharashtra  MH  112374333  307713  state    Bihar  BR  104099452  94163  state    West Bengal  WB  91276115  88752  state    Madhya Pradesh  MP  72626809  308252  state    Tamil Nadu  TN  72147030  130058  state    Rajasthan  RJ  68548437  342269  state    Karnataka  KA  61095297  191791  state    Gujarat  GJ  60439692  196024  state    Andhra Pradesh  AP  49506799  160205  state    Odisha  OD  41974218  155820  state    Telangana  TS  35193978  114840  state    Kerala  KL  33406061  38863  state    Jharkhand  JH  32988134  74677  state    Assam  AS  31205576  78550  state    Punjab  PB  27743338  50362  state    Chhattisgarh  CG  25545198  135194  state    Haryana  HR  25351462  44212  state    Delhi  DL  16787941  1490  terr    Jammu and Kashmir  JK  12258433  55538  terr    Uttarakhand  UK  10086292  53483  state    Himachal Pradesh  HP  6864602  55673  state    Tripura  TR  3673917  10492  state    Meghalaya  ML  2966889  22720  state    Manipur  MN  2855794  22347  state    Nagaland  NL  1978502  16579  state    Goa  GA  1458545  3702  state    Arunachal Pradesh  AR  1383727  83743  state    Puducherry  PY  1247953  492  terr    Mizoram  MZ  1097206  21081  state    Chandigarh  CH  1055450  114  terr    Sikkim  SK  610577  7096  state    Dadra and Nagar Haveli and Daman and Diu  DD  586956  603  terr    Andaman and Nicobar Islands  AN  380581  8249  terr    Ladakh  LA  290492  174852  terr    Lakshadweep  LD  64473  32  terr      </description>
+    </item>
+    
+    <item>
+      <title>India wheat markets - work in progress</title>
+      <link>/post/2020/05/21/india-wheat-markets-work-in-progress/</link>
+      <pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/21/india-wheat-markets-work-in-progress/</guid>
+      <description>Objective India is one of the world’s largest producers of wheat. There are two harvests in a year - the rabi harvest between May and June - and the kharif harvest in October and November. Several important festivals take place around the october harvest period.
+Given the significance of the farming sector to India in terms of consumption as well as employment have sought to examine quantities of wheat deliveries to market at harvest.</description>
+    </item>
+    
+    <item>
+      <title>Moving grains - dry bulk</title>
+      <link>/post/2020/05/14/moving-grains-dry-bulk/</link>
+      <pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/14/moving-grains-dry-bulk/</guid>
+      <description>Conclusion  initial examination of one balance sheet item for dry goods shipping sector shows that most companies carry a reasonably high debt load. GNK emerges as one of the stronger company balance sheets. SHIP among the weakest. Further analysis on assets and cash flow will follow.   Trigger to enquiry The decline in the Baltic Dry Index (BDI) to below 400 caught attention this morning. That level approaches a 25 year low and compares to 1000 in january 2020 and 2500 in september 2019 (representing an 84% decline).</description>
+    </item>
+    
+    <item>
+      <title>Learning R - Rice</title>
+      <link>/note/2020/05/12/rice-notes/</link>
+      <pubDate>Tue, 12 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/note/2020/05/12/rice-notes/</guid>
+      <description>Conclusions  Estimated farmer pretax in India of around US$84 per 20 foot container of shipped rough raw rice.
+ That represents a 78% reduction in take home pretax profit since start of 2020 when estimated pretax stood at US$340/container.
+ Despite some increase in price since the start of 2020 farming profitability has fallen sharply.
+  Trigger to enquiry Article in Economic Times of India (accessed: 2020-05-12) that reported today that Basmati rice exporters are suffering from higher shipping costs as a result of lack of containers.</description>
+    </item>
+    
+    <item>
+      <title>Hello R Markdown</title>
+      <link>/post/2015/07/23/hello-r-markdown/</link>
+      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2015/07/23/hello-r-markdown/</guid>
+      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+You can embed an R code chunk like this:
+summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>The theme used is that created by Yihui Xie. The theme has been chosen for its simplicity and minimalism. This is the first personal website have created with blogdown and Yihui seems to have done a great deal of work in this area. For help on the theme and website please visit Yihui&amp;rsquo;s site.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,193 @@
+---
+title: India states and territories
+author: Michael
+date: '2020-05-21'
+slug: India states and territories
+categories:
+  - R
+tags:
+  - India
+  - Tools
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages, include=FALSE}
+pkgs = c("rvest", "tidyverse", "janitor", "lubridate", "dplyr", "kableExtra", "data.table") 
+# lubridate for %m+% function
+# rvest for web scraping
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+```{r datevars, include=FALSE}
+# save current system date to a variable
+today <- Sys.Date()
+# subtract 3 months from the current date
+date <- today %m+% months(-3)
+print(date)
+```
+
+# Project
+
+This project aimed to use R to extract India state and territory names from a wikipedia page. 
+
+
+```{r rawdatacollect, include=FALSE}
+# get the URL for the wikipedia page with all states
+url <- "https://en.wikipedia.org/w/index.php?title=States_and_union_territories_of_India&oldid=957937724"
+
+# use that URL to scrape the states table using rvest
+states <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[4]') %>% 
+  html_table()
+#create a vector of states
+states <- states[[1]]
+
+
+# use that URL to scrape the territories table using rvest
+terrs <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[5]') %>% 
+  html_table()
+  
+#create a vector of terrs
+terrs <- terrs[[1]]
+
+```
+
+```{r tidydata, include=FALSE}
+# simplify before bind
+
+s <- states[-c(2,4,7)]
+t <- terrs[-2]
+
+scol <- colnames(s)
+tcol <- colnames(t)
+
+names(t)[2] <- "Vehiclecode"
+names(s)[1] <- "part"
+names(t)[1] <- "part"
+
+s
+```
+
+```{r bindedtable, include=FALSE}
+indiawhole <- rbind(s,t)
+
+# add a factor column for states and terrs
+
+id <- c("state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "state",
+        "terr",
+        "terr",
+        "terr",
+        "terr",
+        "terr",
+        "terr",
+        "terr",
+        "terr"
+        )
+
+india <- cbind(indiawhole,id)
+```
+
+```{r tidynameset, include=FALSE}
+# tidy up names of variables
+
+indiatidy <- india %>% 
+  janitor::clean_names()
+
+# shorten variable names
+
+colnames(indiatidy)
+
+names(indiatidy)[8] <- "add_lang"
+names(indiatidy)[7] <- "off_lang"
+names(indiatidy)[5] <- "pop"
+names(indiatidy)[2] <- "veh_code"
+
+```
+
+```{r variabletypeconvert, include=FALSE}
+# convert pop values to numeric
+
+glimpse(indiatidy)
+indiatidy$pop
+indiatidy[24,5] = "35193978"
+indiatidy$pop <- as.numeric(gsub(",","",indiatidy$pop))
+indiatidy$pop
+str(indiatidy)
+
+# convert area values to numeric
+
+glimpse(indiatidy)
+indiatidy$area_km2
+indiatidy[24,6] = "114840"
+indiatidy[33,6] = "55538"
+indiatidy[34,6] = "174852"
+indiatidy$area_km2 <- as.numeric(gsub(",","",indiatidy$area_km2))
+indiatidy$area_km2
+str(indiatidy)
+
+# convert the id to a factor variable
+indiatidy$id <- as.factor(indiatidy$id)
+str(indiatidy)
+
+```
+
+\newpage
+
+```{r arrangedtable, include=FALSE}
+tab <- indiatidy %>% 
+  arrange(desc(indiatidy$pop))
+
+```
+
+```{r tabtable, echo=FALSE, warnings=FALSE}
+knitr::kable(tab[1:36,c(1,2,5,6,9)], "html",
+             caption = "India states and territories",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+

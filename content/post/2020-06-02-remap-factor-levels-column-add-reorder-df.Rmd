@@ -1,0 +1,771 @@
+---
+title: Remap factor levels
+author: michael
+date: '2020-06-02'
+slug: remap-factor-levels-column-add-reorder-df
+categories:
+  - R
+tags:
+  - Tools
+---
+
+Further to data extract of human muscle group from [Wikipedia](https://en.wikipedia.org/wiki/List_of_skeletal_muscles_of_the_human_body) the goal here was to remap the factor levels in the variable source. The intention is to shrink down the number of categories from 48 to 5 to simplify understanding of statistics to be performed on muscle groups in future. 
+
+To achieve that the source variable in the data frame was converted to factor type. It was then duplicated. A fresh factor variable that mapped the levels from the duplicated source variable was created and is labelled x. 
+
+
+```{r packages, include=FALSE}
+pkgs = c("rvest", "tidyverse", "janitor", "lubridate", "dplyr", "kableExtra", "data.table", "forcats", "plyr") 
+# lubridate for %m+% function
+# rvest for web scraping
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+```{r datevars, eval=FALSE, include=FALSE}
+# save current system date to a variable
+today <- Sys.Date()
+# subtract 3 months from the current date
+date <- today %m+% months(-3)
+print(date)
+```
+
+```{r rawdatacollect, include=FALSE}
+# get the URL for the wikipedia page with all states
+url <- "https://en.wikipedia.org/wiki/List_of_skeletal_muscles_of_the_human_body"
+
+# use that URL to scrape the states table using rvest
+forehead.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[1]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+forehead <- forehead.m[[1]]
+
+extraocular.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[2]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+extraocular <- extraocular.m[[1]]
+
+ear.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[3]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+ear <- ear.m[[1]]
+
+nose.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[4]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+nose <- nose.m[[1]]
+
+mouth.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[5]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+mouth <- mouth.m[[1]]
+
+mastication.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[6]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+mastication <- mastication.m[[1]]
+
+tongueext.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[7]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+tongueextrinsic <- tongueext.m[[1]]
+
+tongueint.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[8]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+tongueintrinsic <- tongueint.m[[1]]
+
+softpalate.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[9]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+softpalate <- softpalate.m[[1]]
+
+pharynx.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[10]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+pharynx <- pharynx.m[[1]]
+
+larynx.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[11]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+larynx <- larynx.m[[1]]
+
+neck.clavicular.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[12]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+neck.clavicular <- neck.clavicular.m[[1]]
+
+neck.suprahyoid.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[13]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+neck.suprahyoid <- neck.suprahyoid.m[[1]]
+
+neck.infrahyoid.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[14]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+neck.infrahyoid <- neck.infrahyoid.m[[1]]
+
+neck.anterior.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[15]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+neck.anterior <- neck.anterior.m[[1]]
+
+neck.lateral.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[16]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+neck.lateral <- neck.lateral.m[[1]]
+
+neck.posterior.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[17]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+neck.posterior <- neck.posterior.m[[1]]
+
+torso.back.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[18]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+torso.back<- torso.back.m[[1]]
+
+chest.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[19]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+chest<- chest.m[[1]]
+
+abdomen.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[20]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+abdomen<- abdomen.m[[1]]
+
+pelvis.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[21]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+pelvis<- pelvis.m[[1]]
+
+perineum.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[22]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+perineum<- perineum.m[[1]]
+
+upperlimb.vertebralcol.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[23]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+upperlimb.vertebralcol<- upperlimb.vertebralcol.m[[1]]
+
+upperlimb.thoracicwall.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[24]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+upperlimb.thoracicwall<- upperlimb.thoracicwall.m[[1]]
+
+upperlimb.shoulder.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[25]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+upperlimb.shoulder<- upperlimb.shoulder.m[[1]]
+
+upperlimb.armanterior.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[26]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+upperlimbarmanterior.arm<- upperlimb.armanterior.m[[1]]
+
+upperlimb.armposterior.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[27]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+upperlimbarmposterior.arm<- upperlimb.armposterior.m[[1]]
+
+forearm.anteriorcompartment.superficial.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[28]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+forearmanteriorcompartment.superficial <- forearm.anteriorcompartment.superficial.m[[1]]
+
+forearm.anteriorcompartment.deep.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[29]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+forearmanteriorcompartment.deep <- forearm.anteriorcompartment.deep.m[[1]]
+
+forearm.posteriorcompartment.superficial.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[30]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+forearmposteriorcompartment.superficial <- forearm.posteriorcompartment.superficial.m[[1]]
+
+forearm.posteriorcompartment.deep.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[31]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+forearmposteriorcompartment.deep <- forearm.posteriorcompartment.deep.m[[1]]
+
+handlateralcolarthenar.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[32]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+handlateralcolarthenar <- handlateralcolarthenar.m[[1]]
+
+handmedialvolar.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[33]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+handmedialvolar <- handmedialvolar.m[[1]]
+
+handintermediate.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[34]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+handintermediate <- handintermediate.m[[1]]
+
+loweriliac.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[35]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+loweriliac <- loweriliac.m[[1]]
+
+lowergluteal.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[36]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+lowergluteal <- lowergluteal.m[[1]]
+
+thighanteriorcompartment.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[37]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+thighanteriorcompartment <- thighanteriorcompartment.m[[1]]
+
+thighposteriorcompartment.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[38]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+thighposteriorcompartment <-thighposteriorcompartment.m[[1]]
+
+thighmedialcompartment.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[39]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+thighmedialcompartment <-thighmedialcompartment.m[[1]]
+
+leganteriorcompartment.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[40]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+leganteriorcompartment <- leganteriorcompartment.m[[1]]
+
+legposteriorcompartmentsuperficial.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[41]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+legposteriorcompartmentsuperficial <- legposteriorcompartmentsuperficial.m[[1]]
+
+legposteriorcompartmentdeep.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[42]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+legposteriorcompartmentdeep <- legposteriorcompartmentdeep.m[[1]]
+
+leglateralcompartmentdeep.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[43]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+leglateralcompartmentdeep <- leglateralcompartmentdeep.m[[1]]
+
+footdorsal.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[44]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+footdorsal <- footdorsal.m[[1]]
+
+footplantarfirstlayer.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[45]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+footplantarfirstlayer <- footplantarfirstlayer.m[[1]]
+
+footplantarsecondlayer.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[46]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+footplantarsecondlayer <- footplantarsecondlayer.m[[1]]
+
+footplantarthirdlayer.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[47]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+footplantarthirdlayer <- footplantarthirdlayer.m[[1]]
+
+footplantarfourthlayer.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[48]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+footplantarfourthlayer <- footplantarfourthlayer.m[[1]]
+
+
+```
+
+
+
+```{r, include=FALSE}
+# add column for variable name in each df
+
+ID <- c("forehead",
+"extraocular",
+"ear",
+"nose",
+"mouth",
+"mastication",
+"tongueextrinsic",
+"tongueintrinsic",
+"softpalate",
+"pharynx",
+"larynx",
+"neck.clavicular",
+"neck.suprahyoid",
+"neck.infrahyoid",
+"neck.anterior",
+"neck.lateral",
+"neck.posterior",
+"torso.back",
+"chest",
+"abdomen",
+"pelvis",
+"perineum",
+"upperlimb.vertebralcol",
+"upperlimb.thoracicwall",
+"upperlimb.shoulder",
+"upperlimbarmanterior.arm",
+"upperlimbarmposterior.arm",
+"forearmanteriorcompartment.superficial",
+"forearmanteriorcompartment.deep",
+"forearmposteriorcompartment.superficial",
+"forearmposteriorcompartment.deep",
+"handlateralcolarthenar",
+"handmedialvolar",
+"handintermediate",
+"loweriliac",
+"lowergluteal",
+"thighanteriorcompartment",
+"thighposteriorcompartment",
+"thighmedialcompartment",
+"leganteriorcompartment",
+"legposteriorcompartmentsuperficial",
+"legposteriorcompartmentdeep",
+"leglateralcompartmentdeep",
+"footdorsal",
+"footplantarfirstlayer",
+"footplantarsecondlayer",
+"footplantarthirdlayer",
+"footplantarfourthlayer")
+
+```
+
+```{r appendfunction, include=FALSE}
+
+# Function to combine (rbind) data frames and create column with name of original data frames
+
+# Source: https://stackoverflow.com/questions/15162197/combine-rbind-data-frames-and-create-column-with-name-of-original-data-frames
+
+AppendMe <- function(dfNames) {
+  do.call(rbind, lapply(dfNames, function(x) {
+    cbind(get(x), source = x)
+  }))
+}
+```
+
+```{r, include=FALSE }
+# append column to dataset with name of source variable in rbind operations
+bodywhole2 <- AppendMe(c(ID))
+```
+
+
+```{r, include=FALSE}
+# get column names
+# source: http://www.sthda.com/english/wiki/reordering-data-frame-columns-in-r
+colnames(bodywhole2)
+
+```
+
+```{r, include=FALSE}
+bodywhole3 <- bodywhole2[, c(8, 1, 2, 3,4,5,6,7)]
+tail(bodywhole3)
+```
+
+```{r, include=FALSE}
+#make source a factor
+# convert the source to a factor variable
+bodywhole3$source <- as.factor(bodywhole3$source)
+
+```
+
+```{r, include=FALSE}
+z <- bodywhole3 
+
+# row numbers added 
+z1 <- tibble::rowid_to_column(z, "ID")
+
+# a duplicate column of source variable added 
+
+z1$source2 <- z1$source
+
+# the data frame was reordered to place duplicated row 
+
+z2 <- z1[, c(1,10, 2, 3,4,5,6,7,8,9)]
+```
+
+
+```{r, include=FALSE}
+# then using revalue command the factor levels were changed
+
+z3 <- mutate(z2, x = revalue(source2,
+                             c(
+"forehead" = "head", 
+"extraocular" = "head",
+"ear" = "head",
+"nose" = "head",
+"mouth" = "head",
+"mastication" = "head",
+"tongueextrinsic" = "head",
+"tongueintrinsic" = "head",
+"softpalate" = "head",
+"pharynx" = "head",
+"larynx" = "head", 
+"neck.clavicular" = "neck", 
+"neck.suprahyoid" = "neck", 
+"neck.infrahyoid" = "neck", 
+"neck.anterior" = "neck", 
+"neck.lateral" = "neck", 
+"neck.posterior" = "neck", 
+"torso.back" = "torso", 
+"chest" = "torso", 
+"abdomen" = "torso", 
+"pelvis" = "torso", 
+"perineum" = "torso", 
+"upperlimb.vertebralcol" = "upper", 
+"upperlimb.thoracicwall" = "upper", 
+"upperlimb.shoulder" = "upper", 
+"upperlimbarmanterior.arm" = "upper", 
+"upperlimbarmposterior.arm" = "upper", 
+"forearmanteriorcompartment.superficial" = "upper", 
+"forearmanteriorcompartment.deep" = "upper", 
+"forearmposteriorcompartment.superficial" = "upper", 
+"forearmposteriorcompartment.deep" = "upper", 
+"handlateralcolarthenar" = "upper", 
+"handmedialvolar" = "upper", 
+"handintermediate" = "upper", 
+"loweriliac" = "lower", 
+"lowergluteal" = "lower", 
+"thighanteriorcompartment" = "lower", 
+"thighposteriorcompartment" = "lower", 
+"thighmedialcompartment" = "lower", 
+"leganteriorcompartment" = "lower", 
+"legposteriorcompartmentsuperficial" = "lower", 
+"legposteriorcompartmentdeep" = "lower", 
+"leglateralcompartmentdeep" = "lower", 
+"footdorsal" = "lower", 
+"footplantarfirstlayer" = "lower", 
+"footplantarsecondlayer" = "lower", 
+"footplantarthirdlayer" = "lower", 
+"footplantarfourthlayer" = "lower")
+))
+
+```
+
+```{r, include=FALSE}
+# remapped variable factor reordered
+
+# reorder columns and place regrouped factor up front
+z4 <- z3[, c(1,11, 2, 3,4,5,6,7,8,9,10)]
+
+# drop source2 duplicate factor
+z4 <- z4[,-3]
+
+z4
+
+
+```
+
+
+\newpage
+
+```{r arrangedtable, include=FALSE}
+# source: https://chartio.com/resources/tutorials/how-to-sort-a-data-frame-by-multiple-columns-in-r/
+
+# first sort by source and then by muscle
+
+z4 <- z4 [
+  order( z4[,1]),
+]
+
+```
+
+```{r tabtable, echo=FALSE, warnings=FALSE}
+knitr::kable(z4[,c(1,2,3,4)], "html",
+             caption = "Body muscles",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```

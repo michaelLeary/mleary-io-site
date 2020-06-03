@@ -1,0 +1,540 @@
+---
+title: Learning about wheat and India
+author: Michael
+date: '2020-05-28'
+slug: India and wheat
+categories:
+  - R
+tags:
+  - Agriculture
+  - India
+---
+
+```{r setup, include=FALSE}
+pkgs = c("ggplot2", "scales", "ggpubr", "gridExtra", "knitcitations", "RefManageR", "data.table", "tidyverse", "janitor", "summarytools", "readxl", "epiDisplay", "knitr", "kableExtra")
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+```
+
+
+```{r globaldata, include=FALSE}
+p.country <- c("EU", "China", "India", "Russia", "US", "Canada", "Ukraine", "Pakistan", "Australia", "Argentina", "Turkey")
+p.vol <- c(143000, 135000, 103000, 77000, 50784, 34000, 28000, 26100, 24000, 21000, 18500)
+
+wheat.prod <- data.frame(
+  country = p.country,
+  volume = p.vol
+)
+
+head(wheat.prod)
+
+```
+
+
+```{r barplotchoices, include = FALSE}
+# bar plot
+bp <- ggplot(wheat.prod, aes(x="", y=volume, fill=country))+
+  geom_bar(width=1, stat="identity")
+bp
+
+# pie chart
+
+pie <- bp+coord_polar("y", start=0)
+
+pie
+
+# change brewer color palettes - limit 8
+
+wheat.pie <- wheat.prod[-c(9:11),]
+
+pie2 <- ggplot(wheat.pie, aes(x="", y=volume, fill=country))+
+  geom_bar(width=1, stat="identity") +
+  coord_polar("y", start=0) +
+  scale_fill_brewer(palette="Dark2")
+
+pie2
+
+# change to blues - limit 9 
+
+pie2 + scale_fill_brewer(palette="Blues")+
+  theme_minimal()
+
+# grey scale
+
+pie + scale_fill_grey() + theme_minimal()
+
+# Customized pie charts
+
+blank_theme <- theme_minimal()+
+  theme(
+  axis.title.x = element_blank(),
+  axis.title.y = element_blank(),
+  panel.border = element_blank(),
+  panel.grid=element_blank(),
+  axis.ticks = element_blank(),
+  plot.title=element_text(size=14, face="bold")
+  )
+
+# Apply blank theme
+
+pie + scale_fill_grey() +  blank_theme +
+  theme(axis.text.x=element_blank()) +
+  geom_text(aes(y = volume/8 + c(0, cumsum(volume)[-length(volume)]), 
+            label = percent(volume/100)), size=4)
+
+# using ggpub
+#https://rdrr.io/cran/ggpubr/man/theme_pubr.html
+#https://rdrr.io/cran/ggpubr/man/ggpie.html
+
+ggpie(wheat.pie, "volume", label = "country")
+
+# Change color
+# ++++++++++++++++++++++++++++++++
+# color palette examples https://www.schemecolor.com/orange-green-blue-pie-chart.php
+
+
+ggpie(wheat.pie, "volume", label = "country",
+      fill = "country", color = "white",
+       palette = c("#00AFBB", "#E7B800", "#FC4E07",
+                   "#E6F69D", "#AADEA7", "#64C2A6",
+                   "#2D87BB", "#377B2B"
+                   ))
+
+# Change label
+# ++++++++++++++++++++++++++++++++
+
+# Show group names and value as labels
+labs <- paste0(wheat.pie$country, " (", wheat.pie$volume, "%)")
+ggpie(wheat.pie, "volume", label = labs,
+   fill = "country", color = "white",
+   palette = c("#00AFBB", "#E7B800", "#FC4E07",
+               "#E6F69D", "#AADEA7", "#64C2A6",
+               "#2D87BB", "#377B2B"
+               ))
+
+# Change the position and font color of labels
+#ggpie(wheat.pie, "volume", label = labs,
+#   lab.pos = "in", lab.font = "white",
+#   fill = "country", color = "white",
+#   palette = c("#00AFBB", "#E7B800", "#FC4E07",
+#               "#E6F69D", "#AADEA7", "#64C2A6",
+#               "#2D87BB", "#377B2B"
+#               ))
+
+## bar plot
+# http://www.sthda.com/english/wiki/ggplot2-barplots-quick-start-guide-r-software-and-data-visualization
+
+g <- ggplot(data=wheat.pie, aes(x=country, y=volume))+
+  geom_bar(stat="identity")
+g
+
+# horizonatal bar plot
+
+g + coord_flip()
+
+# changing bar width and colors
+
+ggplot(data=wheat.prod, aes(x=country, y=volume)) +
+  geom_bar(stat="identity", width=0.5)
+# Change colors
+ggplot(data=wheat.prod, aes(x=country, y=volume)) +
+  geom_bar(stat="identity", color="blue", fill="white")
+# Minimal theme + blue fill color
+p<-ggplot(data=wheat.prod, aes(x=country, y=volume)) +
+  geom_bar(stat="identity", fill="steelblue")+
+  theme_minimal()
+p
+
+# choosing which items to display
+labs <- wheat.prod[,1]
+labs
+labsexT <- labs[-c(9:11)]
+labsexT
+
+p + scale_x_discrete(limits=labsexT)
+
+# Bar plot with labels
+
+# Outside bars
+ggplot(data=wheat.pie, aes(x=country, y=volume)) +
+  geom_bar(stat="identity", fill="steelblue")+
+  geom_text(aes(label=volume), vjust=-0.3, size=3.5)+
+  theme_minimal()
+# Inside bars
+ggplot(data=wheat.pie, aes(x=country, y=volume)) +
+  geom_bar(stat="identity", fill="steelblue")+
+  geom_text(aes(label=volume), vjust=1.6, color="white", size=3.5)+
+  theme_minimal()
+
+# Change bar plot outline colors
+
+p<-ggplot(wheat.pie, aes(x=country, y=volume, color=country)) +
+  geom_bar(stat="identity", fill="white")
+p
+
+# Use custom color palettes
+p+scale_color_manual(values=c("#00AFBB", "#E7B800", "#FC4E07",
+               "#E6F69D", "#AADEA7", "#64C2A6",
+               "#2D87BB", "#377B2B"))
+# Use brewer color palettes
+p+scale_color_brewer(palette="Dark2")
+# Use grey scale
+p + scale_color_grey() + theme_classic()
+
+# Change fill colors
+
+# Change barplot fill colors by groups
+p<-ggplot(wheat.pie, aes(x=country, y=volume, fill=country)) +
+  geom_bar(stat="identity")+theme_minimal()
+p
+
+# Use custom color palettes
+p+scale_fill_manual(values=c("#00AFBB", "#E7B800", "#FC4E07",
+               "#E6F69D", "#AADEA7", "#64C2A6",
+               "#2D87BB", "#377B2B"))
+# use brewer color palettes
+p+scale_fill_brewer(palette="Dark2")
+# Use grey scale
+p + scale_fill_grey()
+
+
+# Use black outline 
+
+ggplot(wheat.pie, aes(x=country, y=volume, fill=country))+
+geom_bar(stat="identity", color="black")+
+scale_fill_manual(values=c("#00AFBB", "#E7B800", "#FC4E07",
+               "#E6F69D", "#AADEA7", "#64C2A6",
+               "#2D87BB", "#377B2B"))+
+  theme_minimal()
+
+# Change legend position
+
+# Change bar fill colors to blues
+p <- p+scale_fill_brewer(palette="Blues")
+p + theme(legend.position="top")
+p + theme(legend.position="bottom")
+# Remove legend
+p + theme(legend.position="none")
+
+# Change in order of legend
+
+p + scale_x_discrete(limits=c(labsexT))
+
+# Barplot with multiple groups 
+
+c.vol <- c(120300, 130000, 99000, 40500, 30617, 9800, 8800, 25500)
+wpie2 <- cbind(wheat.pie,c.vol)
+wpie2
+colnames(wpie2)
+names(wpie2)[2] <- "p.tons"
+names(wpie2)[3] <- "c.tons"
+wpie2
+
+```
+
+```{r functiontidy, include=FALSE}
+
+# https://github.com/fdryan/R/blob/master/ggplot2_formatter.r
+#https://stackoverflow.com/questions/11610377/how-do-i-change-the-formatting-of-numbers-on-an-axis-with-ggplot
+
+# function to tidy y values 
+fancy_scientific <- function(l) {
+     # turn in to character string in scientific notation
+     l <- format(l, scientific = TRUE)
+     # quote the part before the exponent to keep all the digits
+     l <- gsub("^(.*)e", "'\\1'e", l)
+     # turn the 'e+' into plotmath format
+     l <- gsub("e", "%*%10^", l)
+     # return this as an expression
+     parse(text=l)
+}
+
+# function for y axis labels
+human_numbers <- function(x = NULL, smbl ="", signif = 1){
+  humanity <- function(y){
+
+    if (!is.na(y)){
+        tn <- round(abs(y) / 1e12, signif)
+       b <- round(abs(y) / 1e9, signif)
+       m <- round(abs(y) / 1e6, signif)
+       k <- round(abs(y) / 1e3, signif)
+
+      if ( y >= 0 ){
+        y_is_positive <- ""
+      } else {
+        y_is_positive <- "-"
+      }
+
+      if ( k < 1 ) {
+        paste0( y_is_positive, smbl, round(abs(y), signif ))
+        } else if ( m < 1){
+        paste0 (y_is_positive, smbl,  k , "k")
+      } else if (b < 1){
+        paste0 (y_is_positive, smbl, m ,"m")
+      }else if(tn < 1){
+          paste0 (y_is_positive, smbl, b ,"bn")
+      } else {
+        paste0 (y_is_positive, smbl,  comma(tn), "tn")
+      }
+    } else if (is.na(y) | is.null(y)){
+        "-"
+    }
+  }
+
+  sapply(x,humanity)
+}
+
+human_gbp   <- function(x){human_numbers(x, smbl = "£")}
+human_usd   <- function(x){human_numbers(x, smbl = "$")}
+human_euro  <- function(x){human_numbers(x, smbl = "€")} 
+human_num   <- function(x){human_numbers(x, smbl = "")} 
+
+```
+
+# Background
+
+This report focuses on India's share in the world's grains industry. It is based on data provided by the United States Department of Agriculture's *Foreign Agricultural Service*  (FAS) with specific focus on India^[@Service:2020aa]. 
+
+The May 2020 global market analysis report suggests that - so far - ``the COVID-19 impact on overall global consumption of wheat for food use has been minimal to date"^[ibid. pg. 12]. It goes further to project that wheat production and consumption, along with corn and rice,  will break record levels in excess of 768 million tons and 748 million tons in 2020/2021^[ibid, pg. 33].  
+
+```{r, include=FALSE}
+wplot1 <- ggplot(wpie2, aes(x=country, y=p.tons, fill=country))+
+geom_bar(stat="identity", color="black")+
+scale_fill_manual(values=c("#00AFBB", "#E7B800", "#FC4E07",
+               "#E6F69D", "#AADEA7", "#64C2A6",
+               "#2D87BB", "#377B2B"))+
+  
+  scale_y_continuous(labels = human_num) +
+  ylim(0,150000) +
+  theme_minimal()
+wplot1
+
+# Change legend position
+
+# Change bar fill colors to blues
+wplot1 <- wplot1+scale_fill_brewer(palette="Blues")
+wplot1 + theme(legend.position="top")
+wplot1 + theme(legend.position="bottom")
+# Remove legend
+wp1x <- wplot1 + theme(legend.position="none")
+
+# Change in order of legend
+
+wplot1 + scale_x_discrete(limits=c(labsexT))
+
+wplot2<- ggplot(wpie2, aes(x=country, y=c.tons, fill=country))+
+geom_bar(stat="identity", color="black")+
+scale_fill_manual(values=c("#00AFBB", "#E7B800", "#FC4E07",
+               "#E6F69D", "#AADEA7", "#64C2A6",
+               "#2D87BB", "#377B2B"))+
+  
+  scale_y_continuous(labels = human_num) +
+  ylim(0,150000) +
+  theme_minimal()
+
+wplot2
+
+# Change legend position
+
+# Change bar fill colors to blues
+wplot2 <- wplot2+scale_fill_brewer(palette="Blues")
+wplot2 + theme(legend.position="top")
+wplot2 + theme(legend.position="bottom")
+# Remove legend
+wp2x <- wplot2 + theme(legend.position="none")
+
+# Change in order of legend
+
+wplot2 + scale_x_discrete(limits=c(labsexT))
+
+# side by side plots using gridExtra package
+
+h <- grid.arrange(wp1x, wp2x, ncol=2)
+
+# flip charts to side
+
+hv1x <- wp1x+ coord_flip()
+hv2x <- wp2x+ coord_flip()
+
+# choosing which items to display
+labsh <- wpie2[,1]
+labsh
+
+# reverse order of items in chart with rev
+#https://www.datanovia.com/en/blog/how-to-change-ggplot-legend-order/
+
+wp1xsort <- wp1x + scale_x_discrete(limits=rev(c(labsh)))
+wp2xsort <- wp2x + scale_x_discrete(limits=rev(c(labsh)))
+h <- grid.arrange(wp1xsort, wp2xsort, nrow=2)
+```
+
+```{r prodcons, fig-margin-together, fig.margin=TRUE, fig.show='hold', fig.cap="Production and consumption by Country", fig.width=3.5, fig.height=3.5, cache=TRUE, message=FALSE, echo=FALSE}
+# http://zevross.com/blog/2017/06/19/tips-and-tricks-for-working-with-images-and-figures-in-r-markdown-documents/
+plot(hv1x+scale_x_discrete(limits=rev(c(labsh))))
+plot(hv2x+scale_x_discrete(limits=rev((labsh))))
+```
+
+Major wheat producers identified include: EU, China, India, Russia, US, Canada, Ukraine, Pakistan, and, Australia with greatest consumers of wheat from China, EU, India, Russia, US, Pakistan, Egypt, Turkey, Iran, and, Brazil. Some sense of these respective contributions are shown in the chart.  
+
+The chart illustrates the relative standings by country. And shows the sizable difference in production and consumption between the EU, China and India in one group and other nations. Broadly speaking these three produce and consume around half the annual crop. 
+
+Five elements make up wheat consumption and are: food, seed, industrial, feed, and, residual use. Of these food, seed and industrial (FSI) make up 75% of wheat use or some 561 million tons. The driver for the rise in FSI consumption is stated as population growth and changing diets within Asia. 
+
+## Production expectation
+The report projected global wheat production of 768 million for 2020/2021 up 0.5%. 75% of the increase is projected to be delivered by the top 8 exporting countries including: Australia, Russia, Kazakhstan, Canada and Argentina. Gains from these countries more than offset a decline in production anticipated for EU, US and Ukraine. Among other producers China is forecast to register a modest increase at 135 million tons and India's forecast is for 103 million tonnes\citet[pg.~3]{Service:2020aa}. 
+
+## Consumption expectation
+Consumption is forecast to reach a record with growth expected across all regions and especially in South and East Asia on rising food use in India and China. The segment is largely driven by food, seed and industrial use. Consumers in many emerging markets are expected to shift towards more wheat based diets with rising income and urbanization. The other element of consumption which is for feed and residual use exhibits more variability in consumption pattern that depends on price relationship to other grains\citet[pg.~4]{Service:2020aa}.
+
+## Stocks 
+For the period ending May 2021 the FAS projects ending wheat stocks at 310 million tons with 160 million tons held by China and 27 million tons by India\autocite[p.~36]{Service:2020aa}. 
+
+```{r stocks, include=FALSE}
+
+countrystocks <- c("Canada","China","EU", "India", "Iran", "Russia", "Turkey", "US", "Others")
+stk.vol <- c(5688, 160355, 13048, 27025, 5906, 10279, 5754, 24736, 57326)
+
+wheat.stocks <- tibble(
+  country.stks = countrystocks,
+  vol.stks = stk.vol
+)
+
+head(wheat.stocks)
+fwrite(wheat.stocks, file = "/Users/michaelleary/Documents/GitHub/stats_tools/basicexcel2R/wheat.stocks.csv", row.names = TRUE) # in csv form
+```
+
+```{r stocktable, include=FALSE}
+ws <- wheat.stocks 
+
+
+mutate(group_by(ws), 
+       cumsum = cumsum(vol.stks)) %>%
+    adorn_totals("row")
+
+str(ws)
+
+pws <- ws %>% 
+  mutate(volpct = round(100*vol.stks / sum(vol.stks),)) %>%
+  arrange(desc(volpct))
+
+pws
+
+
+```
+
+```{r stksumm, include=FALSE}
+
+# after transposing the data in excel reimporting
+
+ws <- read_excel("/Users/michaelleary/Documents/GitHub/stats_tools/basicexcel2R/wheat.stocks.xlsx")
+
+# look at how data is well structured for entry into R 
+
+glimpse(ws)
+str(ws)
+class(ws)
+
+# have janitor clean variable names
+
+x <- janitor::clean_names((ws))
+
+# compare the two data sets to look for changes janitor has performed
+
+data.frame(ws = colnames(ws), x = colnames(x))
+
+```
+
+```{r rowValue, include=FALSE}
+x[1,]
+
+```
+
+```{r baseTranspose, include=FALSE}
+
+#starting dataframe
+x
+
+#save row1col1 as character variable for use in transposed data frame
+v<-names(x[,1])
+
+# show variable types in data frame
+sapply(x, class)
+
+# to illustrate effect of transpose save to new variable and examine class and note change to character form
+xt <- t(x)
+sapply(xt,class)
+
+# to prevent conversion to character remove row names and convert numebrs to matrix
+sub_matrix <- t(x[,-1])
+
+# viw transposed data and check all numbers retain class
+sub_matrix
+sapply(sub_matrix,class)
+
+# convert submatrix to data frame and note auto generated column name
+xtdf <- as.data.frame(sub_matrix)
+colnames(xtdf)
+
+# rename auto generated column name with that from original data set
+names(xtdf)[1] <- x[,1]
+
+# confirm transposed data frame and check class types
+xtdfn <- xtdf
+xtdfn
+sapply(xtdfn,class)
+
+## should it be wished to carry out operations on the matrix before return back to orig df
+## do operation e.g. x2 each variable
+sub_matrix2 <- sub_matrix*2
+sub_matrix2
+## then revert to data frame with changes made and row headings added back
+xtchange <-cbind(X1=x[,1], as.data.frame(t(sub_matrix2)))
+xtchange
+
+```
+
+```{r giverownameColumn, include=FALSE}
+
+xtrn <- setDT(xtdfn, keep.rownames = TRUE)[]
+
+# rename auto generated column name with previously saved label
+
+setnames(xtrn, 1, v)
+
+xtrn
+
+```
+
+```{r, include=FALSE}
+head(xtrn)
+
+xtrn %>% 
+  group_by(country_stks) %>%
+  mutate(cumsum = cumsum(vol.stks)) %>%
+  arrange(desc(vol.stks))%>%
+    adorn_totals("row")
+
+```
+
+```{r pivotTotals, include=FALSE}
+
+pivotTotals <- xtrn %>% 
+  mutate(volpct = round(100*vol.stks / sum(vol.stks),)) %>%
+  arrange(desc(volpct))
+
+```
+
+```{r echo=FALSE}
+kable(pivotTotals)
+
+```
+
+Exporter held stocks are the supplies that are readily available to the global market and can affect prices. So these levels are often considered a relevant metric for analysis. 
+
+That being said wheat prices are not solely affected by change in wheat stock levels but also by the change in corn prices.
+
+The report points to the abundance of world corn supplies in 2020/2021 that are expected to outweigh relatively tight export held global wheat supplies. And so the prospect for US season average farm price is unchanged at $4.60/bushel\autocite[p.~5]{Service:2020aa}. 
+
