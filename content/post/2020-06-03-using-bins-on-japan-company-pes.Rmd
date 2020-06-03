@@ -1,0 +1,208 @@
+---
+title: Using bins on Japan company PEs
+author: michael
+date: '2020-06-03'
+slug: using-bins-on-japan-company-pes
+categories:
+  - R
+tags:
+  - Finance
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include=FALSE}
+pkgs = c("readxl", "readr", "lubridate", "dplyr", "janitor", "data.table", "purrr", "magrittr", "Hmisc", "summarytools", "knitr", "kableExtra")
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+```{r, include=FALSE}
+jppe <- read_excel("/Users/michaelleary/Documents/GitHub/statbook/data/rawpe.xlsx", skip = 0)
+
+```
+
+```{r, include=FALSE}
+# examine imported data set
+jppehead <- head(jppe)
+
+# examine data set structure
+glimpse(jppe)
+```
+
+```{r, include=FALSE}
+# tidy names here p/e
+jppe <- jppe %>% 
+  janitor::clean_names()
+
+# check reformatted variable
+glimpse(jppe)
+```
+
+```{r, echo=FALSE, include=FALSE}
+# using summarytools package
+summarytools::descr(jppe)
+
+# summary data
+summary(jppe)
+```
+
+```{r, include=FALSE}
+dsname <- "jppe"
+ds <- get(dsname)
+glimpse(ds)
+```
+
+```{r, include=FALSE}
+sample_n(ds, size=6) %>% print.data.frame()
+tail(ds) %>% print.data.frame()
+headds <- head(ds) %>% print.data.frame()
+```
+
+```{r symcount, include=FALSE}
+# Symbols
+#how many in dataset
+symcount <- ds$symbol %>%
+unique() %>%
+length()
+
+symcount
+```
+
+This note outlines a method for generating a frequency table with counts based on defined groups for the pe and market capitalization (in USD$) variables of a Japan company dataset. The data set is comprised of trailing pe computed for `r symcount` Japanese companies. The script code is modeled after that found at [jdatalab](https://www.jdatalab.com/data_science_and_data_mining/2017/01/30/data-binning-plot.html) 
+
+```{r headds, echo=FALSE, warnings=FALSE}
+knitr::kable(headds, "html",
+             caption = "Price-earnings ratio for Japan stocks",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+```{r, echo=FALSE, include=FALSE}
+# using summarytools package
+summarytools::descr(jppe)
+
+# summary data
+sumds <- summary(jppe)
+```
+
+A summary table of the dataset provides some indication of broad statistics such as mean and median, minimum and maximum values, the inter-quartile range and presence of NAs.  The table indicates extreme outliers with negative value for minimum and high maximum values along with the NAs.
+
+```{r sumds, echo=FALSE, warnings=FALSE}
+knitr::kable(sumds, "html",
+             caption = "Summary of dataset",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+```{r, include=FALSE}
+# identify incomplete cases and remove
+dsna <- ds[!complete.cases(ds),]
+dsna
+dsnafree <- ds[complete.cases(ds),]
+summary(dsnafree)
+```
+
+```{r, include=FALSE}
+# remove outliers with pe below zero
+dsabove <- dsnafree %>%
+  dplyr::filter(p_e >= 0)
+
+```
+
+```{r, include=FALSE}
+# remove records with pe above 100
+dsbelow <- dsabove %>%
+  dplyr::filter(p_e <= 100)
+```
+
+After removing companies that had na values as well as cutting out companies with p/e ratios below zero and above 100 the refreshed summary table shows mean p/e of 16.3, median of 11.5 and an inter-quartile range of between 7 and 19. The frequency chart with a density curve provides a sense of the presence of outliers. 
+
+```{r, include=FALSE}
+summary(dsbelow)
+```
+
+```{r rawplot, message=FALSE, echo=FALSE, warning=FALSE}
+ggplot(data = dsbelow, mapping = aes(x=p_e)) + 
+  geom_histogram(aes(y=..density..),fill="bisque",color="white",alpha=0.7) + 
+  geom_density() +
+  geom_rug() +
+  labs(x='pe for Japan companies') +
+  theme_minimal()
+```
+
+### Data binning
+
+Though the density plot is informative readability of the data may be improved by binning values into discrete categories and plotting the count of each bin in bars. The code chunk produces a factor group_tags that maps each p_e value into one of six bins. Each level is named by the string in the  vector tags. 
+
+```{r}
+# set up cut-off values 
+breaks <- c(0,5,10,15,20,25,100)
+# specify interval/bin labels
+tags <- c("[0-5)","[5-10)", "[10-15)", "[15-20)", "[20-25)", "[25-100)")
+# bucketing values into bins
+group_tags <- cut(dsbelow$p_e, 
+                  breaks=breaks, 
+                  include.lowest=TRUE, 
+                  right=FALSE, 
+                  labels=tags)
+# inspect bins
+summary(group_tags)
+```
+
+```{r binplot}
+ggplot(data = as_tibble(group_tags), mapping = aes(x=value)) + 
+  geom_bar(fill="bisque",color="white",alpha=0.7) + 
+  stat_count(geom="text", aes(label=sprintf("%.4f",..count../length(group_tags))), vjust=-0.5) +
+  labs(x='pe Japan companies') +
+  theme_minimal() 
+```
+
+An alternative approach that used the dplyr package defined bucket intervals, placed levels into buckets, and then stored groups in an appended column. 
+
++ First a vector that contains named bucket intervals was created.
+
+```{r}
+tags <- c("[0-5)","[5-10)", "[10-15)", "[15-20)", "[20-25)", "[25-100)")
+
+```
+
+```{r}
+v <- dsbelow %>% select(p_e, us) #pick the variable 
+vgroup <- as_tibble(v) %>% 
+  mutate(tag = case_when(
+    p_e < 5 ~ tags[1],
+    p_e >= 5 & p_e < 10 ~ tags[2],
+    p_e >= 10 & p_e < 15 ~ tags[3],
+    p_e >= 15 & p_e < 20 ~ tags[4],
+    p_e >= 20 & p_e < 25 ~ tags[5],
+    p_e >= 25 & p_e < 100 ~ tags[6] 
+    ))
+summary(vgroup)
+```
+
++ then the appended column was converted to a factor
+
+```{r}
+vgroup$tag <- factor(vgroup$tag,
+                       levels = tags,
+                       ordered = FALSE)
+summary(vgroup$tag)
+```
+
+A box plot is shown of the distribution of market capitalization (USD$) for each level of pe for Japan companies. 
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(data = vgroup, mapping = aes(x=tag,y=log10(us))) + 
+  geom_jitter(aes(color='blue'),alpha=0.2) +
+  geom_boxplot(fill="bisque",color="black",alpha=0.3) + 
+  labs(x='pe for Japan company') +
+  guides(color=FALSE) +
+  theme_minimal() 
+```

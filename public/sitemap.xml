@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>/tags/finance/</loc>
+    <lastmod>2020-06-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/2020/06/03/first-post-test/</loc>
     <lastmod>2020-06-03T00:00:00+00:00</lastmod>
   </url>
@@ -38,6 +43,11 @@
   </url>
   
   <url>
+    <loc>/post/2020/06/03/using-bins-on-japan-company-pes/</loc>
+    <lastmod>2020-06-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/2020/06/02/remap-factor-levels-column-add-reorder-df/</loc>
     <lastmod>2020-06-02T00:00:00+00:00</lastmod>
   </url>
@@ -50,11 +60,6 @@
   <url>
     <loc>/post/2020/06/01/working-with-dataset/</loc>
     <lastmod>2020-06-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/finance/</loc>
-    <lastmod>2020-05-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>

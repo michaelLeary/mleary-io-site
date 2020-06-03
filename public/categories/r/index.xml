@@ -21,6 +21,16 @@
     </item>
     
     <item>
+      <title>Using bins on Japan company PEs</title>
+      <link>/post/2020/06/03/using-bins-on-japan-company-pes/</link>
+      <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/06/03/using-bins-on-japan-company-pes/</guid>
+      <description>This note outlines a method for generating a frequency table with counts based on defined groups for the pe and market capitalization (in USD$) variables of a Japan company dataset. The data set is comprised of trailing pe computed for 2685 Japanese companies. The script code is modeled after that found at jdatalab
+ Table 1: Price-earnings ratio for Japan stocks    symbol  section  company  industry  p_e  us      9202.</description>
+    </item>
+    
+    <item>
       <title>Remap factor levels</title>
       <link>/post/2020/06/02/remap-factor-levels-column-add-reorder-df/</link>
       <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate>

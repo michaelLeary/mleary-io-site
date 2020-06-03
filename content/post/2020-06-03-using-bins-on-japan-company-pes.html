@@ -1,0 +1,417 @@
+---
+title: Using bins on Japan company PEs
+author: michael
+date: '2020-06-03'
+slug: using-bins-on-japan-company-pes
+categories:
+  - R
+tags:
+  - Finance
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>This note outlines a method for generating a frequency table with counts based on defined groups for the pe and market capitalization (in USD$) variables of a Japan company dataset. The data set is comprised of trailing pe computed for 2685 Japanese companies. The script code is modeled after that found at <a href="https://www.jdatalab.com/data_science_and_data_mining/2017/01/30/data-binning-plot.html">jdatalab</a></p>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:headds">Table 1: </span>Price-earnings ratio for Japan stocks
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+symbol
+</th>
+<th style="text-align:left;">
+section
+</th>
+<th style="text-align:left;">
+company
+</th>
+<th style="text-align:left;">
+industry
+</th>
+<th style="text-align:right;">
+p_e
+</th>
+<th style="text-align:right;">
+us
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+9202.T
+</td>
+<td style="text-align:left;">
+tse1
+</td>
+<td style="text-align:left;">
+ANA HOLDINGS INC.
+</td>
+<td style="text-align:left;">
+Air Transportation
+</td>
+<td style="text-align:right;">
+7.364669
+</td>
+<td style="text-align:right;">
+7830.81106
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9201.T
+</td>
+<td style="text-align:left;">
+tse1
+</td>
+<td style="text-align:left;">
+Japan Airlines Co.,Ltd. 
+</td>
+<td style="text-align:left;">
+Air Transportation
+</td>
+<td style="text-align:right;">
+4.593844
+</td>
+<td style="text-align:right;">
+6384.93088
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9232.T
+</td>
+<td style="text-align:left;">
+tse1
+</td>
+<td style="text-align:left;">
+PASCO CORPORATION
+</td>
+<td style="text-align:left;">
+Air Transportation
+</td>
+<td style="text-align:right;">
+17.616126
+</td>
+<td style="text-align:right;">
+219.34009
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9233.T
+</td>
+<td style="text-align:left;">
+tse2
+</td>
+<td style="text-align:left;">
+Asia Air Survey Co.,Ltd. 
+</td>
+<td style="text-align:left;">
+Air Transportation
+</td>
+<td style="text-align:right;">
+10.153129
+</td>
+<td style="text-align:right;">
+104.57143
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9206.T
+</td>
+<td style="text-align:left;">
+tse2
+</td>
+<td style="text-align:left;">
+Star Flyer Inc. 
+</td>
+<td style="text-align:left;">
+Air Transportation
+</td>
+<td style="text-align:right;">
+16.701111
+</td>
+<td style="text-align:right;">
+79.91705
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8306.T
+</td>
+<td style="text-align:left;">
+tse1
+</td>
+<td style="text-align:left;">
+Mitsubishi UFJ Financial Group,Inc. 
+</td>
+<td style="text-align:left;">
+Banks
+</td>
+<td style="text-align:right;">
+6.366761
+</td>
+<td style="text-align:right;">
+53663.43594
+</td>
+</tr>
+</tbody>
+</table>
+<p>A summary table of the dataset provides some indication of broad statistics such as mean and median, minimum and maximum values, the inter-quartile range and presence of NAs. The table indicates extreme outliers with negative value for minimum and high maximum values along with the NAs.</p>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:sumds">Table 2: </span>Summary of dataset
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+symbol
+</th>
+<th style="text-align:left;">
+section
+</th>
+<th style="text-align:left;">
+company
+</th>
+<th style="text-align:left;">
+industry
+</th>
+<th style="text-align:left;">
+p_e
+</th>
+<th style="text-align:left;">
+us
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Length:2685
+</td>
+<td style="text-align:left;">
+Length:2685
+</td>
+<td style="text-align:left;">
+Length:2685
+</td>
+<td style="text-align:left;">
+Length:2685
+</td>
+<td style="text-align:left;">
+Min. :-15837.500
+</td>
+<td style="text-align:left;">
+Min. : 0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Class :character
+</td>
+<td style="text-align:left;">
+Class :character
+</td>
+<td style="text-align:left;">
+Class :character
+</td>
+<td style="text-align:left;">
+Class :character
+</td>
+<td style="text-align:left;">
+1st Qu.: 6.322
+</td>
+<td style="text-align:left;">
+1st Qu.: 81.29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Mode :character
+</td>
+<td style="text-align:left;">
+Mode :character
+</td>
+<td style="text-align:left;">
+Mode :character
+</td>
+<td style="text-align:left;">
+Mode :character
+</td>
+<td style="text-align:left;">
+Median : 10.871
+</td>
+<td style="text-align:left;">
+Median : 241.42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Mean : 16.003
+</td>
+<td style="text-align:left;">
+Mean : 1908.74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3rd Qu.: 19.343
+</td>
+<td style="text-align:left;">
+3rd Qu.: 897.37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Max. : 8300.000
+</td>
+<td style="text-align:left;">
+Max. :203081.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA’s :6
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<p>After removing companies that had na values as well as cutting out companies with p/e ratios below zero and above 100 the refreshed summary table shows mean p/e of 16.3, median of 11.5 and an inter-quartile range of between 7 and 19. The frequency chart with a density curve provides a sense of the presence of outliers.</p>
+<p><img src="/post/2020-06-03-using-bins-on-japan-company-pes_files/figure-html/rawplot-1.png" width="672" /></p>
+<div id="data-binning" class="section level3">
+<h3>Data binning</h3>
+<p>Though the density plot is informative readability of the data may be improved by binning values into discrete categories and plotting the count of each bin in bars. The code chunk produces a factor group_tags that maps each p_e value into one of six bins. Each level is named by the string in the vector tags.</p>
+<pre class="r"><code># set up cut-off values 
+breaks &lt;- c(0,5,10,15,20,25,100)
+# specify interval/bin labels
+tags &lt;- c(&quot;[0-5)&quot;,&quot;[5-10)&quot;, &quot;[10-15)&quot;, &quot;[15-20)&quot;, &quot;[20-25)&quot;, &quot;[25-100)&quot;)
+# bucketing values into bins
+group_tags &lt;- cut(dsbelow$p_e, 
+                  breaks=breaks, 
+                  include.lowest=TRUE, 
+                  right=FALSE, 
+                  labels=tags)
+# inspect bins
+summary(group_tags)</code></pre>
+<pre><code>##    [0-5)   [5-10)  [10-15)  [15-20)  [20-25) [25-100) 
+##      258      742      533      281      179      406</code></pre>
+<pre class="r"><code>ggplot(data = as_tibble(group_tags), mapping = aes(x=value)) + 
+  geom_bar(fill=&quot;bisque&quot;,color=&quot;white&quot;,alpha=0.7) + 
+  stat_count(geom=&quot;text&quot;, aes(label=sprintf(&quot;%.4f&quot;,..count../length(group_tags))), vjust=-0.5) +
+  labs(x=&#39;pe Japan companies&#39;) +
+  theme_minimal() </code></pre>
+<p><img src="/post/2020-06-03-using-bins-on-japan-company-pes_files/figure-html/binplot-1.png" width="672" /></p>
+<p>An alternative approach that used the dplyr package defined bucket intervals, placed levels into buckets, and then stored groups in an appended column.</p>
+<ul>
+<li>First a vector that contains named bucket intervals was created.</li>
+</ul>
+<pre class="r"><code>tags &lt;- c(&quot;[0-5)&quot;,&quot;[5-10)&quot;, &quot;[10-15)&quot;, &quot;[15-20)&quot;, &quot;[20-25)&quot;, &quot;[25-100)&quot;)</code></pre>
+<pre class="r"><code>v &lt;- dsbelow %&gt;% select(p_e, us) #pick the variable 
+vgroup &lt;- as_tibble(v) %&gt;% 
+  mutate(tag = case_when(
+    p_e &lt; 5 ~ tags[1],
+    p_e &gt;= 5 &amp; p_e &lt; 10 ~ tags[2],
+    p_e &gt;= 10 &amp; p_e &lt; 15 ~ tags[3],
+    p_e &gt;= 15 &amp; p_e &lt; 20 ~ tags[4],
+    p_e &gt;= 20 &amp; p_e &lt; 25 ~ tags[5],
+    p_e &gt;= 25 &amp; p_e &lt; 100 ~ tags[6] 
+    ))
+summary(vgroup)</code></pre>
+<pre><code>##       p_e               us                tag           
+##  Min.   : 0.000   Min.   :     0.00   Length:2399       
+##  1st Qu.: 7.332   1st Qu.:    94.75   Class :character  
+##  Median :11.525   Median :   269.65   Mode  :character  
+##  Mean   :16.384   Mean   :  2059.77                     
+##  3rd Qu.:19.639   3rd Qu.:   986.21                     
+##  Max.   :99.202   Max.   :203081.69</code></pre>
+<ul>
+<li>then the appended column was converted to a factor</li>
+</ul>
+<pre class="r"><code>vgroup$tag &lt;- factor(vgroup$tag,
+                       levels = tags,
+                       ordered = FALSE)
+summary(vgroup$tag)</code></pre>
+<pre><code>##    [0-5)   [5-10)  [10-15)  [15-20)  [20-25) [25-100) 
+##      258      742      533      281      179      406</code></pre>
+<p>A box plot is shown of the distribution of market capitalization (USD$) for each level of pe for Japan companies.</p>
+<pre class="r"><code>ggplot(data = vgroup, mapping = aes(x=tag,y=log10(us))) + 
+  geom_jitter(aes(color=&#39;blue&#39;),alpha=0.2) +
+  geom_boxplot(fill=&quot;bisque&quot;,color=&quot;black&quot;,alpha=0.3) + 
+  labs(x=&#39;pe for Japan company&#39;) +
+  guides(color=FALSE) +
+  theme_minimal() </code></pre>
+<p><img src="/post/2020-06-03-using-bins-on-japan-company-pes_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+</div>
