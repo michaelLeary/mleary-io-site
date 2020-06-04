@@ -6,10 +6,19 @@
     <description>Recent content in R on Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 03 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Copper price</title>
+      <link>/note/2020/06/04/copper-price/</link>
+      <pubDate>Thu, 04 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/note/2020/06/04/copper-price/</guid>
+      <description>The trigger to the note is the recent rise in copper, iron ore, and, several agricultural commodities including rice and sugar. Iron ore and copper are typically associated with a rise in industrial activity. By examining the recent rise in context of past movements we hoped to gain a deeper appreciation of where things stand with these two commodities. A further hope was to setup a method to extract such price data for these price series efficiently in future.</description>
+    </item>
     
     <item>
       <title>First post test</title>

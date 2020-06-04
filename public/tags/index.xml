@@ -6,17 +6,44 @@
     <description>Recent content in Tags on Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 03 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Copper</title>
+      <link>/tags/copper/</link>
+      <pubDate>Thu, 04 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/copper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Finance</title>
       <link>/tags/finance/</link>
-      <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 04 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/finance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Metals</title>
+      <link>/tags/metals/</link>
+      <pubDate>Thu, 04 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/metals/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Prices</title>
+      <link>/tags/prices/</link>
+      <pubDate>Thu, 04 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/prices/</guid>
       <description></description>
     </item>
     
