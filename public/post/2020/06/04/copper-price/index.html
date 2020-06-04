@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Copper price | Thoughts</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+      <li><a href="/index.xml">Subscribe</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">Copper price</span></h1>
+<h2 class="author">michael</h2>
+<h2 class="date">2020/06/04</h2>
+</div>
+
+<main>
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>The trigger to the note is the recent rise in copper, iron ore, and, several agricultural commodities including rice and sugar. Iron ore and copper are typically associated with a rise in industrial activity. By examining the recent rise in context of past movements we hoped to gain a deeper appreciation of where things stand with these two commodities. A further hope was to setup a method to extract such price data for these price series efficiently in future.</p>
+<p>There are several sources of price data that seem accessible. The federal reserve bank of St. Louis provides data for global copper price in US$ per tonne. It is a series constructed with International Monetary Fund data and the frequency is monthly .</p>
+<p>The Comex exchange has futures and options price data for copper that is expressed in $/lbs. <a href="https://www.cmegroup.com/trading/metals/base/copper_quotes_globex.html?optionProductId=797&amp;optionExpiration=797-U0">Comex</a> exchange copper contracts for end July are trading at US$2.5085 / lbs or equivalent to $5534/tonne. That level stands 10% below the start of 2020.</p>
+<p>A separate source of price data is from the www.macrotrends.net website where copper is expressed in $/lbs. The series has a daily frequency and starts in 1959 to the present. For the time being have used that data series for the purpose of understanding how to create the index charts for this project. From that data three indexes are created that show the 1 year, 5 year and full life trend in copper price.</p>
+<p><img src="/post/2020-06-04-copper-price_files/figure-html/copper-1.png" width="960" /></p>
+<p><img src="/post/2020-06-04-copper-price_files/figure-html/copperindex-1.png" width="960" /></p>
+<p><img src="/post/2020-06-04-copper-price_files/figure-html/copperindex5yr-1.png" width="960" /></p>
+<p><img src="/post/2020-06-04-copper-price_files/figure-html/copperindex1yr-1.png" width="960" /></p>
+
+</main>
+
+  <footer>
+  <script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+  
+  <hr/>
+  © <a href="https://github.com/michaelleary">Github</a>
+  
+  </footer>
+  </body>
+</html>
+
