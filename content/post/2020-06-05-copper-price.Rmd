@@ -1,0 +1,265 @@
+---
+title: Copper price
+author: michael
+date: '2020-06-05'
+slug: copper-price
+categories:
+  - R
+tags:
+  - Finance
+---
+
+```{r generalref, include=FALSE}
+# setup header tex file: Biblio style is key. 
+# https://www.overleaf.com/learn/latex/biblatex_citation_styles
+#https://stackoverflow.com/questions/49042613/how-to-change-citation-style-in-biblatex-in-r-markdown
+#https://stackoverflow.com/questions/49466050/r-markdown-pdf-and-fancyhdr-how-to-add-special-characters-and-link-to-footer
+# language: https://stackoverflow.com/questions/30384556/how-do-i-convert-a-markdown-document-with-japanese-to-beamer
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE, include=FALSE}
+# Packages
+devtools::install_github("sboysel/fredr", force=TRUE)
+devtools::install_github("r-lib/here")
+library(fredr)
+library(here)
+pkgs = c("dplyr", "ggplot2", "tidyverse", "purrr", "xts", "httr", "scales", "ggpubr", "gridExtra", "knitcitations", "RefManageR", "showtext", "data.table", "lubridate") 
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+```{r font, include=FALSE}
+font_install(source_han_serif())
+font_families()
+```
+
+```{r biboptions, include=FALSE}
+BibOptions("first.inits", "bib.style")
+```
+
+```{r readinBib, include=FALSE}
+bib <- ReadBib("/Users/michaelleary/Documents/GitHub/econ_data/prices.bib")
+```
+
+```{r, include=FALSE}
+# Fred API key
+current_key <- Sys.getenv("FRED_API_KEY")
+Sys.getenv("FRED_API_KEY")
+```
+
+```{r, include=FALSE}
+# get data 
+PCOPPUSDM <- fredr(series_id = "PCOPPUSDM",
+  observation_start = as.Date("1990-01-01")
+)
+
+```
+
+```{r copperplot, echo=FALSE, fig.width=10, warning=FALSE, include=FALSE}
+  copperplot <- PCOPPUSDM %>%
+  ggplot(data = ., mapping = aes(x = date, y = value, color = value)) +
+    geom_line() +
+    labs(x = "", y = "Rate US$ per metric ton", color = "Series",
+         title = "Global price of copper - monthly",
+         caption = "International Monetary Fund data, fred.stlouisfed.org")
+
+```
+
+The trigger to the note is the recent rise in copper, iron ore, and, several agricultural commodities including rice and sugar. Iron ore and copper are typically associated with a rise in industrial activity. By examining the recent rise in context of past movements we hoped to gain a deeper appreciation of where things stand with these two commodities. A further hope was to setup a method to extract such price data for these price series efficiently in future. 
+
+There are several sources of price data that seem accessible. The federal reserve bank of St. Louis provides data for global copper price in US$ per tonne. It is a series constructed with International Monetary Fund data and the frequency is monthly \autocite[]{Fund:2020aa}. 
+
+```{r, echo=FALSE}
+copperplot
+```
+
+The Comex exchange has futures and options price data for copper that is expressed in $/lbs. [Comex](https://www.cmegroup.com/trading/metals/base/copper_quotes_globex.html?optionProductId=797&optionExpiration=797-U0) exchange copper contracts for end July are trading at US\$2.5085 / lbs or equivalent to \$5534/tonne. That level stands 10% below the start of 2020.
+
+A separate source of price data is from the www.macrotrends.net website where copper is expressed in $/lbs. The series has a daily frequency and starts in 1959 to the present. For the time being have used that data series for the purpose of understanding how to create the index charts for this project. From that data three indexes are created that show the 1 year, 5 year and full life trend in copper price. 
+
+```{r, include=FALSE}
+# read in data using data table fread
+# https://www.r-bloggers.com/how-data-tables-fread-can-save-you-a-lot-of-time-and-memory-and-take-input-from-shell-commands/
+
+dataDir <- path.expand("~/Documents/GitHub/econ_data")
+dataFls <- dir(dataDir, pattern = "csv$", full.names = TRUE)
+dt <- data.table::rbindlist(
+lapply(dataFls, data.table::fread, showProgress = FALSE)
+)
+```
+
+```{r, include=FALSE}
+str(dt)
+```
+
+```{r, include=FALSE}
+head(dt,30)
+```
+```{r, include=FALSE}
+# change column to date format using as.Date
+
+dt1 <- dt
+dt1$date <- as.Date(dt1$date, tz=NULL)
+str(dt1)
+tail(dt1)
+
+```
+```{r, include=FALSE}
+# method 1 to create an index 
+dt1.trans <- transform(dt1, A.index = 100*value/value[1]) 
+dt1.trans
+tail(dt1.trans)
+```
+```{r, include=FALSE}
+# 2nd method of index creation with more than one column using matrix
+
+# save row dates in a date vector
+dt1datecol <- dt1$date
+
+# convert df to matrix
+dt1matrix <- as.matrix(dt1[,-1])
+head(dt1matrix)
+tail(dt1matrix)
+
+# apply function to generate index
+dt1matrix.index <- apply(dt1matrix,2,function(y) 100 * y/y[1])
+tail(dt1matrix.index)
+
+# cbind the genearted index to the values column 
+dt1mat <- cbind(dt1matrix,dt1matrix.index)
+
+# convert back to data frame
+dt1mat.df <- as.data.frame(dt1mat)
+str(dt1mat.df)
+dt1mat.df
+
+# change column name using index vector for clarity 
+colnames(dt1mat.df)
+names(dt1mat.df)[2] <- "index"
+dt1mat.df
+
+# add back date from matrix conversion to df 
+dt1matdate <- cbind(dt1datecol, dt1mat.df)
+tail(dt1matdate)
+```
+
+```{r copperindex, fig.width = 10, echo=FALSE, warning=FALSE}
+dt1matdate   %>%
+  ggplot(data = ., mapping = aes(x = dt1datecol, y = index, color = index)) +
+    geom_line() +
+    labs(x = "", y = "Index ", color = "Series",
+         title = "Index of copper price - daily",
+         caption = "www.macrotrends.net data")
+```
+
+```{r, include=FALSE}
+# subset data for past five year, reindex from t-5 years, plot
+
+# subset data
+head(dt1)
+
+dt5yr <- dt1 %>%
+  select(date, value) %>%
+  filter(date >= Sys.Date()-1825)
+
+```
+
+```{r, include=FALSE}
+# method of index creation with more than one column
+
+# save row dates in a date vector
+dt5yrdatecol <- dt5yr$date
+
+# convert df to matrix
+dt5yrmatrix <- as.matrix(dt5yr[,-1])
+head(dt5yrmatrix)
+tail(dt5yrmatrix)
+
+# apply function to generate index
+dt5yrmatrix.index <- apply(dt5yrmatrix,2,function(y) 100 * y/y[1])
+tail(dt5yrmatrix.index)
+
+# cbind the genearted index to the values column 
+dt5yrmat <- cbind(dt5yrmatrix,dt5yrmatrix.index)
+
+# convert back to data frame
+dt5yrmat.df <- as.data.frame(dt5yrmat)
+str(dt5yrmat.df)
+dt5yrmat.df
+
+# change column name using index vector for clarity 
+colnames(dt5yrmat.df)
+names(dt5yrmat.df)[2] <- "index"
+dt5yrmat.df
+
+# add back date from matrix conversion to df 
+dt5yrmatdate <- cbind(dt5yrdatecol, dt5yrmat.df)
+dt5yrmatdate
+```
+
+```{r copperindex5yr, fig.width = 10, echo=FALSE, warning=FALSE}
+dt5yrmatdate   %>%
+  ggplot(data = ., mapping = aes(x = dt5yrdatecol, y = index, color = index)) +
+    geom_line() +
+    labs(x = "", y = "Index ", color = "Series",
+         title = "5 year Index of copper price - daily",
+         caption = "www.macrotrends.net data")
+```
+
+```{r, include=FALSE}
+# subset data for past year, reindex from t-1 years, plot
+# subset data
+head(dt1)
+
+dt1yr <- dt1 %>%
+  select(date, value) %>%
+  filter(date >= Sys.Date()-365)
+
+```
+
+```{r, include=FALSE}
+# method of index creation with more than one column
+
+# save row dates in a date vector
+dt1yrdatecol <- dt1yr$date
+
+# convert df to matrix
+dt1yrmatrix <- as.matrix(dt1yr[,-1])
+head(dt1yrmatrix)
+tail(dt1yrmatrix)
+
+# apply function to generate index
+dt1yrmatrix.index <- apply(dt1yrmatrix,2,function(y) 100 * y/y[1])
+tail(dt1yrmatrix.index)
+
+# cbind the genearted index to the values column 
+dt1yrmat <- cbind(dt1yrmatrix,dt1yrmatrix.index)
+
+# convert back to data frame
+dt1yrmat.df <- as.data.frame(dt1yrmat)
+str(dt1yrmat.df)
+dt1yrmat.df
+
+# change column name using index vector for clarity 
+colnames(dt1yrmat.df)
+names(dt1yrmat.df)[2] <- "index"
+dt1yrmat.df
+
+# add back date from matrix conversion to df 
+dt1yrmatdate <- cbind(dt1yrdatecol, dt1yrmat.df)
+dt1yrmatdate
+```
+
+```{r copperindex1yr, fig.width = 10, echo=FALSE, warning=FALSE}
+dt1yrmatdate   %>%
+  ggplot(data = ., mapping = aes(x = dt1yrdatecol, y = index, color = index)) +
+    geom_line() +
+    labs(x = "", y = "Index ", color = "Series",
+         title = "1 year Index of copper price - daily",
+         caption = "www.macrotrends.net data")
+
+```
