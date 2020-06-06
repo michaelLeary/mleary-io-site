@@ -1,30 +1,42 @@
-<script src="2020-06-06-food-consumption-by-country_files/header-attrs/header-attrs.js"></script>
-<script src="2020-06-06-food-consumption-by-country_files/kePrint/kePrint.js"></script>
+---
+title: Food consumption by country
+author: michael
+date: '2020-06-06'
+slug: food-consumption-by-country
+categories:
+  - R
+tags:
+  - Agriculture
+  - Food
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
 
 
 <p>Output from this script provides charts of consumption of various food categories (in terms of kg/person/year) by country. The data is sourced from Food and Agriculture Organization of the United Nations as of 2018 and published by <a href="https://www.nu3.de/blogs/nutrition/food-carbon-footprint-index-2018">nu3</a>.</p>
 <p>The script extracts an html table data from the website, tidies the extracted data, and, generates charts. The script is virtually all written by <a href="https://r-tastic.co.uk/post/from-messy-to-tidy/">Kasia Kulma</a>.</p>
 <pre class="r"><code>url &lt;- &quot;https://www.nu3.de/blogs/nutrition/food-carbon-footprint-index-2018&quot;</code></pre>
 <pre class="r"><code>us_foodplot</code></pre>
-<p><img src="2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <pre class="r"><code>china_foodplot</code></pre>
-<p><img src="2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <pre class="r"><code>india_foodplot</code></pre>
-<p><img src="2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <pre class="r"><code>Japan_foodplot</code></pre>
-<p><img src="2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <pre class="r"><code>Nigeria_foodplot</code></pre>
-<p><img src="2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <pre class="r"><code>uschina_foodplot</code></pre>
-<p><img src="2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <pre class="r"><code>usindia_foodplot</code></pre>
-<p><img src="2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <pre class="r"><code>indiachina_foodplot</code></pre>
-<p><img src="2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <pre class="r"><code>franceus_foodplot</code></pre>
-<p><img src="2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <pre class="r"><code>franceindia_foodplot</code></pre>
-<p><img src="2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:countrynames">Table 1: </span>Country list

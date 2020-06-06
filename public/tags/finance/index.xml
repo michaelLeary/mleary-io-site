@@ -36,7 +36,7 @@
       <pubDate>Fri, 29 May 2020 00:00:00 +0000</pubDate>
       
       <guid>/post/2020/05/29/s-p-component-performance/</guid>
-      <description># chart triggers fromMax = 0  (#tab:sub.itable)Industrials since start 2020    symbol  sector  curr_price  min_price  max_price  pctchange_from_max      UAL  Industrials  28.89  19.92  89.74  -68    AAL  Industrials  10.98  9.04  30.47  -64    DAL  Industrials  25.66  19.19  61.60  -58    BA  Industrials  149.</description>
+      <description># chart triggers fromMax = 0  (#tab:sub.itable)Industrials since start 2020    symbol  sector  curr_price  min_price  max_price  pctchange_from_max      UAL  Industrials  42.41  19.92  89.74  -53    DAL  Industrials  34.16  19.19  61.60  -45    BA  Industrials  205.43  95.01  345.40  -41    GE  Industrials  7.</description>
     </item>
     
     <item>
@@ -45,7 +45,7 @@
       <pubDate>Fri, 29 May 2020 00:00:00 +0000</pubDate>
       
       <guid>/post/2020/05/29/s-p500-performance/</guid>
-      <description># chart triggers fromMax = -60 laggards  by constituent  (#tab:sum.sp500)Price change for sp500 constituents since start 2020    symbol  sector  curr_price  min_price  max_price  pctchange_from_max      NCLH  Consumer Discretionary  16.070  7.77  59.65  -73    OXY  Energy  13.640  9.69  45.87  -70    CCL  Consumer Discretionary  15.</description>
+      <description># chart triggers fromMax = -60 laggards  by constituent  (#tab:sum.sp500)Price change for sp500 constituents since start 2020    symbol  sector  curr_price  min_price  max_price  pctchange_from_max      NCLH  Consumer Discretionary  22.43  7.77  59.65  -62    CCL  Consumer Discretionary  21.51  7.97  51.30  -58    COTY  Consumer Staples  5.</description>
     </item>
     
     <item>

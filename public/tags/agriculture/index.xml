@@ -17,8 +17,9 @@
       <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/post/2020/06/06/food-consumption-by-country/</guid>
-      <description>Output from this script provides charts of consumption of various food categories (in terms kg/person/year) by country and country groupings. The generated charts use the consumption per person though in the nu3 website that is the source of the data placed emphasis on CO2/person/year.
-The script extracts an html table data from a website, tidies the extracted data in R, and, then generates charts that show relationships from the data.</description>
+      <description>Output from this script provides charts of consumption of various food categories (in terms of kg/person/year) by country. The data is sourced from Food and Agriculture Organization of the United Nations as of 2018 and published by nu3.
+The script extracts an html table data from the website, tidies the extracted data, and, generates charts. The script is virtually all written by Kasia Kulma.
+url &amp;lt;- &amp;quot;https://www.nu3.de/blogs/nutrition/food-carbon-footprint-index-2018&amp;quot; us_foodplot china_foodplot india_foodplot Japan_foodplot Nigeria_foodplot uschina_foodplot usindia_foodplot indiachina_foodplot franceus_foodplot franceindia_foodplot  Table 1: Country list    x      Argentina    Australia    Albania    Iceland    New Zealand    USA    Uruguay    Luxembourg    Brazil    Kazakhstan    Sweden    Bermuda    Denmark    Finland    Ireland    Greece    France    Canada    Norway    Hong Kong SAR.</description>
     </item>
     
     <item>

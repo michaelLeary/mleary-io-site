@@ -39,9 +39,8 @@
 <script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
 
 
-<p>Output from this script provides charts of consumption of various food categories (in terms kg/person/year) by country and country groupings. The generated charts use the consumption per person though in the nu3 website that is the source of the data placed emphasis on CO2/person/year.</p>
-<p>The script extracts an html table data from a website, tidies the extracted data in R, and, then generates charts that show relationships from the data. The script is virtually all written by <a href="https://r-tastic.co.uk/post/from-messy-to-tidy/">Kasia Kulma</a>. The added contribution to Kasia’s script is converting character variables to factor and numeric. And then short script to generate the following charts.</p>
-<p>The data is based on that provided by Food and Agriculture Organization of the United Nations as of 2018. Raw table has been extracted from the table published <a href="https://www.nu3.de/blogs/nutrition/food-carbon-footprint-index-2018">nu3</a>.</p>
+<p>Output from this script provides charts of consumption of various food categories (in terms of kg/person/year) by country. The data is sourced from Food and Agriculture Organization of the United Nations as of 2018 and published by <a href="https://www.nu3.de/blogs/nutrition/food-carbon-footprint-index-2018">nu3</a>.</p>
+<p>The script extracts an html table data from the website, tidies the extracted data, and, generates charts. The script is virtually all written by <a href="https://r-tastic.co.uk/post/from-messy-to-tidy/">Kasia Kulma</a>.</p>
 <pre class="r"><code>url &lt;- &quot;https://www.nu3.de/blogs/nutrition/food-carbon-footprint-index-2018&quot;</code></pre>
 <pre class="r"><code>us_foodplot</code></pre>
 <p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>

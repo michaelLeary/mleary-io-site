@@ -17,8 +17,9 @@
       <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/post/2020/06/06/food-consumption-by-country/</guid>
-      <description>Output from this script provides charts of consumption of various food categories (in terms kg/person/year) by country and country groupings. The generated charts use the consumption per person though in the nu3 website that is the source of the data placed emphasis on CO2/person/year.
-The script extracts an html table data from a website, tidies the extracted data in R, and, then generates charts that show relationships from the data.</description>
+      <description>Output from this script provides charts of consumption of various food categories (in terms of kg/person/year) by country. The data is sourced from Food and Agriculture Organization of the United Nations as of 2018 and published by nu3.
+The script extracts an html table data from the website, tidies the extracted data, and, generates charts. The script is virtually all written by Kasia Kulma.
+url &amp;lt;- &amp;quot;https://www.nu3.de/blogs/nutrition/food-carbon-footprint-index-2018&amp;quot; us_foodplot china_foodplot india_foodplot Japan_foodplot Nigeria_foodplot uschina_foodplot usindia_foodplot indiachina_foodplot franceus_foodplot franceindia_foodplot  Table 1: Country list    x      Argentina    Australia    Albania    Iceland    New Zealand    USA    Uruguay    Luxembourg    Brazil    Kazakhstan    Sweden    Bermuda    Denmark    Finland    Ireland    Greece    France    Canada    Norway    Hong Kong SAR.</description>
     </item>
     
     <item>
@@ -74,7 +75,7 @@ To achieve that the source variable in the data frame was converted to factor ty
       <pubDate>Fri, 29 May 2020 00:00:00 +0000</pubDate>
       
       <guid>/post/2020/05/29/s-p-component-performance/</guid>
-      <description># chart triggers fromMax = 0  (#tab:sub.itable)Industrials since start 2020    symbol  sector  curr_price  min_price  max_price  pctchange_from_max      UAL  Industrials  28.89  19.92  89.74  -68    AAL  Industrials  10.98  9.04  30.47  -64    DAL  Industrials  25.66  19.19  61.60  -58    BA  Industrials  149.</description>
+      <description># chart triggers fromMax = 0  (#tab:sub.itable)Industrials since start 2020    symbol  sector  curr_price  min_price  max_price  pctchange_from_max      UAL  Industrials  42.41  19.92  89.74  -53    DAL  Industrials  34.16  19.19  61.60  -45    BA  Industrials  205.43  95.01  345.40  -41    GE  Industrials  7.</description>
     </item>
     
     <item>
@@ -83,7 +84,7 @@ To achieve that the source variable in the data frame was converted to factor ty
       <pubDate>Fri, 29 May 2020 00:00:00 +0000</pubDate>
       
       <guid>/post/2020/05/29/s-p500-performance/</guid>
-      <description># chart triggers fromMax = -60 laggards  by constituent  (#tab:sum.sp500)Price change for sp500 constituents since start 2020    symbol  sector  curr_price  min_price  max_price  pctchange_from_max      NCLH  Consumer Discretionary  16.070  7.77  59.65  -73    OXY  Energy  13.640  9.69  45.87  -70    CCL  Consumer Discretionary  15.</description>
+      <description># chart triggers fromMax = -60 laggards  by constituent  (#tab:sum.sp500)Price change for sp500 constituents since start 2020    symbol  sector  curr_price  min_price  max_price  pctchange_from_max      NCLH  Consumer Discretionary  22.43  7.77  59.65  -62    CCL  Consumer Discretionary  21.51  7.97  51.30  -58    COTY  Consumer Staples  5.</description>
     </item>
     
     <item>
