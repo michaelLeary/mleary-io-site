@@ -76,20 +76,21 @@
 <h3>Getting started</h3>
 <p>General reading around the subject suggested that shares of dry bulk shipping companies may serve as proxies for BDI.</p>
 <p>Initial focus was on 8 companies most readily identifiable from web search. Share price declines have been marked with a percentage decline of between 52-77% since the start of year - well below that of the S&amp;P500 and Dow Jones Industrial indexes.</p>
+<pre><code>## `summarise()` regrouping output by &#39;symbol&#39; (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 10 x 6
 ## # Groups:   symbol [10]
 ##    symbol company               curr_price min_price max_price pctchange_from_m…
 ##    &lt;fct&gt;  &lt;fct&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;             &lt;dbl&gt;
-##  1 ^GSPC  S&amp;P 500 Index            3036.     2237.     3386.                 -10
-##  2 ^DJI   Dow Jones Industrial…   25548.    18592.    29551.                 -14
-##  3 SB     Safe Bulkers, Inc           0.98      0.84      1.74               -44
-##  4 CMRE   Costamare Inc.              5.1       3.48     10.4                -51
-##  5 GNK    Genco Shipping &amp; Tra…       4.99      4.49     10.1                -51
-##  6 DSX    Diana Shipping Inc.         1.44      1.27      3.08               -53
-##  7 EGLE   Eagle Bulk Shipping …       2.05      1.38      4.51               -55
-##  8 SBLK   Star Bulk Carriers C…       5.19      3.92     11.7                -56
-##  9 SALT   Scorpio Bulkers            18.6      14.5      63.1                -71
-## 10 SHIP   Seanergy Maritime Ho…       0.13      0.13      0.54               -76</code></pre>
+##  1 ^GSPC  S&amp;P 500 Index            3112.     2237.     3386.                  -8
+##  2 ^DJI   Dow Jones Industrial…   26282.    18592.    29551.                 -11
+##  3 GNK    Genco Shipping &amp; Tra…       6.49      4.49     10.1                -36
+##  4 SB     Safe Bulkers, Inc           1.12      0.84      1.74               -36
+##  5 DSX    Diana Shipping Inc.         1.82      1.27      3.08               -41
+##  6 SBLK   Star Bulk Carriers C…       6.32      3.92     11.7                -46
+##  7 EGLE   Eagle Bulk Shipping …       2.3       1.38      4.51               -49
+##  8 CMRE   Costamare Inc.              5         3.48     10.4                -52
+##  9 SALT   Scorpio Bulkers            21.7      14.5      63.1                -66
+## 10 SHIP   Seanergy Maritime Ho…       0.14      0.12      0.54               -74</code></pre>
 <p>That decline is evident in the following plots that chart the trend in share price since the start of 2020.</p>
 <p><img src="/post/2020-05-14-moving-grains-dry-bulk_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>One gauge of financial strength is taken as how much debt the company carries relative to its cash and liquid resources. The latest data for that was extracted from each company’s financial accounts. After computing the difference between debt and liquid assets the result was compared to the shareholders equity for each company.</p>

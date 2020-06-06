@@ -66,7 +66,7 @@ The composition of Suzuki’s revenue and operating profit show clearly that car
       <guid>/post/2020/05/27/company-results-template-balance-sheet/</guid>
       <description>Balance sheet secure Even though there was a draw down of cash during the year Suzuki’s balance sheet remains strong with ending net cash and securities of JPY1677 billion or US$15 billion equivalent to JPY3,579/share.
 In light of ongoing uncertainties in the durability of future demand management has flagged that it intends to continue to strengthen the balance sheet.
-## Item FY2019 FY2018 pct abschange ## 34 debt 404193 375437 7.</description>
+## Item FY2019 FY2018 pct abschange ## 1: debt 404193 375437 7.</description>
     </item>
     
     <item>
@@ -76,7 +76,7 @@ In light of ongoing uncertainties in the durability of future demand management 
       
       <guid>/post/2020/05/27/company-results-template-headline-numbers/</guid>
       <description>Headine figures Suzuki announced a 10% reduction in net sales for the year to JPY 3488 billion or US$32.4 billion. Operating income fell 34% to JPY 215 billion or US$2 billion. Earnings per share declined 28% to JPY286/share. Despite the reported decline registered and further weakness projected ahead the company balance sheet remains strong and management declared a special dividend.
-## Item FY2019 FY2018 pct abschange ## 1 net_sales 3488433.</description>
+## Item FY2019 FY2018 pct abschange ## 1: net_sales 3488433.</description>
     </item>
     
     <item>
@@ -97,7 +97,7 @@ headline earnings; revenue and operating profit mix; balance sheet position; cas
       <guid>/post/2020/05/27/company-results-template/</guid>
       <description>Purpose Thought process and actions steps following on earnings announcement. The example am using is the fourth quarter results posted by Suzuki Motors (7269.T, JPY3700) for period ended 2020-03-31.
 Recent price performance Recent price analysis versus benchmarks show the shares of Suzuki remain 26% below the peak in the year and below that of the Nikkei and Dow Jones.
-## # A tibble: 3 x 6 ## # Groups: symbol [3] ## symbol company curr_price min_price max_price pctchange_from_max ## &amp;lt;fct&amp;gt; &amp;lt;fct&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; ## 1 ^N225 N225 Index 21419.</description>
+## `summarise()` regrouping output by &amp;#39;symbol&amp;#39; (override with `.groups` argument) ## # A tibble: 3 x 6 ## # Groups: symbol [3] ## symbol company curr_price min_price max_price pctchange_from_max ## &amp;lt;fct&amp;gt; &amp;lt;fct&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; ## 1 ^N225 N225 Index 22864.</description>
     </item>
     
     <item>

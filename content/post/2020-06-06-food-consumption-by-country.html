@@ -1,0 +1,773 @@
+---
+title: Food consumption by country
+author: michael
+date: '2020-06-06'
+slug: food-consumption-by-country
+categories:
+  - R
+tags:
+  - Agriculture
+  - Food
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>Output from this script provides charts of consumption of various food categories (in terms kg/person/year) by country and country groupings. The generated charts use the consumption per person though in the nu3 website that is the source of the data placed emphasis on CO2/person/year.</p>
+<p>The script extracts an html table data from a website, tidies the extracted data in R, and, then generates charts that show relationships from the data. The script is virtually all written by <a href="https://r-tastic.co.uk/post/from-messy-to-tidy/">Kasia Kulma</a>. The added contribution to Kasia’s script is converting character variables to factor and numeric. And then short script to generate the following charts.</p>
+<p>The data is based on that provided by Food and Agriculture Organization of the United Nations as of 2018. Raw table has been extracted from the table published <a href="https://www.nu3.de/blogs/nutrition/food-carbon-footprint-index-2018">nu3</a>.</p>
+<pre class="r"><code>url &lt;- &quot;https://www.nu3.de/blogs/nutrition/food-carbon-footprint-index-2018&quot;</code></pre>
+<pre class="r"><code>us_foodplot</code></pre>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>china_foodplot</code></pre>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>india_foodplot</code></pre>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre class="r"><code>Japan_foodplot</code></pre>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<pre class="r"><code>Nigeria_foodplot</code></pre>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code>uschina_foodplot</code></pre>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre class="r"><code>usindia_foodplot</code></pre>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre class="r"><code>indiachina_foodplot</code></pre>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<pre class="r"><code>franceus_foodplot</code></pre>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<pre class="r"><code>franceindia_foodplot</code></pre>
+<p><img src="/post/2020-06-06-food-consumption-by-country_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:countrynames">Table 1: </span>Country list
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+x
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Argentina
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Australia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Albania
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Iceland
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+New Zealand
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+USA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Uruguay
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Luxembourg
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brazil
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kazakhstan
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sweden
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bermuda
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Denmark
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Finland
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ireland
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Greece
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+France
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Canada
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Norway
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hong Kong SAR. China
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+French Polynesia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Israel
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Switzerland
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Netherlands
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kuwait
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+United Kingdom
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Austria
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Oman
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Italy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bahamas
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Portugal
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Malta
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Armenia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Slovenia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chile
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Venezuela
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Belgium
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Germany
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Russia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Croatia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Belarus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Spain
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Paraguay
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+New Caledonia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+South Africa
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Barbados
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lithuania
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Turkey
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Estonia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mexico
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Costa Rica
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bolivia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ecuador
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Panama
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Czech Republic
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Romania
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Colombia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Maldives
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cyprus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Serbia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+United Arab Emirates
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Algeria
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ukraine
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pakistan
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Swaziland
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Latvia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bosnia and Herzegovina
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fiji
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+South Korea
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Poland
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Saudi Arabia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Botswana
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Macedonia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hungary
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Trinidad and Tobago
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tunisia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Egypt
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mauritius
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bulgaria
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Morocco
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Slovakia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Niger
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kenya
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jordan
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Japan
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Georgia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Grenada
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+El Salvador
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cuba
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+China
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Honduras
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Taiwan. ROC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Angola
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jamaica
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Namibia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Belize
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Malaysia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Zimbabwe
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Guatemala
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Uganda
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nepal
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Iran
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tanzania
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Senegal
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Peru
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nicaragua
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vietnam
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ethiopia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Myanmar
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Congo
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Zambia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cameroon
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Madagascar
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Malawi
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Guinea
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nigeria
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rwanda
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Philippines
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ghana
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Togo
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gambia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+India
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Thailand
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mozambique
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cambodia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sierra Leone
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sri Lanka
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indonesia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Liberia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bangladesh
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:foodcategory">Table 2: </span>Food categories within data table
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+x
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Pork
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Poultry
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Beef
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lamb &amp; Goat
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fish
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Eggs
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Milk - inc. cheese
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Wheat and Wheat Products
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rice
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Soybeans
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nuts inc. Peanut Butter
+</td>
+</tr>
+</tbody>
+</table>

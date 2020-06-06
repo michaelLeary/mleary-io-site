@@ -38,7 +38,7 @@ To achieve that the source variable in the data frame was converted to factor ty
       <guid>/post/2020/05/27/company-results-template/</guid>
       <description>Purpose Thought process and actions steps following on earnings announcement. The example am using is the fourth quarter results posted by Suzuki Motors (7269.T, JPY3700) for period ended 2020-03-31.
 Recent price performance Recent price analysis versus benchmarks show the shares of Suzuki remain 26% below the peak in the year and below that of the Nikkei and Dow Jones.
-## # A tibble: 3 x 6 ## # Groups: symbol [3] ## symbol company curr_price min_price max_price pctchange_from_max ## &amp;lt;fct&amp;gt; &amp;lt;fct&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; ## 1 ^N225 N225 Index 21419.</description>
+## `summarise()` regrouping output by &amp;#39;symbol&amp;#39; (override with `.groups` argument) ## # A tibble: 3 x 6 ## # Groups: symbol [3] ## symbol company curr_price min_price max_price pctchange_from_max ## &amp;lt;fct&amp;gt; &amp;lt;fct&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; ## 1 ^N225 N225 Index 22864.</description>
     </item>
     
     <item>

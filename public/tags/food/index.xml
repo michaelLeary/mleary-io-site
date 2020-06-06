@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Food on Thoughts</title>
+    <link>/tags/food/</link>
+    <description>Recent content in Food on Thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/food/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Food consumption by country</title>
+      <link>/post/2020/06/06/food-consumption-by-country/</link>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/06/06/food-consumption-by-country/</guid>
+      <description>Output from this script provides charts of consumption of various food categories (in terms kg/person/year) by country and country groupings. The generated charts use the consumption per person though in the nu3 website that is the source of the data placed emphasis on CO2/person/year.
+The script extracts an html table data from a website, tidies the extracted data in R, and, then generates charts that show relationships from the data.</description>
+    </item>
+    
+  </channel>
+</rss>

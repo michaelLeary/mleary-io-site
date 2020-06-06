@@ -19,30 +19,31 @@ tags:
 <div id="recent-price-performance" class="section level2">
 <h2>Recent price performance</h2>
 <p>Recent price analysis versus benchmarks show the shares of Suzuki remain 26% below the peak in the year and below that of the Nikkei and Dow Jones.</p>
+<pre><code>## `summarise()` regrouping output by &#39;symbol&#39; (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 3 x 6
 ## # Groups:   symbol [3]
 ##   symbol company         curr_price min_price max_price pctchange_from_max
 ##   &lt;fct&gt;  &lt;fct&gt;                &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;              &lt;dbl&gt;
-## 1 ^N225  N225 Index          21419.    16553.    24084.                -11
-## 2 ^DJI   Dow Jones Index     24995.    18592.    29551.                -15
-## 3 7269.T Suzuki               3735      2434.     5068.                -26</code></pre>
+## 1 ^N225  N225 Index          22864.    16553.    24084.                 -5
+## 2 ^DJI   Dow Jones Index     26282.    18592.    29551.                -11
+## 3 7269.T Suzuki               4079      2456.     5114.                -20</code></pre>
 <p><img src="/post/2020-05-27-company-results-template_files/figure-html/shareplot-1.png" width="672" /></p>
 <p>Ahead of the results the shares have picked up modestly.</p>
 <pre><code>## # A tibble: 5 x 4
 ##   symbol t           volume adjusted
 ##   &lt;fct&gt;  &lt;date&gt;       &lt;dbl&gt;    &lt;dbl&gt;
-## 1 7269.T 2020-05-21 1486700     3554
-## 2 7269.T 2020-05-22  968600     3486
-## 3 7269.T 2020-05-25 1069400     3539
-## 4 7269.T 2020-05-26 2816400     3772
-## 5 7269.T 2020-05-27 3323200     3735</code></pre>
+## 1 7269.T 2020-06-01 1819800     3784
+## 2 7269.T 2020-06-02 1968400     3810
+## 3 7269.T 2020-06-03 2655600     3991
+## 4 7269.T 2020-06-04 1885100     3968
+## 5 7269.T 2020-06-05 1530500     4079</code></pre>
 <p>That price and volume performance compares with average, median, sd, min and max since start of year.</p>
 <pre><code>##               ^DJI     ^N225    7269.T
-## mean_a   25446.383 20992.380 3835.3900
-## median_b 24525.010 20433.449 3603.0000
-## sd_c      3054.854  2196.562  858.5613
-## min_d    18591.930 16552.830 2434.2964
-## max_e    29551.420 24083.510 5068.0361</code></pre>
+## mean_a   25464.857 21084.623 3861.0863
+## median_b 24995.109 20745.700 3740.5000
+## sd_c      2954.571  2148.598  844.7151
+## min_d    18591.930 16552.830 2456.2234
+## max_e    29551.420 24083.510 5113.6865</code></pre>
 <p>With the price of the shares and the Dow Jones and Nikkei indexed to 100 at the start of the year the shares have lagged.</p>
 <p><img src="/post/2020-05-27-company-results-template_files/figure-html/basketplot-1.png" width="672" /></p>
 </div>
