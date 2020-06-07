@@ -12,8 +12,10 @@ tags:
 
 ## Trigger to enquiry
 
-Seek to gain sense of relative position and industry performance of Suzuki.   
-### Reference
+Seek to gain sense of relative position and industry performance of Suzuki. 
+
+<br>
+## Reference
 
 - [sec edgar - financial reports](https://www.sec.gov/edgar/searchedgar/companysearch.html)
 - [yahoo finance - share prices](https://finance.yahoo.com/) 
@@ -35,11 +37,9 @@ install.packages(pkgs, repos="https://cran.r-project.org")
 inst = lapply(pkgs, library, character.only = TRUE) #load packages
 ```
 
-### Getting started
-
-Rework Dry Bulk data input sheet for purpose of car industry data screen.  
-
 ```{r, include = FALSE}
+# Rework Dry Bulk data input sheet for purpose of car industry data screen.  
+
 symbol <- c("7269.T", "7203.T", "7267.T", "7201.T", "F", "GM", "FCA.MI", "VOW.DE", "DAI.DE", "BMW.DE", "UG.PA", "0175.HK", "0489.HK", "600104.SS", "MARUTI.BO", "TATAMOTORS.NS", "005380.KS", "^DJI", "^GSPC", "^BSESN")
 company <- c("Suzuki", "Toyota","Honda","Nissan", "Ford", "GM", "Fiat", "VW", "Daimler", "BMW","Peugeot","Geely", "Dongfeng", "SAIC", "Maruti", "Tata", "Hyundai", "Dow Jones Industrial Average", "S&P 500 Index", "Bombay Stock Exchange")
 carco <- cbind(symbol, company)
@@ -60,7 +60,7 @@ stock.list.co <- filter(stock_list,
 ```
 
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, include=FALSE}
 
 #extract prices
 carco.sp <- stock_list %>% tq_get(get = "stock.prices", 
@@ -137,8 +137,7 @@ glimpse(carco.spf)
 
 ```
 
-
-```{r, echo=FALSE}
+```{r, echo=FALSE, include=FALSE}
 sum.dbulk <- carco.spf %>%
   group_by(symbol, company) %>%
   summarize(curr_price = round(last(adjusted),2), 
@@ -154,7 +153,7 @@ sum.dbulk <- carco.spf %>%
 
 Rank stock price change from 2020 high
 
-```{r}
+```{r, echo=FALSE}
 
 knitr::kable((sum.dbulk[, c(2,3,5,6,7)]), "markdown", align = "lccccc")
 
@@ -170,7 +169,7 @@ knitr::kable((sum.dbulk[, c(2,3,5,6,7)]), "markdown", align = "lccccc")
 
 Rank stock price change from 2020 low
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE}
 sum.dbulk <- carco.spf %>%
   group_by(symbol, company) %>%
   summarize(curr_price = round(last(adjusted),2), 
@@ -182,13 +181,13 @@ sum.dbulk <- carco.spf %>%
 
 ```
 
-```{r}
+```{r echo=FALSE}
 
 knitr::kable((sum.dbulk[, c(2,3,4,6,7)]), "markdown", align = "lccccc")
 
 ```
 
-```{r}
+```{r echo=FALSE}
 # print((sum.dbulk[1:20, 1:7]), floating = FALSE)
 
 ```
@@ -203,7 +202,7 @@ adj.plot + geom_line() + facet_wrap(~symbol, scales = "free")
 ```
 
 \newpage
-# Create index 
+## Indexes 
 
 ```{r, include=FALSE}
 # Generate index of components
@@ -252,11 +251,11 @@ basketplot <-
   
 ```
 
-```{r}
+```{r, echo=FALSE}
 plot(basketplot)
 ```
 
-# Japan
+## Japan
 
 ```{r, include=FALSE}
 # Generate index of components
@@ -315,7 +314,7 @@ basketplotjp <-
   
 ```
 
-```{r}
+```{r, echo=FALSE}
 plot(basketplotjp)
 ```
 
@@ -323,7 +322,7 @@ plot(basketplotjp)
 fwrite(djpt, file = "/Users/michaelleary/Documents/GitHub/financeScreen/data/djpt.csv", row.names = TRUE) # in csv form
 ```
 
-# Europe
+## Europe
 
 ```{r, include=FALSE}
 # Generate index of components
@@ -390,7 +389,7 @@ basketploteu <-
   
 ```
 
-```{r}
+```{r, echo=FALSE}
 plot(basketploteu)
 ```
 
@@ -399,7 +398,7 @@ fwrite(deut, file = "/Users/michaelleary/Documents/GitHub/financeScreen/data/deu
 ```
 
 
-# US
+## US
 
 ```{r, include=FALSE}
 # Generate index of components
@@ -441,7 +440,7 @@ basketplotus <-
   
 ```
 
-```{r}
+```{r, echo=FALSE}
 plot(basketplotus)
 ```
 
@@ -450,7 +449,7 @@ fwrite(dust, file = "/Users/michaelleary/Documents/GitHub/financeScreen/data/dus
 ```
 
 
-# China
+## China
 
 ```{r, include=FALSE}
 # Generate index of components
@@ -500,7 +499,7 @@ basketplotchi <-
   
 ```
 
-```{r}
+```{r, echo=FALSE}
 plot(basketplotchi)
 ```
 
@@ -509,7 +508,7 @@ fwrite(dchit, file = "/Users/michaelleary/Documents/GitHub/financeScreen/data/dc
 ```
 
 
-# India
+## India
 
 ```{r, include=FALSE}
 # Generate index of components
@@ -551,7 +550,7 @@ basketplotind <-
   
 ```
 
-```{r}
+```{r, echo=FALSE}
 plot(basketplotind)
 ```
 
@@ -559,7 +558,7 @@ plot(basketplotind)
 fwrite(dindt, file = "/Users/michaelleary/Documents/GitHub/financeScreen/data/dindt.csv", row.names = TRUE) # in csv form
 ```
 
-# Korea
+## Korea
 
 ```{r, include=FALSE}
 # Generate index of components
@@ -595,7 +594,7 @@ basketplotkor <-
   
 ```
 
-```{r}
+```{r, echo=FALSE}
 plot(basketplotkor)
 ```
 
@@ -603,7 +602,7 @@ plot(basketplotkor)
 fwrite(dkort, file = "/Users/michaelleary/Documents/GitHub/financeScreen/data/dkort.csv", row.names = TRUE) # in csv form
 ```
 
-# Full Index of all itmes
+## Full Index
 
 ```{r, include=FALSE}
 # Generate index of components
@@ -673,7 +672,7 @@ basketplotcomb <-
   
 ```
 
-```{r}
+```{r, echo=FALSE}
 plot(basketplotcomb)
 ```
 
@@ -682,7 +681,7 @@ fwrite(dcomb5t, file = "/Users/michaelleary/Documents/GitHub/financeScreen/data/
 ```
 
 \newpage
-# Index value table
+## Index table
 
 ```{r, include=FALSE}
 head(dcomb5t)
@@ -701,19 +700,21 @@ names(tic) <- namesC #https://honingds.com/blog/dplyr-rename/
 
 ```
 
-```{r}
+```{r, echo=FALSE}
 # https://bookdown.org/yihui/rmarkdown-cookbook/kable.html
-knitr::kable(head(tic[,1:17]), "markdown",
-             caption = "Index values for car maker share performace in 2020",
+knitr::kable(head(tic[,1:18]), "markdown",
+             caption = "Index values for car maker share performance in 2020",
              booktabs = TRUE,
              longtable = FALSE )
 
 ```
 
-```{r }
+<br>
 
-knitr::kable(tail(tic[,1:17]), "markdown",
-             caption = "Index values for car maker share performace in 2020",
+```{r , echo=FALSE}
+
+knitr::kable(tail(tic[,1:18]), "markdown",
+             caption = "Index values for car maker share performance in 2020",
              booktabs = TRUE,
              longtable = FALSE )
 

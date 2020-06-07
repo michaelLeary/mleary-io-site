@@ -29,10 +29,10 @@ What has happened over the past two years? What has been purchased?
       
       <guid>/post/2020/06/07/car-makers-industry-share-performance/</guid>
       <description>Trigger to enquiry Seek to gain sense of relative position and industry performance of Suzuki.
-### Reference
- sec edgar - financial reports yahoo finance - share prices Carnegie Mellon R notes.  Getting started Rework Dry Bulk data input sheet for purpose of car industry data screen.
-## `summarise()` regrouping output by &amp;#39;symbol&amp;#39; (override with `.groups` argument) Rank stock price change from 2020 high
-knitr::kable((sum.dbulk[, c(2,3,5,6,7)]), &amp;quot;markdown&amp;quot;, align = &amp;quot;lccccc&amp;quot;)   company curr_price max_price pct_from_max pct_from_low    Honda 3026.</description>
+
+## Reference
+ sec edgar - financial reports yahoo finance - share prices Carnegie Mellon R notes.  Rank stock price change from 2020 high
+  company curr_price max_price pct_from_max pct_from_low    Honda 3026.00 3055.28 -1 42  S&amp;amp;P 500 Index 3193.93 3386.15 -6 43  Dow Jones Industrial Average 27110.</description>
     </item>
     
     <item>
