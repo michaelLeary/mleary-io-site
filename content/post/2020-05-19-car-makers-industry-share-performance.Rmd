@@ -1,7 +1,7 @@
 ---
 title: 'Car makers industry share  performance '
 author: michael
-date: '2020-05-19'
+date: '2020-06-07'
 slug: car-makers-industry-share-performance
 categories:
   - R
@@ -10,20 +10,10 @@ tags:
   - Finance
 ---
 
-## Conclusion
-
-
 ## Trigger to enquiry
 
 Seek to gain sense of relative position and industry performance of Suzuki.   
-
-## Significance
-
-
-## Other facts
-
-
-# Reference
+### Reference
 
 - [sec edgar - financial reports](https://www.sec.gov/edgar/searchedgar/companysearch.html)
 - [yahoo finance - share prices](https://finance.yahoo.com/) 
@@ -50,8 +40,8 @@ inst = lapply(pkgs, library, character.only = TRUE) #load packages
 Rework Dry Bulk data input sheet for purpose of car industry data screen.  
 
 ```{r, include = FALSE}
-symbol <- c("7269.T", "7203.T", "7267.T", "7201.T", "F", "GM", "FCA.MI", "VOW.DE", "DAI.DE", "BMW.DE", "UG.PA", "0175.HK", "0489.HK", "600104.SS", "MARUTI.BO", "TATAMOTORS.NS", "^DJI", "^GSPC", "^BSESN")
-company <- c("Suzuki", "Toyota","Honda","Nissan", "Ford", "GM", "Fiat", "VW", "Daimler", "BMW","Peugeot","Geely", "Dongfeng", "SAIC", "Maruti", "Tata", "Dow Jones Industrial Average", "S&P 500 Index", "Bombay Stock Exchange")
+symbol <- c("7269.T", "7203.T", "7267.T", "7201.T", "F", "GM", "FCA.MI", "VOW.DE", "DAI.DE", "BMW.DE", "UG.PA", "0175.HK", "0489.HK", "600104.SS", "MARUTI.BO", "TATAMOTORS.NS", "005380.KS", "^DJI", "^GSPC", "^BSESN")
+company <- c("Suzuki", "Toyota","Honda","Nissan", "Ford", "GM", "Fiat", "VW", "Daimler", "BMW","Peugeot","Geely", "Dongfeng", "SAIC", "Maruti", "Tata", "Hyundai", "Dow Jones Industrial Average", "S&P 500 Index", "Bombay Stock Exchange")
 carco <- cbind(symbol, company)
 # Save to data file as csv file using data.table package
 fwrite(carco, file = "/Users/michaelleary/Documents/GitHub/financeScreen/data/carco.csv", row.names = TRUE) # in csv form
@@ -91,37 +81,40 @@ carcosp <- read_csv("/Users/michaelleary/Documents/GitHub/financeScreen/data/car
 carcosp <- carcosp[,-1]
 carco.sp <- carcosp
 
-hyundai <- read_csv("/Users/michaelleary/Documents/GitHub/financeScreen/data/hyundaimotors.csv")
+#hyundai <- read_csv("/Users/michaelleary/Documents/GitHub/financeScreen/data/hyundaimotors.csv")
 
 ```
 
 
 ```{r, include = FALSE}
 
-hyundai <- as_tibble(hyundai)
+#hyundai <- as_tibble(hyundai)
 
 ```
 
 
 ```{r, include = FALSE}
 
-carco.sp2 <- rbind(carco.sp, hyundai)
+#carco.sp2 <- rbind(carco.sp, hyundai)
 
 ```
 
 ```{r, include=FALSE}
-carco.sp2
+#carco.sp2
 ```
 
 
 ```{r, include = FALSE}
 
 #list column names
-colnames <- colnames(carco.sp2)
+
+#colnames <- colnames(carco.sp2)
+colnames <- colnames(carco.sp)
 
 # prepare to convert character variables symbol, company to factors
 
-carco.spf <- carco.sp2
+#carco.spf <- carco.sp2
+carco.spf <- carco.sp
 
 # save character variables
 carco.spf %>%
@@ -725,6 +718,8 @@ knitr::kable(tail(tic[,1:17]), "markdown",
              longtable = FALSE )
 
 ```
+
+
 
 
 
