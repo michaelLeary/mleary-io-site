@@ -1,0 +1,71 @@
+---
+title: "Unresolved questions"
+author: "michael"
+date: '2020-06-07'
+slug: unresolved-questions
+categories: R
+tags: admin
+-output:
+  tufte::tufte_html: default
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+bibliography: skeleton.bib
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+library(tufte)
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+```
+
+```{r, include=FALSE}
+pkgs = c("magrittr",
+         "kableExtra",
+         "data.table", 
+         "readr", 
+         "dplyr", 
+         "ggplot2", 
+         "tidyverse", 
+         "tidyquant", 
+         "spelling")
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+# Consider
+
+1. That a relationship exists between equity price changes and volume changes.
+
+
+# Thoughts 
+
+```{r, include=FALSE}
+text_tbl <- data.frame(
+  Record_date = c("2020-06-07", "2020-06-07", "2020-04-15", "2020-04-16", "2020-04-16"),
+  Note = c(
+    "1. Purpose and emotion; Connect purpose with ability to create value and drive progress. 2. Inspire creative thinking about what makes you unique; How does that link to purpose; Why it could be valuable? Encourage rigor in embedding. 3. keep purpose at forefront of mind; is purpose reflected on ground; 4. meaasure what can and learn from what you measure - source: Mckinsey",
+    "Align structure of life to prevent hindrances from arising. Recognise mind state. Accept/acknowledge/allow subject to be way they are. Investigate emotional and mental state - wjy comes up and what is consequence. Nonpidentification and practice. I am not body. I am not mind. I am not emotion.", "Think broad", "What are Bollinger's measuring? Volatility namd placed above and below moving average. Based on standard deviation. It changes as volatility increases and decreases. Bands widen when vol is up and narrows when vol falls. Used to identify M tops and W bottoms.", "Moving average convergence divergence indicator shows relationship between 2 moving averages of a security price. When macd crosses above signal line. Sell when macd crosses below signal line. "
+  )
+)
+```
+
+```{r, echo=FALSE}
+kable(text_tbl) %>%
+  kable_styling(full_width = F) %>%
+  column_spec(1, bold = T, border_right = T) %>%
+  column_spec(2, width = "30em", background = "yellow")
+```
+
+
+
+
+```{r bib, include=FALSE}
+# create a bib file for the R packages used in this document
+knitr::write_bib(c('base', 'rmarkdown'), file = 'skeleton.bib')
+```

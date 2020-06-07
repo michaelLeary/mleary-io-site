@@ -101,6 +101,17 @@ Recent price performance Recent price analysis versus benchmarks show the shares
     </item>
     
     <item>
+      <title>Car makers industry share  performance </title>
+      <link>/post/2020/05/19/car-makers-industry-share-performance/</link>
+      <pubDate>Tue, 19 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/05/19/car-makers-industry-share-performance/</guid>
+      <description>Conclusion  Trigger to enquiry Seek to gain sense of relative position and industry performance of Suzuki.
+ Significance  Other facts  Reference  sec edgar - financial reports yahoo finance - share prices Carnegie Mellon R notes.  Getting started Rework Dry Bulk data input sheet for purpose of car industry data screen.
+## `summarise()` regrouping output by &amp;#39;symbol&amp;#39; (override with `.groups` argument) Rank stock price change from 2020 high</description>
+    </item>
+    
+    <item>
       <title>Moving grains - dry bulk</title>
       <link>/post/2020/05/14/moving-grains-dry-bulk/</link>
       <pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate>

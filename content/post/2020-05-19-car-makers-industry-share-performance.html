@@ -1,0 +1,733 @@
+---
+title: 'Car makers industry share  performance '
+author: michael
+date: '2020-05-19'
+slug: car-makers-industry-share-performance
+categories:
+  - R
+tags:
+  - Investment research
+  - Finance
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+</div>
+<div id="trigger-to-enquiry" class="section level2">
+<h2>Trigger to enquiry</h2>
+<p>Seek to gain sense of relative position and industry performance of Suzuki.</p>
+</div>
+<div id="significance" class="section level2">
+<h2>Significance</h2>
+</div>
+<div id="other-facts" class="section level2">
+<h2>Other facts</h2>
+</div>
+<div id="reference" class="section level1">
+<h1>Reference</h1>
+<ul>
+<li><a href="https://www.sec.gov/edgar/searchedgar/companysearch.html">sec edgar - financial reports</a></li>
+<li><a href="https://finance.yahoo.com/">yahoo finance - share prices</a></li>
+<li><a href="http://www.andrew.cmu.edu/user/achoulde/94842/">Carnegie Mellon R notes</a>.</li>
+</ul>
+<div id="getting-started" class="section level3">
+<h3>Getting started</h3>
+<p>Rework Dry Bulk data input sheet for purpose of car industry data screen.</p>
+<pre><code>## `summarise()` regrouping output by &#39;symbol&#39; (override with `.groups` argument)</code></pre>
+<p>Rank stock price change from 2020 high</p>
+<pre class="r"><code>knitr::kable((sum.dbulk[, c(2,3,5,6,7)]), &quot;markdown&quot;, align = &quot;lccccc&quot;)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">company</th>
+<th align="center">curr_price</th>
+<th align="center">max_price</th>
+<th align="center">pct_from_max</th>
+<th align="center">pct_from_low</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Honda</td>
+<td align="center">3026.00</td>
+<td align="center">3055.28</td>
+<td align="center">-1</td>
+<td align="center">42</td>
+</tr>
+<tr class="even">
+<td align="left">S&amp;P 500 Index</td>
+<td align="center">3193.93</td>
+<td align="center">3386.15</td>
+<td align="center">-6</td>
+<td align="center">43</td>
+</tr>
+<tr class="odd">
+<td align="left">Dow Jones Industrial Average</td>
+<td align="center">27110.98</td>
+<td align="center">29551.42</td>
+<td align="center">-8</td>
+<td align="center">46</td>
+</tr>
+<tr class="even">
+<td align="left">Toyota</td>
+<td align="center">7067.00</td>
+<td align="center">7778.89</td>
+<td align="center">-9</td>
+<td align="center">21</td>
+</tr>
+<tr class="odd">
+<td align="left">VW</td>
+<td align="center">156.70</td>
+<td align="center">183.10</td>
+<td align="center">-14</td>
+<td align="center">54</td>
+</tr>
+<tr class="even">
+<td align="left">BMW</td>
+<td align="center">59.50</td>
+<td align="center">70.61</td>
+<td align="center">-16</td>
+<td align="center">67</td>
+</tr>
+<tr class="odd">
+<td align="left">Daimler</td>
+<td align="center">39.83</td>
+<td align="center">48.21</td>
+<td align="center">-17</td>
+<td align="center">89</td>
+</tr>
+<tr class="even">
+<td align="left">GM</td>
+<td align="center">30.61</td>
+<td align="center">36.93</td>
+<td align="center">-17</td>
+<td align="center">82</td>
+</tr>
+<tr class="odd">
+<td align="left">Bombay Stock Exchange</td>
+<td align="center">34287.24</td>
+<td align="center">41952.63</td>
+<td align="center">-18</td>
+<td align="center">32</td>
+</tr>
+<tr class="even">
+<td align="left">Suzuki</td>
+<td align="center">4079.00</td>
+<td align="center">5113.69</td>
+<td align="center">-20</td>
+<td align="center">66</td>
+</tr>
+<tr class="odd">
+<td align="left">Ford</td>
+<td align="center">7.34</td>
+<td align="center">9.26</td>
+<td align="center">-21</td>
+<td align="center">83</td>
+</tr>
+<tr class="even">
+<td align="left">Peugeot</td>
+<td align="center">15.43</td>
+<td align="center">19.44</td>
+<td align="center">-21</td>
+<td align="center">80</td>
+</tr>
+<tr class="odd">
+<td align="left">Fiat</td>
+<td align="center">9.31</td>
+<td align="center">12.08</td>
+<td align="center">-23</td>
+<td align="center">77</td>
+</tr>
+<tr class="even">
+<td align="left">Maruti</td>
+<td align="center">5747.20</td>
+<td align="center">7524.55</td>
+<td align="center">-24</td>
+<td align="center">43</td>
+</tr>
+<tr class="odd">
+<td align="left">Geely</td>
+<td align="center">11.76</td>
+<td align="center">16.00</td>
+<td align="center">-26</td>
+<td align="center">19</td>
+</tr>
+<tr class="even">
+<td align="left">SAIC</td>
+<td align="center">18.23</td>
+<td align="center">25.30</td>
+<td align="center">-28</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="left">Dongfeng</td>
+<td align="center">5.37</td>
+<td align="center">7.56</td>
+<td align="center">-29</td>
+<td align="center">21</td>
+</tr>
+<tr class="even">
+<td align="left">Nissan</td>
+<td align="center">452.20</td>
+<td align="center">644.30</td>
+<td align="center">-30</td>
+<td align="center">43</td>
+</tr>
+<tr class="odd">
+<td align="left">Hyundai</td>
+<td align="center">91900.00</td>
+<td align="center">136000.00</td>
+<td align="center">-32</td>
+<td align="center">39</td>
+</tr>
+<tr class="even">
+<td align="left">Tata</td>
+<td align="center">110.75</td>
+<td align="center">200.35</td>
+<td align="center">-45</td>
+<td align="center">70</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code># knitr::kable((sum.dbulk[1:20, 1:7]), &quot;markdown&quot;, align = &quot;lccrr&quot;)</code></pre>
+<p>Rank stock price change from 2020 low</p>
+<pre><code>## `summarise()` regrouping output by &#39;symbol&#39; (override with `.groups` argument)</code></pre>
+<pre class="r"><code>knitr::kable((sum.dbulk[, c(2,3,4,6,7)]), &quot;markdown&quot;, align = &quot;lccccc&quot;)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">company</th>
+<th align="center">curr_price</th>
+<th align="center">min_price</th>
+<th align="center">pct_from_max</th>
+<th align="center">pct_from_low</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Daimler</td>
+<td align="center">39.83</td>
+<td align="center">21.07</td>
+<td align="center">-17</td>
+<td align="center">89</td>
+</tr>
+<tr class="even">
+<td align="left">Ford</td>
+<td align="center">7.34</td>
+<td align="center">4.01</td>
+<td align="center">-21</td>
+<td align="center">83</td>
+</tr>
+<tr class="odd">
+<td align="left">GM</td>
+<td align="center">30.61</td>
+<td align="center">16.80</td>
+<td align="center">-17</td>
+<td align="center">82</td>
+</tr>
+<tr class="even">
+<td align="left">Peugeot</td>
+<td align="center">15.43</td>
+<td align="center">8.55</td>
+<td align="center">-21</td>
+<td align="center">80</td>
+</tr>
+<tr class="odd">
+<td align="left">Fiat</td>
+<td align="center">9.31</td>
+<td align="center">5.25</td>
+<td align="center">-23</td>
+<td align="center">77</td>
+</tr>
+<tr class="even">
+<td align="left">Tata</td>
+<td align="center">110.75</td>
+<td align="center">65.30</td>
+<td align="center">-45</td>
+<td align="center">70</td>
+</tr>
+<tr class="odd">
+<td align="left">BMW</td>
+<td align="center">59.50</td>
+<td align="center">35.66</td>
+<td align="center">-16</td>
+<td align="center">67</td>
+</tr>
+<tr class="even">
+<td align="left">Suzuki</td>
+<td align="center">4079.00</td>
+<td align="center">2456.22</td>
+<td align="center">-20</td>
+<td align="center">66</td>
+</tr>
+<tr class="odd">
+<td align="left">VW</td>
+<td align="center">156.70</td>
+<td align="center">101.50</td>
+<td align="center">-14</td>
+<td align="center">54</td>
+</tr>
+<tr class="even">
+<td align="left">Dow Jones Industrial Average</td>
+<td align="center">27110.98</td>
+<td align="center">18591.93</td>
+<td align="center">-8</td>
+<td align="center">46</td>
+</tr>
+<tr class="odd">
+<td align="left">S&amp;P 500 Index</td>
+<td align="center">3193.93</td>
+<td align="center">2237.40</td>
+<td align="center">-6</td>
+<td align="center">43</td>
+</tr>
+<tr class="even">
+<td align="left">Nissan</td>
+<td align="center">452.20</td>
+<td align="center">315.50</td>
+<td align="center">-30</td>
+<td align="center">43</td>
+</tr>
+<tr class="odd">
+<td align="left">Maruti</td>
+<td align="center">5747.20</td>
+<td align="center">4011.65</td>
+<td align="center">-24</td>
+<td align="center">43</td>
+</tr>
+<tr class="even">
+<td align="left">Honda</td>
+<td align="center">3026.00</td>
+<td align="center">2135.50</td>
+<td align="center">-1</td>
+<td align="center">42</td>
+</tr>
+<tr class="odd">
+<td align="left">Hyundai</td>
+<td align="center">91900.00</td>
+<td align="center">65900.00</td>
+<td align="center">-32</td>
+<td align="center">39</td>
+</tr>
+<tr class="even">
+<td align="left">Bombay Stock Exchange</td>
+<td align="center">34287.24</td>
+<td align="center">25981.24</td>
+<td align="center">-18</td>
+<td align="center">32</td>
+</tr>
+<tr class="odd">
+<td align="left">Dongfeng</td>
+<td align="center">5.37</td>
+<td align="center">4.42</td>
+<td align="center">-29</td>
+<td align="center">21</td>
+</tr>
+<tr class="even">
+<td align="left">Toyota</td>
+<td align="center">7067.00</td>
+<td align="center">5839.57</td>
+<td align="center">-9</td>
+<td align="center">21</td>
+</tr>
+<tr class="odd">
+<td align="left">Geely</td>
+<td align="center">11.76</td>
+<td align="center">9.87</td>
+<td align="center">-26</td>
+<td align="center">19</td>
+</tr>
+<tr class="even">
+<td align="left">SAIC</td>
+<td align="center">18.23</td>
+<td align="center">17.70</td>
+<td align="center">-28</td>
+<td align="center">3</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code># print((sum.dbulk[1:20, 1:7]), floating = FALSE)</code></pre>
+<p><img src="/post/2020-05-19-car-makers-industry-share-performance_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div id="create-index" class="section level1">
+<h1>Create index</h1>
+<pre class="r"><code>plot(basketplot)</code></pre>
+<p><img src="/post/2020-05-19-car-makers-industry-share-performance_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+</div>
+<div id="japan" class="section level1">
+<h1>Japan</h1>
+<pre class="r"><code>plot(basketplotjp)</code></pre>
+<p><img src="/post/2020-05-19-car-makers-industry-share-performance_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+</div>
+<div id="europe" class="section level1">
+<h1>Europe</h1>
+<pre class="r"><code>plot(basketploteu)</code></pre>
+<p><img src="/post/2020-05-19-car-makers-industry-share-performance_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+</div>
+<div id="us" class="section level1">
+<h1>US</h1>
+<pre class="r"><code>plot(basketplotus)</code></pre>
+<p><img src="/post/2020-05-19-car-makers-industry-share-performance_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+</div>
+<div id="china" class="section level1">
+<h1>China</h1>
+<pre class="r"><code>plot(basketplotchi)</code></pre>
+<p><img src="/post/2020-05-19-car-makers-industry-share-performance_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+</div>
+<div id="india" class="section level1">
+<h1>India</h1>
+<pre class="r"><code>plot(basketplotind)</code></pre>
+<p><img src="/post/2020-05-19-car-makers-industry-share-performance_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+</div>
+<div id="korea" class="section level1">
+<h1>Korea</h1>
+<pre class="r"><code>plot(basketplotkor)</code></pre>
+<p><img src="/post/2020-05-19-car-makers-industry-share-performance_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+</div>
+<div id="full-index-of-all-itmes" class="section level1">
+<h1>Full Index of all itmes</h1>
+<pre class="r"><code>plot(basketplotcomb)</code></pre>
+<p><img src="/post/2020-05-19-car-makers-industry-share-performance_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="index-value-table" class="section level1">
+<h1>Index value table</h1>
+<pre class="r"><code># https://bookdown.org/yihui/rmarkdown-cookbook/kable.html
+knitr::kable(head(tic[,1:17]), &quot;markdown&quot;,
+             caption = &quot;Index values for car maker share performace in 2020&quot;,
+             booktabs = TRUE,
+             longtable = FALSE )</code></pre>
+<table>
+<colgroup>
+<col width="10%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">date</th>
+<th align="right">suz</th>
+<th align="right">toy</th>
+<th align="right">hon</th>
+<th align="right">nis</th>
+<th align="right">vw</th>
+<th align="right">da</th>
+<th align="right">bm</th>
+<th align="right">peu</th>
+<th align="right">fia</th>
+<th align="right">fd</th>
+<th align="right">gm</th>
+<th align="right">gee</th>
+<th align="right">don</th>
+<th align="right">sac</th>
+<th align="right">mar</th>
+<th align="right">tat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2020-01-06</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">2020-01-07</td>
+<td align="right">101.6</td>
+<td align="right">102.0</td>
+<td align="right">102.7</td>
+<td align="right">101.8</td>
+<td align="right">99.9</td>
+<td align="right">100.8</td>
+<td align="right">101.6</td>
+<td align="right">101.0</td>
+<td align="right">100.5</td>
+<td align="right">101.0</td>
+<td align="right">98.1</td>
+<td align="right">101.6</td>
+<td align="right">99.2</td>
+<td align="right">100.7</td>
+<td align="right">100.5</td>
+<td align="right">99.5</td>
+</tr>
+<tr class="odd">
+<td align="left">2020-01-08</td>
+<td align="right">99.3</td>
+<td align="right">100.7</td>
+<td align="right">100.6</td>
+<td align="right">100.7</td>
+<td align="right">100.1</td>
+<td align="right">101.4</td>
+<td align="right">101.9</td>
+<td align="right">99.8</td>
+<td align="right">99.2</td>
+<td align="right">101.0</td>
+<td align="right">96.7</td>
+<td align="right">100.6</td>
+<td align="right">97.4</td>
+<td align="right">102.3</td>
+<td align="right">99.9</td>
+<td align="right">98.3</td>
+</tr>
+<tr class="even">
+<td align="left">2020-01-09</td>
+<td align="right">101.2</td>
+<td align="right">101.4</td>
+<td align="right">102.0</td>
+<td align="right">103.0</td>
+<td align="right">102.1</td>
+<td align="right">101.8</td>
+<td align="right">101.8</td>
+<td align="right">99.6</td>
+<td align="right">99.5</td>
+<td align="right">101.1</td>
+<td align="right">97.9</td>
+<td align="right">104.1</td>
+<td align="right">99.5</td>
+<td align="right">106.8</td>
+<td align="right">102.7</td>
+<td align="right">103.4</td>
+</tr>
+<tr class="odd">
+<td align="left">2020-01-10</td>
+<td align="right">102.5</td>
+<td align="right">101.3</td>
+<td align="right">101.8</td>
+<td align="right">101.8</td>
+<td align="right">104.4</td>
+<td align="right">101.3</td>
+<td align="right">102.1</td>
+<td align="right">99.5</td>
+<td align="right">99.5</td>
+<td align="right">101.0</td>
+<td align="right">96.7</td>
+<td align="right">103.6</td>
+<td align="right">100.7</td>
+<td align="right">107.2</td>
+<td align="right">104.1</td>
+<td align="right">105.8</td>
+</tr>
+<tr class="even">
+<td align="left">2020-01-14</td>
+<td align="right">103.8</td>
+<td align="right">102.3</td>
+<td align="right">102.2</td>
+<td align="right">98.8</td>
+<td align="right">103.9</td>
+<td align="right">99.3</td>
+<td align="right">100.3</td>
+<td align="right">97.7</td>
+<td align="right">98.5</td>
+<td align="right">101.4</td>
+<td align="right">98.1</td>
+<td align="right">103.9</td>
+<td align="right">97.6</td>
+<td align="right">106.9</td>
+<td align="right">105.0</td>
+<td align="right">105.5</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>knitr::kable(tail(tic[,1:17]), &quot;markdown&quot;,
+             caption = &quot;Index values for car maker share performace in 2020&quot;,
+             booktabs = TRUE,
+             longtable = FALSE )</code></pre>
+<table>
+<colgroup>
+<col width="3%" />
+<col width="11%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">date</th>
+<th align="right">suz</th>
+<th align="right">toy</th>
+<th align="right">hon</th>
+<th align="right">nis</th>
+<th align="right">vw</th>
+<th align="right">da</th>
+<th align="right">bm</th>
+<th align="right">peu</th>
+<th align="right">fia</th>
+<th align="right">fd</th>
+<th align="right">gm</th>
+<th align="right">gee</th>
+<th align="right">don</th>
+<th align="right">sac</th>
+<th align="right">mar</th>
+<th align="right">tat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">83</td>
+<td align="left">2020-05-11</td>
+<td align="right">80.9</td>
+<td align="right">89.5</td>
+<td align="right">87.9</td>
+<td align="right">60.8</td>
+<td align="right">78.9</td>
+<td align="right">65.8</td>
+<td align="right">70.3</td>
+<td align="right">62.6</td>
+<td align="right">65.4</td>
+<td align="right">56.8</td>
+<td align="right">64.4</td>
+<td align="right">84.7</td>
+<td align="right">73.6</td>
+<td align="right">86.0</td>
+<td align="right">70.1</td>
+<td align="right">46.4</td>
+</tr>
+<tr class="even">
+<td align="left">84</td>
+<td align="left">2020-05-12</td>
+<td align="right">78.9</td>
+<td align="right">87.8</td>
+<td align="right">84.8</td>
+<td align="right">59.6</td>
+<td align="right">78.4</td>
+<td align="right">65.0</td>
+<td align="right">69.6</td>
+<td align="right">61.1</td>
+<td align="right">65.1</td>
+<td align="right">55.3</td>
+<td align="right">63.7</td>
+<td align="right">83.5</td>
+<td align="right">75.8</td>
+<td align="right">84.7</td>
+<td align="right">70.3</td>
+<td align="right">46.4</td>
+</tr>
+<tr class="odd">
+<td align="left">85</td>
+<td align="left">2020-05-13</td>
+<td align="right">79.1</td>
+<td align="right">85.9</td>
+<td align="right">84.8</td>
+<td align="right">58.1</td>
+<td align="right">74.4</td>
+<td align="right">60.8</td>
+<td align="right">66.7</td>
+<td align="right">57.4</td>
+<td align="right">63.2</td>
+<td align="right">52.4</td>
+<td align="right">60.6</td>
+<td align="right">82.9</td>
+<td align="right">75.5</td>
+<td align="right">83.6</td>
+<td align="right">71.5</td>
+<td align="right">47.0</td>
+</tr>
+<tr class="even">
+<td align="left">86</td>
+<td align="left">2020-05-14</td>
+<td align="right">77.4</td>
+<td align="right">84.0</td>
+<td align="right">81.2</td>
+<td align="right">56.9</td>
+<td align="right">73.0</td>
+<td align="right">58.7</td>
+<td align="right">64.4</td>
+<td align="right">54.4</td>
+<td align="right">61.4</td>
+<td align="right">54.3</td>
+<td align="right">63.0</td>
+<td align="right">81.6</td>
+<td align="right">72.4</td>
+<td align="right">81.1</td>
+<td align="right">72.6</td>
+<td align="right">45.1</td>
+</tr>
+<tr class="odd">
+<td align="left">87</td>
+<td align="left">2020-05-15</td>
+<td align="right">78.8</td>
+<td align="right">84.0</td>
+<td align="right">82.5</td>
+<td align="right">59.1</td>
+<td align="right">74.4</td>
+<td align="right">59.5</td>
+<td align="right">67.4</td>
+<td align="right">54.9</td>
+<td align="right">61.7</td>
+<td align="right">54.4</td>
+<td align="right">63.9</td>
+<td align="right">80.4</td>
+<td align="right">72.3</td>
+<td align="right">79.6</td>
+<td align="right">72.5</td>
+<td align="right">45.4</td>
+</tr>
+<tr class="even">
+<td align="left">88</td>
+<td align="left">2020-05-18</td>
+<td align="right">79.3</td>
+<td align="right">84.1</td>
+<td align="right">83.6</td>
+<td align="right">58.4</td>
+<td align="right">78.8</td>
+<td align="right">66.2</td>
+<td align="right">72.6</td>
+<td align="right">58.5</td>
+<td align="right">66.8</td>
+<td align="right">59.0</td>
+<td align="right">70.1</td>
+<td align="right">82.3</td>
+<td align="right">71.5</td>
+<td align="right">79.1</td>
+<td align="right">67.1</td>
+<td align="right">43.4</td>
+</tr>
+</tbody>
+</table>
+</div>

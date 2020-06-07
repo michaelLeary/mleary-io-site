@@ -1,0 +1,731 @@
+---
+title: 'Car makers industry share  performance '
+author: michael
+date: '2020-05-19'
+slug: car-makers-industry-share-performance
+categories:
+  - R
+tags:
+  - Investment research
+  - Finance
+---
+
+## Conclusion
+
+
+## Trigger to enquiry
+
+Seek to gain sense of relative position and industry performance of Suzuki.   
+
+## Significance
+
+
+## Other facts
+
+
+# Reference
+
+- [sec edgar - financial reports](https://www.sec.gov/edgar/searchedgar/companysearch.html)
+- [yahoo finance - share prices](https://finance.yahoo.com/) 
+- [Carnegie Mellon R notes](http://www.andrew.cmu.edu/user/achoulde/94842/).
+
+```{r pkgs, include = FALSE}
+
+# Packages
+
+pkgs = c("data.table", "readr", "dplyr", "ggplot2", "tidyverse", "tidyquant", "magrittr", "spelling") 
+# data.table package fast writes
+# data.table package file loads into data frame
+# readr package file loads into tibble 
+# ggplot2 package allows qplot and contains the data set mpg
+# tidyquant packages gets share prices
+# magrittr package extends piping
+# spelling package to help in editing document
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+### Getting started
+
+Rework Dry Bulk data input sheet for purpose of car industry data screen.  
+
+```{r, include = FALSE}
+symbol <- c("7269.T", "7203.T", "7267.T", "7201.T", "F", "GM", "FCA.MI", "VOW.DE", "DAI.DE", "BMW.DE", "UG.PA", "0175.HK", "0489.HK", "600104.SS", "MARUTI.BO", "TATAMOTORS.NS", "^DJI", "^GSPC", "^BSESN")
+company <- c("Suzuki", "Toyota","Honda","Nissan", "Ford", "GM", "Fiat", "VW", "Daimler", "BMW","Peugeot","Geely", "Dongfeng", "SAIC", "Maruti", "Tata", "Dow Jones Industrial Average", "S&P 500 Index", "Bombay Stock Exchange")
+carco <- cbind(symbol, company)
+# Save to data file as csv file using data.table package
+fwrite(carco, file = "/Users/michaelleary/Documents/GitHub/financeScreen/data/carco.csv", row.names = TRUE) # in csv form
+
+carco <- read_csv("/Users/michaelleary/Documents/GitHub/financeScreen/data/carco.csv")
+
+stocks <- c(carco$symbol)
+company <- c(carco$company)
+#Map a tibble with selected variables companies and index items
+stock_list <- tibble(symbol = stocks,
+                     company = company)
+# companies excluding indexes
+stock.list.co <- filter(stock_list, 
+                    c(!(symbol=="^DJI" | symbol=="^GSPC" )))
+
+```
+
+
+```{r, echo = FALSE}
+
+#extract prices
+carco.sp <- stock_list %>% tq_get(get = "stock.prices", 
+                                  from = "2020-01-01", 
+                                  to =Sys.Date())
+
+# In tibble data frame price data for company is stacked on each other.  
+```
+
+```{r, include=FALSE}
+fwrite(carco.sp, file = "/Users/michaelleary/Documents/GitHub/financeScreen/data/carcosp.csv", row.names = TRUE) # in csv form
+```
+
+```{r, include = FALSE}
+# Row bind in Hyundai share prices
+
+carcosp <- read_csv("/Users/michaelleary/Documents/GitHub/financeScreen/data/carcosp.csv")
+carcosp <- carcosp[,-1]
+carco.sp <- carcosp
+
+hyundai <- read_csv("/Users/michaelleary/Documents/GitHub/financeScreen/data/hyundaimotors.csv")
+
+```
+
+
+```{r, include = FALSE}
+
+hyundai <- as_tibble(hyundai)
+
+```
+
+
+```{r, include = FALSE}
+
+carco.sp2 <- rbind(carco.sp, hyundai)
+
+```
+
+```{r, include=FALSE}
+carco.sp2
+```
+
+
+```{r, include = FALSE}
+
+#list column names
+colnames <- colnames(carco.sp2)
+
+# prepare to convert character variables symbol, company to factors
+
+carco.spf <- carco.sp2
+
+# save character variables
+carco.spf %>%
+sapply(is.character) %>%
+which() %>%
+print() ->
+chari
+
+# alternate save of character variable names
+carco.spf %>%
+names() %>%
+'['(chari) %>%
+print() ->
+charc
+
+# convert character variables to factors
+carco.spf[charc] %<>% map(factor)  #uncheck
+str(carco.spf)
+glimpse(carco.spf)
+
+```
+
+
+```{r, echo=FALSE}
+sum.dbulk <- carco.spf %>%
+  group_by(symbol, company) %>%
+  summarize(curr_price = round(last(adjusted),2), 
+            min_price = round(min(adjusted),2), 
+            max_price = round(max(adjusted),2),
+            pct_from_max = round(100 * (curr_price-max_price)/max_price),
+            pct_from_low = round(100 * (curr_price-min_price)/min_price)) %>%
+  arrange(desc(pct_from_max))
+
+
+
+```
+
+Rank stock price change from 2020 high
+
+```{r}
+
+knitr::kable((sum.dbulk[, c(2,3,5,6,7)]), "markdown", align = "lccccc")
+
+# knitr::kable((sum.dbulk[1:20, 1:7]), "markdown", align = "lccrr")
+
+```
+
+```{r, echo=FALSE}
+
+#print((sum.dbulk[1:20, 1:7]), floating = FALSE)
+
+```
+
+Rank stock price change from 2020 low
+
+```{r, echo=FALSE}
+sum.dbulk <- carco.spf %>%
+  group_by(symbol, company) %>%
+  summarize(curr_price = round(last(adjusted),2), 
+            min_price = round(min(adjusted),2), 
+            max_price = round(max(adjusted),2),
+            pct_from_max = round(100 * (curr_price-max_price)/max_price),
+            pct_from_low = round(100 * (curr_price-min_price)/min_price)) %>%
+  arrange(desc(pct_from_low))
+
+```
+
+```{r}
+
+knitr::kable((sum.dbulk[, c(2,3,4,6,7)]), "markdown", align = "lccccc")
+
+```
+
+```{r}
+# print((sum.dbulk[1:20, 1:7]), floating = FALSE)
+
+```
+
+```{r, echo=FALSE }
+# https://ggplot2-book.org/facet.html
+adj.plot <- ggplot(data=carco.spf, 
+      aes(date, adjusted))
+adj.plot + geom_line() + facet_wrap(~symbol, scales = "free")
+
+
+```
+
+\newpage
+# Create index 
+
+```{r, include=FALSE}
+# Generate index of components
+
+bse <- carco.spf %>% dplyr::filter((symbol=="^BSESN") )
+test <- bse[,c(3,9)]
+bsea <- rename(test, bse=adjusted)
+
+dji <- carco.spf %>% dplyr::filter((symbol=="^DJI") )
+test <- dji[,c(3,9)]
+djia <- rename(test, dji=adjusted)
+
+sp500 <- carco.spf %>% dplyr::filter((symbol=="^GSPC") )
+test <- sp500[,c(3,9)]
+sp500a <- rename(test, sp500=adjusted)
+
+dst <- dplyr::full_join(bsea, djia, by="date")
+head(dst)
+dstall <- dplyr::full_join(dst, sp500a, by="date")
+head(dstall)
+d <- dstall
+head(d)
+
+dst <- transform(d, 
+                 b.idx=round(100*d$bse/d$bse[1],1), 
+                 d.idx=round(100*d$dji/d$dji[1],1), 
+                 s.idx=round(100*d$sp500/d$sp500[1],1))
+head(dst)
+
+dst <- dst[complete.cases(dst),]
+
+```
+
+```{r, include=FALSE}
+# Plot index chart
+
+
+basketplot <- 
+  ggplot(dst, aes(date)) +
+  geom_line(aes(y=b.idx, color="Bombay")) + 
+  geom_line(aes(y=d.idx, color="DJIA")) +
+  geom_line(aes(y=s.idx, color="SP500")) +
+  scale_x_date(date_breaks = "months" , date_labels = "%m") +
+  labs(title = "Bombay, DJIA and SP500 index", x="Year", y="Index", color="legend") +
+  theme_minimal()
+  
+```
+
+```{r}
+plot(basketplot)
+```
+
+# Japan
+
+```{r, include=FALSE}
+# Generate index of components
+
+suz <- carco.spf %>% dplyr::filter((symbol=="7269.T") )
+test <- suz[,c(3,9)]
+suza <- rename(test, suz=adjusted)
+
+toy <- carco.spf %>% dplyr::filter((symbol=="7203.T") )
+test <- toy[,c(3,9)]
+toya <- rename(test, toy=adjusted)
+
+hon <- carco.spf %>% dplyr::filter((symbol=="7267.T") )
+test <- hon[,c(3,9)]
+hona <- rename(test, hon=adjusted)
+
+nis <- carco.spf %>% dplyr::filter((symbol=="7201.T") )
+test <- nis[,c(3,9)]
+nisa <- rename(test, nis=adjusted)
+
+
+dst1 <- dplyr::full_join(suza, toya, by="date")
+head(dst1)
+dst2 <- dplyr::full_join(dst1, hona, by="date")
+head(dst2)
+dst3 <- dplyr::full_join(dst2, nisa, by="date")
+head(dst3)
+
+djp <- dst3
+head(djp)
+
+djpt <- transform(djp, 
+                  suz.idx=round(100*djp$suz/djp$suz[1],1), 
+                  toy.idx=round(100*djp$toy/djp$toy[1],1), 
+                  hon.idx=round(100*djp$hon/djp$hon[1],1), 
+                  nis.idx=round(100*djp$nis/djp$nis[1],1))
+
+head(djpt)
+
+djpt <- djpt[complete.cases(djpt),]
+
+```
+
+```{r, include=FALSE}
+# Plot index chart
+
+basketplotjp <- 
+  ggplot(djpt, aes(date)) +
+  geom_line(aes(y=suz.idx, color="Suzuki")) + 
+  geom_line(aes(y=toy.idx, color="Toyota")) +
+  geom_line(aes(y=hon.idx, color="Honda")) +
+  geom_line(aes(y=nis.idx, color="Nissan")) +
+  scale_x_date(date_breaks = "months" , date_labels = "%m") +
+  labs(title = "Japan company stock movements 2020", x="Year", y="Index", color="legend") +
+  theme_minimal()
+  
+```
+
+```{r}
+plot(basketplotjp)
+```
+
+```{r, include=FALSE}
+fwrite(djpt, file = "/Users/michaelleary/Documents/GitHub/financeScreen/data/djpt.csv", row.names = TRUE) # in csv form
+```
+
+# Europe
+
+```{r, include=FALSE}
+# Generate index of components
+
+vw <- carco.spf %>% dplyr::filter((symbol=="VOW.DE") )
+test <- vw[,c(3,9)]
+vwa <- rename(test, vw=adjusted)
+
+dai <- carco.spf %>% dplyr::filter((symbol=="DAI.DE") )
+test <- dai[,c(3,9)]
+daia <- rename(test, dai=adjusted)
+
+bmw <- carco.spf %>% dplyr::filter((symbol=="BMW.DE") )
+test <- bmw[,c(3,9)]
+bmwa <- rename(test, bmw=adjusted)
+
+peu <- carco.spf %>% dplyr::filter((symbol=="UG.PA") )
+test <- peu[,c(3,9)]
+peua <- rename(test, peu=adjusted)
+
+fca <- carco.spf %>% dplyr::filter((symbol=="FCA.MI") )
+test <- fca[,c(3,9)]
+fcaa <- rename(test, fca=adjusted)
+
+dst1 <- dplyr::full_join(vwa, daia, by="date")
+head(dst1)
+dst2 <- dplyr::full_join(dst1, bmwa, by="date")
+head(dst2)
+dst3 <- dplyr::full_join(dst2, peua, by="date")
+head(dst3)
+dst4 <- dplyr::full_join(dst3, fcaa, by="date")
+head(dst4)
+
+
+deu <- dst4
+head(deu)
+
+deut <- transform(deu, 
+                  vw.idx=round(100*deu$vw/deu$vw[1],1), 
+                  dai.idx=round(100*deu$dai/deu$dai[1],1), 
+                  bmw.idx=round(100*deu$bmw/deu$bmw[1],1),
+                  peu.idx=round(100*deu$peu/deu$peu[1],1),
+                  fca.idx=round(100*deu$fca/deu$fca[1],1))
+
+head(deut)
+
+deut <- deut[complete.cases(deut),]
+
+```
+
+```{r, include=FALSE}
+# Plot index chart
+
+basketploteu <- 
+  ggplot(deut, aes(date)) +
+  geom_line(aes(y=vw.idx, color="VW")) + 
+  geom_line(aes(y=dai.idx, color="Dai")) +
+  geom_line(aes(y=bmw.idx, color="BMW")) +
+  geom_line(aes(y=peu.idx, color="Peugeot")) +
+  geom_line(aes(y=fca.idx, color="Fiat")) +
+  scale_x_date(date_breaks = "months" , date_labels = "%m") +
+  labs(title = "Europe company stock movements 2020", x="Year", y="Index", color="legend") +
+  theme_minimal()
+  
+```
+
+```{r}
+plot(basketploteu)
+```
+
+```{r, include=FALSE}
+fwrite(deut, file = "/Users/michaelleary/Documents/GitHub/financeScreen/data/deut.csv", row.names = TRUE) # in csv form
+```
+
+
+# US
+
+```{r, include=FALSE}
+# Generate index of components
+
+fd <- carco.spf %>% dplyr::filter((symbol=="F") )
+test <- fd[,c(3,9)]
+fda <- rename(test, fd=adjusted)
+
+gm <- carco.spf %>% dplyr::filter((symbol=="GM") )
+test <- gm[,c(3,9)]
+gma <- rename(test, gm=adjusted)
+
+dst1 <- dplyr::full_join(fda, gma, by="date")
+head(dst1)
+
+dus <- dst1
+head(dus)
+
+dust <- transform(dus, 
+                  fd.idx=round(100*dus$fd/dus$fd[1],1), 
+                  gm.idx=round(100*dus$gm/dus$gm[1],1))
+
+head(dust)
+
+dust <- dust[complete.cases(dust),]
+
+```
+
+```{r, include=FALSE}
+# Plot index chart
+
+basketplotus <- 
+  ggplot(dust, aes(date)) +
+  geom_line(aes(y=fd.idx, color="Ford")) + 
+  geom_line(aes(y=gm.idx, color="GM")) +
+  scale_x_date(date_breaks = "months" , date_labels = "%m") +
+  labs(title = "US company stock movements 2020", x="Year", y="Index", color="legend") +
+  theme_minimal()
+  
+```
+
+```{r}
+plot(basketplotus)
+```
+
+```{r, include=FALSE}
+fwrite(dust, file = "/Users/michaelleary/Documents/GitHub/financeScreen/data/dust.csv", row.names = TRUE) # in csv form
+```
+
+
+# China
+
+```{r, include=FALSE}
+# Generate index of components
+
+gee <- carco.spf %>% dplyr::filter((symbol=="0175.HK") )
+test <- gee[,c(3,9)]
+geea <- rename(test, gee=adjusted)
+
+don <- carco.spf %>% dplyr::filter((symbol=="0489.HK") )
+test <- don[,c(3,9)]
+dona <- rename(test, don=adjusted)
+
+saic <- carco.spf %>% dplyr::filter((symbol=="600104.SS") )
+test <- saic[,c(3,9)]
+saica <- rename(test, saic=adjusted)
+
+dst1 <- dplyr::full_join(geea, dona, by="date")
+head(dst1)
+dst2 <- dplyr::full_join(dst1, saica, by="date")
+head(dst2)
+
+dchi <- dst2
+head(dchi)
+
+dchit <- transform(dchi, 
+                  gee.idx=round(100*dchi$gee/dchi$gee[1],1), 
+                  don.idx=round(100*dchi$don/dchi$don[1],1),
+                  saic.idx=round(100*dchi$saic/dchi$saic[1],1))
+
+head(dchit)
+
+dchit <- dchit[complete.cases(dchit),]
+
+```
+
+```{r, include=FALSE}
+# Plot index chart
+
+basketplotchi <- 
+  ggplot(dchit, aes(date)) +
+  geom_line(aes(y=gee.idx, color="Geely")) + 
+  geom_line(aes(y=don.idx, color="Dongfeng")) +
+  geom_line(aes(y=saic.idx, color="SAIC")) +
+  scale_x_date(date_breaks = "months" , date_labels = "%m") +
+  labs(title = "China company stock movements 2020", x="Year", y="Index", color="legend") +
+  theme_minimal()
+  
+```
+
+```{r}
+plot(basketplotchi)
+```
+
+```{r, include=FALSE}
+fwrite(dchit, file = "/Users/michaelleary/Documents/GitHub/financeScreen/data/dchit.csv", row.names = TRUE) # in csv form
+```
+
+
+# India
+
+```{r, include=FALSE}
+# Generate index of components
+
+mar <- carco.spf %>% dplyr::filter((symbol=="MARUTI.BO") )
+test <- mar[,c(3,9)]
+mara <- rename(test, mar=adjusted)
+
+tat <- carco.spf %>% dplyr::filter((symbol=="TATAMOTORS.NS") )
+test <- tat[,c(3,9)]
+tata <- rename(test, tat=adjusted)
+
+dst1 <- dplyr::full_join(mara, tata, by="date")
+head(dst1)
+
+dind <- dst1
+head(dind)
+
+dindt <- transform(dind, 
+                  mar.idx=round(100*dind$mar/dind$mar[1],1), 
+                  tat.idx=round(100*dind$tat/dind$tat[1],1))
+
+head(dindt)
+
+dindt <- dindt[complete.cases(dindt),]
+
+```
+
+```{r, include=FALSE}
+# Plot index chart
+
+basketplotind <- 
+  ggplot(dindt, aes(date)) +
+  geom_line(aes(y=mar.idx, color="Maruti Suzuki")) + 
+  geom_line(aes(y=tat.idx, color="Tata Motors")) +
+  scale_x_date(date_breaks = "months" , date_labels = "%m") +
+  labs(title = "India company stock movements 2020", x="Year", y="Index", color="legend") +
+  theme_minimal()
+  
+```
+
+```{r}
+plot(basketplotind)
+```
+
+```{r, include=FALSE}
+fwrite(dindt, file = "/Users/michaelleary/Documents/GitHub/financeScreen/data/dindt.csv", row.names = TRUE) # in csv form
+```
+
+# Korea
+
+```{r, include=FALSE}
+# Generate index of components
+
+hyu <- carco.spf %>% dplyr::filter((symbol=="005380.KS") )
+test <- hyu[,c(3,9)]
+huya <- rename(test, huy=adjusted)
+
+dst1 <- huya
+head(dst1)
+
+dkor <- dst1
+head(dkor)
+
+dkort <- transform(dkor, 
+                  huy.idx=round(100*dkor$huy/dkor$huy[1],1))
+
+head(dkort)
+
+dkort <- dkort[complete.cases(dkort),]
+
+```
+
+```{r, include=FALSE}
+# Plot index chart
+
+basketplotkor <- 
+  ggplot(dkort, aes(date)) +
+  geom_line(aes(y=huy.idx, color="Hyundai")) + 
+  scale_x_date(date_breaks = "months" , date_labels = "%m") +
+  labs(title = "Korea company stock movements 2020", x="Year", y="Index", color="legend") +
+  theme_minimal()
+  
+```
+
+```{r}
+plot(basketplotkor)
+```
+
+```{r, include=FALSE}
+fwrite(dkort, file = "/Users/michaelleary/Documents/GitHub/financeScreen/data/dkort.csv", row.names = TRUE) # in csv form
+```
+
+# Full Index of all itmes
+
+```{r, include=FALSE}
+# Generate index of components
+
+dcomb1 <- dplyr::full_join(djp, deu, by="date")
+head(dcomb1)
+dcomb2 <- dplyr::full_join(dcomb1, dus, by="date")
+head(dcomb2)
+dcomb3 <- dplyr::full_join(dcomb2, dchi, by="date")
+head(dcomb3)
+dcomb4 <- dplyr::full_join(dcomb3, dind, by="date")
+head(dcomb4)
+dcomb5 <- dplyr::full_join(dcomb4, dkor, by="date")
+head(dcomb5)
+
+dcomb5t <- transform(dcomb5, 
+                  suz.idx=round(100*dcomb5$suz/dcomb5$suz[1],1), 
+                  toy.idx=round(100*dcomb5$toy/dcomb5$toy[1], 1),
+                  hon.idx=round(100*dcomb5$hon/dcomb5$hon[1],1), 
+                  nis.idx=round(100*dcomb5$nis/dcomb5$nis[1], 1),
+                  vw.idx=round(100*dcomb5$vw/dcomb5$vw[1],1), 
+                  dai.idx=round(100*dcomb5$dai/dcomb5$dai[1],1), 
+                  bmw.idx=round(100*dcomb5$bmw/dcomb5$bmw[1],1),
+                  peu.idx=round(100*dcomb5$peu/dcomb5$peu[1],1),
+                  fca.idx=round(100*dcomb5$fca/dcomb5$fca[1],1),
+                 fd.idx=round(100*dcomb5$fd/dcomb5$fd[1], 1),
+                  gm.idx=round(100*dcomb5$gm/dcomb5$gm[1],1),
+                    gee.idx=round(100*dcomb5$gee/dcomb5$gee[1],1), 
+                  don.idx=round(100*dcomb5$don/dcomb5$don[1],1),
+                  saic.idx=round(100*dcomb5$saic/dcomb5$saic[1],1),
+                    mar.idx=round(100*dcomb5$mar/dcomb5$mar[1], 1),
+                  tat.idx=round(100*dcomb5$tat/dcomb5$tat[1],1),
+                  huy.idx=round(100*dcomb5$huy/dcomb5$huy[1],1))                    
+                     
+  
+head(dcomb5t)
+
+dcomb5t <- dcomb5t[complete.cases(dcomb5t),]
+
+```
+
+```{r, include=FALSE}
+# Plot index chart
+
+basketplotcomb <- 
+  ggplot(dcomb5t, aes(date)) +
+   geom_line(aes(y=suz.idx, color="Suzuki")) + 
+  geom_line(aes(y=toy.idx, color="Toyota")) +
+  geom_line(aes(y=hon.idx, color="Honda")) +
+  geom_line(aes(y=nis.idx, color="Nissan")) + 
+    geom_line(aes(y=vw.idx, color="VW")) + 
+  geom_line(aes(y=dai.idx, color="Dai")) +
+  geom_line(aes(y=bmw.idx, color="BMW")) +
+  geom_line(aes(y=peu.idx, color="Peugeot")) +
+  geom_line(aes(y=fca.idx, color="Fiat")) +
+  geom_line(aes(y=fd.idx, color="Ford")) + 
+  geom_line(aes(y=gm.idx, color="GM")) +
+   geom_line(aes(y=gee.idx, color="Geely")) + 
+  geom_line(aes(y=don.idx, color="Dongfeng")) +
+  geom_line(aes(y=saic.idx, color="SAIC")) +
+  geom_line(aes(y=mar.idx, color="Maruti Suzuki")) + 
+  geom_line(aes(y=tat.idx, color="Tata Motors")) +
+  geom_line(aes(y=huy.idx, color="Hyundai")) + 
+  scale_x_date(date_breaks = "months" , date_labels = "%m") +
+  labs(title = "Company stock movements 2020", x="Year", y="Index", color="legend") +
+  theme_minimal()
+  
+```
+
+```{r}
+plot(basketplotcomb)
+```
+
+```{r, include=FALSE}
+fwrite(dcomb5t, file = "/Users/michaelleary/Documents/GitHub/financeScreen/data/dcomb5t.csv", row.names = TRUE) # in csv form
+```
+
+\newpage
+# Index value table
+
+```{r, include=FALSE}
+head(dcomb5t)
+glimpse(dcomb5t)
+index <- dcomb5t[,-c(2:18)]
+
+```
+
+```{r, include=FALSE}
+
+tic <- index
+
+namesC <- c("date", "suz", "toy", "hon", "nis", "vw", "da", "bm", "peu", "fia", "fd", "gm", "gee", "don", "sac", "mar", "tat", "hyu")
+
+names(tic) <- namesC #https://honingds.com/blog/dplyr-rename/
+
+```
+
+```{r}
+# https://bookdown.org/yihui/rmarkdown-cookbook/kable.html
+knitr::kable(head(tic[,1:17]), "markdown",
+             caption = "Index values for car maker share performace in 2020",
+             booktabs = TRUE,
+             longtable = FALSE )
+
+```
+
+```{r }
+
+knitr::kable(tail(tic[,1:17]), "markdown",
+             caption = "Index values for car maker share performace in 2020",
+             booktabs = TRUE,
+             longtable = FALSE )
+
+```
+
+
+
+
