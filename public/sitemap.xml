@@ -3,12 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/tags/agriculture/</loc>
-    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+    <loc>/post/2020/06/07/asset-appraisal/</loc>
+    <lastmod>2020-06-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/</loc>
+    <lastmod>2020-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2020-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2020-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/r/</loc>
+    <lastmod>2020-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/tools/</loc>
+    <lastmod>2020-06-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/agriculture/</loc>
     <lastmod>2020-06-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -19,26 +49,6 @@
   
   <url>
     <loc>/post/2020/06/06/food-consumption-by-country/</loc>
-    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2020-06-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -69,11 +79,6 @@
   
   <url>
     <loc>/post/2020/06/02/remap-factor-levels-column-add-reorder-df/</loc>
-    <lastmod>2020-06-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/tools/</loc>
     <lastmod>2020-06-02T00:00:00+00:00</lastmod>
   </url>
   

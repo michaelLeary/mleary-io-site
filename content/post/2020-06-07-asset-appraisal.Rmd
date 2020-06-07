@@ -1,0 +1,54 @@
+---
+title: Asset appraisal
+subtitle: "investment committee memo"
+author: michael
+date: '2020-06-07'
+slug: asset-appraisal
+categories:
+  - R
+tags:
+  - Tools
+output:
+  tufte::tufte_html: default
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+bibliography: skeleton.bib
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+library(tufte)
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+```
+
+# Consider
+
+What we want to know in evaluation of investments. 
+
+1. What has happened over the past two years?
+1. What has been purchased?  
+1. Why were the assets purchased, purchased?
+1. How have they been doing?
+1. Why were they purchased that way?
+1. How do you make the purchases happen?
+1. What are the plans for the future?
+1. Why have these plans?
+1. What do you see for the future?
+1. How do we know for sure?
+1. What is the risk?
+1. How do we plan to make money?
+1. How do we protect our investment? Who/why
+1. What do you want? What is memo asking for? 
+1. How do you justify the request? 
+
+
+```{r bib, include=FALSE}
+# create a bib file for the R packages used in this document
+knitr::write_bib(c('base', 'rmarkdown'), file = 'skeleton.bib')
+```

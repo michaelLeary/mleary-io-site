@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 06 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tools</title>
+      <link>/tags/tools/</link>
+      <pubDate>Sun, 07 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/tools/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Agriculture</title>
@@ -44,15 +53,6 @@
       <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/r-markdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tools</title>
-      <link>/tags/tools/</link>
-      <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/tools/</guid>
       <description></description>
     </item>
     
