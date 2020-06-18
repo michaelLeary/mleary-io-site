@@ -2,7 +2,7 @@
 title: Home
 ---
 
-## Worked thought.
+## Worked thought
 
 
 
