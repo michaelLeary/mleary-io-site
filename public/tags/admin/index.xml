@@ -6,10 +6,20 @@
     <description>Recent content in admin on Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/admin/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Special day calendar </title>
+      <link>/post/2020/06/18/special-day-calendar/</link>
+      <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/06/18/special-day-calendar/</guid>
+      <description>Task - R calendar generation to celebrate special day.
+Source: https://stackoverflow.com/questions/7919998/basic-calendar-display-in-r</description>
+    </item>
     
     <item>
       <title>Unresolved questions</title>

@@ -12,6 +12,33 @@
     
     
     <item>
+      <title>admin</title>
+      <link>/tags/admin/</link>
+      <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/admin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>birthday</title>
+      <link>/tags/birthday/</link>
+      <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/birthday/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>celebration</title>
+      <link>/tags/celebration/</link>
+      <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/celebration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>China</title>
       <link>/tags/china/</link>
       <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
@@ -44,15 +71,6 @@
       <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/trade/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>admin</title>
-      <link>/tags/admin/</link>
-      <pubDate>Sun, 07 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/admin/</guid>
       <description></description>
     </item>
     
