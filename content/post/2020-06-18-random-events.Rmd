@@ -23,6 +23,7 @@ Corporate links:
 1. [Toray](https://www.toray.com/ir/)
 1. [NEC](https://www.nec.com/en/global/ir/index.html)
 1. [Nel](https://nelhydrogen.com/investor-relations/#shareholders)
+1. [Maruti](https://www.marutisuzuki.com/corporate/investors)
 
 ##### Source for calendar is the [TeachingDemos](https://cran.r-project.org/web/packages/TeachingDemos/TeachingDemos.pdf) package in R.
 
@@ -82,7 +83,7 @@ text(0,0.1,'Suzuki Y48 f.d.', adj=c(0,0))
 
 setday(30)
 text(0,0.5,'', adj=c(0,0))
-text(0,0.3,'', adj=c(0,0))
+text(0,0.3,'Maruti Q1results', adj=c(0,0))
 text(0,0.1,'Nidec Y60 f.d.', adj=c(0,0))
 
 ```
@@ -127,6 +128,11 @@ setday(9)
 text(0,0.5,'', adj=c(0,0))
 text(0,0.3,'', adj=c(0,0))
 text(0,0.1,'Toray Q1 results', adj=c(0,0))
+
+setday(15)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Maruti R60 f.d.', adj=c(0,0))
 
 setday(26)
 text(0,0.5,'', adj=c(0,0))
