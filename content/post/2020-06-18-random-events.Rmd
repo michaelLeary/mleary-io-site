@@ -1,0 +1,137 @@
+---
+title: random events
+author: michael
+date: '2020-06-18'
+slug: random-events
+categories:
+  - R
+tags:
+  - Finance
+  - Stocks
+  - reporting
+  - AGM
+---
+
+Task - random forward events 
+
+Corporate links: 
+
+1. [BHP](https://www.bhp.com/investor-centre/)
+1. [Suzuki](https://www.globalsuzuki.com/ir/library/)
+1. [Fanuc](https://www.fanuc.co.jp/en/ir/announce/index.html)
+1. [Nidec](https://www.nidec.com/en/ir/news/)
+1. [Toray](https://www.toray.com/ir/)
+1. [NEC](https://www.nec.com/en/global/ir/index.html)
+1. [Nel](https://nelhydrogen.com/investor-relations/#shareholders)
+
+##### Source for calendar is the [TeachingDemos](https://cran.r-project.org/web/packages/TeachingDemos/TeachingDemos.pdf) package in R.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages, include=FALSE}
+pkgs = c("TeachingDemos") 
+# lubridate for %m+% function
+# rvest for web scraping
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+```{r Juneevents, echo=FALSE}
+setday <- cal(6, 2020)
+setday(1)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'NEC Y40 f.d.', adj=c(0,0))
+
+setday(15)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Nel placement', adj=c(0,0))
+
+setday(17)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Nidec AGM', adj=c(0,0))
+
+setday(22)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'NEC AGM', adj=c(0,0))
+
+setday(23)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Toray AGM', adj=c(0,0))
+
+setday(24)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Toray Y8 f.d.', adj=c(0,0))
+
+setday(26)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'Fanuc AGM', adj=c(0,0))
+text(0,0.1,'Suzuki AGM', adj=c(0,0))
+
+setday(29)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'Fanuc Y174 f.d.', adj=c(0,0))
+text(0,0.1,'Suzuki Y48 f.d.', adj=c(0,0))
+
+setday(30)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Nidec Y60 f.d.', adj=c(0,0))
+
+```
+
+```{r Julyevents, echo=FALSE}
+setday <- cal(7, 2020)
+setday(21)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'BHP op.review', adj=c(0,0))
+
+setday(24)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Nidec Q1results', adj=c(0,0))
+
+setday(29)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Fanuc Q1results', adj=c(0,0))
+
+setday(31)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'NEC Q1results', adj=c(0,0))
+
+```
+
+```{r Augevents, echo=FALSE}
+setday <- cal(8, 2020)
+setday(18)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'BHP FYresults', adj=c(0,0))
+
+setday(5)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Suzuki Q1 results', adj=c(0,0))
+
+setday(9)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Toray Q1 results', adj=c(0,0))
+
+setday(26)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Nel 1H results', adj=c(0,0))
+
+```
+

@@ -6,10 +6,21 @@
     <description>Recent content in Finance on Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/finance/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>random events</title>
+      <link>/post/2020/06/18/random-events/</link>
+      <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/06/18/random-events/</guid>
+      <description>  Task - random forward events
+Corporate links:
+BHP Suzuki Fanuc Nidec Toray NEC Nel  Source for calendar is the TeachingDemos package in R.  </description>
+    </item>
     
     <item>
       <title>Car makers industry share  performance </title>
