@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ports on Thoughts</title>
+    <link>/tags/ports/</link>
+    <description>Recent content in Ports on Thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 18 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/ports/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>India China container port rank 2018 </title>
+      <link>/post/2020/06/18/india-china-container-port-rank-2018/</link>
+      <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/06/18/india-china-container-port-rank-2018/</guid>
+      <description>Task was to extract data from an html table and arrange it in a way to provide small conclusions from data.
+In this example sought to gain a sense of where India’s ports stand relative to world ports in terms of container thoughput. The ranking shows that India’s ports have some way to go to catch up with the throughput by many of China’s ports.
+ After finding sample data from https://www.</description>
+    </item>
+    
+  </channel>
+</rss>

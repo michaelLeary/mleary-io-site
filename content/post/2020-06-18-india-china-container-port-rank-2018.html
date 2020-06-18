@@ -1,0 +1,2205 @@
+---
+title: 'India China container port rank 2018 '
+author: michael
+date: '2020-06-18'
+slug: india-china-container-port-rank-2018
+categories:
+  - R
+tags:
+  - India
+  - China
+  - Ports
+  - Trade
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>Task was to extract data from an html table and arrange it in a way to provide small conclusions from data.</p>
+<ol style="list-style-type: decimal">
+<li><p>In this example sought to gain a sense of where India’s ports stand relative to world ports in terms of container thoughput. The ranking shows that India’s ports have some way to go to catch up with the throughput by many of China’s ports.</p></li>
+<li><p>After finding sample data from <a href="https://www.ajot.com/premium/ajot-ajots-top-100-containerports-a-to-z/P0">https://www.ajot.com/</a> by way of a google search the table of data was extracted. Data in the table encoded. And then the table data sorted and tabulated.</p></li>
+</ol>
+<p>The value added to the data from the website was in ranking the data by 2018 column, the addition of percent change column, and, filtering out the records for China and India from the broader set of 100 top container ports.</p>
+<p>Reference:
+<a href="https://www.ajot.com/premium/ajot-ajots-top-100-containerports-a-to-z/P0" class="uri">https://www.ajot.com/premium/ajot-ajots-top-100-containerports-a-to-z/P0</a></p>
+<div style="page-break-after: always;"></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tabtable2">Table 1: </span>Containers by port- China and India
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Port
+</th>
+<th style="text-align:left;">
+Nation
+</th>
+<th style="text-align:right;">
+2017 TEUs
+</th>
+<th style="text-align:right;">
+2018 TEUs
+</th>
+<th style="text-align:right;">
+pctgrowth
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Shanghai
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+40233000
+</td>
+<td style="text-align:right;">
+42010000
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Shenzhen
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+25208700
+</td>
+<td style="text-align:right;">
+27736000
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ningbo-Zhoushan
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+24607000
+</td>
+<td style="text-align:right;">
+26351000
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Guangzhou
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+20370000
+</td>
+<td style="text-align:right;">
+21870000
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Qingdao
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+18262000
+</td>
+<td style="text-align:right;">
+19315000
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tianjin
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+15040000
+</td>
+<td style="text-align:right;">
+16007000
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Xiamen
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+10380000
+</td>
+<td style="text-align:right;">
+10007000
+</td>
+<td style="text-align:right;">
+-4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dalian
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+9707000
+</td>
+<td style="text-align:right;">
+9770000
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Yingkou
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+6278000
+</td>
+<td style="text-align:right;">
+6490000
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jawaharlal Nehru
+</td>
+<td style="text-align:left;">
+India
+</td>
+<td style="text-align:right;">
+4833397
+</td>
+<td style="text-align:right;">
+5005000
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lianyungang
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+4710700
+</td>
+<td style="text-align:right;">
+4750000
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mundra
+</td>
+<td style="text-align:left;">
+India
+</td>
+<td style="text-align:right;">
+4240260
+</td>
+<td style="text-align:right;">
+4440000
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rizhao
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+3237700
+</td>
+<td style="text-align:right;">
+4000000
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dongguan
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+3910000
+</td>
+<td style="text-align:right;">
+3500000
+</td>
+<td style="text-align:right;">
+-10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fuzhou
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+3007000
+</td>
+<td style="text-align:right;">
+3340000
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nanjing
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+3170000
+</td>
+<td style="text-align:right;">
+3230000
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Yantai
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+2702000
+</td>
+<td style="text-align:right;">
+3000000
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tangshan
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+2530303
+</td>
+<td style="text-align:right;">
+2960000
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Quanzhou
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+2303000
+</td>
+<td style="text-align:right;">
+2400000
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Zhuhai
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+2270000
+</td>
+<td style="text-align:right;">
+2310000
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Haikou
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+1640000
+</td>
+<td style="text-align:right;">
+1850000
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chennai
+</td>
+<td style="text-align:left;">
+India
+</td>
+<td style="text-align:right;">
+1549457
+</td>
+<td style="text-align:right;">
+1610000
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dandong
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+1866000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Taicang
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+4514000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tabtable">Table 2: </span>Containers by port
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Port
+</th>
+<th style="text-align:left;">
+Nation
+</th>
+<th style="text-align:right;">
+2017 TEUs
+</th>
+<th style="text-align:right;">
+2018 TEUs
+</th>
+<th style="text-align:right;">
+pctgrowth
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Shanghai
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+40233000
+</td>
+<td style="text-align:right;">
+42010000
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Singapore
+</td>
+<td style="text-align:left;">
+Singapore
+</td>
+<td style="text-align:right;">
+33666600
+</td>
+<td style="text-align:right;">
+36599000
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Shenzhen
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+25208700
+</td>
+<td style="text-align:right;">
+27736000
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ningbo-Zhoushan
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+24607000
+</td>
+<td style="text-align:right;">
+26351000
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Guangzhou
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+20370000
+</td>
+<td style="text-align:right;">
+21870000
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Busan
+</td>
+<td style="text-align:left;">
+Korea
+</td>
+<td style="text-align:right;">
+20493475
+</td>
+<td style="text-align:right;">
+21663000
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hong Kong
+</td>
+<td style="text-align:left;">
+China/SAR
+</td>
+<td style="text-align:right;">
+20770000
+</td>
+<td style="text-align:right;">
+19600000
+</td>
+<td style="text-align:right;">
+-6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Qingdao
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+18262000
+</td>
+<td style="text-align:right;">
+19315000
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tianjin
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+15040000
+</td>
+<td style="text-align:right;">
+16007000
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dubai
+</td>
+<td style="text-align:left;">
+UAE
+</td>
+<td style="text-align:right;">
+15368000
+</td>
+<td style="text-align:right;">
+14950000
+</td>
+<td style="text-align:right;">
+-3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rotterdam
+</td>
+<td style="text-align:left;">
+Netherlands
+</td>
+<td style="text-align:right;">
+13734334
+</td>
+<td style="text-align:right;">
+14513000
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Port Klang
+</td>
+<td style="text-align:left;">
+Malaysia
+</td>
+<td style="text-align:right;">
+11978466
+</td>
+<td style="text-align:right;">
+12320000
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Antwerp
+</td>
+<td style="text-align:left;">
+Belgium
+</td>
+<td style="text-align:right;">
+10450897
+</td>
+<td style="text-align:right;">
+11100000
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kaohsiung
+</td>
+<td style="text-align:left;">
+Taiwan/China
+</td>
+<td style="text-align:right;">
+10271018
+</td>
+<td style="text-align:right;">
+10450000
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Xiamen
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+10380000
+</td>
+<td style="text-align:right;">
+10007000
+</td>
+<td style="text-align:right;">
+-4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dalian
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+9707000
+</td>
+<td style="text-align:right;">
+9770000
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Los Angeles
+</td>
+<td style="text-align:left;">
+USA
+</td>
+<td style="text-align:right;">
+9343192
+</td>
+<td style="text-align:right;">
+9458751
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tanjung Pelepas
+</td>
+<td style="text-align:left;">
+Malaysia
+</td>
+<td style="text-align:right;">
+8260610
+</td>
+<td style="text-align:right;">
+8960000
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hamburg
+</td>
+<td style="text-align:left;">
+Germany
+</td>
+<td style="text-align:right;">
+8860000
+</td>
+<td style="text-align:right;">
+8730000
+</td>
+<td style="text-align:right;">
+-1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Long Beach
+</td>
+<td style="text-align:left;">
+USA
+</td>
+<td style="text-align:right;">
+7544507
+</td>
+<td style="text-align:right;">
+8091029
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Laem Chabang
+</td>
+<td style="text-align:left;">
+Thailand
+</td>
+<td style="text-align:right;">
+7670000
+</td>
+<td style="text-align:right;">
+8070000
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tanjung Priok
+</td>
+<td style="text-align:left;">
+Indonesia
+</td>
+<td style="text-align:right;">
+6090000
+</td>
+<td style="text-align:right;">
+7640000
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PANYNJ
+</td>
+<td style="text-align:left;">
+USA
+</td>
+<td style="text-align:right;">
+6710817
+</td>
+<td style="text-align:right;">
+7179792
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Colombo
+</td>
+<td style="text-align:left;">
+Sri Lanka
+</td>
+<td style="text-align:right;">
+6209000
+</td>
+<td style="text-align:right;">
+7050000
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Yingkou
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+6278000
+</td>
+<td style="text-align:right;">
+6490000
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ho Chi Minh City
+</td>
+<td style="text-align:left;">
+Vietnam
+</td>
+<td style="text-align:right;">
+6155535
+</td>
+<td style="text-align:right;">
+6330000
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bremen/Bremerhaven
+</td>
+<td style="text-align:left;">
+Germany
+</td>
+<td style="text-align:right;">
+5510000
+</td>
+<td style="text-align:right;">
+5427000
+</td>
+<td style="text-align:right;">
+-2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Valencia
+</td>
+<td style="text-align:left;">
+Spain
+</td>
+<td style="text-align:right;">
+4832156
+</td>
+<td style="text-align:right;">
+5104000
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Manila
+</td>
+<td style="text-align:left;">
+Philippines
+</td>
+<td style="text-align:right;">
+4782240
+</td>
+<td style="text-align:right;">
+5050000
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jawaharlal Nehru
+</td>
+<td style="text-align:left;">
+India
+</td>
+<td style="text-align:right;">
+4833397
+</td>
+<td style="text-align:right;">
+5005000
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Piraeus
+</td>
+<td style="text-align:left;">
+Greece
+</td>
+<td style="text-align:right;">
+4145079
+</td>
+<td style="text-align:right;">
+4908000
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Algeciras
+</td>
+<td style="text-align:left;">
+Spain
+</td>
+<td style="text-align:right;">
+4389836
+</td>
+<td style="text-align:right;">
+4772000
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lianyungang
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+4710700
+</td>
+<td style="text-align:right;">
+4750000
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tokyo
+</td>
+<td style="text-align:left;">
+Japan
+</td>
+<td style="text-align:right;">
+4500156
+</td>
+<td style="text-align:right;">
+4570795
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mundra
+</td>
+<td style="text-align:left;">
+India
+</td>
+<td style="text-align:right;">
+4240260
+</td>
+<td style="text-align:right;">
+4440000
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Savannah
+</td>
+<td style="text-align:left;">
+USA
+</td>
+<td style="text-align:right;">
+4046212
+</td>
+<td style="text-align:right;">
+4351971
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Colon
+</td>
+<td style="text-align:left;">
+Panama
+</td>
+<td style="text-align:right;">
+3891209
+</td>
+<td style="text-align:right;">
+4320000
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Felixstowe
+</td>
+<td style="text-align:left;">
+UK
+</td>
+<td style="text-align:right;">
+3849700
+</td>
+<td style="text-align:right;">
+4161000
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jeddah
+</td>
+<td style="text-align:left;">
+Saudi Arabia
+</td>
+<td style="text-align:right;">
+4150000
+</td>
+<td style="text-align:right;">
+4120000
+</td>
+<td style="text-align:right;">
+-1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Santos
+</td>
+<td style="text-align:left;">
+Brazil
+</td>
+<td style="text-align:right;">
+3853719
+</td>
+<td style="text-align:right;">
+4120000
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rizhao
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+3237700
+</td>
+<td style="text-align:right;">
+4000000
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NW Seaport Alliance
+</td>
+<td style="text-align:left;">
+USA
+</td>
+<td style="text-align:right;">
+3665329
+</td>
+<td style="text-align:right;">
+3797626
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dongguan
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+3910000
+</td>
+<td style="text-align:right;">
+3500000
+</td>
+<td style="text-align:right;">
+-10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tanger Med
+</td>
+<td style="text-align:left;">
+Morocco
+</td>
+<td style="text-align:right;">
+3312409
+</td>
+<td style="text-align:right;">
+3472451
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Barcelona
+</td>
+<td style="text-align:left;">
+Spain
+</td>
+<td style="text-align:right;">
+2968757
+</td>
+<td style="text-align:right;">
+3423000
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vancouver
+</td>
+<td style="text-align:left;">
+Canada
+</td>
+<td style="text-align:right;">
+3252225
+</td>
+<td style="text-align:right;">
+3396000
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Salalah
+</td>
+<td style="text-align:left;">
+Oman
+</td>
+<td style="text-align:right;">
+3946421
+</td>
+<td style="text-align:right;">
+3390000
+</td>
+<td style="text-align:right;">
+-14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fuzhou
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+3007000
+</td>
+<td style="text-align:right;">
+3340000
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Marsaxlokk
+</td>
+<td style="text-align:left;">
+Malta
+</td>
+<td style="text-align:right;">
+3150000
+</td>
+<td style="text-align:right;">
+3310000
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nanjing
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+3170000
+</td>
+<td style="text-align:right;">
+3230000
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cai Mep
+</td>
+<td style="text-align:left;">
+Vietnam
+</td>
+<td style="text-align:right;">
+3065014
+</td>
+<td style="text-align:right;">
+3200000
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ambarli
+</td>
+<td style="text-align:left;">
+Turkey
+</td>
+<td style="text-align:right;">
+3131621
+</td>
+<td style="text-align:right;">
+3170000
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Incheon
+</td>
+<td style="text-align:left;">
+Korea
+</td>
+<td style="text-align:right;">
+3050000
+</td>
+<td style="text-align:right;">
+3110000
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Manzanillo
+</td>
+<td style="text-align:left;">
+Philippines
+</td>
+<td style="text-align:right;">
+2830370
+</td>
+<td style="text-align:right;">
+3080000
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Port Said
+</td>
+<td style="text-align:left;">
+Egypt
+</td>
+<td style="text-align:right;">
+2968308
+</td>
+<td style="text-align:right;">
+3050000
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Melbourne
+</td>
+<td style="text-align:left;">
+Australia
+</td>
+<td style="text-align:right;">
+2497000
+</td>
+<td style="text-align:right;">
+3010000
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Yokohama
+</td>
+<td style="text-align:left;">
+Japan
+</td>
+<td style="text-align:right;">
+2926698
+</td>
+<td style="text-align:right;">
+3003000
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Yantai
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+2702000
+</td>
+<td style="text-align:right;">
+3000000
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tangshan
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+2530303
+</td>
+<td style="text-align:right;">
+2960000
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Callao
+</td>
+<td style="text-align:left;">
+Peru
+</td>
+<td style="text-align:right;">
+2250200
+</td>
+<td style="text-align:right;">
+2950000
+</td>
+<td style="text-align:right;">
+31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Durban
+</td>
+<td style="text-align:left;">
+South Africa
+</td>
+<td style="text-align:right;">
+2699978
+</td>
+<td style="text-align:right;">
+2950000
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kobe
+</td>
+<td style="text-align:left;">
+Japan
+</td>
+<td style="text-align:right;">
+2924179
+</td>
+<td style="text-align:right;">
+2940000
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chittagong
+</td>
+<td style="text-align:left;">
+Bangladesh
+</td>
+<td style="text-align:right;">
+2566597
+</td>
+<td style="text-align:right;">
+2900000
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Le Havre
+</td>
+<td style="text-align:left;">
+France
+</td>
+<td style="text-align:right;">
+2870000
+</td>
+<td style="text-align:right;">
+2880000
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nagoya
+</td>
+<td style="text-align:left;">
+Japan
+</td>
+<td style="text-align:right;">
+2784109
+</td>
+<td style="text-align:right;">
+2880000
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cartagena
+</td>
+<td style="text-align:left;">
+Colombia
+</td>
+<td style="text-align:right;">
+2663415
+</td>
+<td style="text-align:right;">
+2860000
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Virginia/Norfolk
+</td>
+<td style="text-align:left;">
+USA
+</td>
+<td style="text-align:right;">
+2841016
+</td>
+<td style="text-align:right;">
+2855913
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Houston
+</td>
+<td style="text-align:left;">
+USA
+</td>
+<td style="text-align:right;">
+2459107
+</td>
+<td style="text-align:right;">
+2699850
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sydney
+</td>
+<td style="text-align:left;">
+Australia
+</td>
+<td style="text-align:right;">
+2530122
+</td>
+<td style="text-align:right;">
+2650000
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Genoa
+</td>
+<td style="text-align:left;">
+Italy
+</td>
+<td style="text-align:right;">
+2622200
+</td>
+<td style="text-align:right;">
+2609000
+</td>
+<td style="text-align:right;">
+-1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Oakland
+</td>
+<td style="text-align:left;">
+USA
+</td>
+<td style="text-align:right;">
+2420837
+</td>
+<td style="text-align:right;">
+2546355
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Osaka
+</td>
+<td style="text-align:left;">
+Japan
+</td>
+<td style="text-align:right;">
+2326852
+</td>
+<td style="text-align:right;">
+2400000
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Quanzhou
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+2303000
+</td>
+<td style="text-align:right;">
+2400000
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Yeosu Gwangyang
+</td>
+<td style="text-align:left;">
+Korea
+</td>
+<td style="text-align:right;">
+2230000
+</td>
+<td style="text-align:right;">
+2400000
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Karachi
+</td>
+<td style="text-align:left;">
+Pakistan
+</td>
+<td style="text-align:right;">
+2224000
+</td>
+<td style="text-align:right;">
+2350000
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Charleston
+</td>
+<td style="text-align:left;">
+USA
+</td>
+<td style="text-align:right;">
+2177550
+</td>
+<td style="text-align:right;">
+2320000
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Zhuhai
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+2270000
+</td>
+<td style="text-align:right;">
+2310000
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gioia Tauro
+</td>
+<td style="text-align:left;">
+Italy
+</td>
+<td style="text-align:right;">
+2448600
+</td>
+<td style="text-align:right;">
+2301000
+</td>
+<td style="text-align:right;">
+-6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+King Abdullah
+</td>
+<td style="text-align:left;">
+Saudi Arabia
+</td>
+<td style="text-align:right;">
+1695322
+</td>
+<td style="text-align:right;">
+2300000
+</td>
+<td style="text-align:right;">
+36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+St Petersburg
+</td>
+<td style="text-align:left;">
+Russia
+</td>
+<td style="text-align:right;">
+1848700
+</td>
+<td style="text-align:right;">
+2133000
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Guayaquil
+</td>
+<td style="text-align:left;">
+Ecuador
+</td>
+<td style="text-align:right;">
+1871591
+</td>
+<td style="text-align:right;">
+2060000
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Balboa
+</td>
+<td style="text-align:left;">
+Panama
+</td>
+<td style="text-align:right;">
+2905049
+</td>
+<td style="text-align:right;">
+2050000
+</td>
+<td style="text-align:right;">
+-29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bandar Abbas
+</td>
+<td style="text-align:left;">
+Iran
+</td>
+<td style="text-align:right;">
+2607000
+</td>
+<td style="text-align:right;">
+2020000
+</td>
+<td style="text-align:right;">
+-23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Khorfakkan
+</td>
+<td style="text-align:left;">
+Iran
+</td>
+<td style="text-align:right;">
+2321360
+</td>
+<td style="text-align:right;">
+2000000
+</td>
+<td style="text-align:right;">
+-14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Southampton
+</td>
+<td style="text-align:left;">
+UK
+</td>
+<td style="text-align:right;">
+2040000
+</td>
+<td style="text-align:right;">
+1995000
+</td>
+<td style="text-align:right;">
+-2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gdansk
+</td>
+<td style="text-align:left;">
+Poland
+</td>
+<td style="text-align:right;">
+1593761
+</td>
+<td style="text-align:right;">
+1949000
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Haikou
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+1640000
+</td>
+<td style="text-align:right;">
+1850000
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kingston
+</td>
+<td style="text-align:left;">
+Jamaica
+</td>
+<td style="text-align:right;">
+1681706
+</td>
+<td style="text-align:right;">
+1830000
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sines
+</td>
+<td style="text-align:left;">
+Portugal
+</td>
+<td style="text-align:right;">
+1669057
+</td>
+<td style="text-align:right;">
+1750000
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Taichung
+</td>
+<td style="text-align:left;">
+China/Taiwan
+</td>
+<td style="text-align:right;">
+1660663
+</td>
+<td style="text-align:right;">
+1710000
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+London
+</td>
+<td style="text-align:left;">
+UK
+</td>
+<td style="text-align:right;">
+2431000
+</td>
+<td style="text-align:right;">
+1700000
+</td>
+<td style="text-align:right;">
+-30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Montreal
+</td>
+<td style="text-align:left;">
+Canada
+</td>
+<td style="text-align:right;">
+1537669
+</td>
+<td style="text-align:right;">
+1679351
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mersin
+</td>
+<td style="text-align:left;">
+Turkey
+</td>
+<td style="text-align:right;">
+1592000
+</td>
+<td style="text-align:right;">
+1660000
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Taipei
+</td>
+<td style="text-align:left;">
+China/Taiwan
+</td>
+<td style="text-align:right;">
+1561743
+</td>
+<td style="text-align:right;">
+1660000
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chennai
+</td>
+<td style="text-align:left;">
+India
+</td>
+<td style="text-align:right;">
+1549457
+</td>
+<td style="text-align:right;">
+1610000
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Zeebrugge
+</td>
+<td style="text-align:left;">
+Belgium
+</td>
+<td style="text-align:right;">
+1580000
+</td>
+<td style="text-align:right;">
+1600907
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dammam
+</td>
+<td style="text-align:left;">
+Saudi Arabia
+</td>
+<td style="text-align:right;">
+1582388
+</td>
+<td style="text-align:right;">
+1540000
+</td>
+<td style="text-align:right;">
+-3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Alexandria
+</td>
+<td style="text-align:left;">
+Egypt
+</td>
+<td style="text-align:right;">
+1613000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dandong
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+1866000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Taicang
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+4514000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tanjung Perak
+</td>
+<td style="text-align:left;">
+Indonesia
+</td>
+<td style="text-align:right;">
+3553370
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>

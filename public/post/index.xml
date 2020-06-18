@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>India China container port rank 2018 </title>
+      <link>/post/2020/06/18/india-china-container-port-rank-2018/</link>
+      <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/06/18/india-china-container-port-rank-2018/</guid>
+      <description>Task was to extract data from an html table and arrange it in a way to provide small conclusions from data.
+In this example sought to gain a sense of where India’s ports stand relative to world ports in terms of container thoughput. The ranking shows that India’s ports have some way to go to catch up with the throughput by many of China’s ports.
+ After finding sample data from https://www.</description>
+    </item>
     
     <item>
       <title>Asset appraisal</title>
@@ -62,15 +73,6 @@ url &amp;lt;- &amp;quot;https://www.nu3.de/blogs/nutrition/food-carbon-footprint
       
       <guid>/post/2020/06/05/copper-price/</guid>
       <description>The trigger to the note is the recent rise in copper, iron ore, and, several agricultural commodities including rice and sugar. Iron ore and copper are typically associated with a rise in industrial activity. By examining the recent rise in context of past movements we hoped to gain a deeper appreciation of where things stand with these two commodities. A further hope was to setup a method to extract such price data for these price series efficiently in future.</description>
-    </item>
-    
-    <item>
-      <title>First post test</title>
-      <link>/post/2020/06/03/first-post-test/</link>
-      <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2020/06/03/first-post-test/</guid>
-      <description>This is a test note</description>
     </item>
     
     <item>

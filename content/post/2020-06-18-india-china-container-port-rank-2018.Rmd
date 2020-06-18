@@ -1,0 +1,113 @@
+---
+title: 'India China container port rank 2018 '
+author: michael
+date: '2020-06-18'
+slug: india-china-container-port-rank-2018
+categories:
+  - R
+tags:
+  - India
+  - China
+  - Ports
+  - Trade
+---
+
+Task was to extract data from an html table and arrange it in a way to provide small conclusions from data. 
+
+1. In this example sought to gain a sense of where India's ports stand relative to world ports in terms of container thoughput. The ranking shows that India's ports have some way to go to catch up with the throughput by many of China's ports. 
+
+1. After finding sample data from  [https://www.ajot.com/](https://www.ajot.com/premium/ajot-ajots-top-100-containerports-a-to-z/P0) by way of a google search the table of data was extracted. Data in the table encoded. And then the table data sorted and tabulated. 
+
+The value added to the data from the website was in ranking the data by 2018 column, the addition of percent change column, and, filtering out the records for China and India from the broader set of 100 top container ports. 
+
+Reference: 
+https://www.ajot.com/premium/ajot-ajots-top-100-containerports-a-to-z/P0
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages, include=FALSE}
+pkgs = c("rvest", "tidyverse", "janitor", "lubridate", "dplyr", "kableExtra", "data.table", "forcats") 
+# lubridate for %m+% function
+# rvest for web scraping
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+```{r datevars, include=FALSE}
+# save current system date to a variable
+today <- Sys.Date()
+# subtract 3 months from the current date
+date <- today %m+% months(-3)
+print(date)
+```
+
+```{r rawdatacollect, include=FALSE}
+# get the URL for the wikipedia page with all states
+url <- "https://www.ajot.com/premium/ajot-ajots-top-100-containerports-a-to-z/P0"
+
+# use that URL to scrape the states table using rvest
+portrank <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='/html/body/div[1]/div[3]/div[1]/article/div[2]/table') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[1]/div[3]/div[1]/article/div[2]/table') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+ports <- portrank[[1]]
+
+```
+
+```{r, include=FALSE}
+colnames(ports) = ports[1, ] # the first row will be the header
+ports = ports[-1, ] 
+```
+
+```{r, include=FALSE}
+ports$`2017 TEUs` <- as.numeric(as.character(ports$`2017 TEUs`))
+ports$`2018 TEUs` <- as.numeric(as.character(ports$`2018 TEUs`))
+ports$Nation <- as.factor(as.character(ports$Nation))
+ports
+```
+
+```{r, include=FALSE}
+portsorder <- ports %>%
+  mutate(pctgrowth = round(100 * ((`2018 TEUs`- `2017 TEUs`) / `2017 TEUs`))) %>%
+  arrange(desc(`2018 TEUs`))
+
+```
+
+```{r, include=FALSE}
+target <- c("China", "India")
+portChInd <- portsorder %>%
+  filter(Nation %in% target) %>%
+  mutate(pctgrowth = round(100 * ((`2018 TEUs`- `2017 TEUs`) / `2017 TEUs`))) %>%
+  arrange(desc(`2018 TEUs`))
+
+```
+
+\newpage
+
+```{r tabtable2, echo=FALSE, warnings=FALSE}
+knitr::kable(portChInd[,c(1:5)], "html",
+             caption = "Containers by port- China and India",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+\newpage
+
+```{r tabtable, echo=FALSE, warnings=FALSE}
+knitr::kable(portsorder[,c(1:5)], "html",
+             caption = "Containers by port",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
