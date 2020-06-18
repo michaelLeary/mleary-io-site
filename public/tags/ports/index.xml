@@ -22,5 +22,17 @@ In this example sought to gain a sense of where India’s ports stand relative t
  After finding sample data from https://www.</description>
     </item>
     
+    <item>
+      <title>Top 50 port throughput by country</title>
+      <link>/post/2020/06/18/top-50-port-throughput-by-country/</link>
+      <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/06/18/top-50-port-throughput-by-country/</guid>
+      <description>Table of container throughout for top 50 ports sorted and ordered.
+The table provides additional history of container port throughput by country.
+ Data is drawn from http://www.worldshipping.org/ by way of a google search into excel. Several modifications to data were made in excel. And then flat file in csv form was imported into R. Within R the data was sorted and tabulated.
+  The value added to the data from the website was in ranking the data by 2018 column, splitting out port from country, filtering out records for China and India from the broader set of 50 top container ports.</description>
+    </item>
+    
   </channel>
 </rss>

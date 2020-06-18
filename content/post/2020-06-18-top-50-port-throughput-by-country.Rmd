@@ -1,0 +1,109 @@
+---
+title: Top 50 port throughput by country
+author: michael
+date: '2020-06-18'
+slug: top-50-port-throughput-by-country
+categories:
+  - R
+tags:
+  - India
+  - China
+  - Ports
+---
+
+Table of container throughout for top 50 ports sorted and ordered. 
+
+1. The table provides additional history of container port throughput by country.  
+
+1. Data is drawn from  [http://www.worldshipping.org/](http://www.worldshipping.org/about-the-industry/global-trade/top-50-world-container-ports) by way of a google search into excel. Several modifications to data were made in excel. And then flat file in csv form was imported into R. Within R the data was sorted and tabulated. 
+
+The value added to the data from the website was in ranking the data by 2018 column, splitting out port from country, filtering out records for China and India from the broader set of 50 top container ports. 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages, include=FALSE}
+pkgs = c("rvest", "tidyverse", "janitor", "lubridate", "dplyr", "kableExtra", "data.table", "forcats") 
+# lubridate for %m+% function
+# rvest for web scraping
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+```{r datevars, include=FALSE}
+# save current system date to a variable
+today <- Sys.Date()
+# subtract 3 months from the current date
+date <- today %m+% months(-3)
+print(date)
+```
+
+```{r, include=FALSE}
+data <- read_csv("/Users/michaelleary/Documents/GitHub/portdata/data/ports50.csv") # in tibble form
+```
+
+```{r, include=FALSE}
+str(data)
+head(data)
+```
+
+```{r, include=FALSE}
+cports <- clean_names(data) 
+cports %>%
+  select(starts_with("country")) %>%
+  sapply(table) 
+
+head(cports)
+
+```
+
+```{r, include=FALSE}
+cports$country <- as.factor(as.character(cports$country))
+cports
+```
+
+```{r, include=FALSE}
+cportsorder <- cports %>%
+  mutate(cagr4yr = 
+           round(((cports$volume_2018_million_teu/ cports$volume_2014_million_teu)^((1/4))-1)*100,1)) %>%
+  arrange(desc(cports$volume_2018_million_teu))
+
+```
+
+```{r, include=FALSE}
+target <- c("China", "India")
+cportChInd <- cportsorder %>%
+  filter(country %in% target)%>%
+  arrange(desc("volume_2018_million_teu"))
+
+```
+
+```{r, include=FALSE}
+cports %>%
+  group_by(country) %>%
+  summarise(volume_2018_million_teu)
+```
+
+\newpage
+
+```{r tabtable2, echo=FALSE, warnings=FALSE}
+knitr::kable(cportChInd[,c(1:9)], "html",
+             caption = "Containers throughput by China and India port",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+\newpage
+
+```{r tabtable, echo=FALSE, warnings=FALSE}
+knitr::kable(cportsorder[,c(1:9)], "html",
+             caption = "Top 50 container throughput by port",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+

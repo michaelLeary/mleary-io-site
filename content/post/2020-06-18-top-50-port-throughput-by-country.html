@@ -1,50 +1,59 @@
 ---
-title: 'India China container port rank 2018 '
+title: Top 50 port throughput by country
 author: michael
 date: '2020-06-18'
-slug: india-china-container-port-rank-2018
+slug: top-50-port-throughput-by-country
 categories:
   - R
 tags:
   - India
   - China
   - Ports
-  - Trade
 ---
 
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 <script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
 
 
-<p>Task was to extract data from an html table and arrange it in a way to provide small conclusions from data.</p>
+<p>Table of container throughout for top 50 ports sorted and ordered.</p>
 <ol style="list-style-type: decimal">
-<li><p>In this example sought to gain a sense of where India’s ports stand relative to world ports in terms of container thoughput. The ranking shows that India’s ports have some way to go to catch up with the throughput by many of China’s ports.</p></li>
-<li><p>After finding sample data from <a href="https://www.ajot.com/premium/ajot-ajots-top-100-containerports-a-to-z/P0">https://www.ajot.com/</a> by way of a google search the table of data was extracted. Data in the table encoded. And then the table data sorted and tabulated.</p></li>
+<li><p>The table provides additional history of container port throughput by country.</p></li>
+<li><p>Data is drawn from <a href="http://www.worldshipping.org/about-the-industry/global-trade/top-50-world-container-ports">http://www.worldshipping.org/</a> by way of a google search into excel. Several modifications to data were made in excel. And then flat file in csv form was imported into R. Within R the data was sorted and tabulated.</p></li>
 </ol>
-<p>The value added to the data from the website wgit as in ranking the data by 2018 column, the addition of percent change column, and, filtering out the records for China and India from the broader set of 100 top container ports.</p>
-<p>Reference:
-<a href="https://www.ajot.com/premium/ajot-ajots-top-100-containerports-a-to-z/P0" class="uri">https://www.ajot.com/premium/ajot-ajots-top-100-containerports-a-to-z/P0</a></p>
+<p>The value added to the data from the website was in ranking the data by 2018 column, splitting out port from country, filtering out records for China and India from the broader set of 50 top container ports.</p>
 <div style="page-break-after: always;"></div>
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:tabtable2">Table 1: </span>Containers by port- China and India
+<span id="tab:tabtable2">Table 1: </span>Containers throughput by China and India port
 </caption>
 <thead>
 <tr>
 <th style="text-align:left;">
-Port
+port_name
 </th>
 <th style="text-align:left;">
-Nation
+city
+</th>
+<th style="text-align:left;">
+country
 </th>
 <th style="text-align:right;">
-2017 TEUs
+volume_2018_million_teu
 </th>
 <th style="text-align:right;">
-2018 TEUs
+volume_2017_million_teu
 </th>
 <th style="text-align:right;">
-pctgrowth
+volume_2016_million_teu
+</th>
+<th style="text-align:right;">
+volume_2015_million_teu
+</th>
+<th style="text-align:right;">
+volume_2014_million_teu
+</th>
+<th style="text-align:right;">
+cagr4yr
 </th>
 </tr>
 </thead>
@@ -54,16 +63,28 @@ pctgrowth
 Shanghai
 </td>
 <td style="text-align:left;">
+Shanghai
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-40233000
+42.01
 </td>
 <td style="text-align:right;">
-42010000
+40.23
 </td>
 <td style="text-align:right;">
-4
+37.13
+</td>
+<td style="text-align:right;">
+36.54
+</td>
+<td style="text-align:right;">
+35.29
+</td>
+<td style="text-align:right;">
+4.5
 </td>
 </tr>
 <tr>
@@ -71,16 +92,28 @@ China
 Shenzhen
 </td>
 <td style="text-align:left;">
+Shenzhen
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-25208700
+27.74
 </td>
 <td style="text-align:right;">
-27736000
+25.21
 </td>
 <td style="text-align:right;">
-10
+23.97
+</td>
+<td style="text-align:right;">
+24.20
+</td>
+<td style="text-align:right;">
+24.03
+</td>
+<td style="text-align:right;">
+3.7
 </td>
 </tr>
 <tr>
@@ -88,19 +121,34 @@ China
 Ningbo-Zhoushan
 </td>
 <td style="text-align:left;">
+Ningbo-Zhoushan
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-24607000
+26.35
 </td>
 <td style="text-align:right;">
-26351000
+24.61
 </td>
 <td style="text-align:right;">
-7
+21.60
+</td>
+<td style="text-align:right;">
+20.63
+</td>
+<td style="text-align:right;">
+19.45
+</td>
+<td style="text-align:right;">
+7.9
 </td>
 </tr>
 <tr>
+<td style="text-align:left;">
+Guangzhou Harbor
+</td>
 <td style="text-align:left;">
 Guangzhou
 </td>
@@ -108,13 +156,51 @@ Guangzhou
 China
 </td>
 <td style="text-align:right;">
-20370000
+21.87
 </td>
 <td style="text-align:right;">
-21870000
+20.37
 </td>
 <td style="text-align:right;">
-7
+18.85
+</td>
+<td style="text-align:right;">
+17.22
+</td>
+<td style="text-align:right;">
+16.16
+</td>
+<td style="text-align:right;">
+7.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hong Kong
+</td>
+<td style="text-align:left;">
+Hong Kong
+</td>
+<td style="text-align:left;">
+China
+</td>
+<td style="text-align:right;">
+19.60
+</td>
+<td style="text-align:right;">
+20.76
+</td>
+<td style="text-align:right;">
+19.81
+</td>
+<td style="text-align:right;">
+20.07
+</td>
+<td style="text-align:right;">
+22.23
+</td>
+<td style="text-align:right;">
+-3.1
 </td>
 </tr>
 <tr>
@@ -122,16 +208,28 @@ China
 Qingdao
 </td>
 <td style="text-align:left;">
+Qingdao
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-18262000
+18.26
 </td>
 <td style="text-align:right;">
-19315000
+18.30
 </td>
 <td style="text-align:right;">
-6
+18.01
+</td>
+<td style="text-align:right;">
+17.47
+</td>
+<td style="text-align:right;">
+16.62
+</td>
+<td style="text-align:right;">
+2.4
 </td>
 </tr>
 <tr>
@@ -139,16 +237,28 @@ China
 Tianjin
 </td>
 <td style="text-align:left;">
+Tianjin
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-15040000
+16.00
 </td>
 <td style="text-align:right;">
-16007000
+15.07
 </td>
 <td style="text-align:right;">
-6
+14.49
+</td>
+<td style="text-align:right;">
+14.11
+</td>
+<td style="text-align:right;">
+14.05
+</td>
+<td style="text-align:right;">
+3.3
 </td>
 </tr>
 <tr>
@@ -156,16 +266,28 @@ China
 Xiamen
 </td>
 <td style="text-align:left;">
+Xiamen
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-10380000
+10.00
 </td>
 <td style="text-align:right;">
-10007000
+10.38
 </td>
 <td style="text-align:right;">
--4
+9.61
+</td>
+<td style="text-align:right;">
+9.18
+</td>
+<td style="text-align:right;">
+10.13
+</td>
+<td style="text-align:right;">
+-0.3
 </td>
 </tr>
 <tr>
@@ -173,16 +295,28 @@ China
 Dalian
 </td>
 <td style="text-align:left;">
+Dalian
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-9707000
+9.77
 </td>
 <td style="text-align:right;">
-9770000
+9.70
 </td>
 <td style="text-align:right;">
-1
+9.61
+</td>
+<td style="text-align:right;">
+9.45
+</td>
+<td style="text-align:right;">
+10.13
+</td>
+<td style="text-align:right;">
+-0.9
 </td>
 </tr>
 <tr>
@@ -190,50 +324,86 @@ China
 Yingkou
 </td>
 <td style="text-align:left;">
+Yingkou
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-6278000
+6.50
 </td>
 <td style="text-align:right;">
-6490000
+6.28
 </td>
 <td style="text-align:right;">
-3
+6.08
+</td>
+<td style="text-align:right;">
+5.92
+</td>
+<td style="text-align:right;">
+5.77
+</td>
+<td style="text-align:right;">
+3.0
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Jawaharlal Nehru
+Jawarharlal Nehru Port (Nhava Sheva)
+</td>
+<td style="text-align:left;">
+Navi Mumbai
 </td>
 <td style="text-align:left;">
 India
 </td>
 <td style="text-align:right;">
-4833397
+5.05
 </td>
 <td style="text-align:right;">
-5005000
+4.83
 </td>
 <td style="text-align:right;">
-4
+4.51
+</td>
+<td style="text-align:right;">
+4.49
+</td>
+<td style="text-align:right;">
+4.45
+</td>
+<td style="text-align:right;">
+3.2
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Lianyungang
+Lianyunguang
+</td>
+<td style="text-align:left;">
+Lianyunguang
 </td>
 <td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-4710700
+4.75
 </td>
 <td style="text-align:right;">
-4750000
+4.72
 </td>
 <td style="text-align:right;">
-1
+4.70
+</td>
+<td style="text-align:right;">
+5.01
+</td>
+<td style="text-align:right;">
+5.01
+</td>
+<td style="text-align:right;">
+-1.3
 </td>
 </tr>
 <tr>
@@ -241,16 +411,28 @@ China
 Mundra
 </td>
 <td style="text-align:left;">
+Mundra
+</td>
+<td style="text-align:left;">
 India
 </td>
 <td style="text-align:right;">
-4240260
+4.44
 </td>
 <td style="text-align:right;">
-4440000
+4.24
 </td>
 <td style="text-align:right;">
-5
+4.80
+</td>
+<td style="text-align:right;">
+2.99
+</td>
+<td style="text-align:right;">
+2.70
+</td>
+<td style="text-align:right;">
+13.2
 </td>
 </tr>
 <tr>
@@ -258,16 +440,28 @@ India
 Rizhao
 </td>
 <td style="text-align:left;">
+Rizhao
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-3237700
+4.00
 </td>
 <td style="text-align:right;">
-4000000
+3.24
 </td>
 <td style="text-align:right;">
-24
+3.01
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
 </td>
 </tr>
 <tr>
@@ -275,16 +469,28 @@ China
 Dongguan
 </td>
 <td style="text-align:left;">
+Dongguan
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-3910000
+3.50
 </td>
 <td style="text-align:right;">
-3500000
+3.91
 </td>
 <td style="text-align:right;">
--10
+3.64
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
 </td>
 </tr>
 <tr>
@@ -292,16 +498,28 @@ China
 Fuzhou
 </td>
 <td style="text-align:left;">
+Fuzhou
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-3007000
+3.34
 </td>
 <td style="text-align:right;">
-3340000
+3.01
 </td>
 <td style="text-align:right;">
-11
+2.66
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
 </td>
 </tr>
 <tr>
@@ -309,146 +527,22 @@ China
 Nanjing
 </td>
 <td style="text-align:left;">
-China
-</td>
-<td style="text-align:right;">
-3170000
-</td>
-<td style="text-align:right;">
-3230000
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Yantai
+Nanjing
 </td>
 <td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-2702000
+3.23
 </td>
 <td style="text-align:right;">
-3000000
+3.17
 </td>
 <td style="text-align:right;">
-11
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Tangshan
-</td>
-<td style="text-align:left;">
-China
+3.08
 </td>
 <td style="text-align:right;">
-2530303
-</td>
-<td style="text-align:right;">
-2960000
-</td>
-<td style="text-align:right;">
-17
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Quanzhou
-</td>
-<td style="text-align:left;">
-China
-</td>
-<td style="text-align:right;">
-2303000
-</td>
-<td style="text-align:right;">
-2400000
-</td>
-<td style="text-align:right;">
-4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Zhuhai
-</td>
-<td style="text-align:left;">
-China
-</td>
-<td style="text-align:right;">
-2270000
-</td>
-<td style="text-align:right;">
-2310000
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Haikou
-</td>
-<td style="text-align:left;">
-China
-</td>
-<td style="text-align:right;">
-1640000
-</td>
-<td style="text-align:right;">
-1850000
-</td>
-<td style="text-align:right;">
-13
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Chennai
-</td>
-<td style="text-align:left;">
-India
-</td>
-<td style="text-align:right;">
-1549457
-</td>
-<td style="text-align:right;">
-1610000
-</td>
-<td style="text-align:right;">
-4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Dandong
-</td>
-<td style="text-align:left;">
-China
-</td>
-<td style="text-align:right;">
-1866000
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Taicang
-</td>
-<td style="text-align:left;">
-China
-</td>
-<td style="text-align:right;">
-4514000
+2.94
 </td>
 <td style="text-align:right;">
 NA
@@ -462,24 +556,36 @@ NA
 <div style="page-break-after: always;"></div>
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:tabtable">Table 2: </span>Containers by port
+<span id="tab:tabtable">Table 2: </span>Top 50 container throughput by port
 </caption>
 <thead>
 <tr>
 <th style="text-align:left;">
-Port
+port_name
 </th>
 <th style="text-align:left;">
-Nation
+city
+</th>
+<th style="text-align:left;">
+country
 </th>
 <th style="text-align:right;">
-2017 TEUs
+volume_2018_million_teu
 </th>
 <th style="text-align:right;">
-2018 TEUs
+volume_2017_million_teu
 </th>
 <th style="text-align:right;">
-pctgrowth
+volume_2016_million_teu
+</th>
+<th style="text-align:right;">
+volume_2015_million_teu
+</th>
+<th style="text-align:right;">
+volume_2014_million_teu
+</th>
+<th style="text-align:right;">
+cagr4yr
 </th>
 </tr>
 </thead>
@@ -489,16 +595,28 @@ pctgrowth
 Shanghai
 </td>
 <td style="text-align:left;">
+Shanghai
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-40233000
+42.01
 </td>
 <td style="text-align:right;">
-42010000
+40.23
 </td>
 <td style="text-align:right;">
-4
+37.13
+</td>
+<td style="text-align:right;">
+36.54
+</td>
+<td style="text-align:right;">
+35.29
+</td>
+<td style="text-align:right;">
+4.5
 </td>
 </tr>
 <tr>
@@ -508,14 +626,26 @@ Singapore
 <td style="text-align:left;">
 Singapore
 </td>
-<td style="text-align:right;">
-33666600
+<td style="text-align:left;">
+Singapore
 </td>
 <td style="text-align:right;">
-36599000
+36.60
 </td>
 <td style="text-align:right;">
-9
+33.67
+</td>
+<td style="text-align:right;">
+30.90
+</td>
+<td style="text-align:right;">
+30.92
+</td>
+<td style="text-align:right;">
+33.87
+</td>
+<td style="text-align:right;">
+2.0
 </td>
 </tr>
 <tr>
@@ -523,16 +653,28 @@ Singapore
 Shenzhen
 </td>
 <td style="text-align:left;">
+Shenzhen
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-25208700
+27.74
 </td>
 <td style="text-align:right;">
-27736000
+25.21
 </td>
 <td style="text-align:right;">
-10
+23.97
+</td>
+<td style="text-align:right;">
+24.20
+</td>
+<td style="text-align:right;">
+24.03
+</td>
+<td style="text-align:right;">
+3.7
 </td>
 </tr>
 <tr>
@@ -540,19 +682,34 @@ China
 Ningbo-Zhoushan
 </td>
 <td style="text-align:left;">
+Ningbo-Zhoushan
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-24607000
+26.35
 </td>
 <td style="text-align:right;">
-26351000
+24.61
 </td>
 <td style="text-align:right;">
-7
+21.60
+</td>
+<td style="text-align:right;">
+20.63
+</td>
+<td style="text-align:right;">
+19.45
+</td>
+<td style="text-align:right;">
+7.9
 </td>
 </tr>
 <tr>
+<td style="text-align:left;">
+Guangzhou Harbor
+</td>
 <td style="text-align:left;">
 Guangzhou
 </td>
@@ -560,13 +717,22 @@ Guangzhou
 China
 </td>
 <td style="text-align:right;">
-20370000
+21.87
 </td>
 <td style="text-align:right;">
-21870000
+20.37
 </td>
 <td style="text-align:right;">
-7
+18.85
+</td>
+<td style="text-align:right;">
+17.22
+</td>
+<td style="text-align:right;">
+16.16
+</td>
+<td style="text-align:right;">
+7.9
 </td>
 </tr>
 <tr>
@@ -574,16 +740,28 @@ China
 Busan
 </td>
 <td style="text-align:left;">
-Korea
+Busan
+</td>
+<td style="text-align:left;">
+South Korea
 </td>
 <td style="text-align:right;">
-20493475
+21.66
 </td>
 <td style="text-align:right;">
-21663000
+20.49
 </td>
 <td style="text-align:right;">
-6
+19.85
+</td>
+<td style="text-align:right;">
+19.45
+</td>
+<td style="text-align:right;">
+18.65
+</td>
+<td style="text-align:right;">
+3.8
 </td>
 </tr>
 <tr>
@@ -591,16 +769,28 @@ Korea
 Hong Kong
 </td>
 <td style="text-align:left;">
-China/SAR
+Hong Kong
+</td>
+<td style="text-align:left;">
+China
 </td>
 <td style="text-align:right;">
-20770000
+19.60
 </td>
 <td style="text-align:right;">
-19600000
+20.76
 </td>
 <td style="text-align:right;">
--6
+19.81
+</td>
+<td style="text-align:right;">
+20.07
+</td>
+<td style="text-align:right;">
+22.23
+</td>
+<td style="text-align:right;">
+-3.1
 </td>
 </tr>
 <tr>
@@ -608,16 +798,28 @@ China/SAR
 Qingdao
 </td>
 <td style="text-align:left;">
+Qingdao
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-18262000
+18.26
 </td>
 <td style="text-align:right;">
-19315000
+18.30
 </td>
 <td style="text-align:right;">
-6
+18.01
+</td>
+<td style="text-align:right;">
+17.47
+</td>
+<td style="text-align:right;">
+16.62
+</td>
+<td style="text-align:right;">
+2.4
 </td>
 </tr>
 <tr>
@@ -625,33 +827,57 @@ China
 Tianjin
 </td>
 <td style="text-align:left;">
+Tianjin
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-15040000
+16.00
 </td>
 <td style="text-align:right;">
-16007000
+15.07
 </td>
 <td style="text-align:right;">
-6
+14.49
+</td>
+<td style="text-align:right;">
+14.11
+</td>
+<td style="text-align:right;">
+14.05
+</td>
+<td style="text-align:right;">
+3.3
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
+Jebel Ali
+</td>
+<td style="text-align:left;">
 Dubai
 </td>
 <td style="text-align:left;">
-UAE
+United Arab Emirates
 </td>
 <td style="text-align:right;">
-15368000
+14.95
 </td>
 <td style="text-align:right;">
-14950000
+15.37
 </td>
 <td style="text-align:right;">
--3
+15.73
+</td>
+<td style="text-align:right;">
+15.60
+</td>
+<td style="text-align:right;">
+15.25
+</td>
+<td style="text-align:right;">
+-0.5
 </td>
 </tr>
 <tr>
@@ -659,16 +885,28 @@ UAE
 Rotterdam
 </td>
 <td style="text-align:left;">
-Netherlands
+Rotterdam
+</td>
+<td style="text-align:left;">
+The Netherlands
 </td>
 <td style="text-align:right;">
-13734334
+14.51
 </td>
 <td style="text-align:right;">
-14513000
+13.73
 </td>
 <td style="text-align:right;">
-6
+12.38
+</td>
+<td style="text-align:right;">
+12.23
+</td>
+<td style="text-align:right;">
+12.30
+</td>
+<td style="text-align:right;">
+4.2
 </td>
 </tr>
 <tr>
@@ -676,16 +914,28 @@ Netherlands
 Port Klang
 </td>
 <td style="text-align:left;">
+Port Klang
+</td>
+<td style="text-align:left;">
 Malaysia
 </td>
 <td style="text-align:right;">
-11978466
+12.32
 </td>
 <td style="text-align:right;">
-12320000
+13.73
 </td>
 <td style="text-align:right;">
-3
+13.20
+</td>
+<td style="text-align:right;">
+11.89
+</td>
+<td style="text-align:right;">
+10.95
+</td>
+<td style="text-align:right;">
+3.0
 </td>
 </tr>
 <tr>
@@ -693,16 +943,28 @@ Malaysia
 Antwerp
 </td>
 <td style="text-align:left;">
+Antwerp
+</td>
+<td style="text-align:left;">
 Belgium
 </td>
 <td style="text-align:right;">
-10450897
+11.10
 </td>
 <td style="text-align:right;">
-11100000
+10.45
 </td>
 <td style="text-align:right;">
-6
+10.04
+</td>
+<td style="text-align:right;">
+9.65
+</td>
+<td style="text-align:right;">
+8.98
+</td>
+<td style="text-align:right;">
+5.4
 </td>
 </tr>
 <tr>
@@ -710,16 +972,28 @@ Belgium
 Kaohsiung
 </td>
 <td style="text-align:left;">
-Taiwan/China
+Kaohsiung
+</td>
+<td style="text-align:left;">
+Taiwan
 </td>
 <td style="text-align:right;">
-10271018
+10.45
 </td>
 <td style="text-align:right;">
-10450000
+10.27
 </td>
 <td style="text-align:right;">
-2
+10.46
+</td>
+<td style="text-align:right;">
+10.26
+</td>
+<td style="text-align:right;">
+10.59
+</td>
+<td style="text-align:right;">
+-0.3
 </td>
 </tr>
 <tr>
@@ -727,16 +1001,28 @@ Taiwan/China
 Xiamen
 </td>
 <td style="text-align:left;">
+Xiamen
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-10380000
+10.00
 </td>
 <td style="text-align:right;">
-10007000
+10.38
 </td>
 <td style="text-align:right;">
--4
+9.61
+</td>
+<td style="text-align:right;">
+9.18
+</td>
+<td style="text-align:right;">
+10.13
+</td>
+<td style="text-align:right;">
+-0.3
 </td>
 </tr>
 <tr>
@@ -744,16 +1030,28 @@ China
 Dalian
 </td>
 <td style="text-align:left;">
+Dalian
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-9707000
+9.77
 </td>
 <td style="text-align:right;">
-9770000
+9.70
 </td>
 <td style="text-align:right;">
-1
+9.61
+</td>
+<td style="text-align:right;">
+9.45
+</td>
+<td style="text-align:right;">
+10.13
+</td>
+<td style="text-align:right;">
+-0.9
 </td>
 </tr>
 <tr>
@@ -761,16 +1059,28 @@ China
 Los Angeles
 </td>
 <td style="text-align:left;">
-USA
+Los Angeles
+</td>
+<td style="text-align:left;">
+U.S.A
 </td>
 <td style="text-align:right;">
-9343192
+9.46
 </td>
 <td style="text-align:right;">
-9458751
+9.43
 </td>
 <td style="text-align:right;">
-1
+8.86
+</td>
+<td style="text-align:right;">
+8.16
+</td>
+<td style="text-align:right;">
+8.33
+</td>
+<td style="text-align:right;">
+3.2
 </td>
 </tr>
 <tr>
@@ -778,16 +1088,28 @@ USA
 Tanjung Pelepas
 </td>
 <td style="text-align:left;">
+Johor
+</td>
+<td style="text-align:left;">
 Malaysia
 </td>
 <td style="text-align:right;">
-8260610
+8.96
 </td>
 <td style="text-align:right;">
-8960000
+8.38
 </td>
 <td style="text-align:right;">
-8
+8.28
+</td>
+<td style="text-align:right;">
+9.10
+</td>
+<td style="text-align:right;">
+8.50
+</td>
+<td style="text-align:right;">
+1.3
 </td>
 </tr>
 <tr>
@@ -795,16 +1117,28 @@ Malaysia
 Hamburg
 </td>
 <td style="text-align:left;">
+Hamburg
+</td>
+<td style="text-align:left;">
 Germany
 </td>
 <td style="text-align:right;">
-8860000
+8.73
 </td>
 <td style="text-align:right;">
-8730000
+8.86
 </td>
 <td style="text-align:right;">
--1
+8.91
+</td>
+<td style="text-align:right;">
+8.82
+</td>
+<td style="text-align:right;">
+9.73
+</td>
+<td style="text-align:right;">
+-2.7
 </td>
 </tr>
 <tr>
@@ -812,16 +1146,28 @@ Germany
 Long Beach
 </td>
 <td style="text-align:left;">
-USA
+Long Beach
+</td>
+<td style="text-align:left;">
+U.S.A.
 </td>
 <td style="text-align:right;">
-7544507
+8.09
 </td>
 <td style="text-align:right;">
-8091029
+7.54
 </td>
 <td style="text-align:right;">
-7
+6.80
+</td>
+<td style="text-align:right;">
+7.19
+</td>
+<td style="text-align:right;">
+6.82
+</td>
+<td style="text-align:right;">
+4.4
 </td>
 </tr>
 <tr>
@@ -829,16 +1175,28 @@ USA
 Laem Chabang
 </td>
 <td style="text-align:left;">
+Laem Chabang
+</td>
+<td style="text-align:left;">
 Thailand
 </td>
 <td style="text-align:right;">
-7670000
+8.07
 </td>
 <td style="text-align:right;">
-8070000
+7.78
 </td>
 <td style="text-align:right;">
-5
+7.22
+</td>
+<td style="text-align:right;">
+6.82
+</td>
+<td style="text-align:right;">
+6.58
+</td>
+<td style="text-align:right;">
+5.2
 </td>
 </tr>
 <tr>
@@ -846,33 +1204,57 @@ Thailand
 Tanjung Priok
 </td>
 <td style="text-align:left;">
+Jakarta
+</td>
+<td style="text-align:left;">
 Indonesia
 </td>
 <td style="text-align:right;">
-6090000
+7.64
 </td>
 <td style="text-align:right;">
-7640000
+6.09
 </td>
 <td style="text-align:right;">
-25
+5.51
+</td>
+<td style="text-align:right;">
+5.20
+</td>
+<td style="text-align:right;">
+5.77
+</td>
+<td style="text-align:right;">
+7.3
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-PANYNJ
+New York-New Jersey
 </td>
 <td style="text-align:left;">
-USA
+New York-New Jersey
+</td>
+<td style="text-align:left;">
+U.S.A.
 </td>
 <td style="text-align:right;">
-6710817
+7.20
 </td>
 <td style="text-align:right;">
-7179792
+6.71
 </td>
 <td style="text-align:right;">
-7
+6.25
+</td>
+<td style="text-align:right;">
+6.37
+</td>
+<td style="text-align:right;">
+5.77
+</td>
+<td style="text-align:right;">
+5.7
 </td>
 </tr>
 <tr>
@@ -880,16 +1262,28 @@ USA
 Colombo
 </td>
 <td style="text-align:left;">
+Colombo
+</td>
+<td style="text-align:left;">
 Sri Lanka
 </td>
 <td style="text-align:right;">
-6209000
+7.05
 </td>
 <td style="text-align:right;">
-7050000
+6.21
 </td>
 <td style="text-align:right;">
-14
+5.73
+</td>
+<td style="text-align:right;">
+5.19
+</td>
+<td style="text-align:right;">
+4.91
+</td>
+<td style="text-align:right;">
+9.5
 </td>
 </tr>
 <tr>
@@ -897,16 +1291,28 @@ Sri Lanka
 Yingkou
 </td>
 <td style="text-align:left;">
+Yingkou
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-6278000
+6.50
 </td>
 <td style="text-align:right;">
-6490000
+6.28
 </td>
 <td style="text-align:right;">
-3
+6.08
+</td>
+<td style="text-align:right;">
+5.92
+</td>
+<td style="text-align:right;">
+5.77
+</td>
+<td style="text-align:right;">
+3.0
 </td>
 </tr>
 <tr>
@@ -914,16 +1320,28 @@ China
 Ho Chi Minh City
 </td>
 <td style="text-align:left;">
+Ho Chi Minh City
+</td>
+<td style="text-align:left;">
 Vietnam
 </td>
 <td style="text-align:right;">
-6155535
+6.33
 </td>
 <td style="text-align:right;">
-6330000
+6.16
 </td>
 <td style="text-align:right;">
-3
+5.99
+</td>
+<td style="text-align:right;">
+5.31
+</td>
+<td style="text-align:right;">
+6.39
+</td>
+<td style="text-align:right;">
+-0.2
 </td>
 </tr>
 <tr>
@@ -931,33 +1349,28 @@ Vietnam
 Bremen/Bremerhaven
 </td>
 <td style="text-align:left;">
+Bremen;Bremerhaven
+</td>
+<td style="text-align:left;">
 Germany
 </td>
 <td style="text-align:right;">
-5510000
+5.42
 </td>
 <td style="text-align:right;">
-5427000
+5.51
 </td>
 <td style="text-align:right;">
--2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Valencia
-</td>
-<td style="text-align:left;">
-Spain
+5.49
 </td>
 <td style="text-align:right;">
-4832156
+5.48
 </td>
 <td style="text-align:right;">
-5104000
+5.78
 </td>
 <td style="text-align:right;">
-6
+-1.6
 </td>
 </tr>
 <tr>
@@ -965,33 +1378,57 @@ Spain
 Manila
 </td>
 <td style="text-align:left;">
+Manila
+</td>
+<td style="text-align:left;">
 Philippines
 </td>
 <td style="text-align:right;">
-4782240
+5.05
 </td>
 <td style="text-align:right;">
-5050000
+4.82
 </td>
 <td style="text-align:right;">
-6
+4.52
+</td>
+<td style="text-align:right;">
+4.23
+</td>
+<td style="text-align:right;">
+3.65
+</td>
+<td style="text-align:right;">
+8.5
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Jawaharlal Nehru
+Jawarharlal Nehru Port (Nhava Sheva)
+</td>
+<td style="text-align:left;">
+Navi Mumbai
 </td>
 <td style="text-align:left;">
 India
 </td>
 <td style="text-align:right;">
-4833397
+5.05
 </td>
 <td style="text-align:right;">
-5005000
+4.83
 </td>
 <td style="text-align:right;">
-4
+4.51
+</td>
+<td style="text-align:right;">
+4.49
+</td>
+<td style="text-align:right;">
+4.45
+</td>
+<td style="text-align:right;">
+3.2
 </td>
 </tr>
 <tr>
@@ -999,16 +1436,28 @@ India
 Piraeus
 </td>
 <td style="text-align:left;">
+Piraeus
+</td>
+<td style="text-align:left;">
 Greece
 </td>
 <td style="text-align:right;">
-4145079
+4.91
 </td>
 <td style="text-align:right;">
-4908000
+4.15
 </td>
 <td style="text-align:right;">
-18
+3.73
+</td>
+<td style="text-align:right;">
+3.37
+</td>
+<td style="text-align:right;">
+3.59
+</td>
+<td style="text-align:right;">
+8.1
 </td>
 </tr>
 <tr>
@@ -1016,33 +1465,57 @@ Greece
 Algeciras
 </td>
 <td style="text-align:left;">
+Algeciras
+</td>
+<td style="text-align:left;">
 Spain
 </td>
 <td style="text-align:right;">
-4389836
+4.77
 </td>
 <td style="text-align:right;">
-4772000
+4.39
 </td>
 <td style="text-align:right;">
-9
+4.76
+</td>
+<td style="text-align:right;">
+4.52
+</td>
+<td style="text-align:right;">
+4.56
+</td>
+<td style="text-align:right;">
+1.1
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Lianyungang
+Lianyunguang
+</td>
+<td style="text-align:left;">
+Lianyunguang
 </td>
 <td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-4710700
+4.75
 </td>
 <td style="text-align:right;">
-4750000
+4.72
 </td>
 <td style="text-align:right;">
-1
+4.70
+</td>
+<td style="text-align:right;">
+5.01
+</td>
+<td style="text-align:right;">
+5.01
+</td>
+<td style="text-align:right;">
+-1.3
 </td>
 </tr>
 <tr>
@@ -1050,16 +1523,28 @@ China
 Tokyo
 </td>
 <td style="text-align:left;">
+Tokyo
+</td>
+<td style="text-align:left;">
 Japan
 </td>
 <td style="text-align:right;">
-4500156
+4.57
 </td>
 <td style="text-align:right;">
-4570795
+4.50
 </td>
 <td style="text-align:right;">
-2
+4.25
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
 </td>
 </tr>
 <tr>
@@ -1067,16 +1552,28 @@ Japan
 Mundra
 </td>
 <td style="text-align:left;">
+Mundra
+</td>
+<td style="text-align:left;">
 India
 </td>
 <td style="text-align:right;">
-4240260
+4.44
 </td>
 <td style="text-align:right;">
-4440000
+4.24
 </td>
 <td style="text-align:right;">
-5
+4.80
+</td>
+<td style="text-align:right;">
+2.99
+</td>
+<td style="text-align:right;">
+2.70
+</td>
+<td style="text-align:right;">
+13.2
 </td>
 </tr>
 <tr>
@@ -1084,50 +1581,28 @@ India
 Savannah
 </td>
 <td style="text-align:left;">
-USA
-</td>
-<td style="text-align:right;">
-4046212
-</td>
-<td style="text-align:right;">
-4351971
-</td>
-<td style="text-align:right;">
-8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Colon
+Savannah
 </td>
 <td style="text-align:left;">
-Panama
+U.S.A
 </td>
 <td style="text-align:right;">
-3891209
+4.35
 </td>
 <td style="text-align:right;">
-4320000
+4.05
 </td>
 <td style="text-align:right;">
-11
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Felixstowe
-</td>
-<td style="text-align:left;">
-UK
+3.64
 </td>
 <td style="text-align:right;">
-3849700
+3.74
 </td>
 <td style="text-align:right;">
-4161000
+3.35
 </td>
 <td style="text-align:right;">
-8
+6.7
 </td>
 </tr>
 <tr>
@@ -1135,16 +1610,28 @@ UK
 Jeddah
 </td>
 <td style="text-align:left;">
+Jeddah
+</td>
+<td style="text-align:left;">
 Saudi Arabia
 </td>
 <td style="text-align:right;">
-4150000
+4.12
 </td>
 <td style="text-align:right;">
-4120000
+4.15
 </td>
 <td style="text-align:right;">
--1
+3.96
+</td>
+<td style="text-align:right;">
+4.19
+</td>
+<td style="text-align:right;">
+4.20
+</td>
+<td style="text-align:right;">
+-0.5
 </td>
 </tr>
 <tr>
@@ -1152,16 +1639,28 @@ Saudi Arabia
 Santos
 </td>
 <td style="text-align:left;">
+Santos
+</td>
+<td style="text-align:left;">
 Brazil
 </td>
 <td style="text-align:right;">
-3853719
+4.12
 </td>
 <td style="text-align:right;">
-4120000
+3.85
 </td>
 <td style="text-align:right;">
-7
+3.60
+</td>
+<td style="text-align:right;">
+3.78
+</td>
+<td style="text-align:right;">
+3.68
+</td>
+<td style="text-align:right;">
+2.9
 </td>
 </tr>
 <tr>
@@ -1169,33 +1668,115 @@ Brazil
 Rizhao
 </td>
 <td style="text-align:left;">
+Rizhao
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-3237700
+4.00
 </td>
 <td style="text-align:right;">
-4000000
+3.24
 </td>
 <td style="text-align:right;">
-24
+3.01
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-NW Seaport Alliance
+Colon
 </td>
 <td style="text-align:left;">
-USA
+Colon
+</td>
+<td style="text-align:left;">
+Panama
 </td>
 <td style="text-align:right;">
-3665329
+3.89
 </td>
 <td style="text-align:right;">
-3797626
+3.89
 </td>
 <td style="text-align:right;">
-4
+3.26
+</td>
+<td style="text-align:right;">
+3.58
+</td>
+<td style="text-align:right;">
+3.29
+</td>
+<td style="text-align:right;">
+4.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Felixstowe
+</td>
+<td style="text-align:left;">
+Felixstowe
+</td>
+<td style="text-align:left;">
+U.K.
+</td>
+<td style="text-align:right;">
+3.85
+</td>
+<td style="text-align:right;">
+4.30
+</td>
+<td style="text-align:right;">
+4.10
+</td>
+<td style="text-align:right;">
+4.00
+</td>
+<td style="text-align:right;">
+3.74
+</td>
+<td style="text-align:right;">
+0.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Seattle-Tacoma Nw Seaport Alliance
+</td>
+<td style="text-align:left;">
+Seattle; Vancouver
+</td>
+<td style="text-align:left;">
+U.S.A.
+</td>
+<td style="text-align:right;">
+3.80
+</td>
+<td style="text-align:right;">
+3.70
+</td>
+<td style="text-align:right;">
+3.62
+</td>
+<td style="text-align:right;">
+3.53
+</td>
+<td style="text-align:right;">
+3.43
+</td>
+<td style="text-align:right;">
+2.6
 </td>
 </tr>
 <tr>
@@ -1203,16 +1784,28 @@ USA
 Dongguan
 </td>
 <td style="text-align:left;">
+Dongguan
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-3910000
+3.50
 </td>
 <td style="text-align:right;">
-3500000
+3.91
 </td>
 <td style="text-align:right;">
--10
+3.64
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
 </td>
 </tr>
 <tr>
@@ -1220,16 +1813,28 @@ China
 Tanger Med
 </td>
 <td style="text-align:left;">
+Tanger Med
+</td>
+<td style="text-align:left;">
 Morocco
 </td>
 <td style="text-align:right;">
-3312409
+3.47
 </td>
 <td style="text-align:right;">
-3472451
+3.31
 </td>
 <td style="text-align:right;">
-5
+2.96
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
 </td>
 </tr>
 <tr>
@@ -1237,16 +1842,28 @@ Morocco
 Barcelona
 </td>
 <td style="text-align:left;">
+Barcelona
+</td>
+<td style="text-align:left;">
 Spain
 </td>
 <td style="text-align:right;">
-2968757
+3.42
 </td>
 <td style="text-align:right;">
-3423000
+2.97
 </td>
 <td style="text-align:right;">
-15
+2.23
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
 </td>
 </tr>
 <tr>
@@ -1254,16 +1871,28 @@ Spain
 Vancouver
 </td>
 <td style="text-align:left;">
+Vancouver
+</td>
+<td style="text-align:left;">
 Canada
 </td>
 <td style="text-align:right;">
-3252225
+3.40
 </td>
 <td style="text-align:right;">
-3396000
+3.25
 </td>
 <td style="text-align:right;">
-4
+2.92
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
 </td>
 </tr>
 <tr>
@@ -1271,16 +1900,28 @@ Canada
 Salalah
 </td>
 <td style="text-align:left;">
+Salalah
+</td>
+<td style="text-align:left;">
 Oman
 </td>
 <td style="text-align:right;">
-3946421
+3.39
 </td>
 <td style="text-align:right;">
-3390000
+3.94
 </td>
 <td style="text-align:right;">
--14
+3.32
+</td>
+<td style="text-align:right;">
+2.57
+</td>
+<td style="text-align:right;">
+2.96
+</td>
+<td style="text-align:right;">
+3.4
 </td>
 </tr>
 <tr>
@@ -1288,16 +1929,28 @@ Oman
 Fuzhou
 </td>
 <td style="text-align:left;">
+Fuzhou
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-3007000
+3.34
 </td>
 <td style="text-align:right;">
-3340000
+3.01
 </td>
 <td style="text-align:right;">
-11
+2.66
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
 </td>
 </tr>
 <tr>
@@ -1305,16 +1958,28 @@ China
 Marsaxlokk
 </td>
 <td style="text-align:left;">
+Marsaxlokk
+</td>
+<td style="text-align:left;">
 Malta
 </td>
 <td style="text-align:right;">
-3150000
+3.31
 </td>
 <td style="text-align:right;">
-3310000
+3.15
 </td>
 <td style="text-align:right;">
-5
+3.08
+</td>
+<td style="text-align:right;">
+3.06
+</td>
+<td style="text-align:right;">
+2.90
+</td>
+<td style="text-align:right;">
+3.4
 </td>
 </tr>
 <tr>
@@ -1322,16 +1987,28 @@ Malta
 Nanjing
 </td>
 <td style="text-align:left;">
+Nanjing
+</td>
+<td style="text-align:left;">
 China
 </td>
 <td style="text-align:right;">
-3170000
+3.23
 </td>
 <td style="text-align:right;">
-3230000
+3.17
 </td>
 <td style="text-align:right;">
-2
+3.08
+</td>
+<td style="text-align:right;">
+2.94
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
 </td>
 </tr>
 <tr>
@@ -1339,863 +2016,83 @@ China
 Cai Mep
 </td>
 <td style="text-align:left;">
+Vung Tau
+</td>
+<td style="text-align:left;">
 Vietnam
 </td>
 <td style="text-align:right;">
-3065014
+3.20
 </td>
 <td style="text-align:right;">
-3200000
+3.07
 </td>
 <td style="text-align:right;">
-4
+2.56
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Ambarli
+Keihin Ports
 </td>
 <td style="text-align:left;">
-Turkey
-</td>
-<td style="text-align:right;">
-3131621
-</td>
-<td style="text-align:right;">
-3170000
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Incheon
-</td>
-<td style="text-align:left;">
-Korea
-</td>
-<td style="text-align:right;">
-3050000
-</td>
-<td style="text-align:right;">
-3110000
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Manzanillo
-</td>
-<td style="text-align:left;">
-Philippines
-</td>
-<td style="text-align:right;">
-2830370
-</td>
-<td style="text-align:right;">
-3080000
-</td>
-<td style="text-align:right;">
-9
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Port Said
-</td>
-<td style="text-align:left;">
-Egypt
-</td>
-<td style="text-align:right;">
-2968308
-</td>
-<td style="text-align:right;">
-3050000
-</td>
-<td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Melbourne
-</td>
-<td style="text-align:left;">
-Australia
-</td>
-<td style="text-align:right;">
-2497000
-</td>
-<td style="text-align:right;">
-3010000
-</td>
-<td style="text-align:right;">
-21
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Yokohama
+Yokohama; Kawasaki; Tokyo
 </td>
 <td style="text-align:left;">
 Japan
 </td>
 <td style="text-align:right;">
-2926698
+NA
 </td>
 <td style="text-align:right;">
-3003000
+7.98
 </td>
 <td style="text-align:right;">
-3
+7.61
+</td>
+<td style="text-align:right;">
+7.52
+</td>
+<td style="text-align:right;">
+7.85
+</td>
+<td style="text-align:right;">
+NA
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Yantai
+Hanshin Ports
 </td>
 <td style="text-align:left;">
-China
+Kobe; Osaka; Sakai-Semboku; Amafasaki-Nishinomiya-Ashiya
 </td>
-<td style="text-align:right;">
-2702000
-</td>
-<td style="text-align:right;">
-3000000
-</td>
-<td style="text-align:right;">
-11
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Tangshan
-</td>
-<td style="text-align:left;">
-China
-</td>
-<td style="text-align:right;">
-2530303
-</td>
-<td style="text-align:right;">
-2960000
-</td>
-<td style="text-align:right;">
-17
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Callao
-</td>
-<td style="text-align:left;">
-Peru
-</td>
-<td style="text-align:right;">
-2250200
-</td>
-<td style="text-align:right;">
-2950000
-</td>
-<td style="text-align:right;">
-31
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Durban
-</td>
-<td style="text-align:left;">
-South Africa
-</td>
-<td style="text-align:right;">
-2699978
-</td>
-<td style="text-align:right;">
-2950000
-</td>
-<td style="text-align:right;">
-9
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Kobe
-</td>
-<td style="text-align:left;">
-Japan
-</td>
-<td style="text-align:right;">
-2924179
-</td>
-<td style="text-align:right;">
-2940000
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Chittagong
-</td>
-<td style="text-align:left;">
-Bangladesh
-</td>
-<td style="text-align:right;">
-2566597
-</td>
-<td style="text-align:right;">
-2900000
-</td>
-<td style="text-align:right;">
-13
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Le Havre
-</td>
-<td style="text-align:left;">
-France
-</td>
-<td style="text-align:right;">
-2870000
-</td>
-<td style="text-align:right;">
-2880000
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Nagoya
-</td>
-<td style="text-align:left;">
-Japan
-</td>
-<td style="text-align:right;">
-2784109
-</td>
-<td style="text-align:right;">
-2880000
-</td>
-<td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Cartagena
-</td>
-<td style="text-align:left;">
-Colombia
-</td>
-<td style="text-align:right;">
-2663415
-</td>
-<td style="text-align:right;">
-2860000
-</td>
-<td style="text-align:right;">
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Virginia/Norfolk
-</td>
-<td style="text-align:left;">
-USA
-</td>
-<td style="text-align:right;">
-2841016
-</td>
-<td style="text-align:right;">
-2855913
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Houston
-</td>
-<td style="text-align:left;">
-USA
-</td>
-<td style="text-align:right;">
-2459107
-</td>
-<td style="text-align:right;">
-2699850
-</td>
-<td style="text-align:right;">
-10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sydney
-</td>
-<td style="text-align:left;">
-Australia
-</td>
-<td style="text-align:right;">
-2530122
-</td>
-<td style="text-align:right;">
-2650000
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Genoa
-</td>
-<td style="text-align:left;">
-Italy
-</td>
-<td style="text-align:right;">
-2622200
-</td>
-<td style="text-align:right;">
-2609000
-</td>
-<td style="text-align:right;">
--1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Oakland
-</td>
-<td style="text-align:left;">
-USA
-</td>
-<td style="text-align:right;">
-2420837
-</td>
-<td style="text-align:right;">
-2546355
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
 <td style="text-align:left;">
 Osaka
 </td>
-<td style="text-align:left;">
-Japan
-</td>
-<td style="text-align:right;">
-2326852
-</td>
-<td style="text-align:right;">
-2400000
-</td>
-<td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Quanzhou
-</td>
-<td style="text-align:left;">
-China
-</td>
-<td style="text-align:right;">
-2303000
-</td>
-<td style="text-align:right;">
-2400000
-</td>
-<td style="text-align:right;">
-4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Yeosu Gwangyang
-</td>
-<td style="text-align:left;">
-Korea
-</td>
-<td style="text-align:right;">
-2230000
-</td>
-<td style="text-align:right;">
-2400000
-</td>
-<td style="text-align:right;">
-8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Karachi
-</td>
-<td style="text-align:left;">
-Pakistan
-</td>
-<td style="text-align:right;">
-2224000
-</td>
-<td style="text-align:right;">
-2350000
-</td>
-<td style="text-align:right;">
-6
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Charleston
-</td>
-<td style="text-align:left;">
-USA
-</td>
-<td style="text-align:right;">
-2177550
-</td>
-<td style="text-align:right;">
-2320000
-</td>
-<td style="text-align:right;">
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Zhuhai
-</td>
-<td style="text-align:left;">
-China
-</td>
-<td style="text-align:right;">
-2270000
-</td>
-<td style="text-align:right;">
-2310000
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Gioia Tauro
-</td>
-<td style="text-align:left;">
-Italy
-</td>
-<td style="text-align:right;">
-2448600
-</td>
-<td style="text-align:right;">
-2301000
-</td>
-<td style="text-align:right;">
--6
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-King Abdullah
-</td>
-<td style="text-align:left;">
-Saudi Arabia
-</td>
-<td style="text-align:right;">
-1695322
-</td>
-<td style="text-align:right;">
-2300000
-</td>
-<td style="text-align:right;">
-36
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-St Petersburg
-</td>
-<td style="text-align:left;">
-Russia
-</td>
-<td style="text-align:right;">
-1848700
-</td>
-<td style="text-align:right;">
-2133000
-</td>
-<td style="text-align:right;">
-15
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Guayaquil
-</td>
-<td style="text-align:left;">
-Ecuador
-</td>
-<td style="text-align:right;">
-1871591
-</td>
-<td style="text-align:right;">
-2060000
-</td>
-<td style="text-align:right;">
-10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Balboa
-</td>
-<td style="text-align:left;">
-Panama
-</td>
-<td style="text-align:right;">
-2905049
-</td>
-<td style="text-align:right;">
-2050000
-</td>
-<td style="text-align:right;">
--29
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Bandar Abbas
-</td>
-<td style="text-align:left;">
-Iran
-</td>
-<td style="text-align:right;">
-2607000
-</td>
-<td style="text-align:right;">
-2020000
-</td>
-<td style="text-align:right;">
--23
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Khorfakkan
-</td>
-<td style="text-align:left;">
-Iran
-</td>
-<td style="text-align:right;">
-2321360
-</td>
-<td style="text-align:right;">
-2000000
-</td>
-<td style="text-align:right;">
--14
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Southampton
-</td>
-<td style="text-align:left;">
-UK
-</td>
-<td style="text-align:right;">
-2040000
-</td>
-<td style="text-align:right;">
-1995000
-</td>
-<td style="text-align:right;">
--2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Gdansk
-</td>
-<td style="text-align:left;">
-Poland
-</td>
-<td style="text-align:right;">
-1593761
-</td>
-<td style="text-align:right;">
-1949000
-</td>
-<td style="text-align:right;">
-22
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Haikou
-</td>
-<td style="text-align:left;">
-China
-</td>
-<td style="text-align:right;">
-1640000
-</td>
-<td style="text-align:right;">
-1850000
-</td>
-<td style="text-align:right;">
-13
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Kingston
-</td>
-<td style="text-align:left;">
-Jamaica
-</td>
-<td style="text-align:right;">
-1681706
-</td>
-<td style="text-align:right;">
-1830000
-</td>
-<td style="text-align:right;">
-9
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sines
-</td>
-<td style="text-align:left;">
-Portugal
-</td>
-<td style="text-align:right;">
-1669057
-</td>
-<td style="text-align:right;">
-1750000
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Taichung
-</td>
-<td style="text-align:left;">
-China/Taiwan
-</td>
-<td style="text-align:right;">
-1660663
-</td>
-<td style="text-align:right;">
-1710000
-</td>
-<td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-London
-</td>
-<td style="text-align:left;">
-UK
-</td>
-<td style="text-align:right;">
-2431000
-</td>
-<td style="text-align:right;">
-1700000
-</td>
-<td style="text-align:right;">
--30
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Montreal
-</td>
-<td style="text-align:left;">
-Canada
-</td>
-<td style="text-align:right;">
-1537669
-</td>
-<td style="text-align:right;">
-1679351
-</td>
-<td style="text-align:right;">
-9
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mersin
-</td>
-<td style="text-align:left;">
-Turkey
-</td>
-<td style="text-align:right;">
-1592000
-</td>
-<td style="text-align:right;">
-1660000
-</td>
-<td style="text-align:right;">
-4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Taipei
-</td>
-<td style="text-align:left;">
-China/Taiwan
-</td>
-<td style="text-align:right;">
-1561743
-</td>
-<td style="text-align:right;">
-1660000
-</td>
-<td style="text-align:right;">
-6
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Chennai
-</td>
-<td style="text-align:left;">
-India
-</td>
-<td style="text-align:right;">
-1549457
-</td>
-<td style="text-align:right;">
-1610000
-</td>
-<td style="text-align:right;">
-4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Zeebrugge
-</td>
-<td style="text-align:left;">
-Belgium
-</td>
-<td style="text-align:right;">
-1580000
-</td>
-<td style="text-align:right;">
-1600907
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Dammam
-</td>
-<td style="text-align:left;">
-Saudi Arabia
-</td>
-<td style="text-align:right;">
-1582388
-</td>
-<td style="text-align:right;">
-1540000
-</td>
-<td style="text-align:right;">
--3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Alexandria
-</td>
-<td style="text-align:left;">
-Egypt
-</td>
-<td style="text-align:right;">
-1613000
-</td>
 <td style="text-align:right;">
 NA
 </td>
 <td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Dandong
-</td>
-<td style="text-align:left;">
-China
+5.22
 </td>
 <td style="text-align:right;">
-1866000
+5.02
 </td>
 <td style="text-align:right;">
-NA
+4.93
 </td>
 <td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Taicang
-</td>
-<td style="text-align:left;">
-China
-</td>
-<td style="text-align:right;">
-4514000
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Tanjung Perak
-</td>
-<td style="text-align:left;">
-Indonesia
-</td>
-<td style="text-align:right;">
-3553370
-</td>
-<td style="text-align:right;">
-NA
+5.32
 </td>
 <td style="text-align:right;">
 NA

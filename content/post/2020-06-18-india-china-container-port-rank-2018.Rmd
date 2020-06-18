@@ -18,7 +18,7 @@ Task was to extract data from an html table and arrange it in a way to provide s
 
 1. After finding sample data from  [https://www.ajot.com/](https://www.ajot.com/premium/ajot-ajots-top-100-containerports-a-to-z/P0) by way of a google search the table of data was extracted. Data in the table encoded. And then the table data sorted and tabulated. 
 
-The value added to the data from the website was in ranking the data by 2018 column, the addition of percent change column, and, filtering out the records for China and India from the broader set of 100 top container ports. 
+The value added to the data from the website wgit as in ranking the data by 2018 column, the addition of percent change column, and, filtering out the records for China and India from the broader set of 100 top container ports. 
 
 Reference: 
 https://www.ajot.com/premium/ajot-ajots-top-100-containerports-a-to-z/P0
