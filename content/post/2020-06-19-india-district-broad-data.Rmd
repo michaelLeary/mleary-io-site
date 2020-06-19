@@ -21,9 +21,7 @@ tags:
 
 There are 36 tables of India states and territories listed on the wikipedia page. Each table was extracted and stored in a separate data frame. A comma separated list of individual data frames was put into a vector. And a function then appended a column with the name of individual source data frame to each row of data. After that the individual data frames were bounded into one object and variable columns were reordered. 
 
-Difficulty and cumbersome script used to allow for unwanted notes included within population, area, and, density cells. More efficient method is required to remove the commas from character variable to permit easy conversion to numeric form. 
-
-The value add in result is to aggregate the total population, area and compute population density by state and territory. And then to provide a complete listing of all data by district for each state. 
+Struggled with script to allow for unwanted notes included within population, area, and, density cells. More efficient method is required to remove the commas from character variable to permit easy conversion to numeric form. 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -944,11 +942,6 @@ tab <- bodywhole3 [
 
 ```
 
-```{r fs, include=FALSE}
-fwrite(tab, file = "/Users/michaelleary/Documents/GitHub/sources/tab.csv", row.names = TRUE) # in csv form
-
-```
-
 ```{r char2factor, include=FALSE}
 # generate a summary table by state and terr
 # generate a list of character variables within data frame
@@ -993,22 +986,57 @@ sumtable <- tab %>%
 
 ```
 
-
 ```{r sumtableprint, echo=FALSE}
 knitr::kable(sumtable, "html",
-             caption = "India state and territory: pop, area",
+             caption = "2011 population by India state and territory, area, pop density",
              booktabs = TRUE,
              longtable = FALSE ) %>%
   kable_styling("striped") 
 
 ```
 
+```{r , include=FALSE}
+# total of number of districts by state/terr
+tab %>%
+  group_by(source) %>%
+ tally()
+
+```
+
+```{r , include=FALSE}
+# total of number of districts by state/terr
+districtcounttable <- tab %>%
+  dplyr::count(source) %>%
+  arrange(desc(n))
+
+```
+
+\newline
+
+```{r distcounttable, echo=FALSE}
+knitr::kable(districtcounttable, "html",
+             caption = "Count districts by state and territory",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+```{r, include=FALSE}
+# total in whole data set added to each row
+tab %>% add_tally()
+```
+
+```{r include=FALSE}
+# total in group added as column
+tab %>% add_count(source)
+```
 
 \newpage
 
 ```{r tabtable, echo=FALSE}
 knitr::kable(tab[,c(1,4,6,8)], "html",
-             caption = "India district: pop, area",
+             caption = "2011 population by India district within state and territory",
              booktabs = TRUE,
              longtable = FALSE ) %>%
   kable_styling("striped") 
