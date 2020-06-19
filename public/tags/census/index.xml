@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Census on Thoughts</title>
+    <link>/tags/census/</link>
+    <description>Recent content in Census on Thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 19 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/census/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>India district broad data</title>
+      <link>/post/2020/06/19/india-district-broad-data/</link>
+      <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/06/19/india-district-broad-data/</guid>
+      <description>Task: Extract table data of India districts from Wikipedia Combine each table rows into one dataframe; add a column to combined data frame that provides name of original dataframe - so as to facilitate identifying source of data reorder the columns in expanded data frame to put original data frame column first.  There are 36 tables of India states and territories listed on the wikipedia page. Each table was extracted and stored in a separate data frame.</description>
+    </item>
+    
+  </channel>
+</rss>

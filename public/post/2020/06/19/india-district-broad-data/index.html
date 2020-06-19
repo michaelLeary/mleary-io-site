@@ -1,0 +1,13186 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>India district broad data | Thoughts</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+      <li><a href="/index.xml">Subscribe</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">India district broad data</span></h1>
+<h2 class="author">michael</h2>
+<h2 class="date">2020/06/19</h2>
+</div>
+
+<main>
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<div id="task" class="section level3">
+<h3>Task:</h3>
+<ol style="list-style-type: decimal">
+<li>Extract table data of India districts from <a href="https://en.wikipedia.org/wiki/List_of_districts_in_India#:~:text=In%20some%20cases%20districts%20are,the%202001%20Census%20of%20India">Wikipedia</a></li>
+<li>Combine each table rows into one dataframe;</li>
+<li>add a column to combined data frame that provides name of original dataframe - so as to facilitate identifying source of data</li>
+<li>reorder the columns in expanded data frame to put original data frame column first.</li>
+</ol>
+<p>There are 36 tables of India states and territories listed on the wikipedia page. Each table was extracted and stored in a separate data frame. A comma separated list of individual data frames was put into a vector. And a function then appended a column with the name of individual source data frame to each row of data. After that the individual data frames were bounded into one object and variable columns were reordered.</p>
+<p>Difficulty and cumbersome script used to allow for unwanted notes included within population, area, and, density cells. More efficient method is required to remove the commas from character variable to permit easy conversion to numeric form.</p>
+<p>The value add in result is to aggregate the total population, area and compute population density by state and territory. And then to provide a complete listing of all data by district for each state.</p>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:sumtableprint">Table 1: </span>India state and territory: pop, area
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+source
+</th>
+<th style="text-align:right;">
+total_pop
+</th>
+<th style="text-align:right;">
+total_area
+</th>
+<th style="text-align:right;">
+pop_per_km2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:right;">
+205867440
+</td>
+<td style="text-align:right;">
+247345
+</td>
+<td style="text-align:right;">
+832
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:right;">
+115369105
+</td>
+<td style="text-align:right;">
+307583
+</td>
+<td style="text-align:right;">
+375
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:right;">
+103817951
+</td>
+<td style="text-align:right;">
+94794
+</td>
+<td style="text-align:right;">
+1095
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:right;">
+92903903
+</td>
+<td style="text-align:right;">
+96243
+</td>
+<td style="text-align:right;">
+965
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:right;">
+75547848
+</td>
+<td style="text-align:right;">
+134023
+</td>
+<td style="text-align:right;">
+564
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:right;">
+72597832
+</td>
+<td style="text-align:right;">
+320808
+</td>
+<td style="text-align:right;">
+226
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:right;">
+68621012
+</td>
+<td style="text-align:right;">
+346413
+</td>
+<td style="text-align:right;">
+198
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:right;">
+64845397
+</td>
+<td style="text-align:right;">
+223773
+</td>
+<td style="text-align:right;">
+290
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:right;">
+61047156
+</td>
+<td style="text-align:right;">
+190203
+</td>
+<td style="text-align:right;">
+321
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+andhrapradesh
+</td>
+<td style="text-align:right;">
+49378776
+</td>
+<td style="text-align:right;">
+160205
+</td>
+<td style="text-align:right;">
+308
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:right;">
+41947358
+</td>
+<td style="text-align:right;">
+153845
+</td>
+<td style="text-align:right;">
+273
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:right;">
+35865239
+</td>
+<td style="text-align:right;">
+120253
+</td>
+<td style="text-align:right;">
+298
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:right;">
+33735719
+</td>
+<td style="text-align:right;">
+85776
+</td>
+<td style="text-align:right;">
+393
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+kerala
+</td>
+<td style="text-align:right;">
+33387677
+</td>
+<td style="text-align:right;">
+38852
+</td>
+<td style="text-align:right;">
+859
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:right;">
+32966238
+</td>
+<td style="text-align:right;">
+81780
+</td>
+<td style="text-align:right;">
+403
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:right;">
+30510873
+</td>
+<td style="text-align:right;">
+54583
+</td>
+<td style="text-align:right;">
+559
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:right;">
+28242273
+</td>
+<td style="text-align:right;">
+152288
+</td>
+<td style="text-align:right;">
+185
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:right;">
+25855357
+</td>
+<td style="text-align:right;">
+46433
+</td>
+<td style="text-align:right;">
+557
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+nct
+</td>
+<td style="text-align:right;">
+16787941
+</td>
+<td style="text-align:right;">
+1545
+</td>
+<td style="text-align:right;">
+10866
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:right;">
+12258093
+</td>
+<td style="text-align:right;">
+57334
+</td>
+<td style="text-align:right;">
+214
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+uttarakhand
+</td>
+<td style="text-align:right;">
+10116752
+</td>
+<td style="text-align:right;">
+53566
+</td>
+<td style="text-align:right;">
+189
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+himachalpradesh
+</td>
+<td style="text-align:right;">
+6856509
+</td>
+<td style="text-align:right;">
+55673
+</td>
+<td style="text-align:right;">
+123
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tripura
+</td>
+<td style="text-align:right;">
+3671032
+</td>
+<td style="text-align:right;">
+10486
+</td>
+<td style="text-align:right;">
+350
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+meghalaya
+</td>
+<td style="text-align:right;">
+3364915
+</td>
+<td style="text-align:right;">
+25628
+</td>
+<td style="text-align:right;">
+131
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+manipur
+</td>
+<td style="text-align:right;">
+2993721
+</td>
+<td style="text-align:right;">
+26854
+</td>
+<td style="text-align:right;">
+111
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+nagaland
+</td>
+<td style="text-align:right;">
+2335175
+</td>
+<td style="text-align:right;">
+20097
+</td>
+<td style="text-align:right;">
+116
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:right;">
+1686644
+</td>
+<td style="text-align:right;">
+88638
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+goa
+</td>
+<td style="text-align:right;">
+1457723
+</td>
+<td style="text-align:right;">
+3702
+</td>
+<td style="text-align:right;">
+394
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+puducherry
+</td>
+<td style="text-align:right;">
+1247953
+</td>
+<td style="text-align:right;">
+489
+</td>
+<td style="text-align:right;">
+2552
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mizoram
+</td>
+<td style="text-align:right;">
+1091014
+</td>
+<td style="text-align:right;">
+21027
+</td>
+<td style="text-align:right;">
+52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+chandigarh
+</td>
+<td style="text-align:right;">
+1055450
+</td>
+<td style="text-align:right;">
+114
+</td>
+<td style="text-align:right;">
+9258
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sikkim
+</td>
+<td style="text-align:right;">
+607688
+</td>
+<td style="text-align:right;">
+7096
+</td>
+<td style="text-align:right;">
+86
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dadranagardaman
+</td>
+<td style="text-align:right;">
+586956
+</td>
+<td style="text-align:right;">
+602
+</td>
+<td style="text-align:right;">
+975
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+andamannicobar
+</td>
+<td style="text-align:right;">
+380581
+</td>
+<td style="text-align:right;">
+8249
+</td>
+<td style="text-align:right;">
+46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ladakh
+</td>
+<td style="text-align:right;">
+290492
+</td>
+<td style="text-align:right;">
+59146
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lakshadweep
+</td>
+<td style="text-align:right;">
+64473
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+2149
+</td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tabtable">Table 2: </span>India district: pop, area
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+source
+</th>
+<th style="text-align:left;">
+District
+</th>
+<th style="text-align:right;">
+Pop_2011
+</th>
+<th style="text-align:right;">
+Density_/km2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+697
+</td>
+<td style="text-align:left;">
+andamannicobar
+</td>
+<td style="text-align:left;">
+South Andaman
+</td>
+<td style="text-align:right;">
+238142
+</td>
+<td style="text-align:right;">
+89
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+696
+</td>
+<td style="text-align:left;">
+andamannicobar
+</td>
+<td style="text-align:left;">
+North and Middle Andaman
+</td>
+<td style="text-align:right;">
+105597
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+695
+</td>
+<td style="text-align:left;">
+andamannicobar
+</td>
+<td style="text-align:left;">
+Nicobar
+</td>
+<td style="text-align:right;">
+36842
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+andhrapradesh
+</td>
+<td style="text-align:left;">
+East Godavari
+</td>
+<td style="text-align:right;">
+5151549
+</td>
+<td style="text-align:right;">
+477
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+andhrapradesh
+</td>
+<td style="text-align:left;">
+Guntur
+</td>
+<td style="text-align:right;">
+4889230
+</td>
+<td style="text-align:right;">
+429
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+andhrapradesh
+</td>
+<td style="text-align:left;">
+Krishna
+</td>
+<td style="text-align:right;">
+4529009
+</td>
+<td style="text-align:right;">
+519
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+andhrapradesh
+</td>
+<td style="text-align:left;">
+Visakhapatnam
+</td>
+<td style="text-align:right;">
+4288113
+</td>
+<td style="text-align:right;">
+384
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+andhrapradesh
+</td>
+<td style="text-align:left;">
+Chittoor
+</td>
+<td style="text-align:right;">
+4170468
+</td>
+<td style="text-align:right;">
+275
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+andhrapradesh
+</td>
+<td style="text-align:left;">
+Anantapur
+</td>
+<td style="text-align:right;">
+4083315
+</td>
+<td style="text-align:right;">
+213
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+andhrapradesh
+</td>
+<td style="text-align:left;">
+Kurnool
+</td>
+<td style="text-align:right;">
+4046601
+</td>
+<td style="text-align:right;">
+229
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+andhrapradesh
+</td>
+<td style="text-align:left;">
+West Godavari
+</td>
+<td style="text-align:right;">
+3934782
+</td>
+<td style="text-align:right;">
+508
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+andhrapradesh
+</td>
+<td style="text-align:left;">
+Prakasam
+</td>
+<td style="text-align:right;">
+3392764
+</td>
+<td style="text-align:right;">
+192
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+andhrapradesh
+</td>
+<td style="text-align:left;">
+Sri Potti Sriramulu Nellore
+</td>
+<td style="text-align:right;">
+2966082
+</td>
+<td style="text-align:right;">
+227
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+andhrapradesh
+</td>
+<td style="text-align:left;">
+Kadapa
+</td>
+<td style="text-align:right;">
+2884524
+</td>
+<td style="text-align:right;">
+188
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+andhrapradesh
+</td>
+<td style="text-align:left;">
+Srikakulam
+</td>
+<td style="text-align:right;">
+2699471
+</td>
+<td style="text-align:right;">
+462
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+andhrapradesh
+</td>
+<td style="text-align:left;">
+Vizianagaram
+</td>
+<td style="text-align:right;">
+2342868
+</td>
+<td style="text-align:right;">
+358
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Papum Pare
+</td>
+<td style="text-align:right;">
+176385
+</td>
+<td style="text-align:right;">
+61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Changlang
+</td>
+<td style="text-align:right;">
+147951
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Lohit
+</td>
+<td style="text-align:right;">
+145538
+</td>
+<td style="text-align:right;">
+61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+38
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+West Siang
+</td>
+<td style="text-align:right;">
+112272
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+33
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Tirap
+</td>
+<td style="text-align:right;">
+111997
+</td>
+<td style="text-align:right;">
+47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+17
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+East Siang
+</td>
+<td style="text-align:right;">
+99019
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+27
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Namsai
+</td>
+<td style="text-align:right;">
+95950
+</td>
+<td style="text-align:right;">
+60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Kurung Kumey
+</td>
+<td style="text-align:right;">
+89717
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+37
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+West Kameng
+</td>
+<td style="text-align:right;">
+87013
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+36
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Upper Subansiri
+</td>
+<td style="text-align:right;">
+83205
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+26
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Lower Subansiri
+</td>
+<td style="text-align:right;">
+82839
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+25
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Lower Siang
+</td>
+<td style="text-align:right;">
+80597
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+East Kameng
+</td>
+<td style="text-align:right;">
+78413
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Longding
+</td>
+<td style="text-align:right;">
+60000
+</td>
+<td style="text-align:right;">
+50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Lower Dibang Valley
+</td>
+<td style="text-align:right;">
+53986
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+32
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Tawang
+</td>
+<td style="text-align:right;">
+49950
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+35
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Upper Siang
+</td>
+<td style="text-align:right;">
+35289
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+31
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Siang
+</td>
+<td style="text-align:right;">
+31920
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Kamle
+</td>
+<td style="text-align:right;">
+22256
+</td>
+<td style="text-align:right;">
+111
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Anjaw
+</td>
+<td style="text-align:right;">
+21089
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+30
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Shi Yomi
+</td>
+<td style="text-align:right;">
+13310
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+34
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Upper Dibang Valley
+</td>
+<td style="text-align:right;">
+7948
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Kra Daadi
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Lepa Rada
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+28
+</td>
+<td style="text-align:left;">
+arunachalpradesh
+</td>
+<td style="text-align:left;">
+Pakke-Kessang
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+64
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Nagaon
+</td>
+<td style="text-align:right;">
+2826006
+</td>
+<td style="text-align:right;">
+738
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+48
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Dhubri
+</td>
+<td style="text-align:right;">
+1948632
+</td>
+<td style="text-align:right;">
+687
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+68
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Sonitpur
+</td>
+<td style="text-align:right;">
+1925975
+</td>
+<td style="text-align:right;">
+362
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+43
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Cachar
+</td>
+<td style="text-align:right;">
+1736319
+</td>
+<td style="text-align:right;">
+459
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+40
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Barpeta
+</td>
+<td style="text-align:right;">
+1693190
+</td>
+<td style="text-align:right;">
+522
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+56
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Kamrup
+</td>
+<td style="text-align:right;">
+1517202
+</td>
+<td style="text-align:right;">
+436
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+49
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Dibrugarh
+</td>
+<td style="text-align:right;">
+1327748
+</td>
+<td style="text-align:right;">
+393
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+69
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Tinsukia
+</td>
+<td style="text-align:right;">
+1316948
+</td>
+<td style="text-align:right;">
+347
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+57
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Kamrup Metropolitan
+</td>
+<td style="text-align:right;">
+1260419
+</td>
+<td style="text-align:right;">
+2010
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+59
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Karimganj
+</td>
+<td style="text-align:right;">
+1217002
+</td>
+<td style="text-align:right;">
+673
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+66
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Sivasagar
+</td>
+<td style="text-align:right;">
+1150253
+</td>
+<td style="text-align:right;">
+431
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+55
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Jorhat
+</td>
+<td style="text-align:right;">
+1091295
+</td>
+<td style="text-align:right;">
+383
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Golaghat
+</td>
+<td style="text-align:right;">
+1058674
+</td>
+<td style="text-align:right;">
+302
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+61
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Lakhimpur
+</td>
+<td style="text-align:right;">
+1040644
+</td>
+<td style="text-align:right;">
+457
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+51
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Goalpara
+</td>
+<td style="text-align:right;">
+1008959
+</td>
+<td style="text-align:right;">
+553
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+58
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Karbi Anglong
+</td>
+<td style="text-align:right;">
+965280
+</td>
+<td style="text-align:right;">
+93
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+63
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Morigaon
+</td>
+<td style="text-align:right;">
+957853
+</td>
+<td style="text-align:right;">
+562
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+39
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Baksa
+</td>
+<td style="text-align:right;">
+953773
+</td>
+<td style="text-align:right;">
+475
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+54
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Hojai
+</td>
+<td style="text-align:right;">
+931218
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+46
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Darrang
+</td>
+<td style="text-align:right;">
+908090
+</td>
+<td style="text-align:right;">
+491
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+60
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Kokrajhar
+</td>
+<td style="text-align:right;">
+886999
+</td>
+<td style="text-align:right;">
+283
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+70
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Udalguri
+</td>
+<td style="text-align:right;">
+832769
+</td>
+<td style="text-align:right;">
+497
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+65
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Nalbari
+</td>
+<td style="text-align:right;">
+769919
+</td>
+<td style="text-align:right;">
+763
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+42
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Bongaigaon
+</td>
+<td style="text-align:right;">
+732639
+</td>
+<td style="text-align:right;">
+425
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+47
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Dhemaji
+</td>
+<td style="text-align:right;">
+688077
+</td>
+<td style="text-align:right;">
+213
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Hailakandi
+</td>
+<td style="text-align:right;">
+659260
+</td>
+<td style="text-align:right;">
+497
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+41
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Bishwanath
+</td>
+<td style="text-align:right;">
+612491
+</td>
+<td style="text-align:right;">
+560
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+67
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+South Salmara
+</td>
+<td style="text-align:right;">
+555114
+</td>
+<td style="text-align:right;">
+980
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+45
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Chirang
+</td>
+<td style="text-align:right;">
+481818
+</td>
+<td style="text-align:right;">
+244
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+71
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+West Karbi Anglong
+</td>
+<td style="text-align:right;">
+300320
+</td>
+<td style="text-align:right;">
+99
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+50
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Dima Hasao
+</td>
+<td style="text-align:right;">
+213529
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+62
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Majuli
+</td>
+<td style="text-align:right;">
+167304
+</td>
+<td style="text-align:right;">
+300
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+44
+</td>
+<td style="text-align:left;">
+assam
+</td>
+<td style="text-align:left;">
+Charaideo
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+97
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:right;">
+5772804
+</td>
+<td style="text-align:right;">
+1803
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+81
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+East Champaran
+</td>
+<td style="text-align:right;">
+5082868
+</td>
+<td style="text-align:right;">
+1281
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+94
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:right;">
+4778610
+</td>
+<td style="text-align:right;">
+1506
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+92
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Madhubani
+</td>
+<td style="text-align:right;">
+4476044
+</td>
+<td style="text-align:right;">
+1279
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+82
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Gaya
+</td>
+<td style="text-align:right;">
+4379383
+</td>
+<td style="text-align:right;">
+880
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+101
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Samastipur
+</td>
+<td style="text-align:right;">
+4254782
+</td>
+<td style="text-align:right;">
+1465
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+102
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Saran
+</td>
+<td style="text-align:right;">
+3943098
+</td>
+<td style="text-align:right;">
+1493
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+109
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+West Champaran
+</td>
+<td style="text-align:right;">
+3935042
+</td>
+<td style="text-align:right;">
+753
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+80
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Darbhanga
+</td>
+<td style="text-align:right;">
+3921971
+</td>
+<td style="text-align:right;">
+1721
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+108
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Vaishali
+</td>
+<td style="text-align:right;">
+3495021
+</td>
+<td style="text-align:right;">
+1717
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+105
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Sitamarhi
+</td>
+<td style="text-align:right;">
+3419622
+</td>
+<td style="text-align:right;">
+1491
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+106
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Siwan
+</td>
+<td style="text-align:right;">
+3318176
+</td>
+<td style="text-align:right;">
+1495
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+98
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Purnia
+</td>
+<td style="text-align:right;">
+3273127
+</td>
+<td style="text-align:right;">
+1014
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+87
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Katihar
+</td>
+<td style="text-align:right;">
+3068149
+</td>
+<td style="text-align:right;">
+1004
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+77
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Bhagalpur
+</td>
+<td style="text-align:right;">
+3032226
+</td>
+<td style="text-align:right;">
+1180
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+99
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Rohtas
+</td>
+<td style="text-align:right;">
+2962593
+</td>
+<td style="text-align:right;">
+763
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+76
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Begusarai
+</td>
+<td style="text-align:right;">
+2954367
+</td>
+<td style="text-align:right;">
+1540
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+95
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Nalanda
+</td>
+<td style="text-align:right;">
+2872523
+</td>
+<td style="text-align:right;">
+1220
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+72
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Araria
+</td>
+<td style="text-align:right;">
+2806200
+</td>
+<td style="text-align:right;">
+992
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+78
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Bhojpur
+</td>
+<td style="text-align:right;">
+2720155
+</td>
+<td style="text-align:right;">
+1136
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+83
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Gopalganj
+</td>
+<td style="text-align:right;">
+2558037
+</td>
+<td style="text-align:right;">
+1258
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+74
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+2511243
+</td>
+<td style="text-align:right;">
+760
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+107
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Supaul
+</td>
+<td style="text-align:right;">
+2228397
+</td>
+<td style="text-align:right;">
+919
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+96
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Nawada
+</td>
+<td style="text-align:right;">
+2216653
+</td>
+<td style="text-align:right;">
+889
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+75
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Banka
+</td>
+<td style="text-align:right;">
+2029339
+</td>
+<td style="text-align:right;">
+672
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+91
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Madhepura
+</td>
+<td style="text-align:right;">
+1994618
+</td>
+<td style="text-align:right;">
+1116
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+100
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Saharsa
+</td>
+<td style="text-align:right;">
+1897102
+</td>
+<td style="text-align:right;">
+1125
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+84
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Jamui
+</td>
+<td style="text-align:right;">
+1756078
+</td>
+<td style="text-align:right;">
+567
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+79
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Buxar
+</td>
+<td style="text-align:right;">
+1707643
+</td>
+<td style="text-align:right;">
+1003
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+89
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Kishanganj
+</td>
+<td style="text-align:right;">
+1690948
+</td>
+<td style="text-align:right;">
+898
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+88
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Khagaria
+</td>
+<td style="text-align:right;">
+1657599
+</td>
+<td style="text-align:right;">
+1115
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+86
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Kaimur
+</td>
+<td style="text-align:right;">
+1626900
+</td>
+<td style="text-align:right;">
+488
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+93
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Munger
+</td>
+<td style="text-align:right;">
+1359054
+</td>
+<td style="text-align:right;">
+958
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+85
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Jehanabad
+</td>
+<td style="text-align:right;">
+1124176
+</td>
+<td style="text-align:right;">
+1206
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+90
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Lakhisarai
+</td>
+<td style="text-align:right;">
+1000717
+</td>
+<td style="text-align:right;">
+815
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+73
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Arwal
+</td>
+<td style="text-align:right;">
+700843
+</td>
+<td style="text-align:right;">
+1098
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+104
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Sheohar
+</td>
+<td style="text-align:right;">
+656916
+</td>
+<td style="text-align:right;">
+1882
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+103
+</td>
+<td style="text-align:left;">
+bihar
+</td>
+<td style="text-align:left;">
+Sheikhpura
+</td>
+<td style="text-align:right;">
+634927
+</td>
+<td style="text-align:right;">
+922
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+698
+</td>
+<td style="text-align:left;">
+chandigarh
+</td>
+<td style="text-align:left;">
+Chandigarh
+</td>
+<td style="text-align:right;">
+1055450
+</td>
+<td style="text-align:right;">
+9258
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+133
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Raipur
+</td>
+<td style="text-align:right;">
+4062160
+</td>
+<td style="text-align:right;">
+310
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+119
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Durg
+</td>
+<td style="text-align:right;">
+3343079
+</td>
+<td style="text-align:right;">
+391
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+116
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Bilaspur
+</td>
+<td style="text-align:right;">
+1961922
+</td>
+<td style="text-align:right;">
+337
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+122
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Janjgir-Champa
+</td>
+<td style="text-align:right;">
+1620632
+</td>
+<td style="text-align:right;">
+421
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+134
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Rajnandgaon
+</td>
+<td style="text-align:right;">
+1537520
+</td>
+<td style="text-align:right;">
+191
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+132
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Raigarh
+</td>
+<td style="text-align:right;">
+1493627
+</td>
+<td style="text-align:right;">
+211
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+111
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Baloda Bazar
+</td>
+<td style="text-align:right;">
+1305343
+</td>
+<td style="text-align:right;">
+275
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+113
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Bastar
+</td>
+<td style="text-align:right;">
+1302253
+</td>
+<td style="text-align:right;">
+87
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+127
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Korba
+</td>
+<td style="text-align:right;">
+1206563
+</td>
+<td style="text-align:right;">
+183
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+129
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Mahasamund
+</td>
+<td style="text-align:right;">
+1032275
+</td>
+<td style="text-align:right;">
+216
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+123
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Jashpur
+</td>
+<td style="text-align:right;">
+852043
+</td>
+<td style="text-align:right;">
+146
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Balod
+</td>
+<td style="text-align:right;">
+826165
+</td>
+<td style="text-align:right;">
+234
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+118
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Dhamtari
+</td>
+<td style="text-align:right;">
+799199
+</td>
+<td style="text-align:right;">
+394
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+125
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Kanker
+</td>
+<td style="text-align:right;">
+748593
+</td>
+<td style="text-align:right;">
+115
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+130
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Mungeli
+</td>
+<td style="text-align:right;">
+701707
+</td>
+<td style="text-align:right;">
+255
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+136
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Surajpur
+</td>
+<td style="text-align:right;">
+660280
+</td>
+<td style="text-align:right;">
+150
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+128
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Koriya
+</td>
+<td style="text-align:right;">
+659039
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+112
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Balrampur
+</td>
+<td style="text-align:right;">
+598855
+</td>
+<td style="text-align:right;">
+157
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+120
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Gariaband
+</td>
+<td style="text-align:right;">
+597653
+</td>
+<td style="text-align:right;">
+103
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+124
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Kabirdham
+</td>
+<td style="text-align:right;">
+584667
+</td>
+<td style="text-align:right;">
+195
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+126
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Kondagaon
+</td>
+<td style="text-align:right;">
+578326
+</td>
+<td style="text-align:right;">
+74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Dantewada
+</td>
+<td style="text-align:right;">
+533638
+</td>
+<td style="text-align:right;">
+59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+137
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Surguja
+</td>
+<td style="text-align:right;">
+420661
+</td>
+<td style="text-align:right;">
+150
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+135
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Sukma
+</td>
+<td style="text-align:right;">
+249000
+</td>
+<td style="text-align:right;">
+49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+115
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Bijapur
+</td>
+<td style="text-align:right;">
+229832
+</td>
+<td style="text-align:right;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+114
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Bemetara
+</td>
+<td style="text-align:right;">
+197035
+</td>
+<td style="text-align:right;">
+69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+131
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Narayanpur
+</td>
+<td style="text-align:right;">
+140206
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+121
+</td>
+<td style="text-align:left;">
+chhattisgarh
+</td>
+<td style="text-align:left;">
+Gaurela-Pendra-Marwahi
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+701
+</td>
+<td style="text-align:left;">
+dadranagardaman
+</td>
+<td style="text-align:left;">
+Dadra and Nagar Haveli
+</td>
+<td style="text-align:right;">
+343709
+</td>
+<td style="text-align:right;">
+700
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+699
+</td>
+<td style="text-align:left;">
+dadranagardaman
+</td>
+<td style="text-align:left;">
+Daman
+</td>
+<td style="text-align:right;">
+191173
+</td>
+<td style="text-align:right;">
+2651
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+700
+</td>
+<td style="text-align:left;">
+dadranagardaman
+</td>
+<td style="text-align:left;">
+Diu
+</td>
+<td style="text-align:right;">
+52074
+</td>
+<td style="text-align:right;">
+2058
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+138
+</td>
+<td style="text-align:left;">
+goa
+</td>
+<td style="text-align:left;">
+North Goa
+</td>
+<td style="text-align:right;">
+817761
+</td>
+<td style="text-align:right;">
+471
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+139
+</td>
+<td style="text-align:left;">
+goa
+</td>
+<td style="text-align:left;">
+South Goa
+</td>
+<td style="text-align:right;">
+639962
+</td>
+<td style="text-align:right;">
+326
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+140
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Ahmedabad
+</td>
+<td style="text-align:right;">
+7208200
+</td>
+<td style="text-align:right;">
+890
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+168
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Surat
+</td>
+<td style="text-align:right;">
+4996391
+</td>
+<td style="text-align:right;">
+653
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+171
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Vadodara
+</td>
+<td style="text-align:right;">
+3639775
+</td>
+<td style="text-align:right;">
+467
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+166
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Rajkot
+</td>
+<td style="text-align:right;">
+3157676
+</td>
+<td style="text-align:right;">
+282
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+144
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Banaskantha
+</td>
+<td style="text-align:right;">
+3116045
+</td>
+<td style="text-align:right;">
+290
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+146
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Bhavnagar
+</td>
+<td style="text-align:right;">
+2877961
+</td>
+<td style="text-align:right;">
+288
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+155
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Junagadh
+</td>
+<td style="text-align:right;">
+2742291
+</td>
+<td style="text-align:right;">
+310
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+167
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Sabarkantha
+</td>
+<td style="text-align:right;">
+2427346
+</td>
+<td style="text-align:right;">
+328
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+163
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Panchmahal
+</td>
+<td style="text-align:right;">
+2388267
+</td>
+<td style="text-align:right;">
+458
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+156
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Kheda
+</td>
+<td style="text-align:right;">
+2298934
+</td>
+<td style="text-align:right;">
+541
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+154
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Jamnagar
+</td>
+<td style="text-align:right;">
+2159130
+</td>
+<td style="text-align:right;">
+153
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+149
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Dahod
+</td>
+<td style="text-align:right;">
+2126558
+</td>
+<td style="text-align:right;">
+582
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+157
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Kutch
+</td>
+<td style="text-align:right;">
+2090313
+</td>
+<td style="text-align:right;">
+46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+142
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Anand
+</td>
+<td style="text-align:right;">
+2090276
+</td>
+<td style="text-align:right;">
+711
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+159
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Mehsana
+</td>
+<td style="text-align:right;">
+2027727
+</td>
+<td style="text-align:right;">
+462
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+169
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Surendranagar
+</td>
+<td style="text-align:right;">
+1755873
+</td>
+<td style="text-align:right;">
+167
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+172
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Valsad
+</td>
+<td style="text-align:right;">
+1703068
+</td>
+<td style="text-align:right;">
+561
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+145
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Bharuch
+</td>
+<td style="text-align:right;">
+1550822
+</td>
+<td style="text-align:right;">
+238
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+141
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Amreli
+</td>
+<td style="text-align:right;">
+1513614
+</td>
+<td style="text-align:right;">
+205
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+152
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Gandhinagar
+</td>
+<td style="text-align:right;">
+1387478
+</td>
+<td style="text-align:right;">
+660
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+164
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Patan
+</td>
+<td style="text-align:right;">
+1342746
+</td>
+<td style="text-align:right;">
+234
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+162
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Navsari
+</td>
+<td style="text-align:right;">
+1330711
+</td>
+<td style="text-align:right;">
+602
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+153
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Gir Somnath
+</td>
+<td style="text-align:right;">
+1217477
+</td>
+<td style="text-align:right;">
+324
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+148
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Chhota Udepur
+</td>
+<td style="text-align:right;">
+1071831
+</td>
+<td style="text-align:right;">
+331
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+143
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Aravalli
+</td>
+<td style="text-align:right;">
+1051746
+</td>
+<td style="text-align:right;">
+327
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+158
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Mahisagar
+</td>
+<td style="text-align:right;">
+994624
+</td>
+<td style="text-align:right;">
+398
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+160
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Morbi
+</td>
+<td style="text-align:right;">
+960329
+</td>
+<td style="text-align:right;">
+197
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+170
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Tapi
+</td>
+<td style="text-align:right;">
+806489
+</td>
+<td style="text-align:right;">
+249
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+151
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Devbhoomi Dwarka
+</td>
+<td style="text-align:right;">
+752484
+</td>
+<td style="text-align:right;">
+132
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+147
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Botad
+</td>
+<td style="text-align:right;">
+656005
+</td>
+<td style="text-align:right;">
+256
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+161
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Narmada
+</td>
+<td style="text-align:right;">
+590379
+</td>
+<td style="text-align:right;">
+214
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+165
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Porbandar
+</td>
+<td style="text-align:right;">
+586062
+</td>
+<td style="text-align:right;">
+255
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+150
+</td>
+<td style="text-align:left;">
+gujarat
+</td>
+<td style="text-align:left;">
+Dang
+</td>
+<td style="text-align:right;">
+226769
+</td>
+<td style="text-align:right;">
+129
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+176
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Faridabad
+</td>
+<td style="text-align:right;">
+1798954
+</td>
+<td style="text-align:right;">
+2298
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+179
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Hissar
+</td>
+<td style="text-align:right;">
+1742815
+</td>
+<td style="text-align:right;">
+438
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+174
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Bhiwani
+</td>
+<td style="text-align:right;">
+1629109
+</td>
+<td style="text-align:right;">
+341
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+178
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Gurgaon
+</td>
+<td style="text-align:right;">
+1514085
+</td>
+<td style="text-align:right;">
+1241
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+183
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Karnal
+</td>
+<td style="text-align:right;">
+1506323
+</td>
+<td style="text-align:right;">
+598
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+193
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Sonipat
+</td>
+<td style="text-align:right;">
+1480080
+</td>
+<td style="text-align:right;">
+697
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+181
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Jind
+</td>
+<td style="text-align:right;">
+1332042
+</td>
+<td style="text-align:right;">
+493
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+192
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Sirsa
+</td>
+<td style="text-align:right;">
+1295114
+</td>
+<td style="text-align:right;">
+303
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+194
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Yamuna Nagar
+</td>
+<td style="text-align:right;">
+1214162
+</td>
+<td style="text-align:right;">
+687
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+189
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Panipat
+</td>
+<td style="text-align:right;">
+1202811
+</td>
+<td style="text-align:right;">
+949
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+173
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Ambala
+</td>
+<td style="text-align:right;">
+1136784
+</td>
+<td style="text-align:right;">
+722
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+186
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Nuh
+</td>
+<td style="text-align:right;">
+1089406
+</td>
+<td style="text-align:right;">
+729
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+182
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Kaithal
+</td>
+<td style="text-align:right;">
+1072861
+</td>
+<td style="text-align:right;">
+467
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+191
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Rohtak
+</td>
+<td style="text-align:right;">
+1058683
+</td>
+<td style="text-align:right;">
+607
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+187
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Palwal
+</td>
+<td style="text-align:right;">
+1040493
+</td>
+<td style="text-align:right;">
+761
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+184
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Kurukshetra
+</td>
+<td style="text-align:right;">
+964231
+</td>
+<td style="text-align:right;">
+630
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+180
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Jhajjar
+</td>
+<td style="text-align:right;">
+956907
+</td>
+<td style="text-align:right;">
+522
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+177
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Fatehabad
+</td>
+<td style="text-align:right;">
+941522
+</td>
+<td style="text-align:right;">
+371
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+185
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Mahendragarh
+</td>
+<td style="text-align:right;">
+921680
+</td>
+<td style="text-align:right;">
+485
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+190
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Rewari
+</td>
+<td style="text-align:right;">
+896129
+</td>
+<td style="text-align:right;">
+562
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+188
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Panchkula
+</td>
+<td style="text-align:right;">
+558890
+</td>
+<td style="text-align:right;">
+622
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+175
+</td>
+<td style="text-align:left;">
+haryana
+</td>
+<td style="text-align:left;">
+Charkhi Dadri
+</td>
+<td style="text-align:right;">
+502276
+</td>
+<td style="text-align:right;">
+367
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+198
+</td>
+<td style="text-align:left;">
+himachalpradesh
+</td>
+<td style="text-align:left;">
+Kangra
+</td>
+<td style="text-align:right;">
+1507223
+</td>
+<td style="text-align:right;">
+263
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+202
+</td>
+<td style="text-align:left;">
+himachalpradesh
+</td>
+<td style="text-align:left;">
+Mandi
+</td>
+<td style="text-align:right;">
+999518
+</td>
+<td style="text-align:right;">
+253
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+203
+</td>
+<td style="text-align:left;">
+himachalpradesh
+</td>
+<td style="text-align:left;">
+Shimla
+</td>
+<td style="text-align:right;">
+813384
+</td>
+<td style="text-align:right;">
+159
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+205
+</td>
+<td style="text-align:left;">
+himachalpradesh
+</td>
+<td style="text-align:left;">
+Solan
+</td>
+<td style="text-align:right;">
+576670
+</td>
+<td style="text-align:right;">
+298
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+204
+</td>
+<td style="text-align:left;">
+himachalpradesh
+</td>
+<td style="text-align:left;">
+Sirmaur
+</td>
+<td style="text-align:right;">
+530164
+</td>
+<td style="text-align:right;">
+188
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+206
+</td>
+<td style="text-align:left;">
+himachalpradesh
+</td>
+<td style="text-align:left;">
+Una
+</td>
+<td style="text-align:right;">
+521057
+</td>
+<td style="text-align:right;">
+328
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+196
+</td>
+<td style="text-align:left;">
+himachalpradesh
+</td>
+<td style="text-align:left;">
+Chamba
+</td>
+<td style="text-align:right;">
+518844
+</td>
+<td style="text-align:right;">
+80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+197
+</td>
+<td style="text-align:left;">
+himachalpradesh
+</td>
+<td style="text-align:left;">
+Hamirpur
+</td>
+<td style="text-align:right;">
+454293
+</td>
+<td style="text-align:right;">
+406
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+200
+</td>
+<td style="text-align:left;">
+himachalpradesh
+</td>
+<td style="text-align:left;">
+Kullu
+</td>
+<td style="text-align:right;">
+437474
+</td>
+<td style="text-align:right;">
+79
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+195
+</td>
+<td style="text-align:left;">
+himachalpradesh
+</td>
+<td style="text-align:left;">
+Bilaspur
+</td>
+<td style="text-align:right;">
+382056
+</td>
+<td style="text-align:right;">
+327
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+199
+</td>
+<td style="text-align:left;">
+himachalpradesh
+</td>
+<td style="text-align:left;">
+Kinnaur
+</td>
+<td style="text-align:right;">
+84298
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+201
+</td>
+<td style="text-align:left;">
+himachalpradesh
+</td>
+<td style="text-align:left;">
+Lahaul and Spiti
+</td>
+<td style="text-align:right;">
+31528
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+708
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Jammu
+</td>
+<td style="text-align:right;">
+1526406
+</td>
+<td style="text-align:right;">
+596
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+720
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Srinagar
+</td>
+<td style="text-align:right;">
+1269751
+</td>
+<td style="text-align:right;">
+703
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+702
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Anantnag
+</td>
+<td style="text-align:right;">
+1070144
+</td>
+<td style="text-align:right;">
+375
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+704
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Baramulla
+</td>
+<td style="text-align:right;">
+1015503
+</td>
+<td style="text-align:right;">
+305
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+712
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Kupwara
+</td>
+<td style="text-align:right;">
+875564
+</td>
+<td style="text-align:right;">
+368
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+705
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Badgam
+</td>
+<td style="text-align:right;">
+735753
+</td>
+<td style="text-align:right;">
+537
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+715
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Rajouri
+</td>
+<td style="text-align:right;">
+619266
+</td>
+<td style="text-align:right;">
+235
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+709
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Kathua
+</td>
+<td style="text-align:right;">
+615711
+</td>
+<td style="text-align:right;">
+232
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+714
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Pulwama
+</td>
+<td style="text-align:right;">
+570060
+</td>
+<td style="text-align:right;">
+598
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+721
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Udhampur
+</td>
+<td style="text-align:right;">
+555357
+</td>
+<td style="text-align:right;">
+211
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+713
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Poonch
+</td>
+<td style="text-align:right;">
+476820
+</td>
+<td style="text-align:right;">
+285
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+711
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Kulgam
+</td>
+<td style="text-align:right;">
+422786
+</td>
+<td style="text-align:right;">
+925
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+706
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Doda
+</td>
+<td style="text-align:right;">
+409576
+</td>
+<td style="text-align:right;">
+79
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+703
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Bandipora
+</td>
+<td style="text-align:right;">
+385099
+</td>
+<td style="text-align:right;">
+128
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+718
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Samba
+</td>
+<td style="text-align:right;">
+318611
+</td>
+<td style="text-align:right;">
+318
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+717
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Reasi
+</td>
+<td style="text-align:right;">
+314714
+</td>
+<td style="text-align:right;">
+184
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+707
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Ganderbal
+</td>
+<td style="text-align:right;">
+297003
+</td>
+<td style="text-align:right;">
+1151
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+716
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Ramban
+</td>
+<td style="text-align:right;">
+283313
+</td>
+<td style="text-align:right;">
+213
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+719
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Shopian
+</td>
+<td style="text-align:right;">
+265960
+</td>
+<td style="text-align:right;">
+852
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+710
+</td>
+<td style="text-align:left;">
+jammukashmir
+</td>
+<td style="text-align:left;">
+Kishtwar
+</td>
+<td style="text-align:right;">
+230696
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+226
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Ranchi
+</td>
+<td style="text-align:right;">
+2912022
+</td>
+<td style="text-align:right;">
+557
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+210
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Dhanbad
+</td>
+<td style="text-align:right;">
+2682662
+</td>
+<td style="text-align:right;">
+1284
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+214
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Giridih
+</td>
+<td style="text-align:right;">
+2445203
+</td>
+<td style="text-align:right;">
+497
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+212
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+East Singhbhum
+</td>
+<td style="text-align:right;">
+2291032
+</td>
+<td style="text-align:right;">
+648
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+207
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Bokaro
+</td>
+<td style="text-align:right;">
+2061918
+</td>
+<td style="text-align:right;">
+716
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+224
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Palamu
+</td>
+<td style="text-align:right;">
+1936319
+</td>
+<td style="text-align:right;">
+381
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+217
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Hazaribag
+</td>
+<td style="text-align:right;">
+1734005
+</td>
+<td style="text-align:right;">
+403
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+230
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+West Singhbhum
+</td>
+<td style="text-align:right;">
+1501619
+</td>
+<td style="text-align:right;">
+209
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+209
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Deoghar
+</td>
+<td style="text-align:right;">
+1491879
+</td>
+<td style="text-align:right;">
+602
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+213
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Garhwa
+</td>
+<td style="text-align:right;">
+1322387
+</td>
+<td style="text-align:right;">
+327
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+211
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Dumka
+</td>
+<td style="text-align:right;">
+1321096
+</td>
+<td style="text-align:right;">
+300
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+215
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Godda
+</td>
+<td style="text-align:right;">
+1311382
+</td>
+<td style="text-align:right;">
+622
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+227
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Sahibganj
+</td>
+<td style="text-align:right;">
+1150038
+</td>
+<td style="text-align:right;">
+719
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+228
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Seraikela Kharsawan
+</td>
+<td style="text-align:right;">
+1063458
+</td>
+<td style="text-align:right;">
+390
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+208
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Chatra
+</td>
+<td style="text-align:right;">
+1042304
+</td>
+<td style="text-align:right;">
+275
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+216
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Gumla
+</td>
+<td style="text-align:right;">
+1025656
+</td>
+<td style="text-align:right;">
+193
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+225
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Ramgarh
+</td>
+<td style="text-align:right;">
+949159
+</td>
+<td style="text-align:right;">
+684
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+223
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Pakur
+</td>
+<td style="text-align:right;">
+899200
+</td>
+<td style="text-align:right;">
+498
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+218
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Jamtara
+</td>
+<td style="text-align:right;">
+790207
+</td>
+<td style="text-align:right;">
+439
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+221
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Latehar
+</td>
+<td style="text-align:right;">
+725673
+</td>
+<td style="text-align:right;">
+200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+220
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Koderma
+</td>
+<td style="text-align:right;">
+717169
+</td>
+<td style="text-align:right;">
+427
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+229
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Simdega
+</td>
+<td style="text-align:right;">
+599813
+</td>
+<td style="text-align:right;">
+160
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+219
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Khunti
+</td>
+<td style="text-align:right;">
+530299
+</td>
+<td style="text-align:right;">
+215
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+222
+</td>
+<td style="text-align:left;">
+jharkhand
+</td>
+<td style="text-align:left;">
+Lohardaga
+</td>
+<td style="text-align:right;">
+461738
+</td>
+<td style="text-align:right;">
+310
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+235
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Bangalore Urban
+</td>
+<td style="text-align:right;">
+9588910
+</td>
+<td style="text-align:right;">
+4378
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+233
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Belgaum
+</td>
+<td style="text-align:right;">
+4778439
+</td>
+<td style="text-align:right;">
+356
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+252
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Mysuru
+</td>
+<td style="text-align:right;">
+2994744
+</td>
+<td style="text-align:right;">
+437
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+256
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Tumakuru
+</td>
+<td style="text-align:right;">
+2681449
+</td>
+<td style="text-align:right;">
+253
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+245
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Gulbarga
+</td>
+<td style="text-align:right;">
+2564892
+</td>
+<td style="text-align:right;">
+233
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+232
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Ballari
+</td>
+<td style="text-align:right;">
+2532383
+</td>
+<td style="text-align:right;">
+300
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+259
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Vijayapura
+</td>
+<td style="text-align:right;">
+2175102
+</td>
+<td style="text-align:right;">
+207
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+241
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Dakshina Kannada
+</td>
+<td style="text-align:right;">
+2083625
+</td>
+<td style="text-align:right;">
+457
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+242
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Davanagere
+</td>
+<td style="text-align:right;">
+1946905
+</td>
+<td style="text-align:right;">
+329
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+253
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Raichur
+</td>
+<td style="text-align:right;">
+1924773
+</td>
+<td style="text-align:right;">
+228
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+231
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Bagalkot
+</td>
+<td style="text-align:right;">
+1890826
+</td>
+<td style="text-align:right;">
+288
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+243
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Dharwad
+</td>
+<td style="text-align:right;">
+1846993
+</td>
+<td style="text-align:right;">
+434
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+251
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Mandya
+</td>
+<td style="text-align:right;">
+1808680
+</td>
+<td style="text-align:right;">
+365
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+246
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Hassan
+</td>
+<td style="text-align:right;">
+1776221
+</td>
+<td style="text-align:right;">
+261
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+255
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Shimoga
+</td>
+<td style="text-align:right;">
+1755512
+</td>
+<td style="text-align:right;">
+207
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+236
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Bidar
+</td>
+<td style="text-align:right;">
+1700018
+</td>
+<td style="text-align:right;">
+312
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+240
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Chitradurga
+</td>
+<td style="text-align:right;">
+1660378
+</td>
+<td style="text-align:right;">
+197
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+247
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Haveri
+</td>
+<td style="text-align:right;">
+1598506
+</td>
+<td style="text-align:right;">
+331
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+249
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Kolar
+</td>
+<td style="text-align:right;">
+1540231
+</td>
+<td style="text-align:right;">
+384
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+250
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Koppal
+</td>
+<td style="text-align:right;">
+1391292
+</td>
+<td style="text-align:right;">
+250
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+258
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Uttara Kannada
+</td>
+<td style="text-align:right;">
+1353299
+</td>
+<td style="text-align:right;">
+132
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+238
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Chikkaballapur
+</td>
+<td style="text-align:right;">
+1254377
+</td>
+<td style="text-align:right;">
+298
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+257
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Udupi
+</td>
+<td style="text-align:right;">
+1177908
+</td>
+<td style="text-align:right;">
+304
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+260
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Yadgir
+</td>
+<td style="text-align:right;">
+1172985
+</td>
+<td style="text-align:right;">
+224
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+239
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Chikkamagaluru
+</td>
+<td style="text-align:right;">
+1137753
+</td>
+<td style="text-align:right;">
+158
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+254
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Ramanagara
+</td>
+<td style="text-align:right;">
+1082739
+</td>
+<td style="text-align:right;">
+303
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+244
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Gadag
+</td>
+<td style="text-align:right;">
+1065235
+</td>
+<td style="text-align:right;">
+229
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+237
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Chamarajnagar
+</td>
+<td style="text-align:right;">
+1020962
+</td>
+<td style="text-align:right;">
+200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+234
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Bangalore Rural
+</td>
+<td style="text-align:right;">
+987257
+</td>
+<td style="text-align:right;">
+441
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+248
+</td>
+<td style="text-align:left;">
+karnataka
+</td>
+<td style="text-align:left;">
+Kodagu
+</td>
+<td style="text-align:right;">
+554762
+</td>
+<td style="text-align:right;">
+135
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+269
+</td>
+<td style="text-align:left;">
+kerala
+</td>
+<td style="text-align:left;">
+Malappuram
+</td>
+<td style="text-align:right;">
+4110956
+</td>
+<td style="text-align:right;">
+1058
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+273
+</td>
+<td style="text-align:left;">
+kerala
+</td>
+<td style="text-align:left;">
+Thiruvananthapuram
+</td>
+<td style="text-align:right;">
+3307284
+</td>
+<td style="text-align:right;">
+1509
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+262
+</td>
+<td style="text-align:left;">
+kerala
+</td>
+<td style="text-align:left;">
+Ernakulam
+</td>
+<td style="text-align:right;">
+3279860
+</td>
+<td style="text-align:right;">
+1069
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+272
+</td>
+<td style="text-align:left;">
+kerala
+</td>
+<td style="text-align:left;">
+Thrissur
+</td>
+<td style="text-align:right;">
+3110327
+</td>
+<td style="text-align:right;">
+1026
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+268
+</td>
+<td style="text-align:left;">
+kerala
+</td>
+<td style="text-align:left;">
+Kozhikode
+</td>
+<td style="text-align:right;">
+3089543
+</td>
+<td style="text-align:right;">
+1318
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+270
+</td>
+<td style="text-align:left;">
+kerala
+</td>
+<td style="text-align:left;">
+Palakkad
+</td>
+<td style="text-align:right;">
+2810892
+</td>
+<td style="text-align:right;">
+627
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+266
+</td>
+<td style="text-align:left;">
+kerala
+</td>
+<td style="text-align:left;">
+Kollam
+</td>
+<td style="text-align:right;">
+2629703
+</td>
+<td style="text-align:right;">
+1056
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+264
+</td>
+<td style="text-align:left;">
+kerala
+</td>
+<td style="text-align:left;">
+Kannur
+</td>
+<td style="text-align:right;">
+2525637
+</td>
+<td style="text-align:right;">
+852
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+261
+</td>
+<td style="text-align:left;">
+kerala
+</td>
+<td style="text-align:left;">
+Alappuzha
+</td>
+<td style="text-align:right;">
+2121943
+</td>
+<td style="text-align:right;">
+1501
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+267
+</td>
+<td style="text-align:left;">
+kerala
+</td>
+<td style="text-align:left;">
+Kottayam
+</td>
+<td style="text-align:right;">
+1979384
+</td>
+<td style="text-align:right;">
+896
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+265
+</td>
+<td style="text-align:left;">
+kerala
+</td>
+<td style="text-align:left;">
+Kasaragod
+</td>
+<td style="text-align:right;">
+1302600
+</td>
+<td style="text-align:right;">
+654
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+271
+</td>
+<td style="text-align:left;">
+kerala
+</td>
+<td style="text-align:left;">
+Pathanamthitta
+</td>
+<td style="text-align:right;">
+1195537
+</td>
+<td style="text-align:right;">
+453
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+263
+</td>
+<td style="text-align:left;">
+kerala
+</td>
+<td style="text-align:left;">
+Idukki
+</td>
+<td style="text-align:right;">
+1107453
+</td>
+<td style="text-align:right;">
+254
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+274
+</td>
+<td style="text-align:left;">
+kerala
+</td>
+<td style="text-align:left;">
+Wayanad
+</td>
+<td style="text-align:right;">
+816558
+</td>
+<td style="text-align:right;">
+383
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+723
+</td>
+<td style="text-align:left;">
+ladakh
+</td>
+<td style="text-align:left;">
+Leh
+</td>
+<td style="text-align:right;">
+147104
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+722
+</td>
+<td style="text-align:left;">
+ladakh
+</td>
+<td style="text-align:left;">
+Kargil
+</td>
+<td style="text-align:right;">
+143388
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+724
+</td>
+<td style="text-align:left;">
+lakshadweep
+</td>
+<td style="text-align:left;">
+Lakshadweep
+</td>
+<td style="text-align:right;">
+64473
+</td>
+<td style="text-align:right;">
+2149
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+297
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Indore
+</td>
+<td style="text-align:right;">
+3272335
+</td>
+<td style="text-align:right;">
+839
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+298
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Jabalpur
+</td>
+<td style="text-align:right;">
+2460714
+</td>
+<td style="text-align:right;">
+472
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+316
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Sagar
+</td>
+<td style="text-align:right;">
+2378295
+</td>
+<td style="text-align:right;">
+272
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+283
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Bhopal
+</td>
+<td style="text-align:right;">
+2368145
+</td>
+<td style="text-align:right;">
+854
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+315
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Rewa
+</td>
+<td style="text-align:right;">
+2363744
+</td>
+<td style="text-align:right;">
+374
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+317
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Satna
+</td>
+<td style="text-align:right;">
+2228619
+</td>
+<td style="text-align:right;">
+297
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+291
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Dhar
+</td>
+<td style="text-align:right;">
+2184672
+</td>
+<td style="text-align:right;">
+268
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+287
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Chhindwara
+</td>
+<td style="text-align:right;">
+2090306
+</td>
+<td style="text-align:right;">
+177
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+294
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Gwalior
+</td>
+<td style="text-align:right;">
+2030543
+</td>
+<td style="text-align:right;">
+445
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+327
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Ujjain
+</td>
+<td style="text-align:right;">
+1986864
+</td>
+<td style="text-align:right;">
+356
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+306
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Morena
+</td>
+<td style="text-align:right;">
+1965137
+</td>
+<td style="text-align:right;">
+394
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+302
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Khargone (West Nimar)
+</td>
+<td style="text-align:right;">
+1872413
+</td>
+<td style="text-align:right;">
+233
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+286
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Chhatarpur
+</td>
+<td style="text-align:right;">
+1762857
+</td>
+<td style="text-align:right;">
+203
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+323
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Shivpuri
+</td>
+<td style="text-align:right;">
+1725818
+</td>
+<td style="text-align:right;">
+168
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+282
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Bhind
+</td>
+<td style="text-align:right;">
+1703562
+</td>
+<td style="text-align:right;">
+382
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+279
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Balaghat
+</td>
+<td style="text-align:right;">
+1701156
+</td>
+<td style="text-align:right;">
+184
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+281
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Betul
+</td>
+<td style="text-align:right;">
+1575247
+</td>
+<td style="text-align:right;">
+157
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+290
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Dewas
+</td>
+<td style="text-align:right;">
+1563107
+</td>
+<td style="text-align:right;">
+223
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+313
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Rajgarh
+</td>
+<td style="text-align:right;">
+1546541
+</td>
+<td style="text-align:right;">
+251
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+321
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Shajapur
+</td>
+<td style="text-align:right;">
+1512353
+</td>
+<td style="text-align:right;">
+244
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+329
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Vidisha
+</td>
+<td style="text-align:right;">
+1458212
+</td>
+<td style="text-align:right;">
+198
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+314
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Ratlam
+</td>
+<td style="text-align:right;">
+1454483
+</td>
+<td style="text-align:right;">
+299
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+326
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Tikamgarh
+</td>
+<td style="text-align:right;">
+1444920
+</td>
+<td style="text-align:right;">
+286
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+280
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Barwani
+</td>
+<td style="text-align:right;">
+1385659
+</td>
+<td style="text-align:right;">
+256
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+319
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Seoni
+</td>
+<td style="text-align:right;">
+1378876
+</td>
+<td style="text-align:right;">
+157
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+305
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Mandsaur
+</td>
+<td style="text-align:right;">
+1339832
+</td>
+<td style="text-align:right;">
+242
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+312
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Raisen
+</td>
+<td style="text-align:right;">
+1331699
+</td>
+<td style="text-align:right;">
+157
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+318
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Sehore
+</td>
+<td style="text-align:right;">
+1311008
+</td>
+<td style="text-align:right;">
+199
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+301
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Khandwa (East Nimar)
+</td>
+<td style="text-align:right;">
+1309443
+</td>
+<td style="text-align:right;">
+178
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+300
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Katni
+</td>
+<td style="text-align:right;">
+1291684
+</td>
+<td style="text-align:right;">
+261
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+288
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Damoh
+</td>
+<td style="text-align:right;">
+1263703
+</td>
+<td style="text-align:right;">
+173
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+296
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Hoshangabad
+</td>
+<td style="text-align:right;">
+1240975
+</td>
+<td style="text-align:right;">
+185
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+293
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Guna
+</td>
+<td style="text-align:right;">
+1240938
+</td>
+<td style="text-align:right;">
+194
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+325
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Singrauli
+</td>
+<td style="text-align:right;">
+1178132
+</td>
+<td style="text-align:right;">
+208
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+324
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Sidhi
+</td>
+<td style="text-align:right;">
+1126515
+</td>
+<td style="text-align:right;">
+232
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+307
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Narsinghpur
+</td>
+<td style="text-align:right;">
+1092141
+</td>
+<td style="text-align:right;">
+213
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+320
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Shahdol
+</td>
+<td style="text-align:right;">
+1064989
+</td>
+<td style="text-align:right;">
+172
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+304
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Mandla
+</td>
+<td style="text-align:right;">
+1053522
+</td>
+<td style="text-align:right;">
+182
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+299
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Jhabua
+</td>
+<td style="text-align:right;">
+1024091
+</td>
+<td style="text-align:right;">
+285
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+311
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Panna
+</td>
+<td style="text-align:right;">
+1016028
+</td>
+<td style="text-align:right;">
+142
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+278
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Ashok Nagar
+</td>
+<td style="text-align:right;">
+844979
+</td>
+<td style="text-align:right;">
+181
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+309
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Neemuch
+</td>
+<td style="text-align:right;">
+825958
+</td>
+<td style="text-align:right;">
+194
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+289
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Datia
+</td>
+<td style="text-align:right;">
+786375
+</td>
+<td style="text-align:right;">
+292
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+284
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Burhanpur
+</td>
+<td style="text-align:right;">
+756993
+</td>
+<td style="text-align:right;">
+221
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+277
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Anuppur
+</td>
+<td style="text-align:right;">
+749521
+</td>
+<td style="text-align:right;">
+200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+276
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Alirajpur
+</td>
+<td style="text-align:right;">
+728677
+</td>
+<td style="text-align:right;">
+229
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+292
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Dindori
+</td>
+<td style="text-align:right;">
+704218
+</td>
+<td style="text-align:right;">
+94
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+322
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Sheopur
+</td>
+<td style="text-align:right;">
+687952
+</td>
+<td style="text-align:right;">
+104
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+328
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Umaria
+</td>
+<td style="text-align:right;">
+643579
+</td>
+<td style="text-align:right;">
+158
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+295
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Harda
+</td>
+<td style="text-align:right;">
+570302
+</td>
+<td style="text-align:right;">
+171
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+275
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Agar Malwa
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+285
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Chachaura-Binaganj
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+303
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Maihar
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+308
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Nagda
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+310
+</td>
+<td style="text-align:left;">
+madhyapradesh
+</td>
+<td style="text-align:left;">
+Niwari
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+362
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:right;">
+11060148
+</td>
+<td style="text-align:right;">
+1157
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+355
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:right;">
+9426959
+</td>
+<td style="text-align:right;">
+603
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+347
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Mumbai suburban
+</td>
+<td style="text-align:right;">
+9332481
+</td>
+<td style="text-align:right;">
+20925
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+351
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:right;">
+6109052
+</td>
+<td style="text-align:right;">
+393
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+350
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+4653171
+</td>
+<td style="text-align:right;">
+470
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+330
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Ahmednagar
+</td>
+<td style="text-align:right;">
+4543083
+</td>
+<td style="text-align:right;">
+266
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+361
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Solapur
+</td>
+<td style="text-align:right;">
+4315527
+</td>
+<td style="text-align:right;">
+290
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+342
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Jalgaon
+</td>
+<td style="text-align:right;">
+4224442
+</td>
+<td style="text-align:right;">
+359
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+344
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Kolhapur
+</td>
+<td style="text-align:right;">
+3874015
+</td>
+<td style="text-align:right;">
+504
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+333
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+3695928
+</td>
+<td style="text-align:right;">
+365
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+348
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Nanded
+</td>
+<td style="text-align:right;">
+3356566
+</td>
+<td style="text-align:right;">
+319
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+346
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Mumbai City
+</td>
+<td style="text-align:right;">
+3145966
+</td>
+<td style="text-align:right;">
+20038
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+359
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Satara
+</td>
+<td style="text-align:right;">
+3003922
+</td>
+<td style="text-align:right;">
+287
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+353
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Palghar
+</td>
+<td style="text-align:right;">
+2990116
+</td>
+<td style="text-align:right;">
+560
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+332
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:right;">
+2887826
+</td>
+<td style="text-align:right;">
+237
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+358
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Sangli
+</td>
+<td style="text-align:right;">
+2820575
+</td>
+<td style="text-align:right;">
+329
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+365
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Yavatmal
+</td>
+<td style="text-align:right;">
+2775457
+</td>
+<td style="text-align:right;">
+204
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+356
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Raigad
+</td>
+<td style="text-align:right;">
+2635394
+</td>
+<td style="text-align:right;">
+368
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+336
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Buldhana
+</td>
+<td style="text-align:right;">
+2588039
+</td>
+<td style="text-align:right;">
+268
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+334
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Beed
+</td>
+<td style="text-align:right;">
+2585962
+</td>
+<td style="text-align:right;">
+242
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+345
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Latur
+</td>
+<td style="text-align:right;">
+2455543
+</td>
+<td style="text-align:right;">
+343
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+337
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Chandrapur
+</td>
+<td style="text-align:right;">
+2194262
+</td>
+<td style="text-align:right;">
+192
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+338
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Dhule
+</td>
+<td style="text-align:right;">
+2048781
+</td>
+<td style="text-align:right;">
+285
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+343
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Jalna
+</td>
+<td style="text-align:right;">
+1958483
+</td>
+<td style="text-align:right;">
+255
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+354
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Parbhani
+</td>
+<td style="text-align:right;">
+1835982
+</td>
+<td style="text-align:right;">
+295
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+331
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Akola
+</td>
+<td style="text-align:right;">
+1818617
+</td>
+<td style="text-align:right;">
+321
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+352
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Osmanabad
+</td>
+<td style="text-align:right;">
+1660311
+</td>
+<td style="text-align:right;">
+219
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+349
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Nandurbar
+</td>
+<td style="text-align:right;">
+1646177
+</td>
+<td style="text-align:right;">
+276
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+357
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Ratnagiri
+</td>
+<td style="text-align:right;">
+1612672
+</td>
+<td style="text-align:right;">
+196
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+340
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Gondia
+</td>
+<td style="text-align:right;">
+1322331
+</td>
+<td style="text-align:right;">
+253
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+363
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Wardha
+</td>
+<td style="text-align:right;">
+1296157
+</td>
+<td style="text-align:right;">
+205
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+335
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Bhandara
+</td>
+<td style="text-align:right;">
+1198810
+</td>
+<td style="text-align:right;">
+293
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+364
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Washim
+</td>
+<td style="text-align:right;">
+1196714
+</td>
+<td style="text-align:right;">
+244
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+341
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Hingoli
+</td>
+<td style="text-align:right;">
+1178973
+</td>
+<td style="text-align:right;">
+244
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+339
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Gadchiroli
+</td>
+<td style="text-align:right;">
+1071795
+</td>
+<td style="text-align:right;">
+74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+360
+</td>
+<td style="text-align:left;">
+maharashtra
+</td>
+<td style="text-align:left;">
+Sindhudurg
+</td>
+<td style="text-align:right;">
+848868
+</td>
+<td style="text-align:right;">
+163
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+370
+</td>
+<td style="text-align:left;">
+manipur
+</td>
+<td style="text-align:left;">
+Imphal West
+</td>
+<td style="text-align:right;">
+514683
+</td>
+<td style="text-align:right;">
+847
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+369
+</td>
+<td style="text-align:left;">
+manipur
+</td>
+<td style="text-align:left;">
+Imphal East
+</td>
+<td style="text-align:right;">
+452661
+</td>
+<td style="text-align:right;">
+555
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+380
+</td>
+<td style="text-align:left;">
+manipur
+</td>
+<td style="text-align:left;">
+Thoubal
+</td>
+<td style="text-align:right;">
+420517
+</td>
+<td style="text-align:right;">
+713
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+377
+</td>
+<td style="text-align:left;">
+manipur
+</td>
+<td style="text-align:left;">
+Senapati
+</td>
+<td style="text-align:right;">
+354772
+</td>
+<td style="text-align:right;">
+116
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+368
+</td>
+<td style="text-align:left;">
+manipur
+</td>
+<td style="text-align:left;">
+Churachandpur
+</td>
+<td style="text-align:right;">
+271274
+</td>
+<td style="text-align:right;">
+50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+366
+</td>
+<td style="text-align:left;">
+manipur
+</td>
+<td style="text-align:left;">
+Bishnupur
+</td>
+<td style="text-align:right;">
+240363
+</td>
+<td style="text-align:right;">
+415
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+381
+</td>
+<td style="text-align:left;">
+manipur
+</td>
+<td style="text-align:left;">
+Ukhrul
+</td>
+<td style="text-align:right;">
+183115
+</td>
+<td style="text-align:right;">
+31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+367
+</td>
+<td style="text-align:left;">
+manipur
+</td>
+<td style="text-align:left;">
+Chandel
+</td>
+<td style="text-align:right;">
+144028
+</td>
+<td style="text-align:right;">
+37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+378
+</td>
+<td style="text-align:left;">
+manipur
+</td>
+<td style="text-align:left;">
+Tamenglong
+</td>
+<td style="text-align:right;">
+140143
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+372
+</td>
+<td style="text-align:left;">
+manipur
+</td>
+<td style="text-align:left;">
+Kakching
+</td>
+<td style="text-align:right;">
+135481
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+376
+</td>
+<td style="text-align:left;">
+manipur
+</td>
+<td style="text-align:left;">
+Pherzawl
+</td>
+<td style="text-align:right;">
+47250
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+373
+</td>
+<td style="text-align:left;">
+manipur
+</td>
+<td style="text-align:left;">
+Kamjong
+</td>
+<td style="text-align:right;">
+45616
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+371
+</td>
+<td style="text-align:left;">
+manipur
+</td>
+<td style="text-align:left;">
+Jiribam
+</td>
+<td style="text-align:right;">
+43818
+</td>
+<td style="text-align:right;">
+190
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+374
+</td>
+<td style="text-align:left;">
+manipur
+</td>
+<td style="text-align:left;">
+Kangpokpi
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+375
+</td>
+<td style="text-align:left;">
+manipur
+</td>
+<td style="text-align:left;">
+Noney
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+379
+</td>
+<td style="text-align:left;">
+manipur
+</td>
+<td style="text-align:left;">
+Tengnoupal
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+383
+</td>
+<td style="text-align:left;">
+meghalaya
+</td>
+<td style="text-align:left;">
+East Khasi Hills
+</td>
+<td style="text-align:right;">
+824059
+</td>
+<td style="text-align:right;">
+292
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+391
+</td>
+<td style="text-align:left;">
+meghalaya
+</td>
+<td style="text-align:left;">
+West Garo Hills
+</td>
+<td style="text-align:right;">
+642923
+</td>
+<td style="text-align:right;">
+173
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+392
+</td>
+<td style="text-align:left;">
+meghalaya
+</td>
+<td style="text-align:left;">
+West Khasi Hills
+</td>
+<td style="text-align:right;">
+385601
+</td>
+<td style="text-align:right;">
+73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+382
+</td>
+<td style="text-align:left;">
+meghalaya
+</td>
+<td style="text-align:left;">
+East Garo Hills
+</td>
+<td style="text-align:right;">
+317618
+</td>
+<td style="text-align:right;">
+121
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+390
+</td>
+<td style="text-align:left;">
+meghalaya
+</td>
+<td style="text-align:left;">
+West Jaintia Hills
+</td>
+<td style="text-align:right;">
+270352
+</td>
+<td style="text-align:right;">
+160
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+386
+</td>
+<td style="text-align:left;">
+meghalaya
+</td>
+<td style="text-align:left;">
+Ri Bhoi
+</td>
+<td style="text-align:right;">
+258380
+</td>
+<td style="text-align:right;">
+109
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+388
+</td>
+<td style="text-align:left;">
+meghalaya
+</td>
+<td style="text-align:left;">
+South West Garo Hills
+</td>
+<td style="text-align:right;">
+172495
+</td>
+<td style="text-align:right;">
+210
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+387
+</td>
+<td style="text-align:left;">
+meghalaya
+</td>
+<td style="text-align:left;">
+South Garo Hills
+</td>
+<td style="text-align:right;">
+142574
+</td>
+<td style="text-align:right;">
+77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+384
+</td>
+<td style="text-align:left;">
+meghalaya
+</td>
+<td style="text-align:left;">
+East Jaintia Hills
+</td>
+<td style="text-align:right;">
+122436
+</td>
+<td style="text-align:right;">
+58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+385
+</td>
+<td style="text-align:left;">
+meghalaya
+</td>
+<td style="text-align:left;">
+North Garo Hills
+</td>
+<td style="text-align:right;">
+118325
+</td>
+<td style="text-align:right;">
+106
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+389
+</td>
+<td style="text-align:left;">
+meghalaya
+</td>
+<td style="text-align:left;">
+South West Khasi Hills
+</td>
+<td style="text-align:right;">
+110152
+</td>
+<td style="text-align:right;">
+82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+393
+</td>
+<td style="text-align:left;">
+mizoram
+</td>
+<td style="text-align:left;">
+Aizawl
+</td>
+<td style="text-align:right;">
+404054
+</td>
+<td style="text-align:right;">
+113
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+399
+</td>
+<td style="text-align:left;">
+mizoram
+</td>
+<td style="text-align:left;">
+Lunglei
+</td>
+<td style="text-align:right;">
+154094
+</td>
+<td style="text-align:right;">
+34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+394
+</td>
+<td style="text-align:left;">
+mizoram
+</td>
+<td style="text-align:left;">
+Champhai
+</td>
+<td style="text-align:right;">
+125370
+</td>
+<td style="text-align:right;">
+39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+398
+</td>
+<td style="text-align:left;">
+mizoram
+</td>
+<td style="text-align:left;">
+Lawngtlai
+</td>
+<td style="text-align:right;">
+117444
+</td>
+<td style="text-align:right;">
+46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+400
+</td>
+<td style="text-align:left;">
+mizoram
+</td>
+<td style="text-align:left;">
+Mamit
+</td>
+<td style="text-align:right;">
+85757
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+397
+</td>
+<td style="text-align:left;">
+mizoram
+</td>
+<td style="text-align:left;">
+Kolasib
+</td>
+<td style="text-align:right;">
+83054
+</td>
+<td style="text-align:right;">
+60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+403
+</td>
+<td style="text-align:left;">
+mizoram
+</td>
+<td style="text-align:left;">
+Serchhip
+</td>
+<td style="text-align:right;">
+64875
+</td>
+<td style="text-align:right;">
+46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+401
+</td>
+<td style="text-align:left;">
+mizoram
+</td>
+<td style="text-align:left;">
+Saiha
+</td>
+<td style="text-align:right;">
+56366
+</td>
+<td style="text-align:right;">
+40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+395
+</td>
+<td style="text-align:left;">
+mizoram
+</td>
+<td style="text-align:left;">
+Hnahthial
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+396
+</td>
+<td style="text-align:left;">
+mizoram
+</td>
+<td style="text-align:left;">
+Khawzawl
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+402
+</td>
+<td style="text-align:left;">
+mizoram
+</td>
+<td style="text-align:left;">
+Saitual
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+413
+</td>
+<td style="text-align:left;">
+nagaland
+</td>
+<td style="text-align:left;">
+Tuensang
+</td>
+<td style="text-align:right;">
+414801
+</td>
+<td style="text-align:right;">
+98
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+404
+</td>
+<td style="text-align:left;">
+nagaland
+</td>
+<td style="text-align:left;">
+Dimapur
+</td>
+<td style="text-align:right;">
+379769
+</td>
+<td style="text-align:right;">
+410
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+406
+</td>
+<td style="text-align:left;">
+nagaland
+</td>
+<td style="text-align:left;">
+Kohima
+</td>
+<td style="text-align:right;">
+270063
+</td>
+<td style="text-align:right;">
+213
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+409
+</td>
+<td style="text-align:left;">
+nagaland
+</td>
+<td style="text-align:left;">
+Mon
+</td>
+<td style="text-align:right;">
+259604
+</td>
+<td style="text-align:right;">
+145
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+408
+</td>
+<td style="text-align:left;">
+nagaland
+</td>
+<td style="text-align:left;">
+Mokokchung
+</td>
+<td style="text-align:right;">
+193171
+</td>
+<td style="text-align:right;">
+120
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+414
+</td>
+<td style="text-align:left;">
+nagaland
+</td>
+<td style="text-align:left;">
+Wokha
+</td>
+<td style="text-align:right;">
+166239
+</td>
+<td style="text-align:right;">
+120
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+411
+</td>
+<td style="text-align:left;">
+nagaland
+</td>
+<td style="text-align:left;">
+Peren
+</td>
+<td style="text-align:right;">
+163294
+</td>
+<td style="text-align:right;">
+55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+412
+</td>
+<td style="text-align:left;">
+nagaland
+</td>
+<td style="text-align:left;">
+Phek
+</td>
+<td style="text-align:right;">
+163294
+</td>
+<td style="text-align:right;">
+81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+415
+</td>
+<td style="text-align:left;">
+nagaland
+</td>
+<td style="text-align:left;">
+Zunheboto
+</td>
+<td style="text-align:right;">
+141014
+</td>
+<td style="text-align:right;">
+112
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+405
+</td>
+<td style="text-align:left;">
+nagaland
+</td>
+<td style="text-align:left;">
+Kiphire
+</td>
+<td style="text-align:right;">
+74033
+</td>
+<td style="text-align:right;">
+66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+410
+</td>
+<td style="text-align:left;">
+nagaland
+</td>
+<td style="text-align:left;">
+Noklak
+</td>
+<td style="text-align:right;">
+59300
+</td>
+<td style="text-align:right;">
+51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+407
+</td>
+<td style="text-align:left;">
+nagaland
+</td>
+<td style="text-align:left;">
+Longleng
+</td>
+<td style="text-align:right;">
+50593
+</td>
+<td style="text-align:right;">
+89
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+730
+</td>
+<td style="text-align:left;">
+nct
+</td>
+<td style="text-align:left;">
+North West Delhi
+</td>
+<td style="text-align:right;">
+3656539
+</td>
+<td style="text-align:right;">
+8254
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+732
+</td>
+<td style="text-align:left;">
+nct
+</td>
+<td style="text-align:left;">
+South Delhi
+</td>
+<td style="text-align:right;">
+2731929
+</td>
+<td style="text-align:right;">
+11060
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+735
+</td>
+<td style="text-align:left;">
+nct
+</td>
+<td style="text-align:left;">
+West Delhi
+</td>
+<td style="text-align:right;">
+2543243
+</td>
+<td style="text-align:right;">
+19563
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+734
+</td>
+<td style="text-align:left;">
+nct
+</td>
+<td style="text-align:left;">
+South West Delhi
+</td>
+<td style="text-align:right;">
+2292958
+</td>
+<td style="text-align:right;">
+5446
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+729
+</td>
+<td style="text-align:left;">
+nct
+</td>
+<td style="text-align:left;">
+North East Delhi
+</td>
+<td style="text-align:right;">
+2241624
+</td>
+<td style="text-align:right;">
+36155
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+726
+</td>
+<td style="text-align:left;">
+nct
+</td>
+<td style="text-align:left;">
+East Delhi
+</td>
+<td style="text-align:right;">
+1709346
+</td>
+<td style="text-align:right;">
+27132
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+728
+</td>
+<td style="text-align:left;">
+nct
+</td>
+<td style="text-align:left;">
+North Delhi
+</td>
+<td style="text-align:right;">
+887978
+</td>
+<td style="text-align:right;">
+14557
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+725
+</td>
+<td style="text-align:left;">
+nct
+</td>
+<td style="text-align:left;">
+Central Delhi
+</td>
+<td style="text-align:right;">
+582320
+</td>
+<td style="text-align:right;">
+27730
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+727
+</td>
+<td style="text-align:left;">
+nct
+</td>
+<td style="text-align:left;">
+New Delhi
+</td>
+<td style="text-align:right;">
+142004
+</td>
+<td style="text-align:right;">
+4057
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+731
+</td>
+<td style="text-align:left;">
+nct
+</td>
+<td style="text-align:left;">
+Shahdara
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+733
+</td>
+<td style="text-align:left;">
+nct
+</td>
+<td style="text-align:left;">
+South East Delhi
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+425
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Ganjam
+</td>
+<td style="text-align:right;">
+3520151
+</td>
+<td style="text-align:right;">
+429
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+422
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Cuttack
+</td>
+<td style="text-align:right;">
+2618708
+</td>
+<td style="text-align:right;">
+666
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+437
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Mayurbhanj
+</td>
+<td style="text-align:right;">
+2513895
+</td>
+<td style="text-align:right;">
+241
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+421
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Balasore
+</td>
+<td style="text-align:right;">
+2317419
+</td>
+<td style="text-align:right;">
+609
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+430
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Khordha
+</td>
+<td style="text-align:right;">
+2246341
+</td>
+<td style="text-align:right;">
+799
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+445
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Sundargarh
+</td>
+<td style="text-align:right;">
+2080664
+</td>
+<td style="text-align:right;">
+214
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+428
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Jajpur
+</td>
+<td style="text-align:right;">
+1826275
+</td>
+<td style="text-align:right;">
+630
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+431
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Kendujhar (Keonjhar)
+</td>
+<td style="text-align:right;">
+1802777
+</td>
+<td style="text-align:right;">
+217
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+441
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Puri
+</td>
+<td style="text-align:right;">
+1697983
+</td>
+<td style="text-align:right;">
+488
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+419
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Balangir
+</td>
+<td style="text-align:right;">
+1648574
+</td>
+<td style="text-align:right;">
+251
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+432
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Kalahandi
+</td>
+<td style="text-align:right;">
+1573054
+</td>
+<td style="text-align:right;">
+199
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+418
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Bhadrak
+</td>
+<td style="text-align:right;">
+1506522
+</td>
+<td style="text-align:right;">
+601
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+420
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Bargarh (Baragarh)
+</td>
+<td style="text-align:right;">
+1478833
+</td>
+<td style="text-align:right;">
+253
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+435
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Kendrapara
+</td>
+<td style="text-align:right;">
+1439891
+</td>
+<td style="text-align:right;">
+545
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+434
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Koraput
+</td>
+<td style="text-align:right;">
+1376934
+</td>
+<td style="text-align:right;">
+156
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+416
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Angul
+</td>
+<td style="text-align:right;">
+1271703
+</td>
+<td style="text-align:right;">
+199
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+438
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Nabarangpur
+</td>
+<td style="text-align:right;">
+1218762
+</td>
+<td style="text-align:right;">
+230
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+424
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Dhenkanal
+</td>
+<td style="text-align:right;">
+1192948
+</td>
+<td style="text-align:right;">
+268
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+429
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Jagatsinghpur
+</td>
+<td style="text-align:right;">
+1136604
+</td>
+<td style="text-align:right;">
+681
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+443
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Sambalpur
+</td>
+<td style="text-align:right;">
+1044410
+</td>
+<td style="text-align:right;">
+158
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+440
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Nayagarh
+</td>
+<td style="text-align:right;">
+962215
+</td>
+<td style="text-align:right;">
+247
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+442
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Rayagada
+</td>
+<td style="text-align:right;">
+961959
+</td>
+<td style="text-align:right;">
+136
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+433
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Kandhamal
+</td>
+<td style="text-align:right;">
+731952
+</td>
+<td style="text-align:right;">
+91
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+444
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Subarnapur (Sonepur)
+</td>
+<td style="text-align:right;">
+652107
+</td>
+<td style="text-align:right;">
+279
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+436
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Malkangiri
+</td>
+<td style="text-align:right;">
+612727
+</td>
+<td style="text-align:right;">
+106
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+439
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Nuapada
+</td>
+<td style="text-align:right;">
+606490
+</td>
+<td style="text-align:right;">
+157
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+427
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Jharsuguda
+</td>
+<td style="text-align:right;">
+579499
+</td>
+<td style="text-align:right;">
+274
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+426
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Gajapati
+</td>
+<td style="text-align:right;">
+575880
+</td>
+<td style="text-align:right;">
+133
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+417
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Boudh (Bauda)
+</td>
+<td style="text-align:right;">
+439917
+</td>
+<td style="text-align:right;">
+142
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+423
+</td>
+<td style="text-align:left;">
+odisha
+</td>
+<td style="text-align:left;">
+Debagarh (Deogarh)
+</td>
+<td style="text-align:right;">
+312164
+</td>
+<td style="text-align:right;">
+106
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+738
+</td>
+<td style="text-align:left;">
+puducherry
+</td>
+<td style="text-align:left;">
+Pondicherry
+</td>
+<td style="text-align:right;">
+950289
+</td>
+<td style="text-align:right;">
+3232
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+736
+</td>
+<td style="text-align:left;">
+puducherry
+</td>
+<td style="text-align:left;">
+Karaikal
+</td>
+<td style="text-align:right;">
+200222
+</td>
+<td style="text-align:right;">
+1275
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+739
+</td>
+<td style="text-align:left;">
+puducherry
+</td>
+<td style="text-align:left;">
+Yanam
+</td>
+<td style="text-align:right;">
+55626
+</td>
+<td style="text-align:right;">
+1854
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+737
+</td>
+<td style="text-align:left;">
+puducherry
+</td>
+<td style="text-align:left;">
+Mahé
+</td>
+<td style="text-align:right;">
+41816
+</td>
+<td style="text-align:right;">
+4646
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+457
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Ludhiana
+</td>
+<td style="text-align:right;">
+3487882
+</td>
+<td style="text-align:right;">
+975
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+462
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Patiala
+</td>
+<td style="text-align:right;">
+2892282
+</td>
+<td style="text-align:right;">
+596
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+446
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Amritsar
+</td>
+<td style="text-align:right;">
+2490891
+</td>
+<td style="text-align:right;">
+932
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+453
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Gurdaspur
+</td>
+<td style="text-align:right;">
+2299026
+</td>
+<td style="text-align:right;">
+649
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+455
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Jalandhar
+</td>
+<td style="text-align:right;">
+2181753
+</td>
+<td style="text-align:right;">
+831
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+449
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Firozpur
+</td>
+<td style="text-align:right;">
+2026831
+</td>
+<td style="text-align:right;">
+380
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+465
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Sangrur
+</td>
+<td style="text-align:right;">
+1654408
+</td>
+<td style="text-align:right;">
+449
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+454
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Hoshiarpur
+</td>
+<td style="text-align:right;">
+1582793
+</td>
+<td style="text-align:right;">
+466
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+448
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Bathinda
+</td>
+<td style="text-align:right;">
+1388859
+</td>
+<td style="text-align:right;">
+414
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+452
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Fazilka[14]
+</td>
+<td style="text-align:right;">
+1180483
+</td>
+<td style="text-align:right;">
+379
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+467
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Tarn Taran
+</td>
+<td style="text-align:right;">
+1120070
+</td>
+<td style="text-align:right;">
+464
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+459
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Moga
+</td>
+<td style="text-align:right;">
+992289
+</td>
+<td style="text-align:right;">
+444
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+464
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Sahibzada Ajit Singh Nagar
+</td>
+<td style="text-align:right;">
+986147
+</td>
+<td style="text-align:right;">
+830
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+460
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Sri Muktsar Sahib
+</td>
+<td style="text-align:right;">
+902702
+</td>
+<td style="text-align:right;">
+348
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+456
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Kapurthala
+</td>
+<td style="text-align:right;">
+817668
+</td>
+<td style="text-align:right;">
+501
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+458
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Mansa
+</td>
+<td style="text-align:right;">
+768808
+</td>
+<td style="text-align:right;">
+350
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+463
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Rupnagar
+</td>
+<td style="text-align:right;">
+683349
+</td>
+<td style="text-align:right;">
+488
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+461
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Pathankot
+</td>
+<td style="text-align:right;">
+626154
+</td>
+<td style="text-align:right;">
+674
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+450
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Faridkot
+</td>
+<td style="text-align:right;">
+618008
+</td>
+<td style="text-align:right;">
+424
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+466
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Shahid Bhagat Singh Nagar
+</td>
+<td style="text-align:right;">
+614362
+</td>
+<td style="text-align:right;">
+479
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+451
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Fatehgarh Sahib
+</td>
+<td style="text-align:right;">
+599814
+</td>
+<td style="text-align:right;">
+508
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+447
+</td>
+<td style="text-align:left;">
+punjab
+</td>
+<td style="text-align:left;">
+Barnala
+</td>
+<td style="text-align:right;">
+596294
+</td>
+<td style="text-align:right;">
+419
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+487
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Jaipur
+</td>
+<td style="text-align:right;">
+6663971
+</td>
+<td style="text-align:right;">
+598
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+486
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Jodhpur
+</td>
+<td style="text-align:right;">
+3685681
+</td>
+<td style="text-align:right;">
+161
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+469
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Alwar
+</td>
+<td style="text-align:right;">
+3671999
+</td>
+<td style="text-align:right;">
+438
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+492
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Nagaur
+</td>
+<td style="text-align:right;">
+3309234
+</td>
+<td style="text-align:right;">
+187
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+500
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Udaipur
+</td>
+<td style="text-align:right;">
+3067549
+</td>
+<td style="text-align:right;">
+242
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+496
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Sikar
+</td>
+<td style="text-align:right;">
+2677737
+</td>
+<td style="text-align:right;">
+346
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+471
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Barmer
+</td>
+<td style="text-align:right;">
+2604453
+</td>
+<td style="text-align:right;">
+92
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+468
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Ajmer
+</td>
+<td style="text-align:right;">
+2584913
+</td>
+<td style="text-align:right;">
+305
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+473
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Bharatpur
+</td>
+<td style="text-align:right;">
+2549121
+</td>
+<td style="text-align:right;">
+503
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+476
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Bhilwara
+</td>
+<td style="text-align:right;">
+2410459
+</td>
+<td style="text-align:right;">
+230
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+470
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Bikaner
+</td>
+<td style="text-align:right;">
+2367745
+</td>
+<td style="text-align:right;">
+78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+484
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Jhunjhunu
+</td>
+<td style="text-align:right;">
+2139658
+</td>
+<td style="text-align:right;">
+361
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+477
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Churu
+</td>
+<td style="text-align:right;">
+2041172
+</td>
+<td style="text-align:right;">
+148
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+493
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Pali
+</td>
+<td style="text-align:right;">
+2038533
+</td>
+<td style="text-align:right;">
+165
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+482
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Ganganagar
+</td>
+<td style="text-align:right;">
+1969520
+</td>
+<td style="text-align:right;">
+179
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+491
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Kota
+</td>
+<td style="text-align:right;">
+1950491
+</td>
+<td style="text-align:right;">
+374
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+485
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Jalore
+</td>
+<td style="text-align:right;">
+1830151
+</td>
+<td style="text-align:right;">
+172
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+472
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Banswara
+</td>
+<td style="text-align:right;">
+1798194
+</td>
+<td style="text-align:right;">
+399
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+483
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Hanumangarh
+</td>
+<td style="text-align:right;">
+1779650
+</td>
+<td style="text-align:right;">
+184
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+479
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Dausa
+</td>
+<td style="text-align:right;">
+1637226
+</td>
+<td style="text-align:right;">
+476
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+478
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Chittorgarh
+</td>
+<td style="text-align:right;">
+1544392
+</td>
+<td style="text-align:right;">
+193
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+490
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Karauli
+</td>
+<td style="text-align:right;">
+1458459
+</td>
+<td style="text-align:right;">
+264
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+499
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Tonk
+</td>
+<td style="text-align:right;">
+1421711
+</td>
+<td style="text-align:right;">
+198
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+489
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Jhalawar
+</td>
+<td style="text-align:right;">
+1411327
+</td>
+<td style="text-align:right;">
+227
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+481
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Dungarpur
+</td>
+<td style="text-align:right;">
+1388906
+</td>
+<td style="text-align:right;">
+368
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+497
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Sawai Madhopur
+</td>
+<td style="text-align:right;">
+1338114
+</td>
+<td style="text-align:right;">
+257
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+474
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Baran
+</td>
+<td style="text-align:right;">
+1223921
+</td>
+<td style="text-align:right;">
+175
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+480
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Dholpur
+</td>
+<td style="text-align:right;">
+1207293
+</td>
+<td style="text-align:right;">
+398
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+495
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Rajsamand
+</td>
+<td style="text-align:right;">
+1158283
+</td>
+<td style="text-align:right;">
+302
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+475
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Bundi
+</td>
+<td style="text-align:right;">
+1113725
+</td>
+<td style="text-align:right;">
+193
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+498
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Sirohi
+</td>
+<td style="text-align:right;">
+1037185
+</td>
+<td style="text-align:right;">
+202
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+494
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Pratapgarh
+</td>
+<td style="text-align:right;">
+868231
+</td>
+<td style="text-align:right;">
+211
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+488
+</td>
+<td style="text-align:left;">
+rajasthan
+</td>
+<td style="text-align:left;">
+Jaisalmer
+</td>
+<td style="text-align:right;">
+672008
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+501
+</td>
+<td style="text-align:left;">
+sikkim
+</td>
+<td style="text-align:left;">
+East Sikkim
+</td>
+<td style="text-align:right;">
+281293
+</td>
+<td style="text-align:right;">
+295
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+503
+</td>
+<td style="text-align:left;">
+sikkim
+</td>
+<td style="text-align:left;">
+South Sikkim
+</td>
+<td style="text-align:right;">
+146742
+</td>
+<td style="text-align:right;">
+196
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+504
+</td>
+<td style="text-align:left;">
+sikkim
+</td>
+<td style="text-align:left;">
+West Sikkim
+</td>
+<td style="text-align:right;">
+136299
+</td>
+<td style="text-align:right;">
+117
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+502
+</td>
+<td style="text-align:left;">
+sikkim
+</td>
+<td style="text-align:left;">
+North Sikkim
+</td>
+<td style="text-align:right;">
+43354
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+507
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Chennai
+</td>
+<td style="text-align:right;">
+7100000
+</td>
+<td style="text-align:right;">
+17000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+518
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Madurai
+</td>
+<td style="text-align:right;">
+3991038
+</td>
+<td style="text-align:right;">
+823
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+537
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Tiruvallur
+</td>
+<td style="text-align:right;">
+3725697
+</td>
+<td style="text-align:right;">
+1049
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+527
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Salem
+</td>
+<td style="text-align:right;">
+3480008
+</td>
+<td style="text-align:right;">
+663
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+508
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Coimbatore
+</td>
+<td style="text-align:right;">
+3472578
+</td>
+<td style="text-align:right;">
+748
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+531
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Tiruchirappalli
+</td>
+<td style="text-align:right;">
+2713858
+</td>
+<td style="text-align:right;">
+602
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+509
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Cuddalore
+</td>
+<td style="text-align:right;">
+2600880
+</td>
+<td style="text-align:right;">
+702
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+506
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Chengalpattu
+</td>
+<td style="text-align:right;">
+2556244
+</td>
+<td style="text-align:right;">
+868
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+530
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Tirupur
+</td>
+<td style="text-align:right;">
+2471222
+</td>
+<td style="text-align:right;">
+476
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+539
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Tiruvannamalai
+</td>
+<td style="text-align:right;">
+2468965
+</td>
+<td style="text-align:right;">
+399
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+534
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Thanjavur
+</td>
+<td style="text-align:right;">
+2402781
+</td>
+<td style="text-align:right;">
+691
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+512
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Erode
+</td>
+<td style="text-align:right;">
+2259608
+</td>
+<td style="text-align:right;">
+397
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+511
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Dindigul
+</td>
+<td style="text-align:right;">
+2161367
+</td>
+<td style="text-align:right;">
+357
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+541
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Viluppuram
+</td>
+<td style="text-align:right;">
+2093003
+</td>
+<td style="text-align:right;">
+562
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+542
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Virudhunagar
+</td>
+<td style="text-align:right;">
+1943309
+</td>
+<td style="text-align:right;">
+454
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+524
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Pudukkottai
+</td>
+<td style="text-align:right;">
+1918725
+</td>
+<td style="text-align:right;">
+348
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+517
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Krishnagiri
+</td>
+<td style="text-align:right;">
+1883731
+</td>
+<td style="text-align:right;">
+370
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+515
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Kanyakumari
+</td>
+<td style="text-align:right;">
+1863178
+</td>
+<td style="text-align:right;">
+1106
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+535
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Thoothukudi
+</td>
+<td style="text-align:right;">
+1738376
+</td>
+<td style="text-align:right;">
+378
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+522
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Namakkal
+</td>
+<td style="text-align:right;">
+1721179
+</td>
+<td style="text-align:right;">
+506
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+533
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Tirunelveli
+</td>
+<td style="text-align:right;">
+1665253
+</td>
+<td style="text-align:right;">
+433
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+540
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Vellore
+</td>
+<td style="text-align:right;">
+1614242
+</td>
+<td style="text-align:right;">
+776
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+520
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Nagapattinam
+</td>
+<td style="text-align:right;">
+1614069
+</td>
+<td style="text-align:right;">
+668
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+510
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Dharmapuri
+</td>
+<td style="text-align:right;">
+1502900
+</td>
+<td style="text-align:right;">
+332
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+529
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Tenkasi
+</td>
+<td style="text-align:right;">
+1407627
+</td>
+<td style="text-align:right;">
+483
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+513
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Kallakurichi
+</td>
+<td style="text-align:right;">
+1370281
+</td>
+<td style="text-align:right;">
+389
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+528
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Sivaganga
+</td>
+<td style="text-align:right;">
+1341250
+</td>
+<td style="text-align:right;">
+324
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+525
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Ramanathapuram
+</td>
+<td style="text-align:right;">
+1337560
+</td>
+<td style="text-align:right;">
+320
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+538
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Tiruvarur
+</td>
+<td style="text-align:right;">
+1268094
+</td>
+<td style="text-align:right;">
+533
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+532
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Theni
+</td>
+<td style="text-align:right;">
+1243684
+</td>
+<td style="text-align:right;">
+433
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+526
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Ranipet
+</td>
+<td style="text-align:right;">
+1210277
+</td>
+<td style="text-align:right;">
+524
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+514
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Kanchipuram
+</td>
+<td style="text-align:right;">
+1166401
+</td>
+<td style="text-align:right;">
+704
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+536
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Tirupattur
+</td>
+<td style="text-align:right;">
+1111812
+</td>
+<td style="text-align:right;">
+620
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+516
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Karur
+</td>
+<td style="text-align:right;">
+1076588
+</td>
+<td style="text-align:right;">
+371
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+505
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Ariyalur
+</td>
+<td style="text-align:right;">
+752481
+</td>
+<td style="text-align:right;">
+387
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+521
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Nilgiris
+</td>
+<td style="text-align:right;">
+735071
+</td>
+<td style="text-align:right;">
+288
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+523
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Perambalur
+</td>
+<td style="text-align:right;">
+564511
+</td>
+<td style="text-align:right;">
+323
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+519
+</td>
+<td style="text-align:left;">
+tamilnadu
+</td>
+<td style="text-align:left;">
+Mayiladuthurai
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+546
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Hyderabad
+</td>
+<td style="text-align:right;">
+3441992
+</td>
+<td style="text-align:right;">
+18172
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+567
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Ranga Reddy
+</td>
+<td style="text-align:right;">
+2551731
+</td>
+<td style="text-align:right;">
+486
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+558
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Medchal-Malkajgiri
+</td>
+<td style="text-align:right;">
+2542203
+</td>
+<td style="text-align:right;">
+2251
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+560
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Nalgonda
+</td>
+<td style="text-align:right;">
+1631399
+</td>
+<td style="text-align:right;">
+227
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+564
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Nizamabad
+</td>
+<td style="text-align:right;">
+1534428
+</td>
+<td style="text-align:right;">
+366
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+568
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Sangareddy
+</td>
+<td style="text-align:right;">
+1527628
+</td>
+<td style="text-align:right;">
+347
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+553
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Khammam
+</td>
+<td style="text-align:right;">
+1401639
+</td>
+<td style="text-align:right;">
+321
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+555
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Mahbubnagar
+</td>
+<td style="text-align:right;">
+1318110
+</td>
+<td style="text-align:right;">
+281
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+545
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Bhadradri Kothagudem
+</td>
+<td style="text-align:right;">
+1304811
+</td>
+<td style="text-align:right;">
+143
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+573
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Warangal Urban
+</td>
+<td style="text-align:right;">
+1135707
+</td>
+<td style="text-align:right;">
+826
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+570
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Suryapet
+</td>
+<td style="text-align:right;">
+1099560
+</td>
+<td style="text-align:right;">
+305
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+552
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Karimnagar
+</td>
+<td style="text-align:right;">
+1016063
+</td>
+<td style="text-align:right;">
+473
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+569
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Siddipet
+</td>
+<td style="text-align:right;">
+993376
+</td>
+<td style="text-align:right;">
+279
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+547
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Jagtial
+</td>
+<td style="text-align:right;">
+983414
+</td>
+<td style="text-align:right;">
+407
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+551
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Kamareddy
+</td>
+<td style="text-align:right;">
+972625
+</td>
+<td style="text-align:right;">
+266
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+562
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Nagarkurnool
+</td>
+<td style="text-align:right;">
+893308
+</td>
+<td style="text-align:right;">
+124
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+571
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Vikarabad
+</td>
+<td style="text-align:right;">
+881250
+</td>
+<td style="text-align:right;">
+274
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+556
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Mancherial
+</td>
+<td style="text-align:right;">
+807037
+</td>
+<td style="text-align:right;">
+201
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+565
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Peddapalli
+</td>
+<td style="text-align:right;">
+795332
+</td>
+<td style="text-align:right;">
+356
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+554
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Mahabubabad
+</td>
+<td style="text-align:right;">
+770170
+</td>
+<td style="text-align:right;">
+269
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+557
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Medak
+</td>
+<td style="text-align:right;">
+767428
+</td>
+<td style="text-align:right;">
+275
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+572
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Wanaparthy
+</td>
+<td style="text-align:right;">
+751553
+</td>
+<td style="text-align:right;">
+268
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+575
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Yadadri Bhuvanagiri
+</td>
+<td style="text-align:right;">
+726465
+</td>
+<td style="text-align:right;">
+239
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+574
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Warangal Rural
+</td>
+<td style="text-align:right;">
+716457
+</td>
+<td style="text-align:right;">
+330
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+549
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Jayashankar Bhupalpally
+</td>
+<td style="text-align:right;">
+712257
+</td>
+<td style="text-align:right;">
+115
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+563
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Nirmal
+</td>
+<td style="text-align:right;">
+709415
+</td>
+<td style="text-align:right;">
+185
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+543
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Adilabad
+</td>
+<td style="text-align:right;">
+708952
+</td>
+<td style="text-align:right;">
+171
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+550
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Jogulamba Gadwal
+</td>
+<td style="text-align:right;">
+664971
+</td>
+<td style="text-align:right;">
+208
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+548
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Jangaon
+</td>
+<td style="text-align:right;">
+582457
+</td>
+<td style="text-align:right;">
+259
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+561
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Narayanpet
+</td>
+<td style="text-align:right;">
+566874
+</td>
+<td style="text-align:right;">
+243
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+566
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Rajanna Sircilla
+</td>
+<td style="text-align:right;">
+546121
+</td>
+<td style="text-align:right;">
+273
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+544
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Komaram Bheem
+</td>
+<td style="text-align:right;">
+515835
+</td>
+<td style="text-align:right;">
+106
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+559
+</td>
+<td style="text-align:left;">
+telangana
+</td>
+<td style="text-align:left;">
+Mulugu
+</td>
+<td style="text-align:right;">
+294671
+</td>
+<td style="text-align:right;">
+124
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+583
+</td>
+<td style="text-align:left;">
+tripura
+</td>
+<td style="text-align:left;">
+West Tripura
+</td>
+<td style="text-align:right;">
+917534
+</td>
+<td style="text-align:right;">
+973
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+580
+</td>
+<td style="text-align:left;">
+tripura
+</td>
+<td style="text-align:left;">
+Sepahijala[16]
+</td>
+<td style="text-align:right;">
+484233
+</td>
+<td style="text-align:right;">
+463
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+577
+</td>
+<td style="text-align:left;">
+tripura
+</td>
+<td style="text-align:left;">
+Gomati
+</td>
+<td style="text-align:right;">
+436868
+</td>
+<td style="text-align:right;">
+287
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+581
+</td>
+<td style="text-align:left;">
+tripura
+</td>
+<td style="text-align:left;">
+South Tripura
+</td>
+<td style="text-align:right;">
+433737
+</td>
+<td style="text-align:right;">
+283
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+579
+</td>
+<td style="text-align:left;">
+tripura
+</td>
+<td style="text-align:left;">
+North Tripura
+</td>
+<td style="text-align:right;">
+415946
+</td>
+<td style="text-align:right;">
+288
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+576
+</td>
+<td style="text-align:left;">
+tripura
+</td>
+<td style="text-align:left;">
+Dhalai
+</td>
+<td style="text-align:right;">
+377988
+</td>
+<td style="text-align:right;">
+157
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+578
+</td>
+<td style="text-align:left;">
+tripura
+</td>
+<td style="text-align:left;">
+Khowai[15]
+</td>
+<td style="text-align:right;">
+327391
+</td>
+<td style="text-align:right;">
+326
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+582
+</td>
+<td style="text-align:left;">
+tripura
+</td>
+<td style="text-align:left;">
+Unokoti[17]
+</td>
+<td style="text-align:right;">
+277335
+</td>
+<td style="text-align:right;">
+469
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+664
+</td>
+<td style="text-align:left;">
+uttarakhand
+</td>
+<td style="text-align:left;">
+Haridwar
+</td>
+<td style="text-align:right;">
+1927029
+</td>
+<td style="text-align:right;">
+817
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+663
+</td>
+<td style="text-align:left;">
+uttarakhand
+</td>
+<td style="text-align:left;">
+Dehradun
+</td>
+<td style="text-align:right;">
+1698560
+</td>
+<td style="text-align:right;">
+550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+670
+</td>
+<td style="text-align:left;">
+uttarakhand
+</td>
+<td style="text-align:left;">
+Udham Singh Nagar
+</td>
+<td style="text-align:right;">
+1648367
+</td>
+<td style="text-align:right;">
+648
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+665
+</td>
+<td style="text-align:left;">
+uttarakhand
+</td>
+<td style="text-align:left;">
+Nainital
+</td>
+<td style="text-align:right;">
+955128
+</td>
+<td style="text-align:right;">
+225
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+666
+</td>
+<td style="text-align:left;">
+uttarakhand
+</td>
+<td style="text-align:left;">
+Pauri Garhwal
+</td>
+<td style="text-align:right;">
+686527
+</td>
+<td style="text-align:right;">
+129
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+659
+</td>
+<td style="text-align:left;">
+uttarakhand
+</td>
+<td style="text-align:left;">
+Almora
+</td>
+<td style="text-align:right;">
+621927
+</td>
+<td style="text-align:right;">
+198
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+669
+</td>
+<td style="text-align:left;">
+uttarakhand
+</td>
+<td style="text-align:left;">
+Tehri Garhwal
+</td>
+<td style="text-align:right;">
+616409
+</td>
+<td style="text-align:right;">
+169
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+667
+</td>
+<td style="text-align:left;">
+uttarakhand
+</td>
+<td style="text-align:left;">
+Pithoragarh
+</td>
+<td style="text-align:right;">
+485993
+</td>
+<td style="text-align:right;">
+69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+661
+</td>
+<td style="text-align:left;">
+uttarakhand
+</td>
+<td style="text-align:left;">
+Chamoli
+</td>
+<td style="text-align:right;">
+391114
+</td>
+<td style="text-align:right;">
+49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+671
+</td>
+<td style="text-align:left;">
+uttarakhand
+</td>
+<td style="text-align:left;">
+Uttarkashi
+</td>
+<td style="text-align:right;">
+329686
+</td>
+<td style="text-align:right;">
+41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+660
+</td>
+<td style="text-align:left;">
+uttarakhand
+</td>
+<td style="text-align:left;">
+Bageshwar
+</td>
+<td style="text-align:right;">
+259840
+</td>
+<td style="text-align:right;">
+116
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+662
+</td>
+<td style="text-align:left;">
+uttarakhand
+</td>
+<td style="text-align:left;">
+Champawat
+</td>
+<td style="text-align:right;">
+259315
+</td>
+<td style="text-align:right;">
+147
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+668
+</td>
+<td style="text-align:left;">
+uttarakhand
+</td>
+<td style="text-align:left;">
+Rudraprayag
+</td>
+<td style="text-align:right;">
+236857
+</td>
+<td style="text-align:right;">
+119
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+586
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Prayagraj
+</td>
+<td style="text-align:right;">
+5959798
+</td>
+<td style="text-align:right;">
+1087
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+641
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Moradabad
+</td>
+<td style="text-align:right;">
+4773138
+</td>
+<td style="text-align:right;">
+1284
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+614
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Ghaziabad
+</td>
+<td style="text-align:right;">
+4661452
+</td>
+<td style="text-align:right;">
+3967
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+591
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Azamgarh
+</td>
+<td style="text-align:right;">
+4616509
+</td>
+<td style="text-align:right;">
+1139
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+633
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Lucknow
+</td>
+<td style="text-align:right;">
+4588455
+</td>
+<td style="text-align:right;">
+1815
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+627
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Kanpur Nagar
+</td>
+<td style="text-align:right;">
+4572951
+</td>
+<td style="text-align:right;">
+1415
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+623
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Jaunpur
+</td>
+<td style="text-align:right;">
+4476072
+</td>
+<td style="text-align:right;">
+1108
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+654
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Sitapur
+</td>
+<td style="text-align:right;">
+4474446
+</td>
+<td style="text-align:right;">
+779
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+598
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Bareilly
+</td>
+<td style="text-align:right;">
+4465344
+</td>
+<td style="text-align:right;">
+1084
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+617
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Gorakhpur
+</td>
+<td style="text-align:right;">
+4436275
+</td>
+<td style="text-align:right;">
+1336
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+584
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Agra
+</td>
+<td style="text-align:right;">
+4380793
+</td>
+<td style="text-align:right;">
+1084
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+642
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Muzaffarnagar
+</td>
+<td style="text-align:right;">
+4138605
+</td>
+<td style="text-align:right;">
+1033
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+620
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Hardoi
+</td>
+<td style="text-align:right;">
+4091380
+</td>
+<td style="text-align:right;">
+683
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+631
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Lakhimpur Kheri
+</td>
+<td style="text-align:right;">
+4013634
+</td>
+<td style="text-align:right;">
+523
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+656
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Sultanpur
+</td>
+<td style="text-align:right;">
+3790922
+</td>
+<td style="text-align:right;">
+855
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+602
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Budaun
+</td>
+<td style="text-align:right;">
+3712738
+</td>
+<td style="text-align:right;">
+718
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+601
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Bijnor
+</td>
+<td style="text-align:right;">
+3683896
+</td>
+<td style="text-align:right;">
+808
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+658
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Varanasi
+</td>
+<td style="text-align:right;">
+3682194
+</td>
+<td style="text-align:right;">
+2399
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+585
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Aligarh
+</td>
+<td style="text-align:right;">
+3673849
+</td>
+<td style="text-align:right;">
+1007
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+615
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Ghazipur
+</td>
+<td style="text-align:right;">
+3622727
+</td>
+<td style="text-align:right;">
+1072
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+630
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Kushinagar
+</td>
+<td style="text-align:right;">
+3560830
+</td>
+<td style="text-align:right;">
+1226
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+603
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Bulandshahr
+</td>
+<td style="text-align:right;">
+3498507
+</td>
+<td style="text-align:right;">
+788
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+647
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Saharanpur
+</td>
+<td style="text-align:right;">
+3464228
+</td>
+<td style="text-align:right;">
+939
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+639
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Meerut
+</td>
+<td style="text-align:right;">
+3447405
+</td>
+<td style="text-align:right;">
+1342
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+616
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Gonda
+</td>
+<td style="text-align:right;">
+3431386
+</td>
+<td style="text-align:right;">
+857
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+645
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Raebareli
+</td>
+<td style="text-align:right;">
+3404004
+</td>
+<td style="text-align:right;">
+739
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+597
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Barabanki
+</td>
+<td style="text-align:right;">
+3257983
+</td>
+<td style="text-align:right;">
+739
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+594
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Ballia
+</td>
+<td style="text-align:right;">
+3223642
+</td>
+<td style="text-align:right;">
+1081
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+644
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Pratapgarh
+</td>
+<td style="text-align:right;">
+3173752
+</td>
+<td style="text-align:right;">
+854
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+657
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Unnao
+</td>
+<td style="text-align:right;">
+3110595
+</td>
+<td style="text-align:right;">
+682
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+606
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Deoria
+</td>
+<td style="text-align:right;">
+3098637
+</td>
+<td style="text-align:right;">
+1220
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+650
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Shahjahanpur
+</td>
+<td style="text-align:right;">
+3002376
+</td>
+<td style="text-align:right;">
+673
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+634
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Maharajganj
+</td>
+<td style="text-align:right;">
+2665292
+</td>
+<td style="text-align:right;">
+903
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+611
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Fatehpur
+</td>
+<td style="text-align:right;">
+2632684
+</td>
+<td style="text-align:right;">
+634
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+653
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Siddharthnagar
+</td>
+<td style="text-align:right;">
+2553526
+</td>
+<td style="text-align:right;">
+882
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+588
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Amethi
+</td>
+<td style="text-align:right;">
+2549935
+</td>
+<td style="text-align:right;">
+830
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+637
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Mathura
+</td>
+<td style="text-align:right;">
+2541894
+</td>
+<td style="text-align:right;">
+761
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+612
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Firozabad
+</td>
+<td style="text-align:right;">
+2496761
+</td>
+<td style="text-align:right;">
+1044
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+640
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Mirzapur
+</td>
+<td style="text-align:right;">
+2494533
+</td>
+<td style="text-align:right;">
+561
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+609
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Ayodhya
+</td>
+<td style="text-align:right;">
+2468371
+</td>
+<td style="text-align:right;">
+1054
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+599
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Basti
+</td>
+<td style="text-align:right;">
+2461056
+</td>
+<td style="text-align:right;">
+916
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+587
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Ambedkar Nagar
+</td>
+<td style="text-align:right;">
+2398709
+</td>
+<td style="text-align:right;">
+1021
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+593
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Bahraich
+</td>
+<td style="text-align:right;">
+2384239
+</td>
+<td style="text-align:right;">
+415
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+646
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Rampur
+</td>
+<td style="text-align:right;">
+2335398
+</td>
+<td style="text-align:right;">
+987
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+648
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Sambhal
+</td>
+<td style="text-align:right;">
+2217020
+</td>
+<td style="text-align:right;">
+890
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+638
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Mau
+</td>
+<td style="text-align:right;">
+2205170
+</td>
+<td style="text-align:right;">
+1287
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+595
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Balrampur
+</td>
+<td style="text-align:right;">
+2149066
+</td>
+<td style="text-align:right;">
+642
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+643
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Pilibhit
+</td>
+<td style="text-align:right;">
+2037225
+</td>
+<td style="text-align:right;">
+567
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+624
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Jhansi
+</td>
+<td style="text-align:right;">
+2000755
+</td>
+<td style="text-align:right;">
+398
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+604
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Chandauli
+</td>
+<td style="text-align:right;">
+1952713
+</td>
+<td style="text-align:right;">
+768
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+610
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Farrukhabad
+</td>
+<td style="text-align:right;">
+1887577
+</td>
+<td style="text-align:right;">
+865
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+655
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Sonbhadra
+</td>
+<td style="text-align:right;">
+1862612
+</td>
+<td style="text-align:right;">
+274
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+636
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Mainpuri
+</td>
+<td style="text-align:right;">
+1847194
+</td>
+<td style="text-align:right;">
+670
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+589
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Amroha
+</td>
+<td style="text-align:right;">
+1838771
+</td>
+<td style="text-align:right;">
+818
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+596
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Banda
+</td>
+<td style="text-align:right;">
+1799541
+</td>
+<td style="text-align:right;">
+404
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+626
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Kanpur Dehat
+</td>
+<td style="text-align:right;">
+1795092
+</td>
+<td style="text-align:right;">
+594
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+607
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Etah
+</td>
+<td style="text-align:right;">
+1761152
+</td>
+<td style="text-align:right;">
+717
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+649
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Sant Kabir Nagar
+</td>
+<td style="text-align:right;">
+1714300
+</td>
+<td style="text-align:right;">
+1014
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+613
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Gautam Buddh Nagar
+</td>
+<td style="text-align:right;">
+1674714
+</td>
+<td style="text-align:right;">
+1252
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+622
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Jalaun
+</td>
+<td style="text-align:right;">
+1670718
+</td>
+<td style="text-align:right;">
+366
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+625
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Kannauj
+</td>
+<td style="text-align:right;">
+1658005
+</td>
+<td style="text-align:right;">
+792
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+629
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Kaushambi
+</td>
+<td style="text-align:right;">
+1596909
+</td>
+<td style="text-align:right;">
+897
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+608
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Etawah
+</td>
+<td style="text-align:right;">
+1579160
+</td>
+<td style="text-align:right;">
+683
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+621
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Hathras
+</td>
+<td style="text-align:right;">
+1565678
+</td>
+<td style="text-align:right;">
+851
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+600
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Bhadohi
+</td>
+<td style="text-align:right;">
+1554203
+</td>
+<td style="text-align:right;">
+1531
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+628
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Kasganj
+</td>
+<td style="text-align:right;">
+1438156
+</td>
+<td style="text-align:right;">
+736
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+590
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Auraiya
+</td>
+<td style="text-align:right;">
+1372287
+</td>
+<td style="text-align:right;">
+681
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+619
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Hapur
+</td>
+<td style="text-align:right;">
+1338211
+</td>
+<td style="text-align:right;">
+2028
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+592
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Bagpat
+</td>
+<td style="text-align:right;">
+1302156
+</td>
+<td style="text-align:right;">
+986
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+651
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Shamli[18]
+</td>
+<td style="text-align:right;">
+1274815
+</td>
+<td style="text-align:right;">
+1200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+632
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Lalitpur
+</td>
+<td style="text-align:right;">
+1218002
+</td>
+<td style="text-align:right;">
+242
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+652
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Shravasti
+</td>
+<td style="text-align:right;">
+1114615
+</td>
+<td style="text-align:right;">
+572
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+618
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Hamirpur
+</td>
+<td style="text-align:right;">
+1104021
+</td>
+<td style="text-align:right;">
+268
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+605
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Chitrakoot
+</td>
+<td style="text-align:right;">
+990626
+</td>
+<td style="text-align:right;">
+315
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+635
+</td>
+<td style="text-align:left;">
+uttarpradesh
+</td>
+<td style="text-align:left;">
+Mahoba
+</td>
+<td style="text-align:right;">
+876055
+</td>
+<td style="text-align:right;">
+288
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+689
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:right;">
+10082852
+</td>
+<td style="text-align:right;">
+2463
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+693
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:right;">
+8153176
+</td>
+<td style="text-align:right;">
+819
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+687
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:right;">
+7102430
+</td>
+<td style="text-align:right;">
+1334
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+680
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:right;">
+5520389
+</td>
+<td style="text-align:right;">
+1753
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+688
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:right;">
+5168488
+</td>
+<td style="text-align:right;">
+1316
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+690
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:right;">
+5094238
+</td>
+<td style="text-align:right;">
+1076
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+681
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:right;">
+4841638
+</td>
+<td style="text-align:right;">
+3300
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+675
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Purba Bardhaman
+</td>
+<td style="text-align:right;">
+4835532
+</td>
+<td style="text-align:right;">
+890
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+685
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Kolkata
+</td>
+<td style="text-align:right;">
+4486679
+</td>
+<td style="text-align:right;">
+24252
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+691
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:right;">
+4417377
+</td>
+<td style="text-align:right;">
+923
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+686
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Maldah
+</td>
+<td style="text-align:right;">
+3997970
+</td>
+<td style="text-align:right;">
+1071
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+682
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Jalpaiguri
+</td>
+<td style="text-align:right;">
+3869675
+</td>
+<td style="text-align:right;">
+621
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+673
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:right;">
+3596292
+</td>
+<td style="text-align:right;">
+523
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+676
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Birbhum
+</td>
+<td style="text-align:right;">
+3502387
+</td>
+<td style="text-align:right;">
+771
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+694
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Uttar Dinajpur
+</td>
+<td style="text-align:right;">
+3000849
+</td>
+<td style="text-align:right;">
+956
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+692
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Purulia
+</td>
+<td style="text-align:right;">
+2927965
+</td>
+<td style="text-align:right;">
+468
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+674
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Paschim Bardhaman
+</td>
+<td style="text-align:right;">
+2882031
+</td>
+<td style="text-align:right;">
+1100
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+677
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Cooch Behar
+</td>
+<td style="text-align:right;">
+2822780
+</td>
+<td style="text-align:right;">
+833
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+679
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Darjeeling
+</td>
+<td style="text-align:right;">
+1842034
+</td>
+<td style="text-align:right;">
+585
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+672
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Alipurduar
+</td>
+<td style="text-align:right;">
+1700000
+</td>
+<td style="text-align:right;">
+400
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+678
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Dakshin Dinajpur
+</td>
+<td style="text-align:right;">
+1670931
+</td>
+<td style="text-align:right;">
+753
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+683
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Jhargram
+</td>
+<td style="text-align:right;">
+1136548
+</td>
+<td style="text-align:right;">
+370
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+684
+</td>
+<td style="text-align:left;">
+westbengal
+</td>
+<td style="text-align:left;">
+Kalimpong
+</td>
+<td style="text-align:right;">
+251642
+</td>
+<td style="text-align:right;">
+239
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</main>
+
+  <footer>
+  <script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+  
+  <hr/>
+  © <a href="https://github.com/michaelleary">Github</a>
+  
+  </footer>
+  </body>
+</html>
+

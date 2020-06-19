@@ -1,0 +1,1016 @@
+---
+title: India district broad data
+author: michael
+date: '2020-06-19'
+slug: india-district-broad-data
+categories:
+  - R
+tags:
+  - India
+  - Population
+  - Geography
+  - Census
+---
+
+### Task:
+
+1. Extract table data of India districts from [Wikipedia](https://en.wikipedia.org/wiki/List_of_districts_in_India#:~:text=In%20some%20cases%20districts%20are,the%202001%20Census%20of%20India)
+1. Combine each table rows into one dataframe;
+1. add a column to combined data frame that provides name of original dataframe - so as to facilitate identifying source of data
+1. reorder the columns in expanded data frame to put original data frame column first. 
+
+There are 36 tables of India states and territories listed on the wikipedia page. Each table was extracted and stored in a separate data frame. A comma separated list of individual data frames was put into a vector. And a function then appended a column with the name of individual source data frame to each row of data. After that the individual data frames were bounded into one object and variable columns were reordered. 
+
+Difficulty and cumbersome script used to allow for unwanted notes included within population, area, and, density cells. More efficient method is required to remove the commas from character variable to permit easy conversion to numeric form. 
+
+The value add in result is to aggregate the total population, area and compute population density by state and territory. And then to provide a complete listing of all data by district for each state. 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages, include=FALSE}
+pkgs = c("rvest", "tidyverse", "janitor", "lubridate", "dplyr", "kableExtra", "data.table", "forcats", "car", "plyr", "magrittr") 
+# lubridate for %m+% function
+# rvest for web scraping
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+```{r datevars, include=FALSE}
+# save current system date to a variable
+today <- Sys.Date()
+# subtract 3 months from the current date
+date <- today %m+% months(-3)
+print(date)
+```
+
+```{r rawdatacollect, include=FALSE}
+# get the URL for the wikipedia page with all states
+url <- "https://en.wikipedia.org/wiki/List_of_districts_in_India#:~:text=In%20some%20cases%20districts%20are,the%202001%20Census%20of%20India."
+
+# use that URL to scrape the states table using rvest
+andhrapradesh.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[3]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+andhrapradesh <- andhrapradesh.m[[1]]
+
+arunachalpradesh.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[4]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+arunachalpradesh <- arunachalpradesh.m[[1]]
+
+assam.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[5]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+assam <- assam.m[[1]]
+
+bihar.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[6]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+bihar <- bihar.m[[1]]
+
+chhattisgarh.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[7]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+chhattisgarh <- chhattisgarh.m[[1]]
+
+goa.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[8]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+goa <- goa.m[[1]]
+
+gujarat.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[9]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+gujarat <- gujarat.m[[1]]
+
+haryana.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[10]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+haryana <- haryana.m[[1]]
+
+himachalpradesh.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[11]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+himachalpradesh <- himachalpradesh.m[[1]]
+
+jharkhand.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[12]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+jharkhand <- jharkhand.m[[1]]
+
+karnataka.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[13]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+karnataka <- karnataka.m[[1]]
+
+kerala.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[14]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+kerala <- kerala.m[[1]]
+
+madhyapradesh.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[15]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+madhyapradesh <- madhyapradesh.m[[1]]
+
+maharashtra.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[16]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+maharashtra <- maharashtra.m[[1]]
+
+manipur.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[17]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+manipur <- manipur.m[[1]]
+
+meghalaya.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[18]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+meghalaya <- meghalaya.m[[1]]
+
+mizoram.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[19]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+mizoram <- mizoram.m[[1]]
+
+nagaland.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[20]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+nagaland <- nagaland.m[[1]]
+
+odisha.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[21]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+odisha <- odisha.m[[1]]
+
+punjab.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[22]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+punjab <- punjab.m[[1]]
+
+rajasthan.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[23]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+rajasthan <- rajasthan.m[[1]]
+
+sikkim.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[24]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+sikkim <- sikkim.m[[1]]
+
+tamilnadu.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[25]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+tamilnadu <- tamilnadu.m[[1]]
+
+telangana.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[26]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+telangana <- telangana.m[[1]]
+
+tripura.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[27]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+tripura <- tripura.m[[1]]
+
+uttarpradesh.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[28]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+uttarpradesh <- uttarpradesh.m[[1]]
+
+uttarakhand.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[29]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+uttarakhand <- uttarakhand.m[[1]]
+
+westbengal.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[30]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+westbengal <- westbengal.m[[1]]
+
+andamannicobar.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[31]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+andamannicobar <- andamannicobar.m[[1]]
+
+chandigarh.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[32]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+chandigarh <- chandigarh.m[[1]]
+
+dadranagardaman.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[33]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+dadranagardaman <- dadranagardaman.m[[1]]
+
+jammukashmir.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[34]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+jammukashmir <- jammukashmir.m[[1]]
+
+ladakh.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[35]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+ladakh <- ladakh.m[[1]]
+
+lakshadweep.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[36]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+lakshadweep <- lakshadweep.m[[1]]
+
+nct.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[37]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+nct <- nct.m[[1]]
+
+puducherry.m <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[38]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+puducherry <- puducherry.m[[1]]
+
+```
+
+```{r, include=FALSE}
+# add column for variable name in each df
+
+ID <- c(
+"andhrapradesh",
+"arunachalpradesh",
+"assam",
+"bihar",
+"chhattisgarh",
+"goa",
+"gujarat",
+"haryana",
+"himachalpradesh",
+"jharkhand",
+"karnataka",
+"kerala",
+"madhyapradesh",
+"maharashtra",
+"manipur",
+"meghalaya",
+"mizoram",
+"nagaland",
+"odisha",
+"punjab",
+"rajasthan",
+"sikkim",
+"tamilnadu",
+"telangana",
+"tripura",
+"uttarpradesh",
+"uttarakhand",
+"westbengal",
+"andamannicobar",
+"chandigarh",
+"dadranagardaman",
+"jammukashmir",
+"ladakh",
+"lakshadweep",
+"nct",
+"puducherry")
+
+```
+
+```{r colheadconsistent, include=FALSE}
+#make column headers consistent
+dfList <- list(c(andhrapradesh,
+                 arunachalpradesh,
+                 assam,
+                 bihar,
+                 chhattisgarh,
+                 goa,
+                 gujarat,
+                 haryana,
+                 himachalpradesh,
+                 jharkhand,
+                 karnataka,
+                 kerala,
+                 madhyapradesh,
+                 maharashtra,
+                 manipur,
+                 meghalaya,
+                 mizoram,
+                 nagaland,
+                 odisha,
+                 punjab,
+                 rajasthan,
+                 sikkim,
+                 tamilnadu,
+                 telangana,
+                 tripura,
+                 uttarpradesh,
+                 uttarakhand,
+                 westbengal,
+                 andamannicobar,
+                 chandigarh,
+                 dadranagardaman,
+                 jammukashmir,
+                 ladakh,
+                 lakshadweep,
+                 nct,
+                 puducherry)
+               )
+
+colnames <- c("#", "Code", "District", "Headquarters", "Pop_2011", "Area_km2", "Density_/km2") 
+
+dfList <- list(
+  andhrapradesh = andhrapradesh,
+  arunachalpradesh = arunachalpradesh,
+  assam = assam,
+  bihar = bihar,
+  chhattisgarh = chhattisgarh,
+  goa = goa,
+  gujarat = gujarat,
+  haryana = haryana,
+  himachalpradesh = himachalpradesh,
+  jharkhand = jharkhand,
+  karnataka = karnataka,
+  kerala = kerala,
+  madhyapradesh = madhyapradesh,
+  maharashtra = maharashtra,
+  manipur = manipur,
+  meghalaya = meghalaya,
+  mizoram = mizoram,
+  nagaland = nagaland,
+  odisha = odisha,
+  punjab = punjab,
+  rajasthan = rajasthan,
+  sikkim = sikkim,
+  tamilnadu = tamilnadu,
+  telangana = telangana,
+  tripura = tripura,
+  uttarpradesh = uttarpradesh,
+  uttarakhand = uttarakhand,
+  westbengal = westbengal,
+  andamannicobar = andamannicobar,
+  chandigarh = chandigarh,
+  dadranagardaman = dadranagardaman,
+  jammukashmir = jammukashmir,
+  ladakh = ladakh,
+  lakshadweep = lakshadweep,
+  nct = nct,
+  puducherry = puducherry)
+
+list2env(lapply(dfList, setNames, colnames), .GlobalEnv)
+```
+
+```{r convertchar2num, include=FALSE}
+# convert character column to numeric in three steps
+# step 1 is population column - remove commans
+# step 2 is convert to numeric
+# step 3 is convert other char columns to numeric directly
+
+andhrapradesh[,"Pop_2011"] <- gsub(",", "", andhrapradesh[,"Pop_2011"])
+andhrapradesh[,"Pop_2011"] <- as.numeric(andhrapradesh[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+andhrapradesh[,coltype] <- 
+                     lapply(andhrapradesh[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+arunachalpradesh[,"Pop_2011"] <- gsub(",", "", arunachalpradesh[,"Pop_2011"])
+arunachalpradesh[,"Pop_2011"] <- as.numeric(arunachalpradesh[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+arunachalpradesh[,coltype] <- 
+                     lapply(arunachalpradesh[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+assam[,"Pop_2011"] <- gsub(",", "", assam[,"Pop_2011"])
+assam[,"Pop_2011"] <- as.numeric(assam[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+assam[,coltype] <- 
+                     lapply(assam[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+bihar[,"Pop_2011"] <- gsub(",", "", bihar[,"Pop_2011"])
+bihar[,"Pop_2011"] <- as.numeric(bihar[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+bihar[,coltype] <- 
+                     lapply(bihar[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+chandigarh[,"Pop_2011"] <- gsub(",", "", chandigarh[,"Pop_2011"])
+chandigarh[,"Pop_2011"] <- as.numeric(chandigarh[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+chandigarh[,coltype] <- 
+                     lapply(chandigarh[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+andamannicobar[,"Pop_2011"] <- gsub(",", "", andamannicobar[,"Pop_2011"])
+andamannicobar[,"Pop_2011"] <- as.numeric(andamannicobar[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+andamannicobar[,coltype] <- 
+                     lapply(andamannicobar[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+chhattisgarh[,"Pop_2011"] <- gsub(",", "", chhattisgarh[,"Pop_2011"])
+chhattisgarh[,"Pop_2011"] <- as.numeric(chhattisgarh[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+chhattisgarh[,coltype] <- 
+                     lapply(chhattisgarh[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+dadranagardaman[,"Pop_2011"] <- gsub(",", "", dadranagardaman[,"Pop_2011"])
+dadranagardaman[,"Pop_2011"] <- as.numeric(dadranagardaman[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+dadranagardaman[,coltype] <- 
+                     lapply(dadranagardaman[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+goa[,"Pop_2011"] <- gsub(",", "", goa[,"Pop_2011"])
+goa[,"Pop_2011"] <- as.numeric(goa[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+goa[,coltype] <- 
+                     lapply(goa[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+gujarat[,"Pop_2011"] <- gsub(",", "", gujarat[,"Pop_2011"])
+gujarat[,"Pop_2011"] <- as.numeric(gujarat[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+gujarat[,coltype] <- 
+                     lapply(gujarat[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+haryana[,"Pop_2011"] <- gsub(",", "", haryana[,"Pop_2011"])
+haryana[,"Pop_2011"] <- as.numeric(haryana[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+haryana[,coltype] <- 
+                     lapply(haryana[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+himachalpradesh[,"Pop_2011"] <- gsub(",", "", himachalpradesh[,"Pop_2011"])
+himachalpradesh[,"Pop_2011"] <- as.numeric(himachalpradesh[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+himachalpradesh[,coltype] <- 
+                     lapply(himachalpradesh[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+jammukashmir[,"Pop_2011"] <- gsub(",", "", jammukashmir[,"Pop_2011"])
+jammukashmir[,"Pop_2011"] <- as.numeric(jammukashmir[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+jammukashmir[,coltype] <- 
+                     lapply(jammukashmir[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+jharkhand[,"Pop_2011"] <- gsub(",", "", jharkhand[,"Pop_2011"])
+jharkhand[,"Pop_2011"] <- as.numeric(jharkhand[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+jharkhand[,coltype] <- 
+                     lapply(jharkhand[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+karnataka[,"Pop_2011"] <- gsub(",", "", karnataka[,"Pop_2011"])
+karnataka[,"Pop_2011"] <- as.numeric(karnataka[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+karnataka[,coltype] <- 
+                     lapply(karnataka[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+kerala[,"Pop_2011"] <- gsub(",", "", kerala[,"Pop_2011"])
+kerala[,"Pop_2011"] <- as.numeric(kerala[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+kerala[,coltype] <- 
+                     lapply(kerala[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+ladakh[,"Pop_2011"] <- gsub(",", "", ladakh[,"Pop_2011"])
+ladakh[,"Pop_2011"] <- as.numeric(ladakh[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+ladakh[,coltype] <- 
+                     lapply(ladakh[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+lakshadweep[,"Pop_2011"] <- gsub(",", "", lakshadweep[,"Pop_2011"])
+lakshadweep[,"Pop_2011"] <- as.numeric(lakshadweep[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+lakshadweep[,coltype] <- 
+                     lapply(lakshadweep[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+madhyapradesh[,"Pop_2011"] <- gsub(",", "", madhyapradesh[,"Pop_2011"])
+madhyapradesh[,"Pop_2011"] <- as.numeric(madhyapradesh[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+madhyapradesh[,coltype] <- 
+                     lapply(madhyapradesh[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+maharashtra[,"Pop_2011"] <- gsub(",", "", maharashtra[,"Pop_2011"])
+maharashtra[,"Pop_2011"] <- as.numeric(maharashtra[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+maharashtra[,coltype] <- 
+                     lapply(maharashtra[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+manipur[,"Pop_2011"] <- gsub(",", "", manipur[,"Pop_2011"])
+manipur[,"Pop_2011"] <- as.numeric(manipur[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+manipur[,coltype] <- 
+                     lapply(manipur[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+meghalaya[,"Pop_2011"] <- gsub(",", "", meghalaya[,"Pop_2011"])
+meghalaya[,"Pop_2011"] <- as.numeric(meghalaya[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+meghalaya[,coltype] <- 
+                     lapply(meghalaya[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+mizoram[,"Pop_2011"] <- gsub(",", "", mizoram[,"Pop_2011"])
+mizoram[,"Pop_2011"] <- as.numeric(mizoram[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+mizoram[,coltype] <- 
+                     lapply(mizoram[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+nagaland[,"Pop_2011"] <- gsub(",", "", nagaland[,"Pop_2011"])
+nagaland[,"Pop_2011"] <- as.numeric(nagaland[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+nagaland[,coltype] <- 
+                     lapply(nagaland[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+nct[,"Pop_2011"] <- gsub(",", "", nct[,"Pop_2011"])
+nct[,"Pop_2011"] <- as.numeric(nct[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+nct[,coltype] <- 
+                     lapply(nct[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+odisha[,"Pop_2011"] <- gsub(",", "", odisha[,"Pop_2011"])
+odisha[,"Pop_2011"] <- as.numeric(odisha[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+odisha[,coltype] <- 
+                     lapply(odisha[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+puducherry[,"Pop_2011"] <- gsub(",", "", puducherry[,"Pop_2011"])
+puducherry[,"Pop_2011"] <- as.numeric(puducherry[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+puducherry[,coltype] <- 
+                     lapply(puducherry[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+punjab[,"Pop_2011"] <- gsub(",", "", punjab[,"Pop_2011"])
+punjab[,"Pop_2011"] <- as.numeric(punjab[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+punjab[,coltype] <- 
+                     lapply(punjab[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+rajasthan[,"Pop_2011"] <- gsub(",", "", rajasthan[,"Pop_2011"])
+rajasthan[,"Pop_2011"] <- as.numeric(rajasthan[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+rajasthan[,coltype] <- 
+                     lapply(rajasthan[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+sikkim[,"Pop_2011"] <- gsub(",", "", sikkim[,"Pop_2011"])
+sikkim[,"Pop_2011"] <- as.numeric(sikkim[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+sikkim[,coltype] <- 
+                     lapply(sikkim[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+tamilnadu[,"Pop_2011"] <- gsub(",", "", tamilnadu[,"Pop_2011"])
+tamilnadu[,"Pop_2011"] <- as.numeric(tamilnadu[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+tamilnadu[,coltype] <- 
+                     lapply(tamilnadu[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+telangana[,"Pop_2011"] <- gsub(",", "", telangana[,"Pop_2011"])
+telangana[,"Pop_2011"] <- as.numeric(telangana[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+telangana[,coltype] <- 
+                     lapply(telangana[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+tripura[,"Pop_2011"] <- gsub(",", "", tripura[,"Pop_2011"])
+tripura[,"Pop_2011"] <- as.numeric(tripura[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+tripura[,coltype] <- 
+                     lapply(tripura[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+uttarakhand[,"Pop_2011"] <- gsub(",", "", uttarakhand[,"Pop_2011"])
+uttarakhand[,"Pop_2011"] <- as.numeric(uttarakhand[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+uttarakhand[,coltype] <- 
+                     lapply(uttarakhand[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+uttarpradesh[,"Pop_2011"] <- gsub(",", "", uttarpradesh[,"Pop_2011"])
+uttarpradesh[,"Pop_2011"] <- as.numeric(uttarpradesh[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+uttarpradesh[,coltype] <- 
+                     lapply(uttarpradesh[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+
+westbengal[,"Pop_2011"] <- gsub(",", "", westbengal[,"Pop_2011"])
+westbengal[,"Pop_2011"] <- as.numeric(westbengal[,"Pop_2011"])
+coltype <- c("Area_km2", "Density_/km2")
+westbengal[,coltype] <- 
+                     lapply(westbengal[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+```
+
+```{r addbackmissdata, include=FALSE}
+# add back cells where data deleted in conversion to numeric
+str(lakshadweep)
+head(lakshadweep)
+lakshadweep[,c(5:7)]=c(64473, 30, 2149)
+head(lakshadweep)
+
+# add back cells where data deleted in conversion to numeric
+head(dadranagardaman)
+dadranagardaman[c(1:2),c(5:6)]=c(191173, 52074, 72, 39)
+head(dadranagardaman)
+
+# add back cells where data deleted in conversion to numeric
+head(puducherry)
+puducherry[c(1:4),c(5:7)]=c(200222, 41816, 950289, 55626, 157, 9, 293, 30, 1275, 4646, 3232, 1854)
+head(puducherry)
+
+# add back cells where data deleted in conversion to numeric
+head(assam)
+assam[3,5]=c(612491)
+assam[16,5]=c(931218)
+assam[24,5]=c(167304)
+assam[29,5]=c(555114)
+assam[33,5]=c(300320)
+head(assam)
+
+```
+
+```{r makecolwithobjectname, include=FALSE}
+#make new column with name of object as a column with name in every row
+
+bind_rows(lst(andhrapradesh,
+                 arunachalpradesh,
+                 assam,
+                 bihar,
+                 chhattisgarh,
+                 goa,
+                 gujarat,
+                 haryana,
+                 himachalpradesh,
+                 jharkhand,
+                 karnataka,
+                 kerala,
+                 madhyapradesh,
+                 maharashtra,
+                 manipur,
+                 meghalaya,
+                 mizoram,
+                 nagaland,
+                 odisha,
+                 punjab,
+                 rajasthan,
+                 sikkim,
+                 tamilnadu,
+                 telangana,
+                 tripura,
+                 uttarpradesh,
+                 uttarakhand,
+                 westbengal,
+                 andamannicobar,
+                 chandigarh,
+                 dadranagardaman,
+                 jammukashmir,
+                 ladakh,
+                 lakshadweep,
+                 nct,
+                 puducherry),.id="state_terr")
+```
+
+```{r appendfunction, include=FALSE}
+
+# Function to combine (rbind) data frames and create column with name of original data frames
+
+# Source: https://stackoverflow.com/questions/15162197/combine-rbind-data-frames-and-create-column-with-name-of-original-data-frames
+
+AppendMe <- function(dfNames) {
+  do.call(rbind, lapply(dfNames, function(x) {
+    cbind(get(x), source = x)
+  }))
+}
+```
+
+```{r, include=FALSE }
+# append column to dataset with name of source variable in rbind operations
+bodywhole2 <- AppendMe(c(ID))
+```
+
+
+```{r, include=FALSE}
+# get column names
+# source: http://www.sthda.com/english/wiki/reordering-data-frame-columns-in-r
+colnames(bodywhole2)
+
+```
+
+```{r, include=FALSE}
+bodywhole3 <- bodywhole2[, c(8, 1, 2, 3,4,5,6,7)]
+tail(bodywhole3)
+```
+
+```{r arrangedtable, include=FALSE}
+# source: https://chartio.com/resources/tutorials/how-to-sort-a-data-frame-by-multiple-columns-in-r/
+
+# first sort by source and then by state+terr
+
+tab <- bodywhole3 [
+  order( bodywhole3[,1], desc(bodywhole3[,6])),
+]
+
+```
+
+```{r fs, include=FALSE}
+fwrite(tab, file = "/Users/michaelleary/Documents/GitHub/sources/tab.csv", row.names = TRUE) # in csv form
+
+```
+
+```{r char2factor, include=FALSE}
+# generate a summary table by state and terr
+# generate a list of character variables within data frame
+tab %>%
+sapply(is.character) %>%
+which() %T>%
+print() ->
+chari
+str(chari)
+
+# make a vector of character variables
+
+tab %>%
+names() %>%
+'['(chari) %T>%
+print() ->
+charc
+str(charc)
+
+# convert the source character variable to factor
+tab[charc[1]] %<>% map(factor)  #uncheck
+str(tab)
+
+```
+
+```{r districtcount, include=FALSE}
+tab[1] %>%
+  group_by(source) %>%
+  count(.) 
+
+```
+
+```{r sumtable, include=FALSE}
+str(tab)
+sumtable <- tab %>%
+  group_by(source) %>%
+  dplyr::summarize(total_pop = sum(Pop_2011, na.rm=TRUE),
+                   total_area = round(sum(Area_km2, na.rm=TRUE))) %>%
+  mutate(pop_per_km2 = round(total_pop / total_area)) %>%
+  arrange(desc(total_pop))
+  
+
+```
+
+
+```{r sumtableprint, echo=FALSE}
+knitr::kable(sumtable, "html",
+             caption = "India state and territory: pop, area",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+
+\newpage
+
+```{r tabtable, echo=FALSE}
+knitr::kable(tab[,c(1,4,6,8)], "html",
+             caption = "India district: pop, area",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
