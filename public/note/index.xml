@@ -23,16 +23,6 @@ tail(dsts,10) ## Time Series: ## Start = 2010 ## End = 2019 ## Frequency = 1 ## 
     </item>
     
     <item>
-      <title>World steel production and capacity</title>
-      <link>/note/2020/06/20/world-steel-production-and-capacity/</link>
-      <pubDate>Sat, 20 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/note/2020/06/20/world-steel-production-and-capacity/</guid>
-      <description>Time series data: Steel production and steel capacity world (millions metric tons)
-  Source for production data: World Steel Association Source for capacity data: OECD  knitr::opts_chunk$set(echo = TRUE) pkgs = c(&amp;quot;readr&amp;quot;, &amp;quot;tidyxl&amp;quot;, &amp;quot;tidyverse&amp;quot;, &amp;quot;unpivotr&amp;quot;, &amp;quot;devtools&amp;quot;, &amp;quot;data.table&amp;quot;, &amp;quot;dplyr&amp;quot;, &amp;quot;magrittr&amp;quot;, &amp;quot;forcats&amp;quot;, &amp;quot;rattle&amp;quot;, &amp;quot;forecast&amp;quot;) #package names: readr for import as tibble; data.table for fast csv save; tidyverse for operations using dplyr&#39;s piping feature; rattle for format tibble column names; magrittr %&amp;lt;&amp;gt;% function pipes left hand data to right side and returns result to left hand overwriting original contents on left hand install.</description>
-    </item>
-    
-    <item>
       <title>Learning R - Rice</title>
       <link>/note/2020/05/12/rice-notes/</link>
       <pubDate>Tue, 12 May 2020 00:00:00 +0000</pubDate>
