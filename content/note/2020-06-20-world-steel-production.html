@@ -1,0 +1,37 @@
+---
+title: World steel production
+author: michael
+date: '2020-06-20'
+slug: world-steel-production
+categories:
+  - R
+tags:
+  - Steel
+  - Statistics
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>Time series data: Steel production world (millions metric tons)</p>
+<div id="section" class="section level4">
+<h4></h4>
+<p>Source for data: <a href="https://www.worldsteel.org/media-centre/press-releases/2020/worldsteel-short-range-outlook-june-2020.html">World Steel Association</a></p>
+<p><img src="/note/2020-06-20-world-steel-production_files/figure-html/tsplot-1.png" width="672" /></p>
+<pre class="r"><code>tail(dsts,10)</code></pre>
+<pre><code>## Time Series:
+## Start = 2012 
+## End = 2021 
+## Frequency = 1 
+##      year production
+## 2012 2012       1560
+## 2013 2013       1650
+## 2014 2014       1671
+## 2015 2015       1622
+## 2016 2016       1629
+## 2017 2017       1732
+## 2018 2018       1817
+## 2019 2019       1767
+## 2020 2020       1654
+## 2021 2021       1717</code></pre>
+</div>

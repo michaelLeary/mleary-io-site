@@ -6,10 +6,21 @@
     <description>Recent content in Notes on Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 12 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/note/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>World steel production</title>
+      <link>/note/2020/06/20/world-steel-production/</link>
+      <pubDate>Sat, 20 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/note/2020/06/20/world-steel-production/</guid>
+      <description>  Time series data: Steel production world (millions metric tons)
+ Source for data: World Steel Association
+tail(dsts,10) ## Time Series: ## Start = 2012 ## End = 2021 ## Frequency = 1 ## year production ## 2012 2012 1560 ## 2013 2013 1650 ## 2014 2014 1671 ## 2015 2015 1622 ## 2016 2016 1629 ## 2017 2017 1732 ## 2018 2018 1817 ## 2019 2019 1767 ## 2020 2020 1654 ## 2021 2021 1717  </description>
+    </item>
     
     <item>
       <title>Learning R - Rice</title>
