@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>World steel production and capacity | Thoughts</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+      <li><a href="/index.xml">Subscribe</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">World steel production and capacity</span></h1>
+<h2 class="author">michael</h2>
+<h2 class="date">2020/06/20</h2>
+</div>
+
+<main>
+<p>Time series data: Steel production and steel capacity world (millions metric tons)</p>
+<h4 id="heading"></h4>
+<ol>
+<li>Source for production data: <a href="https://www.worldsteel.org/media-centre/press-releases/2020/worldsteel-short-range-outlook-june-2020.html">World Steel Association</a></li>
+<li>Source for capacity data: <a href="http://www.oecd.org/sti/ind/steelcapacity.htm">OECD</a></li>
+</ol>
+<pre><code class="language-{r" data-lang="{r">knitr::opts_chunk$set(echo = TRUE)
+</code></pre><pre><code class="language-{r" data-lang="{r">pkgs = c(&quot;readr&quot;, 
+         &quot;tidyxl&quot;, 
+         &quot;tidyverse&quot;,
+         &quot;unpivotr&quot;,
+         &quot;devtools&quot;, 
+         &quot;data.table&quot;, 
+         &quot;dplyr&quot;,
+         &quot;magrittr&quot;, 
+         &quot;forcats&quot;,
+         &quot;rattle&quot;,
+         &quot;forecast&quot;) 
+#package names: readr for import as tibble; data.table for fast csv save; tidyverse for operations using dplyr's piping feature; rattle for format tibble column names; magrittr %&lt;&gt;% function pipes left hand data to right side and returns result to left hand overwriting original contents on left hand
+install.packages(pkgs, repos=&quot;https://cran.r-project.org&quot;)
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+devtools::install_github(&quot;nacnudus/smungs&quot;)
+
+</code></pre><pre><code class="language-{r" data-lang="{r"># 2 clear rows and columns - with columns and rows removed prior to Excel. 
+
+dataxl &lt;- ('/Users/michaelleary/Documents/GitHub/indiairon/data/worldsteel.xlsx')
+
+all_cells6 &lt;-
+  xlsx_cells(dataxl, sheets = &quot;importR&quot;) %&gt;%
+  dplyr::filter(!is_blank) %&gt;%
+  select(row, col, data_type, character, numeric) %&gt;%
+print()
+</code></pre><pre><code class="language-{r" data-lang="{r"># View the cells in their original positions on the spreadsheet
+rectify(all_cells6)
+</code></pre><pre><code class="language-{r" data-lang="{r">head(all_cells6)
+tail(all_cells6)
+</code></pre><pre><code class="language-{r" data-lang="{r">datacsv &lt;- read_csv('/Users/michaelleary/Documents/GitHub/indiairon/data/worldsteel.csv', ) # in tibble form
+</code></pre><pre><code class="language-{r" data-lang="{r">str(datacsv)
+</code></pre><pre><code class="language-{r" data-lang="{r">#steep production as time series
+#make template variable
+ds &lt;- datacsv
+ds
+ds &lt;- ds[-c(121:122),-c(1:2)]
+class(ds)
+str(ds)
+dspctcap &lt;- ds %&gt;%
+  mutate(prod_pct_of_cap = round(100 * production / capacity))
+tail(dspctcap)
+
+</code></pre><pre><code class="language-{r" data-lang="{r">#convert ds data frame into a time series 
+dsts &lt;- ts(dspctcap, frequency=1, start=c(1900), end=c(2019))
+dsts
+</code></pre><pre><code class="language-{r" data-lang="{r">start(dsts)
+end(dsts)
+</code></pre><pre><code class="language-{r" data-lang="{r">timedsts &lt;- time(dsts)
+timedsts
+</code></pre><pre><code class="language-{r" data-lang="{r">#da &lt;- cbind(timedsts, dsts ) 
+#colnames(da)
+#da
+#colnames(da) &lt;- paste0(&quot;b&quot;, 1:2)
+#da
+#tail(da)
+</code></pre><pre><code class="language-{r" data-lang="{r">tmp = window(dsts, start=c(2000), end=c(2019))
+class(tmp)
+tmp
+plot.ts(tmp)
+</code></pre><pre><code class="language-{r" data-lang="{r">dstsplot &lt;-dsts[,-3] 
+
+plot(window(dstsplot, start=c(2000), end=c(2019)), plot.type = &quot;single&quot;,
+     main = &quot;World Steel production and capacity&quot;,
+     ylab = &quot;Millions metric tons&quot;,
+     col=c(&quot;blue&quot;, &quot;red&quot;),
+     lty=1:2)
+legend(2000,2400, legend=c(&quot;production&quot;, &quot;capacity&quot;), col=c(&quot;blue&quot;, &quot;red&quot;),
+       lty=1:2)
+</code></pre><pre><code class="language-{r" data-lang="{r">#create lagged variable
+lagdsts &lt;- stats::lag(dsts,-3)
+lagdsts
+</code></pre><pre><code class="language-{r" data-lang="{r"># create lead varaible
+leaddsts &lt;- lead(dsts,3)
+leaddsts
+</code></pre><pre><code class="language-{r" data-lang="{r"># lead/lag on one table
+tx &lt;- cbind(dsts, leaddsts)
+tx1 &lt;- cbind(tx, lagdsts)
+tx1
+</code></pre><pre><code class="language-{r" data-lang="{r">myDF &lt;- as.data.frame(dsts)
+lagDF &lt;- lag(myDF, n=1)
+lagDF
+</code></pre><pre><code class="language-{r" data-lang="{r">plot.ts(dsts[,2],
+        col=&quot;blue&quot;,
+        lwd=1,
+        ylab=&quot;Production in millions tons&quot;,
+        main=&quot;World Steel production 1900-2019&quot;)
+</code></pre><pre><code class="language-{r" data-lang="{r">tail(dsts,20)
+</code></pre><pre><code class="language-{r" data-lang="{r">logdsts &lt;- log(dsts[,1])
+plot.ts(logdsts)
+</code></pre><pre><code class="language-{r" data-lang="{r">dstsdiff1 &lt;- diff(dsts[,1], differences=1)
+plot.ts(dstsdiff1)
+head(dstsdiff1)
+</code></pre><pre><code class="language-{r" data-lang="{r">dstsdiff2 &lt;- diff(dsts[,1], differences=2)
+plot.ts(dstsdiff2)
+</code></pre><pre><code class="language-{r" data-lang="{r">summary(dsts[,1])
+</code></pre><pre><code class="language-{r" data-lang="{r">summary(dstsdiff1)
+</code></pre><pre><code class="language-{r" data-lang="{r">summary(dstsdiff2)
+</code></pre>
+</main>
+
+  <footer>
+  <script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+  
+  <hr/>
+  © <a href="https://github.com/michaelleary">Github</a>
+  
+  </footer>
+  </body>
+</html>
+

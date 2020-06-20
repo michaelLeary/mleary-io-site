@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>World steel production and capacity</title>
+      <link>/post/2020/06/20/world-steel-production-and-capacity/</link>
+      <pubDate>Sat, 20 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/06/20/world-steel-production-and-capacity/</guid>
+      <description>  Time series data: Steel production and steel capacity world (millions metric tons)
+ Source for production data: World Steel Association Source for capacity data: OECD  tail(dsts,20) ## Time Series: ## Start = 2000 ## End = 2019 ## Frequency = 1 ## production capacity prod_pct_of_cap ## 2000 849 1132 75 ## 2001 851 1166 73 ## 2002 904 1286 70 ## 2003 970 1430 68 ## 2004 1072 1503 71 ## 2005 1144 1606 71 ## 2006 1247 1697 73 ## 2007 1346 1817 74 ## 2008 1329 1913 69 ## 2009 1239 2034 61 ## 2010 1433 2155 66 ## 2011 1538 2226 69 ## 2012 1560 2281 68 ## 2013 1650 2362 70 ## 2014 1671 2386 70 ## 2015 1622 2377 68 ## 2016 1629 2368 69 ## 2017 1732 2352 74 ## 2018 1817 2328 78 ## 2019 1869 2362 79  </description>
+    </item>
     
     <item>
       <title>India district broad data</title>

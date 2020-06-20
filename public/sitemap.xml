@@ -18,6 +18,11 @@
   </url>
   
   <url>
+    <loc>/post/</loc>
+    <lastmod>2020-06-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/categories/r/</loc>
     <lastmod>2020-06-20T00:00:00+00:00</lastmod>
   </url>
@@ -43,6 +48,16 @@
   </url>
   
   <url>
+    <loc>/note/2020/06/20/world-steel-production-and-capacity/</loc>
+    <lastmod>2020-06-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2020/06/20/world-steel-production-and-capacity/</loc>
+    <lastmod>2020-06-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/census/</loc>
     <lastmod>2020-06-19T00:00:00+00:00</lastmod>
   </url>
@@ -64,11 +79,6 @@
   
   <url>
     <loc>/tags/population/</loc>
-    <lastmod>2020-06-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
     <lastmod>2020-06-19T00:00:00+00:00</lastmod>
   </url>
   
