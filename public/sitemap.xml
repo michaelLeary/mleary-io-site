@@ -13,11 +13,6 @@
   </url>
   
   <url>
-    <loc>/note/</loc>
-    <lastmod>2020-06-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post/</loc>
     <lastmod>2020-06-20T00:00:00+00:00</lastmod>
   </url>
@@ -39,11 +34,6 @@
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2020-06-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/note/2020/06/20/world-steel-production/</loc>
     <lastmod>2020-06-20T00:00:00+00:00</lastmod>
   </url>
   
@@ -264,6 +254,11 @@
   
   <url>
     <loc>/note/2020/05/12/rice-notes/</loc>
+    <lastmod>2020-05-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/note/</loc>
     <lastmod>2020-05-12T00:00:00+00:00</lastmod>
   </url>
   

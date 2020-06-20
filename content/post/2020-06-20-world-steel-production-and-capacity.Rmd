@@ -122,7 +122,8 @@ plot.ts(tmp)
 dstsplot <-dsts[,-3] 
 
 plot(window(dstsplot, start=c(2000), end=c(2019)), plot.type = "single",
-     main = "World Steel production and capacity",
+     main = "World steel production and capacity",
+     xlab = " ",
      ylab = "Millions metric tons",
      col=c("blue", "red"),
      lty=1:2)
@@ -158,15 +159,29 @@ lagDF
 
 ```{r tsplot, include=FALSE}
 plot.ts(dsts[,2],
-        col="blue",
-        lwd=1,
-        ylab="Production in millions tons",
-        main="World Steel production 1900-2019")
+        col = "blue",
+        lwd = 1,
+        xlab = " ",
+        ylab = "Production in millions tons",
+        main = "World Steel production 1900-2019")
 ```
 
 ```{r tailtsdata, echo-FALSE}
 tail(dsts,20)
 ```
+
+> A look back 
+
+```{r lookbackplot, echo=FALSE}
+plot.ts(dsts[,1],
+        col = "blue",
+        lwd = 1,
+        xlab = " ",
+        ylab = "Production in millions tons",
+        main = "World steel production 1900-2019")
+```
+
+
 
 ```{r tslogplot, include=FALSE}
 logdsts <- log(dsts[,1])
@@ -195,4 +210,3 @@ summary(dstsdiff1)
 ```{r diff2summary, include=FALSE}
 summary(dstsdiff2)
 ```
-
