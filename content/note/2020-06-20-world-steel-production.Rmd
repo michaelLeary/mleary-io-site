@@ -74,7 +74,7 @@ str(datacsv)
 ds <- datacsv
 ds
 ds <- ds[,-c(2)]
-dsts <- ts(ds, frequency=1, start=c(1900), end=c(2021))
+dsts <- ts(ds, frequency=1, start=c(1900), end=c(2019))
 dsts
 ```
 
@@ -136,7 +136,7 @@ plot.ts(dsts[,2],
         col="blue",
         lwd=1,
         ylab="Production in millions tons",
-        main="World Steel production 1900-2021e")
+        main="World Steel production 1900-2019")
 ```
 ```{r tailtsdata, echo-FALSE}
 tail(dsts,10)
