@@ -6,10 +6,21 @@
     <description>Recent content in Statistics on Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 21 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Manipulating steel producer data in R</title>
+      <link>/post/2020/06/21/manipulating-steel-producer-data-in-r/</link>
+      <pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/06/21/manipulating-steel-producer-data-in-r/</guid>
+      <description>Sought to:
+import a data set with time series data in columns; transpose the data to a tidy set in which data was switched to rows and retain numeric data type. Create a factor variable on imported data to permit grouping data. From grouped data generate a cumulative frequency column and a relative frequency column using two methods.
+ Provide alternate presentation of frequency data with chart.  The data set used in this case was output in million metric tons of steel by the world’s top 50 steel producers as published by the World Steel Association.</description>
+    </item>
     
     <item>
       <title>World steel production and capacity</title>

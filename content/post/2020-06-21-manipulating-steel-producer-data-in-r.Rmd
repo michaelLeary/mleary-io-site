@@ -1,0 +1,152 @@
+---
+title: Manipulating steel producer data in R
+author: michael
+date: '2020-06-21'
+slug: manipulating-steel-producer-data-in-r
+categories:
+  - R
+tags:
+  - Statistics
+  - Data wrangling
+  - Steel
+---
+
+Sought to: 
+
+1. import a data set with time series data in columns; transpose the data to a tidy set in which data was switched to rows and retain numeric data type. 
+1. Create a factor variable on imported data to permit grouping data. 
+1. From grouped data generate a cumulative frequency column and a relative frequency column using two methods.  
+1. Provide alternate presentation of frequency data with chart. 
+
+The data set used in this case was output in million metric tons of steel by the world's top 50 steel producers as published by the World Steel Association. The factor criteria used was headquarters.  
+
+####
+* Source for data: [World Steel Association](https://www.worldsteel.org/media-centre/press-releases/2020/worldsteel-short-range-outlook-june-2020.html)
+* [Keep datatype in transpose](https://stackoverflow.com/questions/32987286/how-to-keep-the-original-class-format-when-transpose-dataframe-r)
+* [alternate frequency tabulation](https://stackoverflow.com/questions/11148868/how-to-generate-a-frequency-table-in-r-with-with-cumulative-frequency-and-relati?noredirect=1&lq=1)
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r pkgsused, include=FALSE}
+pkgs = c("readr", 
+         "tidyxl", 
+         "tidyverse",
+         "unpivotr",
+         "devtools", 
+         "data.table", 
+         "dplyr",
+         "magrittr", 
+         "forcats",
+         "rattle",
+         "forecast",
+         "agricolae") 
+#package names: readr for import as tibble; data.table for fast csv save; tidyverse for operations using dplyr's piping feature; rattle for format tibble column names; magrittr %<>% function pipes left hand data to right side and returns result to left hand overwriting original contents on left hand
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+devtools::install_github("nacnudus/smungs")
+
+```
+
+```{r csvdata, include=FALSE}
+datacsv <- read_csv('/Users/michaelleary/Documents/GitHub/indiairon/data/top50producers.csv', ) # in tibble form
+```
+
+```{r datatidy}
+# transpose imported csv and keep values 
+# make template variable
+ds <- datacsv
+# examine dataset
+head(ds)
+```
+
+```{r}
+# remove unwanted rows 
+dsx <- ds[,-2]
+
+# https://stackoverflow.com/questions/32987286/how-to-keep-the-original-class-format-when-transpose-dataframe-r
+# convert tibble to data frame before transpose
+dsdf <- as.data.frame(dsx)
+# set first column as row names
+rownames(dsdf) <- dsdf$Companies
+# delete column that contained companies because rownames now established. 
+dsdf <- dsdf[,-1]
+# transpose table
+dsdf2 <- as.data.frame(t(dsdf))
+
+# check integers are numeric
+#lapply(dsdf2,class)
+dsdf2 <- dsdf2[-c(5),]
+head(dsdf2)
+```
+
+```{r}
+#make factor variables to ds object factor 
+ds$HQ <- as.factor(ds$HQ)
+
+```
+
+```{r}
+colSums(ds[,3:6], na.rm=TRUE)
+```
+
+```{r, }
+# compute ranking of 2019 production by country headquarters
+dsrank <- ds %>% 
+  group_by(HQ) %>%
+  summarise(sum2019 = sum(`Tonnage
+2019`)) %>%
+  arrange(desc(sum2019))
+
+```
+
+```{r}
+# Generate cumulative frequency table and relative percentage by headquarter
+dst <- transform(dsrank, cumFreq = cumsum(sum2019), relative = round(100 * prop.table(sum2019),1))
+dst
+  
+```
+
+```{r}
+# alternate method to determine frequency distribution table method
+# reference: https://stackoverflow.com/questions/11148868/how-to-generate-a-frequency-table-in-r-with-with-cumulative-frequency-and-relati?noredirect=1&lq=1
+# use agricolae package
+length(dsrank[[2]])
+dsrank[[2]]
+# place matrix column into data frame
+dsrankdf <- as.data.frame(t(dsrank$sum2019))
+# generate a vector of numeric values from data frame and use as weight column for frequency distribution
+tv4 <- as.numeric(dsrankdf[1,])
+weight<-c(tv4)
+h1<- graph.freq(weight,col="yellow",frequency=1,las=2,xlab="h1")
+print(summary(h1),row.names=FALSE)
+```
+
+```{r}
+#Frequency analysis with China data excluded
+dsrankxChina <- dsrank[-1,] 
+dsrankxChina[[2]]
+# place matrix column into data frame
+dsrankxChinadf <- as.data.frame(t(dsrankxChina$sum2019))
+# generate a vector of numeric values from data frame and use as weight column for frequency distribution
+tv4 <- as.numeric(dsrankxChinadf[1,])
+weight<-c(tv4)
+h1<- graph.freq(weight,col="yellow",frequency=1,las=2,xlab="h1")
+print(summary(h1),row.names=FALSE)
+```
+
+```{r}
+#Frequency analysis with China and Arcelor Mittal data excluded
+dsrankxChinaMittal <- dsrank[-c(1:2),] 
+dsrankxChinaMittal[[2]]
+# place matrix column into data frame
+dsrankxChinaMittaldf <- as.data.frame(t(dsrankxChinaMittal$sum2019))
+# generate a vector of numeric values from data frame and use as weight column for frequency distribution
+tv4 <- as.numeric(dsrankxChinaMittaldf[1,])
+weight<-c(tv4)
+h1<- graph.freq(weight,col="yellow",frequency=1,las=2,xlab="h1")
+print(summary(h1),row.names=FALSE)
+```
+

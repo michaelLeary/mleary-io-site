@@ -1,0 +1,349 @@
+---
+title: Manipulating steel producer data in R
+author: michael
+date: '2020-06-21'
+slug: manipulating-steel-producer-data-in-r
+categories:
+  - R
+tags:
+  - Statistics
+  - Data wrangling
+  - Steel
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>Sought to:</p>
+<ol style="list-style-type: decimal">
+<li>import a data set with time series data in columns; transpose the data to a tidy set in which data was switched to rows and retain numeric data type.</li>
+<li>Create a factor variable on imported data to permit grouping data.</li>
+<li>From grouped data generate a cumulative frequency column and a relative frequency column using two methods.<br />
+</li>
+<li>Provide alternate presentation of frequency data with chart.</li>
+</ol>
+<p>The data set used in this case was output in million metric tons of steel by the world’s top 50 steel producers as published by the World Steel Association. The factor criteria used was headquarters.</p>
+<div id="section" class="section level4">
+<h4></h4>
+<ul>
+<li>Source for data: <a href="https://www.worldsteel.org/media-centre/press-releases/2020/worldsteel-short-range-outlook-june-2020.html">World Steel Association</a></li>
+<li><a href="https://stackoverflow.com/questions/32987286/how-to-keep-the-original-class-format-when-transpose-dataframe-r">Keep datatype in transpose</a></li>
+<li><a href="https://stackoverflow.com/questions/11148868/how-to-generate-a-frequency-table-in-r-with-with-cumulative-frequency-and-relati?noredirect=1&amp;lq=1">alternate frequency tabulation</a></li>
+</ul>
+<pre class="r"><code># transpose imported csv and keep values 
+# make template variable
+ds &lt;- datacsv
+# examine dataset
+head(ds)</code></pre>
+<pre><code>## # A tibble: 6 x 7
+##   Companies HQ    `Tonnage\n2019` `Tonnage\n2018` `Tonnage\n2017`
+##   &lt;chr&gt;     &lt;chr&gt;           &lt;dbl&gt;           &lt;dbl&gt;           &lt;dbl&gt;
+## 1 ArcelorM… Luxe…            97.3            96.4            97.0
+## 2 China Ba… China            95.5            67.4            65.4
+## 3 Nippon S… Japan            51.7            49.2            47.4
+## 4 HBIS Gro… China            46.6            46.8            45.6
+## 5 POSCO     Sout…            43.1            42.9            42.2
+## 6 Shagang … China            41.1            40.7            38.4
+## # … with 2 more variables: `Tonnage\n2016` &lt;dbl&gt;, `2019\nRanking` &lt;dbl&gt;</code></pre>
+<pre class="r"><code># remove unwanted rows 
+dsx &lt;- ds[,-2]
+
+# https://stackoverflow.com/questions/32987286/how-to-keep-the-original-class-format-when-transpose-dataframe-r
+# convert tibble to data frame before transpose
+dsdf &lt;- as.data.frame(dsx)
+# set first column as row names
+rownames(dsdf) &lt;- dsdf$Companies
+# delete column that contained companies because rownames now established. 
+dsdf &lt;- dsdf[,-1]
+# transpose table
+dsdf2 &lt;- as.data.frame(t(dsdf))
+
+# check integers are numeric
+#lapply(dsdf2,class)
+dsdf2 &lt;- dsdf2[-c(5),]
+head(dsdf2)</code></pre>
+<pre><code>##               ArcelorMittal (1) China Baowu Group (2)
+## Tonnage\n2019             97.31                 95.47
+## Tonnage\n2018             96.42                 67.43
+## Tonnage\n2017             97.03                 65.39
+## Tonnage\n2016             95.45                 63.81
+##               Nippon Steel Corporation (3) HBIS Group (4) POSCO Shagang Group
+## Tonnage\n2019                        51.68          46.56 43.12         41.10
+## Tonnage\n2018                        49.22          46.80 42.86         40.66
+## Tonnage\n2017                        47.36          45.56 42.19         38.35
+## Tonnage\n2016                        44.65          46.18 41.80         33.25
+##               Ansteel Group Jianlong Group Tata Steel Group (5) Shougang Group
+## Tonnage\n2019         39.20          31.19                30.15          29.34
+## Tonnage\n2018         37.36          27.88                27.27          27.34
+## Tonnage\n2017         35.76          20.26                25.11          27.63
+## Tonnage\n2016         33.19          16.45                24.49          26.80
+##               Shandong Steel Group JFE Steel Corporation Valin Group
+## Tonnage\n2019                27.58                 27.35       24.31
+## Tonnage\n2018                23.21                 29.15       23.01
+## Tonnage\n2017                21.68                 30.15       20.15
+## Tonnage\n2016                23.02                 30.29       15.48
+##               Nucor Corporation HYUNDAI Steel Company IMIDRO (6)
+## Tonnage\n2019             23.09                 21.56      16.79
+## Tonnage\n2018             25.49                 21.88      16.79
+## Tonnage\n2017             24.39                 21.23      15.60
+## Tonnage\n2016             21.95                 19.86      14.02
+##               JSW Steel Limited Steel Authority of India Ltd. (SAIL)
+## Tonnage\n2019             16.26                                16.18
+## Tonnage\n2018             16.83                                15.93
+## Tonnage\n2017             16.06                                14.80
+## Tonnage\n2016             14.91                                14.38
+##               Benxi Steel Fangda Steel Novolipetsk Steel (NLMK)
+## Tonnage\n2019       16.18        15.66                    15.61
+## Tonnage\n2018       15.90        15.51                    17.39
+## Tonnage\n2017       15.77        15.11                    17.08
+## Tonnage\n2016       14.40        13.68                    16.64
+##               Baotou Iron &amp; Steel (Group) Co., Ltd. China Steel Corporation
+## Tonnage\n2019                                 15.46                   15.23
+## Tonnage\n2018                                 15.25                   15.88
+## Tonnage\n2017                                 14.20                   15.33
+## Tonnage\n2016                                 12.30                   15.52
+##               Techint Group (7) Liuzhou Steel Rizhao Steel
+## Tonnage\n2019             14.44         14.40        14.20
+## Tonnage\n2018             15.38         13.53        14.95
+## Tonnage\n2017             11.75         12.30        14.98
+## Tonnage\n2016              7.98         11.05        13.86
+##               United States Steel Corporation EVRAZ CITIC Pacific Gerdau S.A.
+## Tonnage\n2019                           13.89 13.81         13.55       13.13
+## Tonnage\n2018                           15.37 13.02         12.55       15.80
+## Tonnage\n2017                           14.43 14.03          8.77       16.50
+## Tonnage\n2016                           14.22 13.53          8.40       15.95
+##               Jingye Steel Magnitogorsk Iron &amp; Steel Works (MMK) Shaanxi Steel
+## Tonnage\n2019        12.58                                 12.46         12.45
+## Tonnage\n2018        11.25                                 12.66         11.38
+## Tonnage\n2017        10.41                                 12.86         10.24
+## Tonnage\n2016        11.01                                 12.54          7.30
+##               Sanming Steel thyssenkrupp Zenith Steel Severstal
+## Tonnage\n2019         12.40        12.25        11.93     11.85
+## Tonnage\n2018         11.68        12.58         8.70     12.04
+## Tonnage\n2017         11.19        13.22        10.36     11.65
+## Tonnage\n2016         10.39        17.24         9.24     11.63
+##               Tsingshan Stainless Steel Nanjing Steel Taiyuan Steel
+## Tonnage\n2019                     11.40         10.97         10.86
+## Tonnage\n2018                      9.29         10.05         10.70
+## Tonnage\n2017                        NA          9.85         10.50
+## Tonnage\n2016                        NA          9.01         10.28
+##               Anyang Steel Metinvest Holding LLC Xinyu Steel
+## Tonnage\n2019        10.54                  9.58        9.47
+## Tonnage\n2018        10.97                  9.37        9.36
+## Tonnage\n2017        10.06                  9.59        8.90
+## Tonnage\n2016        10.48                 10.34        8.57
+##               Donghai Special Steel Jinxi Steel (also known as China Oriental)
+## Tonnage\n2019                  8.90                                       8.73
+## Tonnage\n2018                  7.61                                      10.33
+## Tonnage\n2017                  7.43                                      11.72
+## Tonnage\n2016                    NA                                      11.05
+##               ERDEMIR Group Steel Dynamics, Inc. Kunming Steel SSAB
+## Tonnage\n2019          8.61                 8.59          7.73 7.62
+## Tonnage\n2018          9.14                 8.92          7.27 8.03
+## Tonnage\n2017          9.20                 8.27          6.36 8.00
+## Tonnage\n2016          9.18                   NA          6.40 7.99
+##               Jiuquan Steel voestalpine Group Yingkou Plate
+## Tonnage\n2019          7.48              7.26          7.01
+## Tonnage\n2018          7.02              6.94          6.36
+## Tonnage\n2017          5.17              8.15          6.09
+## Tonnage\n2016          5.50              7.47          5.78
+##               Salzgitter AG Stahl und Technologie CELSA Steel Group
+## Tonnage\n2019                                6.90              6.90
+## Tonnage\n2018                                7.04              7.10
+## Tonnage\n2017                                7.31              7.02
+## Tonnage\n2016                                6.80              6.94
+##               Kobe Steel, Ltd. Puyang Steel Jindal Steel and Power Ltd (JSPL)
+## Tonnage\n2019             6.89         6.36                              6.30
+## Tonnage\n2018             6.88         5.32                              4.02
+## Tonnage\n2017             7.74         5.93                              3.48
+## Tonnage\n2016             7.26         4.96                              3.48
+##               Ruifeng Steel Binxin Special Steel Lingyuan Steel
+## Tonnage\n2019          6.25                 5.91           5.90
+## Tonnage\n2018          5.73                 5.99           5.53
+## Tonnage\n2017          5.97                 5.98           5.05
+## Tonnage\n2016          6.26                 6.06           4.88
+##               BlueScope Steel Limited RIVA Group Liberty Steel Group
+## Tonnage\n2019                    5.86       5.55                5.41
+## Tonnage\n2018                    5.91       6.02                2.35
+## Tonnage\n2017                    5.91       5.87                2.05
+## Tonnage\n2016                    5.63       5.47                2.10
+##               ISD (Industrial Union of Donbass) AK Steel Corporation
+## Tonnage\n2019                              5.40                 5.32
+## Tonnage\n2018                              5.32                 5.71
+## Tonnage\n2017                              3.41                 5.67
+## Tonnage\n2016                              4.61                 5.05
+##               Ganglu Steel Yuanli Group Hongxing Steel
+## Tonnage\n2019         5.20         4.97           4.92
+## Tonnage\n2018         5.39         4.91           5.10
+## Tonnage\n2017         3.07         4.67           4.84
+## Tonnage\n2016         3.07         4.39           5.10
+##               Saudi Iron &amp; Steel Co. (Hadeed, an affiliate of SABIC)
+## Tonnage\n2019                                                   4.87
+## Tonnage\n2018                                                   5.26
+## Tonnage\n2017                                                   4.27
+## Tonnage\n2016                                                   5.27
+##               Metalloinvest Management Company
+## Tonnage\n2019                             4.87
+## Tonnage\n2018                             5.05
+## Tonnage\n2017                             4.76
+## Tonnage\n2016                             4.66
+##               Rashtriya Ispat Nigam Ltd (VIZAG Steel) Tian Tie Ezz Steel
+## Tonnage\n2019                                    4.84     4.79      4.68
+## Tonnage\n2018                                    5.26     2.63      4.88
+## Tonnage\n2017                                    4.41       NA      4.52
+## Tonnage\n2016                                    3.82       NA      3.66
+##               Tianzhu Steel Usinas Siderúrgicas de Minas Gerais S.A. (USIMINAS)
+## Tonnage\n2019          4.68                                                4.57
+## Tonnage\n2018          4.03                                                4.47
+## Tonnage\n2017          3.51                                                4.38
+## Tonnage\n2016          3.49                                                4.06
+##               Huttenwerke Krupp Mannesmann Donghua Steel Ningbo Steel Habaş
+## Tonnage\n2019                         4.39          4.37         4.33  4.29
+## Tonnage\n2018                         4.39          2.58         4.55  3.77
+## Tonnage\n2017                         5.90            NA         4.57  3.51
+## Tonnage\n2016                         4.78            NA         4.55  3.21
+##               Shiheng Special Steel Xinxing Ductile Yukun Steel Jiyuan Steel
+## Tonnage\n2019                  4.16            4.05        3.99         3.98
+## Tonnage\n2018                  3.75            3.89        3.99         3.85
+## Tonnage\n2017                  3.41            4.58        2.69         3.82
+## Tonnage\n2016                  3.54            3.48        3.99         3.60
+##               Tosyalı Holding Rockcheck Steel Mechel Sanbao Steel
+## Tonnage\n2019            3.91            3.85   3.60         3.60
+## Tonnage\n2018            3.34            3.69   3.88         3.53
+## Tonnage\n2017            2.77            3.48   4.27         3.30
+## Tonnage\n2016            2.64            3.51   4.19         3.53
+##               Dongkuk Steel Mill Co., Ltd. Zhongyang Steel
+## Tonnage\n2019                         3.56            3.55
+## Tonnage\n2018                         3.77            3.13
+## Tonnage\n2017                         3.73              NA
+## Tonnage\n2016                         3.29              NA
+##               Altos Hornos de México, S.A.B. de C.V. (AHMSA) Lianxin Steel
+## Tonnage\n2019                                           3.52          3.49
+## Tonnage\n2018                                           4.52          3.09
+## Tonnage\n2017                                           4.39          3.23
+## Tonnage\n2016                                           4.65          2.98
+##               Yuhua Steel Delong Steel Rongxin Steel Taishan Steel
+## Tonnage\n2019        3.48         3.46          3.39          3.33
+## Tonnage\n2018        4.80         3.18          3.50          3.60
+## Tonnage\n2017        4.50         2.59            NA          3.33
+## Tonnage\n2016        5.42         3.18            NA          3.28
+##               Emirates Steel Acciaieria Arvedi SpA Longteng Special Steel
+## Tonnage\n2019           3.33                  3.27                   3.18
+## Tonnage\n2018           3.25                  3.35                   3.00
+## Tonnage\n2017           3.31                  3.19                   3.01
+## Tonnage\n2016           3.15                  2.95                   2.87
+##               Jianbang Group  TMK İçdaş Xintai Steel
+## Tonnage\n2019           3.17 3.12  3.09         3.05
+## Tonnage\n2018           2.99 3.31  4.02         2.45
+## Tonnage\n2017             NA 3.24  4.31           NA
+## Tonnage\n2016             NA 2.74  3.30           NA
+##               Companhia Siderúrgica Nacional (CSN) Lengshuijiang Steel
+## Tonnage\n2019                                 3.04                3.03
+## Tonnage\n2018                                 4.20                3.27
+## Tonnage\n2017                                 4.43                3.08
+## Tonnage\n2016                                 4.06                2.80</code></pre>
+<pre class="r"><code>#make factor variables to ds object factor 
+ds$HQ &lt;- as.factor(ds$HQ)</code></pre>
+<pre class="r"><code>colSums(ds[,3:6], na.rm=TRUE)</code></pre>
+<pre><code>## Tonnage\n2019 Tonnage\n2018 Tonnage\n2017 Tonnage\n2016 
+##       1306.39       1252.25       1176.63       1111.62</code></pre>
+<pre class="r"><code># compute ranking of 2019 production by country headquarters
+dsrank &lt;- ds %&gt;% 
+  group_by(HQ) %&gt;%
+  summarise(sum2019 = sum(`Tonnage
+2019`)) %&gt;%
+  arrange(desc(sum2019))</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre class="r"><code># Generate cumulative frequency table and relative percentage by headquarter
+dst &lt;- transform(dsrank, cumFreq = cumsum(sum2019), relative = round(100 * prop.table(sum2019),1))
+dst</code></pre>
+<pre><code>##               HQ sum2019 cumFreq relative
+## 1          China  681.09  681.09     52.1
+## 2     Luxembourg  102.86  783.95      7.9
+## 3          Japan   85.92  869.87      6.6
+## 4          India   73.73  943.60      5.6
+## 5    South Korea   68.24 1011.84      5.2
+## 6         Russia   65.32 1077.16      5.0
+## 7            USA   50.89 1128.05      3.9
+## 8        Germany   23.54 1151.59      1.8
+## 9         Brazil   20.74 1172.33      1.6
+## 10        Turkey   19.90 1192.23      1.5
+## 11          Iran   16.79 1209.02      1.3
+## 12 Taiwan, China   15.23 1224.25      1.2
+## 13       Ukraine   14.98 1239.23      1.1
+## 14     Argentina   14.44 1253.67      1.1
+## 15        Sweden    7.62 1261.29      0.6
+## 16       Austria    7.26 1268.55      0.6
+## 17         Spain    6.90 1275.45      0.5
+## 18     Australia    5.86 1281.31      0.4
+## 19  Australia/UK    5.41 1286.72      0.4
+## 20           KSA    4.87 1291.59      0.4
+## 21         Egypt    4.68 1296.27      0.4
+## 22        Mexico    3.52 1299.79      0.3
+## 23           UAE    3.33 1303.12      0.3
+## 24         Italy    3.27 1306.39      0.3</code></pre>
+<pre class="r"><code># alternate method to determine frequency distribution table method
+# reference: https://stackoverflow.com/questions/11148868/how-to-generate-a-frequency-table-in-r-with-with-cumulative-frequency-and-relati?noredirect=1&amp;lq=1
+# use agricolae package
+length(dsrank[[2]])</code></pre>
+<pre><code>## [1] 24</code></pre>
+<pre class="r"><code>dsrank[[2]]</code></pre>
+<pre><code>##  [1] 681.09 102.86  85.92  73.73  68.24  65.32  50.89  23.54  20.74  19.90
+## [11]  16.79  15.23  14.98  14.44   7.62   7.26   6.90   5.86   5.41   4.87
+## [21]   4.68   3.52   3.33   3.27</code></pre>
+<pre class="r"><code># place matrix column into data frame
+dsrankdf &lt;- as.data.frame(t(dsrank$sum2019))
+# generate a vector of numeric values from data frame and use as weight column for frequency distribution
+tv4 &lt;- as.numeric(dsrankdf[1,])
+weight&lt;-c(tv4)
+h1&lt;- graph.freq(weight,col=&quot;yellow&quot;,frequency=1,las=2,xlab=&quot;h1&quot;)</code></pre>
+<p><img src="/post/2020-06-21-manipulating-steel-producer-data-in-r_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>print(summary(h1),row.names=FALSE)</code></pre>
+<pre><code>##  Lower Upper  Main Frequency Percentage CF   CPF
+##    3.0 116.2  59.6        23       95.8 23  95.8
+##  116.2 229.4 172.8         0        0.0 23  95.8
+##  229.4 342.6 286.0         0        0.0 23  95.8
+##  342.6 455.8 399.2         0        0.0 23  95.8
+##  455.8 569.0 512.4         0        0.0 23  95.8
+##  569.0 682.2 625.6         1        4.2 24 100.0</code></pre>
+<pre class="r"><code>#Frequency analysis with China data excluded
+dsrankxChina &lt;- dsrank[-1,] 
+dsrankxChina[[2]]</code></pre>
+<pre><code>##  [1] 102.86  85.92  73.73  68.24  65.32  50.89  23.54  20.74  19.90  16.79
+## [11]  15.23  14.98  14.44   7.62   7.26   6.90   5.86   5.41   4.87   4.68
+## [21]   3.52   3.33   3.27</code></pre>
+<pre class="r"><code># place matrix column into data frame
+dsrankxChinadf &lt;- as.data.frame(t(dsrankxChina$sum2019))
+# generate a vector of numeric values from data frame and use as weight column for frequency distribution
+tv4 &lt;- as.numeric(dsrankxChinadf[1,])
+weight&lt;-c(tv4)
+h1&lt;- graph.freq(weight,col=&quot;yellow&quot;,frequency=1,las=2,xlab=&quot;h1&quot;)</code></pre>
+<p><img src="/post/2020-06-21-manipulating-steel-producer-data-in-r_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre class="r"><code>print(summary(h1),row.names=FALSE)</code></pre>
+<pre><code>##  Lower Upper  Main Frequency Percentage CF   CPF
+##    3.0  19.7 11.35        14       60.9 14  60.9
+##   19.7  36.4 28.05         3       13.0 17  73.9
+##   36.4  53.1 44.75         1        4.3 18  78.3
+##   53.1  69.8 61.45         2        8.7 20  87.0
+##   69.8  86.5 78.15         2        8.7 22  95.7
+##   86.5 103.2 94.85         1        4.3 23 100.0</code></pre>
+<pre class="r"><code>#Frequency analysis with China and Arcelor Mittal data excluded
+dsrankxChinaMittal &lt;- dsrank[-c(1:2),] 
+dsrankxChinaMittal[[2]]</code></pre>
+<pre><code>##  [1] 85.92 73.73 68.24 65.32 50.89 23.54 20.74 19.90 16.79 15.23 14.98 14.44
+## [13]  7.62  7.26  6.90  5.86  5.41  4.87  4.68  3.52  3.33  3.27</code></pre>
+<pre class="r"><code># place matrix column into data frame
+dsrankxChinaMittaldf &lt;- as.data.frame(t(dsrankxChinaMittal$sum2019))
+# generate a vector of numeric values from data frame and use as weight column for frequency distribution
+tv4 &lt;- as.numeric(dsrankxChinaMittaldf[1,])
+weight&lt;-c(tv4)
+h1&lt;- graph.freq(weight,col=&quot;yellow&quot;,frequency=1,las=2,xlab=&quot;h1&quot;)</code></pre>
+<p><img src="/post/2020-06-21-manipulating-steel-producer-data-in-r_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<pre class="r"><code>print(summary(h1),row.names=FALSE)</code></pre>
+<pre><code>##  Lower Upper Main Frequency Percentage CF   CPF
+##    3.0  19.6 11.3        14       63.6 14  63.6
+##   19.6  36.2 27.9         3       13.6 17  77.3
+##   36.2  52.8 44.5         1        4.5 18  81.8
+##   52.8  69.4 61.1         2        9.1 20  90.9
+##   69.4  86.0 77.7         2        9.1 22 100.0</code></pre>
+</div>

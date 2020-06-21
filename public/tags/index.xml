@@ -6,15 +6,24 @@
     <description>Recent content in Tags on Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 21 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Data wrangling</title>
+      <link>/tags/data-wrangling/</link>
+      <pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/data-wrangling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Statistics</title>
       <link>/tags/statistics/</link>
-      <pubDate>Sat, 20 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/statistics/</guid>
       <description></description>
@@ -23,7 +32,7 @@
     <item>
       <title>Steel</title>
       <link>/tags/steel/</link>
-      <pubDate>Sat, 20 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/steel/</guid>
       <description></description>
