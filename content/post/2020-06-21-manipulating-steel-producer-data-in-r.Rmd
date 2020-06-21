@@ -21,7 +21,7 @@ Sought to:
 The data set used in this case was output in million metric tons of steel by the world's top 50 steel producers as published by the World Steel Association. The factor criteria used was headquarters.  
 
 ####
-* Source for data: [World Steel Association](https://www.worldsteel.org/media-centre/press-releases/2020/worldsteel-short-range-outlook-june-2020.html)
+* Source for data: [World Steel Association](https://www.worldsteel.org/en/dam/jcr:21ca3ee7-4e2b-4c4e-b07d-47b139553ee1/2019%2520Top%2520Steel%2520Producers%2520and%2520tonnage%2520of%2520worldsteel%2520members_28May2020.pdf)
 * [Keep datatype in transpose](https://stackoverflow.com/questions/32987286/how-to-keep-the-original-class-format-when-transpose-dataframe-r)
 * [alternate frequency tabulation](https://stackoverflow.com/questions/11148868/how-to-generate-a-frequency-table-in-r-with-with-cumulative-frequency-and-relati?noredirect=1&lq=1)
 
