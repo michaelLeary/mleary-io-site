@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dataextract on Thoughts</title>
+    <link>/tags/dataextract/</link>
+    <description>Recent content in dataextract on Thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 22 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/dataextract/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Household device power wattage</title>
+      <link>/post/2020/06/22/household-device-power-wattage/</link>
+      <pubDate>Mon, 22 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/06/22/household-device-power-wattage/</guid>
+      <description>Task was to extract data from an html table of power wattage by devices and sort the table.
+Reference
+Data from DaftLogic    Table 1: Household devices by wattage    Appliance  Minimum  Maximum  Standby      Power Shower  7500  10500  0    Electric Tankless Water Heater  6600  8800  NA    Electric Boiler  4000  14000  NA    Hand Wash Oversink Water Heater  3000  3000  NA    Hot Water Immersion Heater  3000  3000  NA    Evaporative Air Conditioner  2600  2600  NA    Corded Electric Handheld Leaf Blower  2500  2500  NA    Steam Iron  2200  2500  NA    Oven  2150  2150  NA    Electric Heater Fan  2000  3000  NA    Electric stove  2000  2000  NA    Space Heater  2000  5000  NA    Hair Blow Dryer  1800  2500  NA    EV Home Charger  1600  3400  NA    Air Fryer  1500  1500  NA    Electric Mower  1500  1500  NA    Induction Hob (per hob)  1400  1800  NA    Espresso Coffee Machine  1300  1500  NA    Inverter Air conditioner  1300  1800  NA    9&#34;</description>
+    </item>
+    
+  </channel>
+</rss>

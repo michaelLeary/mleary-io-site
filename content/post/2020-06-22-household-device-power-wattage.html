@@ -1,0 +1,1850 @@
+---
+title: Household device power wattage
+author: michael
+date: '2020-06-22'
+slug: household-device-power-wattage
+categories:
+  - R
+tags:
+  - dataextract
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>Task was to extract data from an html table of power wattage by devices and sort the table.</p>
+<p>Reference</p>
+<ol style="list-style-type: decimal">
+<li>Data from <a href="https://www.daftlogic.com/information-appliance-power-consumption.htm">DaftLogic</a></li>
+</ol>
+<div style="page-break-after: always;"></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tabtable2">Table 1: </span>Household devices by wattage
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Appliance
+</th>
+<th style="text-align:right;">
+Minimum
+</th>
+<th style="text-align:right;">
+Maximum
+</th>
+<th style="text-align:right;">
+Standby
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Power Shower
+</td>
+<td style="text-align:right;">
+7500
+</td>
+<td style="text-align:right;">
+10500
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Electric Tankless Water Heater
+</td>
+<td style="text-align:right;">
+6600
+</td>
+<td style="text-align:right;">
+8800
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Electric Boiler
+</td>
+<td style="text-align:right;">
+4000
+</td>
+<td style="text-align:right;">
+14000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hand Wash Oversink Water Heater
+</td>
+<td style="text-align:right;">
+3000
+</td>
+<td style="text-align:right;">
+3000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hot Water Immersion Heater
+</td>
+<td style="text-align:right;">
+3000
+</td>
+<td style="text-align:right;">
+3000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Evaporative Air Conditioner
+</td>
+<td style="text-align:right;">
+2600
+</td>
+<td style="text-align:right;">
+2600
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Corded Electric Handheld Leaf Blower
+</td>
+<td style="text-align:right;">
+2500
+</td>
+<td style="text-align:right;">
+2500
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Steam Iron
+</td>
+<td style="text-align:right;">
+2200
+</td>
+<td style="text-align:right;">
+2500
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Oven
+</td>
+<td style="text-align:right;">
+2150
+</td>
+<td style="text-align:right;">
+2150
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Electric Heater Fan
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+3000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Electric stove
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Space Heater
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hair Blow Dryer
+</td>
+<td style="text-align:right;">
+1800
+</td>
+<td style="text-align:right;">
+2500
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EV Home Charger
+</td>
+<td style="text-align:right;">
+1600
+</td>
+<td style="text-align:right;">
+3400
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Air Fryer
+</td>
+<td style="text-align:right;">
+1500
+</td>
+<td style="text-align:right;">
+1500
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Electric Mower
+</td>
+<td style="text-align:right;">
+1500
+</td>
+<td style="text-align:right;">
+1500
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Induction Hob (per hob)
+</td>
+<td style="text-align:right;">
+1400
+</td>
+<td style="text-align:right;">
+1800
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Espresso Coffee Machine
+</td>
+<td style="text-align:right;">
+1300
+</td>
+<td style="text-align:right;">
+1500
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Inverter Air conditioner
+</td>
+<td style="text-align:right;">
+1300
+</td>
+<td style="text-align:right;">
+1800
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9" disc sander
+</td>
+<td style="text-align:right;">
+1200
+</td>
+<td style="text-align:right;">
+1200
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dishwasher
+</td>
+<td style="text-align:right;">
+1200
+</td>
+<td style="text-align:right;">
+1500
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Electric Kettle
+</td>
+<td style="text-align:right;">
+1200
+</td>
+<td style="text-align:right;">
+3000
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hot Water Dispenser
+</td>
+<td style="text-align:right;">
+1200
+</td>
+<td style="text-align:right;">
+1300
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3" belt sander
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Clothes Dryer
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+4000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fryer
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Home Air Conditioner
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+4000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Iron
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lawnmower
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+1400
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Coffee Maker
+</td>
+<td style="text-align:right;">
+800
+</td>
+<td style="text-align:right;">
+1400
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Food Dehydrator
+</td>
+<td style="text-align:right;">
+800
+</td>
+<td style="text-align:right;">
+800
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Percolator
+</td>
+<td style="text-align:right;">
+800
+</td>
+<td style="text-align:right;">
+1100
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Toaster
+</td>
+<td style="text-align:right;">
+800
+</td>
+<td style="text-align:right;">
+1800
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pressure Cooker
+</td>
+<td style="text-align:right;">
+700
+</td>
+<td style="text-align:right;">
+700
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sandwich Maker
+</td>
+<td style="text-align:right;">
+700
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Steriliser
+</td>
+<td style="text-align:right;">
+650
+</td>
+<td style="text-align:right;">
+650
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Corded Drill
+</td>
+<td style="text-align:right;">
+600
+</td>
+<td style="text-align:right;">
+850
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Laser Printer
+</td>
+<td style="text-align:right;">
+600
+</td>
+<td style="text-align:right;">
+800
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Microwave
+</td>
+<td style="text-align:right;">
+600
+</td>
+<td style="text-align:right;">
+1700
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Electric Thermal Radiator
+</td>
+<td style="text-align:right;">
+500
+</td>
+<td style="text-align:right;">
+500
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Washing Machine
+</td>
+<td style="text-align:right;">
+500
+</td>
+<td style="text-align:right;">
+500
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AV Receiver
+</td>
+<td style="text-align:right;">
+450
+</td>
+<td style="text-align:right;">
+450
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vacuum Cleaner
+</td>
+<td style="text-align:right;">
+450
+</td>
+<td style="text-align:right;">
+900
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Food Blender
+</td>
+<td style="text-align:right;">
+300
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gaming PC
+</td>
+<td style="text-align:right;">
+300
+</td>
+<td style="text-align:right;">
+600
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Garage Door Opener
+</td>
+<td style="text-align:right;">
+300
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Strimmer
+</td>
+<td style="text-align:right;">
+300
+</td>
+<td style="text-align:right;">
+500
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Treadmill
+</td>
+<td style="text-align:right;">
+280
+</td>
+<td style="text-align:right;">
+900
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dehumidifier
+</td>
+<td style="text-align:right;">
+240
+</td>
+<td style="text-align:right;">
+240
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+82 Inch LED TV
+</td>
+<td style="text-align:right;">
+228
+</td>
+<td style="text-align:right;">
+295
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Projector
+</td>
+<td style="text-align:right;">
+220
+</td>
+<td style="text-align:right;">
+270
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Domestic Water Pump
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:right;">
+300
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Electric Blanket
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kitchen Extractor Fan
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Paper Shredder
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:right;">
+220
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rice Cooker
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:right;">
+800
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Submersible Water Pump
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Slow Cooker
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+180
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+25" colour TV
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fridge / Freezer
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+65 Inch LED TV
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Game Console
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+100W light bulb (Incandescent)
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Desktop Computer
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+450
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fridge
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+220
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Refrigerator
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Singer Sewing Machine
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Water Dispenser
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Home Sound System
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+49 Inch LED TV
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Playstation 4
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Wine cooler (18 bottles)
+</td>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Straightening Iron
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+300
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cordless Drill Charger
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sewing Machine
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Water Filter and Cooler
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Air Cooler
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+46 Inch LED TV
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+60W light bulb (Incandescent)
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bathroom Towel Heater
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ceiling Fan
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+42 Inch LED TV
+</td>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Heated Bathroom Mirror
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Laptop Computer
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pedestal Fan
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Xbox One
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chromebook
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Wall Fan
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+American-style Fridge Freezer
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TV (19" colour)
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Humidifier
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Water Feature
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Freezer
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fluorescent Lamp
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Set Top Box
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DVD Player
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Air Purifier
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Computer Monitor
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Curling Iron
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tube Light (1500mm)
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+32 Inch LED TV
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cooker Hood
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Guitar Amplifier
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Inkjet Printer
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Deep Freezer
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22 Inch LED TV
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Electric Shaver
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Extractor Fan
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Scanner
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Table Fan
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tablet Charger
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Philips Hue Smart Bulb
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LED Light Bulb
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nintendo Switch AC Adapter
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DAB Mains Radio
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Home Internet Router
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mi Box
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tablet Computer
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Phone Charger
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Amazon Echo
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Apple TV
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Home Phone
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Amazon Echo Dot
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Amazon Echo Show
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chromecast
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Electric Doorbell Transformer
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Clock radio
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Night Light
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WiFi Booster
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>

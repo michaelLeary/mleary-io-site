@@ -1,0 +1,86 @@
+---
+title: Household device power wattage
+author: michael
+date: '2020-06-22'
+slug: household-device-power-wattage
+categories:
+  - R
+tags:
+  - dataextract
+---
+
+Task was to extract data from an html table of power wattage by devices and sort the table. 
+
+Reference
+
+1. Data from [DaftLogic](https://www.daftlogic.com/information-appliance-power-consumption.htm)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages, include=FALSE}
+pkgs = c("rvest", "tidyverse", "janitor", "lubridate", "dplyr", "kableExtra", "data.table", "forcats") 
+# lubridate for %m+% function
+# rvest for web scraping
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+```{r datevars, include=FALSE}
+# save current system date to a variable
+today <- Sys.Date()
+# subtract 3 months from the current date
+date <- today %m+% months(-3)
+print(date)
+```
+
+```{r rawdatacollect, include=FALSE}
+# get the URL for the wikipedia page with all states
+url <- "https://www.daftlogic.com/information-appliance-power-consumption.htm"
+
+# use that URL to scrape the states table using rvest
+devicewatt<- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='/html/body/div[1]/div[3]/div[1]/article/div[2]/table') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="tblApp"]') %>% 
+  html_table(fill=TRUE)
+#create a vector of devices
+devices <- devicewatt[[1]]
+
+```
+
+
+```{r, include=FALSE}
+head(devices)
+devices <- devices[,-c(5:7)]
+```
+
+```{r, include=FALSE}
+devices$Minimum <- as.integer(gsub('[a-zA-Z]', '', devices$Minimum))
+devices$Maximum <- as.integer(gsub('[a-zA-Z]', '', devices$Maximum))
+devices$Standby <- as.integer(gsub('[a-zA-Z]', '', devices$Standby))
+```
+
+```{r, include=FALSE}
+devices
+```
+
+```{r, include=FALSE}
+devicestable <- devices %>%
+  arrange(desc(Minimum))
+```
+
+\newpage
+
+```{r tabtable2, echo=FALSE, warnings=FALSE}
+knitr::kable(devicestable, "html",
+             caption = "Household devices by wattage",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
