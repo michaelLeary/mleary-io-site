@@ -18,7 +18,7 @@
       
       <guid>/post/2020/06/28/uttar-pradesh-background/</guid>
       <description>Task Produce chart and maps data on Uttar Pradesh that could serve as slot in chunks for other reports on the state.
- Data Expected to be sourced from Wikipedia and Wikicommons and comprise open source user produced data that is freely shareable.
+ Data Expected to be sourced from Wikipedia and Wikimedia commons and comprise open source user produced data that is freely shareable.
  Other information R packages used include magick1, rsvg2, rvest3, and, kableExtra4.
   1. Seal  Original file size: 478x478 pixels and 38KB</description>
     </item>

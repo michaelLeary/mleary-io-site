@@ -32,7 +32,7 @@ Produce chart and maps data on Uttar Pradesh that could serve as slot in chunks 
 
 ## Data
 
-Expected to be sourced from Wikipedia and Wikicommons and comprise open source user produced data that is freely shareable. 
+Expected to be sourced from Wikipedia and Wikimedia commons and comprise open source user produced data that is freely shareable. 
 
 ## Other information 
 
