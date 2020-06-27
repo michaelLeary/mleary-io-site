@@ -1,0 +1,347 @@
+---
+title: Uttar Pradesh background
+author: michael
+date: '2020-06-28'
+slug: uttar-pradesh-background
+categories:
+  - R
+tags:
+  - Governance
+  - Politics
+  - Legislature
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r pkgsused, include=FALSE}
+pkgs = c("magick", "rsvg", "rvest", "kableExtra") 
+# manage images
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+
+```
+
+## Task
+
+Produce chart and maps data on Uttar Pradesh that could serve as slot in chunks for other reports on the state. 
+
+## Data
+
+Expected to be sourced from Wikipedia and Wikicommons and comprise open source user produced data that is freely shareable. 
+
+## Other information 
+
+R packages used include magick^[Jeroen Ooms (2020). magick: Advanced Graphics and Image-Processing in R. R package version 2.4.0. https://CRAN.R-project.org/package=magick], rsvg^[Jeroen Ooms (2020). rsvg: Render SVG Images into PDF, PNG, PostScript, or Bitmap Arrays. R package version 2.1. https://CRAN.R-project.org/package=rsvg], rvest^[Hadley Wickham (2019). rvest: Easily Harvest (Scrape) Web Pages. R package version 0.3.5. https://CRAN.R-project.org/package=rvest], and, kableExtra^[Hao Zhu (2019). kableExtra: Construct Complex Table with 'kable' and Pipe Syntax. R
+  package version 1.1.0. https://CRAN.R-project.org/package=kableExtra ]. 
+
+\newpage
+
+## 1. Seal 
+
+* Original file size: 478x478 pixels and 38KB
+
+* Seal svg creator: [Furfur](https://fr.m.wikivoyage.org/wiki/Fichier:Seal_of_Uttar_Pradesh.svg).
+
+```{r tigertest, include=FALSE}
+tiger <- image_read_svg('http://jeroen.github.io/images/tiger.svg', width = 350)
+print(tiger)
+```
+
+```{r upseal, echo=FALSE}
+up_seal <- image_read_svg('https://upload.wikimedia.org/wikipedia/commons/f/fa/Seal_of_Uttar_Pradesh.svg', width=478)
+up_seal
+```
+
+```{r, include=FALSE}
+# Seal svg rendered into png format. 
+image_write(up_seal, path = "up_seal.png", format = "png")
+up_seal_png <- image_convert(up_seal, "png")
+image_info(up_seal_png)
+up_seal_png
+```
+
+```{r, include=FALSE}
+# Svg rendered into bitmap form. 
+# Or: convert into raw bitmap data
+bitmap <- rsvg_raw('https://upload.wikimedia.org/wikipedia/commons/f/fa/Seal_of_Uttar_Pradesh.svg', width = 478)
+str(bitmap)
+# Read the bitmap in magick
+upbitmap <- magick::image_read(bitmap)
+upbitmap
+```
+
+[Wikipedia](https://en.wikipedia.org/wiki/Emblem_of_Uttar_Pradesh) suggests the seal:
+
+> depicts the confluence of the Ganges and Yamuna rivers at Prayagraj, a pair of Matsya fish to represent the former hindu and muslim rulers of Oudg, and, a bow and arrow to represent the hindu deity Rama who was born in Ayodhya within the state.
+
+## 2. State districts 
+
+* Original file size: 4000x2600 pixels and 457KB
+
+* Seal svg creator: [BishkekRocks](https://commons.wikimedia.org/wiki/File:List_of_districts_of_Uttar_Pradesh_(2012).svg).
+
+```{r updistrict, echo=FALSE}
+up_district <- image_read_svg('https://upload.wikimedia.org/wikipedia/commons/5/5a/List_of_districts_of_Uttar_Pradesh_%282012%29.svg', height=478)
+up_district
+```
+
+```{r, include=FALSE}
+image_write(up_district, path = "up_district.png", format = "png")
+up_district_png <- image_convert(up_district, "png")
+```
+
+```{r, include=FALSE}
+up_district_png
+```
+
+[Wikipedia](https://en.wikipedia.org/wiki/List_of_districts_of_Uttar_Pradesh#Division_wise_listing_of_districts) details 75 districts in Uttar Pradesh as of 2012. 
+
+```{r rawdatacollect, include=FALSE}
+# get the URL for the wikipedia page with all states
+url <- "https://en.wikipedia.org/wiki/List_of_districts_of_Uttar_Pradesh#Division_wise_listing_of_districts"
+
+# use that URL to scrape the states table using rvest
+updistricts <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[3]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+head(updistricts)
+
+```
+
+```{r convertchar2num, include=FALSE}
+# convert character column to numeric in three steps
+# step 1 is population column - remove commas
+# step 2 is convert to numeric
+# step 3 is convert other char columns to numeric directly
+updist <- as.data.frame(updistricts)
+updist
+updist[,"Population"] <- gsub(",", "", updist[,"Population"])
+updist
+updist[,"Population"] <- as.numeric(updist[,"Population"])
+colnames((updist))
+coltype <- c("Area", "Density...km.")
+updist
+updist[,coltype] <- 
+                     lapply(updist[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+updist
+
+```
+
+```{r, include=FALSE}
+updistorder <- updist[
+  order(-updist[,5]),
+  ]
+updistorder
+
+```
+
+\newpage
+
+```{r tabtable, echo=FALSE}
+knitr::kable(updistorder[,c(2:7)], "html",
+             caption = "Uttar Pradesh districts as of 2012",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+## 3. India parliamentary representation 
+
+* Original file size: 3818x4600 pixels and 75KB
+
+* PNG creator: [The,Manish](https://commons.wikimedia.org/wiki/File:Indian_Parliament_Seat_Composition.png).
+
+```{r indparl, echo=FALSE}
+# Example image
+
+indparl <- image_read("https://upload.wikimedia.org/wikipedia/commons/6/6e/Indian_Parliament_Seat_Composition.png")
+image_scale(indparl, "x478") # height: 300px
+```
+
+* Wikipedia^[https://en.wikipedia.org/wiki/Parliament_of_India] describes India's legislative body as:
+
+> bicameral with 788 seats divided as to Rajya Sabha (Council of States) of 245 members, and, the Lok Sabha (House of the People) of 543 members all presided over by President of India;
+
+> Lok Sabha members directly elected by public who vote in single member districts.
+
+> Rajya Sabha members elected by State Legislative assembly by proportional representation. 
+
+* For **Uttar Pradesh** there are 80 Lob Sabha seats and 31 Rajya Sabha seats representing 14% of total parliamentary seats. 
+
+
+## 4. Lok Sabha election past
+
+* [Wikipedia](https://en.wikipedia.org/wiki/Elections_in_India#History_of_Lok_Sabha_Elections) details 17 Lok Sabha elections since 1951 with the latest being that of 2019. 
+
+* The most recent election result of 2019 gave 303 seats of 545 to BJP. 
+
+* Next Lok Sabhya elections will be in 2024. 
+
+```{r lsresults, include=FALSE}
+# get the URL for the wikipedia page with all states
+url2 <- "https://en.wikipedia.org/wiki/Elections_in_India#History_of_Lok_Sabha_Elections"
+
+# use that URL to scrape the states table using rvest
+lselections <- url2 %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[3]') %>% 
+  html_table(fill=TRUE)
+#create a vector of election results
+head(lselections)
+
+```
+
+```{r, include=FALSE}
+lok_df <- as.data.frame(lselections)
+
+```
+
+\newpage
+
+```{r loksabha table, echo=FALSE}
+knitr::kable(lok_df[,c(1:6)], "html",
+             caption = "Lok Sabha election results",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+## 5. Rajya Sabha composition by party 
+
+* After the past week's election the BJP party and its alliance National Democratic Alliance (NDA) have majority in Rajya Sabha with 84 seats and 114 seats. Congress 41 seats and its alliance United Progressive Alliance has 62 seats in total^[Source: https://en.wikipedia.org/wiki/Rajya_Sabha#Membership_by_party].
+
+* Elections occur as and when members retire and each term is for 6 years. Next elections scheduled for 2021. 
+
+```{r rsresults, include=FALSE}
+# get the URL for the wikipedia page with all states
+url3 <- "https://en.wikipedia.org/wiki/Rajya_Sabha#Membership_by_party"
+
+# use that URL to scrape the states table using rvest
+rselections <- url3 %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[3]') %>% 
+  html_table(fill=TRUE)
+#create a vector of election results
+head(rselections)
+
+```
+
+```{r, include=FALSE}
+rajya_df <- as.data.frame(rselections)
+
+```
+
+\newpage
+
+```{r rajyasabha table, echo=FALSE}
+knitr::kable(rajya_df[,c(1:3)], "html",
+             caption = "2020-06-19 Rajya Sabha composition by party",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+## 6. Uttar Pradesh legislature
+
+* The state legislature is bicameral. The upper house of 100 members is called the legislative council or Uttar Pradesh Vidhan Parishad^[https://en.wikipedia.org/wiki/Uttar_Pradesh_Legislative_Council]. 
+
+* Term for Vidhan Parishad members is 6 years. The 100 seats are drawn from five groups: legislative assembly, local authority, nominated members, graduate and teachers^[https://en.wikipedia.org/wiki/Uttar_Pradesh_Legislative_Council]. The distribution of seats is shown in table. 
+
+
+```{r rs_seats, include=FALSE}
+rs_seats <- data.frame("Constituency"=c("Graduate", 
+                                        "Teachers", 
+                                        "Local Authority",
+                                        "Legislative assembly",
+                                        "Nominated members"), 
+                     "Seats" = c(8, 8, 36, 38, 10))
+
+rs_seats
+```
+
+```{r, include=FALSE}
+rsseatorder <- rs_seats[
+  order(-rs_seats[,2]),
+  ]
+```
+
+```{r, echo=FALSE}
+rsseatorder
+```
+
+* The lower house has 403 members and is called the legislative assembly or Vidhan Sabha^[https://en.wikipedia.org/wiki/Uttar_Pradesh_Legislative_Assembly].
+
+* Term for Vidhan Sabha members is 5 years. Latest election was 2017. Upcoming election scheduled for 2022. 
+
+* the BJP has 309 seats in the Vidhan Sabha and 319 seats for its Alliance representing share of 79% of total. The party with the next highest share of seats is that of Samajwadi Party with 49 seats or 12% share. Congress has 7 seats. 
+
+* Vidhan Sabha constituencies and elected members as of 2017^[Source: https://en.wikipedia.org/wiki/Seventeenth_Legislative_Assembly_of_Uttar_Pradesh]
+
+\newpage
+
+```{r uplowerresults, include=FALSE}
+# get the URL for the wikipedia page with all states
+url4 <- "https://en.wikipedia.org/wiki/Seventeenth_Legislative_Assembly_of_Uttar_Pradesh"
+
+# use that URL to scrape the states table using rvest
+uplower <- url4 %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[6]') %>% 
+  html_table(fill=TRUE)
+#create a vector of election results
+head(uplower)
+
+```
+
+```{r, include=FALSE}
+uplower_df <- as.data.frame(uplower)
+
+```
+
+\newpage
+```{r uplower table, echo=FALSE}
+knitr::kable(uplower_df[,c(2,3,6)], "html",
+             caption = "Uttar Pradesh Vidhan Sabha constituencies",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+## 7. Example of 2012 State phase voting
+
+* image within pdf file of size 967 KB
+
+* data source: [Chief Electoral Officer, Uttar Pradesh](http://ceouttarpradesh.nic.in/images/u2.pdf)
+
+```{r upphases, echo=FALSE}
+up_phase <- image_read_pdf('http://ceouttarpradesh.nic.in/images/u2.pdf')
+image_scale(up_phase, "x478") # height: 300px
+```

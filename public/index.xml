@@ -6,10 +6,22 @@
     <description>Recent content in Home on Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Uttar Pradesh background</title>
+      <link>/post/2020/06/28/uttar-pradesh-background/</link>
+      <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/06/28/uttar-pradesh-background/</guid>
+      <description>Task Produce chart and maps data on Uttar Pradesh that could serve as slot in chunks for other reports on the state.
+ Data Expected to be sourced from Wikipedia and Wikicommons and comprise open source user produced data that is freely shareable.
+ Other information R packages used include magick1, rsvg2, rvest3, and, kableExtra4.
+  1. Seal  Original file size: 478x478 pixels and 38KB</description>
+    </item>
     
     <item>
       <title>Household device power wattage</title>
