@@ -41,7 +41,7 @@ R packages used include magick^[Jeroen Ooms (2020). magick: Advanced Graphics an
 
 \newpage
 
-## 1. Seal 
+## 1. State seal 
 
 * Original file size: 478x478 pixels and 38KB
 
@@ -151,7 +151,26 @@ updistorder
 
 ```{r tabtable, echo=FALSE}
 knitr::kable(updistorder[,c(2:7)], "html",
-             caption = "Uttar Pradesh districts as of 2012",
+             caption = "Uttar Pradesh districts as of 2012 sorted by population",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+```{r, include=FALSE}
+updistorder2 <- updist[
+  order(updist[,2]),
+  ]
+updistorder2
+
+```
+
+\newpage
+
+```{r tabtable2, echo=FALSE}
+knitr::kable(updistorder2[,c(2:7)], "html",
+             caption = "Uttar Pradesh districts sorted by name",
              booktabs = TRUE,
              longtable = FALSE ) %>%
   kable_styling("striped") 
@@ -215,7 +234,7 @@ lok_df <- as.data.frame(lselections)
 
 \newpage
 
-```{r loksabha table, echo=FALSE}
+```{r loksabha, echo=FALSE}
 knitr::kable(lok_df[,c(1:6)], "html",
              caption = "Lok Sabha election results",
              booktabs = TRUE,
@@ -255,7 +274,7 @@ rajya_df <- as.data.frame(rselections)
 
 \newpage
 
-```{r rajyasabha table, echo=FALSE}
+```{r rajyasabha, echo=FALSE}
 knitr::kable(rajya_df[,c(1:3)], "html",
              caption = "2020-06-19 Rajya Sabha composition by party",
              booktabs = TRUE,
@@ -325,9 +344,15 @@ uplower_df <- as.data.frame(uplower)
 
 ```
 
+```{r, include=FALSE}
+uplowerorder <- uplower_df[
+  order(uplower_df[,2]),
+  ]
+```
+
 \newpage
-```{r uplower table, echo=FALSE}
-knitr::kable(uplower_df[,c(2,3,6)], "html",
+```{r uplower, echo=FALSE}
+knitr::kable(uplowerorder[,c(2,3,6)], "html",
              caption = "Uttar Pradesh Vidhan Sabha constituencies",
              booktabs = TRUE,
              longtable = FALSE ) %>%
