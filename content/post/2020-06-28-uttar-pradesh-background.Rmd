@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r pkgsused, include=FALSE}
-pkgs = c("magick", "rsvg", "rvest", "kableExtra") 
+pkgs = c("magick", "rsvg", "rvest", "kableExtra", "dplyr") 
 # manage images
 install.packages(pkgs, repos="https://cran.r-project.org")
 inst = lapply(pkgs, library, character.only = TRUE) #load packages
@@ -28,20 +28,15 @@ inst = lapply(pkgs, library, character.only = TRUE) #load packages
 
 ## Task
 
-Produce chart and maps data on Uttar Pradesh that could serve as slot in chunks for other reports on the state. 
+Aggregate data on Uttar Pradesh. 
 
 ## Data
 
-Expected to be sourced from Wikipedia and Wikicommons and comprise open source user produced data that is freely shareable. 
-
-## Other information 
-
-R packages used include magick^[Jeroen Ooms (2020). magick: Advanced Graphics and Image-Processing in R. R package version 2.4.0. https://CRAN.R-project.org/package=magick], rsvg^[Jeroen Ooms (2020). rsvg: Render SVG Images into PDF, PNG, PostScript, or Bitmap Arrays. R package version 2.1. https://CRAN.R-project.org/package=rsvg], rvest^[Hadley Wickham (2019). rvest: Easily Harvest (Scrape) Web Pages. R package version 0.3.5. https://CRAN.R-project.org/package=rvest], and, kableExtra^[Hao Zhu (2019). kableExtra: Construct Complex Table with 'kable' and Pipe Syntax. R
-  package version 1.1.0. https://CRAN.R-project.org/package=kableExtra ]. 
+Sourced from Wikipedia and Wikimedia commons and comprised of open source user produced data.. 
 
 ## Electoral calendar
 
-```{r up_cal, include=FALSE}
+```{r rscap, include=FALSE}
 upcal <- data.frame("Date"=c("2021",
                               "2021",
                               "2021",
@@ -67,7 +62,7 @@ upcal <- data.frame("Date"=c("2021",
                                 "State",
                                 "National", 
                                 "State",
-                                "-",
+                                "No elections",
                                 "State",
                                 "State"),
                      "Election" = c("Rajya Sabha", 
@@ -81,7 +76,7 @@ upcal <- data.frame("Date"=c("2021",
                                     "Vidhan Parishad: graduates",
                                     "Lok Sabha",
                                     "Vidhan Parishad: legislative assembly",
-                                    "-",
+                                    "None planned",
                                     "Vidhan Parishad: teachers",
                                     "Vidhan Parishad: graduates"
                                     ))
@@ -97,14 +92,16 @@ knitr::kable(upcal[,c(1:3)], "html",
 
 ```
 
+## Other information 
+
+R packages used include magick^[Jeroen Ooms (2020). magick: Advanced Graphics and Image-Processing in R. R package version 2.4.0. https://CRAN.R-project.org/package=magick], rsvg^[Jeroen Ooms (2020). rsvg: Render SVG Images into PDF, PNG, PostScript, or Bitmap Arrays. R package version 2.1. https://CRAN.R-project.org/package=rsvg], rvest^[Hadley Wickham (2019). rvest: Easily Harvest (Scrape) Web Pages. R package version 0.3.5. https://CRAN.R-project.org/package=rvest], and, kableExtra^[Hao Zhu (2019). kableExtra: Construct Complex Table with 'kable' and Pipe Syntax. R
+  package version 1.1.0. https://CRAN.R-project.org/package=kableExtra ]. 
 
 \newpage
 
 ## 1. State seal 
 
-* Original file size: 478x478 pixels and 38KB
-
-* Image source: [Furfur](https://fr.m.wikivoyage.org/wiki/Fichier:Seal_of_Uttar_Pradesh.svg).
+* Original file size: 478x478 pixels and 38KB. Image source: [Furfur](https://fr.m.wikivoyage.org/wiki/Fichier:Seal_of_Uttar_Pradesh.svg).
 
 ```{r tigertest, include=FALSE}
 tiger <- image_read_svg('http://jeroen.github.io/images/tiger.svg', width = 350)
@@ -140,9 +137,7 @@ upbitmap
 
 ## 2. State districts 
 
-* Original file size: 4000x2600 pixels and 457KB
-
-* Image source: [BishkekRocks](https://commons.wikimedia.org/wiki/File:List_of_districts_of_Uttar_Pradesh_(2012).svg).
+* Original file size: 4000x2600 pixels and 457KB. Image source: [BishkekRocks](https://commons.wikimedia.org/wiki/File:List_of_districts_of_Uttar_Pradesh_(2012).svg).
 
 ```{r updistrict, echo=FALSE}
 up_district <- image_read_svg('https://upload.wikimedia.org/wikipedia/commons/5/5a/List_of_districts_of_Uttar_Pradesh_%282012%29.svg', height=478)
@@ -241,9 +236,7 @@ knitr::kable(updistorder2[,c(2:7)], "html",
 
 ## 3. India parliamentary representation 
 
-* Original file size: 3818x4600 pixels and 75KB
-
-* PNG creator: [The,Manish](https://commons.wikimedia.org/wiki/File:Indian_Parliament_Seat_Composition.png).
+* Original file size: 3818x4600 pixels and 75KB. PNG creator: [The,Manish](https://commons.wikimedia.org/wiki/File:Indian_Parliament_Seat_Composition.png).
 
 ```{r indparl, echo=FALSE}
 # Example image
@@ -307,7 +300,7 @@ knitr::kable(lok_df[,c(1:6)], "html",
 
 ## 5. Rajya Sabha composition by party 
 
-* After the past week's election the BJP party and its alliance National Democratic Alliance (NDA) have majority in Rajya Sabha with 84 seats and 114 seats. Congress 41 seats and its alliance United Progressive Alliance has 62 seats in total^[https://en.wikipedia.org/wiki/Rajya_Sabha#Membership_by_party].
+* After the past week's election the BJP party and its alliance National Democratic Alliance (NDA) have majority in Rajya Sabha with 84 seats and 114 seats. Congress 41 seats and its alliance United Progressive Alliance has 62 seats in total^[Source: https://en.wikipedia.org/wiki/Rajya_Sabha#Membership_by_party].
 
 * Elections occur as and when members retire and each term is for 6 years. Next elections scheduled for 2021. 
 
@@ -377,7 +370,7 @@ rsseatorder
 
 * Term for Vidhan Sabha members is 5 years. Latest election was 2017. Upcoming election scheduled for 2022. 
 
-* the BJP has 309 seats in the Vidhan Sabha and 319 seats for its Alliance representing share of 79% of total. The party with the next highest share of seats is that of Samajwadi Party with 49 seats or 12% share. Congress has 7 seats. 
+* BJP party has 309 seats in the Vidhan Sabha (319 seats for its Alliance) representing 79% of total seats. The party with the next highest share of seats is that of Samajwadi Party with 49 seats or 12% share. Congress has 7 seats. 
 
 * Vidhan Sabha constituencies and elected members as of 2017^[https://en.wikipedia.org/wiki/Seventeenth_Legislative_Assembly_of_Uttar_Pradesh]
 
@@ -432,3 +425,151 @@ knitr::kable(uplowerorder[,c(2,3,6)], "html",
 up_phase <- image_read_pdf('http://ceouttarpradesh.nic.in/images/u2.pdf')
 image_scale(up_phase, "x478") # height: 300px
 ```
+
+## 8. Electoral consituencies by district
+
+```{r, include=FALSE}
+head(updistorder2)
+```
+
+```{r, include=FALSE}
+head(uplower_df)
+```
+
+```{r, include=FALSE}
+colnames(updistorder2)[2] <- "District"
+head(updistorder2)
+```
+
+```{r, include=FALSE}
+distup <- distinct(updistorder2[2])
+```
+
+```{r, include=FALSE}
+distup2 <-distinct(uplower_df[2])
+```
+
+```{r, include=FALSE}
+identical(distup, distup2)
+```
+
+```{r, include=FALSE}
+# identify differences between the two data table district columns
+dplyr::anti_join(distup, distup2, by = "District")
+```
+
+```{r, include=FALSE}
+# edit cells identified as different so as to obtain consistency between data sets 
+# change Bagpat in distup dataframe to Baghpat
+upd <- updistorder2[,c(2,4:7)]
+upc <- uplower_df[,c(2:4,6)]
+upd
+upc
+
+upd <- upd %>%
+     mutate(District=replace(District, District == "Bagpat", "Baghpat")) %>%
+     as.data.frame()
+
+upd <- upd %>%
+     mutate(District=replace(District, District == "Chandauli(Varanasi Dehat)", "Chandauli")) %>%
+     as.data.frame()
+
+upd <- upd %>%
+     mutate(District=replace(District, District == "Kanpur Nagar", "Kanpur")) %>%
+     as.data.frame()
+
+upd <- upd %>%
+     mutate(District=replace(District, District == "Lakhimpur Kheri", "Lakhimpur")) %>%
+     as.data.frame()
+
+upd <- upd %>%
+     mutate(District=replace(District, District == "Rae Bareli", "Raebareli")) %>%
+     as.data.frame()
+
+upd <- upd %>%
+     mutate(District=replace(District, District == "Varanasi (Kashi)", "Varanasi")) %>%
+     as.data.frame()
+
+upc <- upc %>%
+     mutate(District=replace(District, District == "Bhadohi", "Sant Ravidas Nagar")) %>%
+     as.data.frame()
+
+upc <- upc %>%
+     mutate(District=replace(District, District == "Shrawasti", "Shravasti")) %>%
+     as.data.frame()
+
+```
+
+```{r, include=FALSE}
+# check for duplicates once more
+dup <- distinct(upd[1])
+```
+
+```{r, include=FALSE}
+cup <-distinct(upc[1])
+```
+
+```{r, include=FALSE}
+identical(dup, cup)
+```
+
+```{r, include=FALSE}
+# identify differences between the two data table district columns
+dplyr::anti_join(dup, cup, by = "District")
+```
+
+```{r, include=FALSE}
+# make a join of dup and cup
+cupdup <- dplyr::full_join(upd, upc, by = "District")
+cupdup
+```
+
+```{r, include=FALSE}
+# make district and division factors
+cupdup$District <- as.factor(cupdup$District)
+cupdup$Division <- as.factor(cupdup$Division)
+head(cupdup)
+```
+
+```{r, include=FALSE}
+# count constituencies per district
+table(cupdup$District)
+prop.table(table(cupdup$District))
+
+```
+
+```{r, include=FALSE}
+# alternate method using dplyr to generate a frequency table of constituencies by district
+up_constit <- cupdup %>% count(District, sort = TRUE)
+```
+
+```{r, include=FALSE}
+up_constit
+```
+
+```{r, include=FALSE}
+# bind constituency count to upd data frame 
+updmerge <- merge(upd, up_constit, by.upd = "District", by.up_constit = "District", all = TRUE)
+
+
+# rename constituency count column
+colnames(updmerge)[6] <- "Constituency_count"
+
+updmerge[4] <- round(updmerge[4],0)
+updmerge
+
+```
+
+\newpage
+```{r dupconcount, echo=FALSE}
+knitr::kable(updmerge, "html",
+             caption = "Uttar Pradesh constituency count by district",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+
+
+ 
