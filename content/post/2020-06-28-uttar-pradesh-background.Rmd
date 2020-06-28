@@ -32,12 +32,71 @@ Produce chart and maps data on Uttar Pradesh that could serve as slot in chunks 
 
 ## Data
 
-Expected to be sourced from Wikipedia and Wikimedia commons and comprise open source user produced data that is freely shareable. 
+Expected to be sourced from Wikipedia and Wikicommons and comprise open source user produced data that is freely shareable. 
 
 ## Other information 
 
 R packages used include magick^[Jeroen Ooms (2020). magick: Advanced Graphics and Image-Processing in R. R package version 2.4.0. https://CRAN.R-project.org/package=magick], rsvg^[Jeroen Ooms (2020). rsvg: Render SVG Images into PDF, PNG, PostScript, or Bitmap Arrays. R package version 2.1. https://CRAN.R-project.org/package=rsvg], rvest^[Hadley Wickham (2019). rvest: Easily Harvest (Scrape) Web Pages. R package version 0.3.5. https://CRAN.R-project.org/package=rvest], and, kableExtra^[Hao Zhu (2019). kableExtra: Construct Complex Table with 'kable' and Pipe Syntax. R
   package version 1.1.0. https://CRAN.R-project.org/package=kableExtra ]. 
+
+## Electoral calendar
+
+```{r rs_cap, include=FALSE}
+up_cal <- data.frame("Date"=c("2021",
+                              "2021",
+                              "2021",
+                              "2022",
+                              "2022",
+                              "2022",
+                              "2022",
+                              "2023",
+                              "2023",
+                              "2024",
+                              "2024",
+                              "2025", 
+                              "2026",
+                              "2026"), 
+                     "Kind" = c("National", 
+                                "State", 
+                                "State", 
+                                "State",
+                                "State",
+                                "State",
+                                "State",
+                                "State",
+                                "State",
+                                "National", 
+                                "State",
+                                "No elections",
+                                "State",
+                                "State"),
+                     "Election" = c("Ragya Sabha", 
+                                    "Vidhan Parishad: legislative assembly",
+                                    "Vidhan Parishad: nominated",
+                                    "Vidhan Sabha",
+                                    "Vidhan Parishad: legislative assembly",
+                                    "Vidhan Parishad: local authorities",
+                                    "Vidhan Parishad: nominated",
+                                    "Vidhan Parishad: teachers",
+                                    "Vidhan Parishad: graduates",
+                                    "Lok Sabha",
+                                    "Vidhan Parishad: legislative assembly",
+                                    "None planned",
+                                    "Vidhan Parishad: teachers",
+                                    "Vidhan Parishad: graduates"
+                                    ))
+
+```
+
+```{r up_cal, echo=FALSE}
+knitr::kable(up_cal[,c(1:3)], "html",
+             caption = "Election calendar with focus on Uttar Pradesh",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
 
 \newpage
 
@@ -45,7 +104,7 @@ R packages used include magick^[Jeroen Ooms (2020). magick: Advanced Graphics an
 
 * Original file size: 478x478 pixels and 38KB
 
-* Seal svg creator: [Furfur](https://fr.m.wikivoyage.org/wiki/Fichier:Seal_of_Uttar_Pradesh.svg).
+* Image source: [Furfur](https://fr.m.wikivoyage.org/wiki/Fichier:Seal_of_Uttar_Pradesh.svg).
 
 ```{r tigertest, include=FALSE}
 tiger <- image_read_svg('http://jeroen.github.io/images/tiger.svg', width = 350)
@@ -77,13 +136,13 @@ upbitmap
 
 [Wikipedia](https://en.wikipedia.org/wiki/Emblem_of_Uttar_Pradesh) suggests the seal:
 
-> depicts the confluence of the Ganges and Yamuna rivers at Prayagraj, a pair of Matsya fish to represent the former hindu and muslim rulers of Oudg, and, a bow and arrow to represent the hindu deity Rama who was born in Ayodhya within the state.
+> depicts the confluence of the Ganges and Yamuna rivers at Prayagraj, a pair of Matsya fish to represent the former hindu and muslim rulers of Oudh, and, a bow and arrow to represent the hindu deity Rama who was born in Ayodhya within the state.
 
 ## 2. State districts 
 
 * Original file size: 4000x2600 pixels and 457KB
 
-* Seal svg creator: [BishkekRocks](https://commons.wikimedia.org/wiki/File:List_of_districts_of_Uttar_Pradesh_(2012).svg).
+* Image source: [BishkekRocks](https://commons.wikimedia.org/wiki/File:List_of_districts_of_Uttar_Pradesh_(2012).svg).
 
 ```{r updistrict, echo=FALSE}
 up_district <- image_read_svg('https://upload.wikimedia.org/wikipedia/commons/5/5a/List_of_districts_of_Uttar_Pradesh_%282012%29.svg', height=478)
@@ -151,12 +210,13 @@ updistorder
 
 ```{r tabtable, echo=FALSE}
 knitr::kable(updistorder[,c(2:7)], "html",
-             caption = "Uttar Pradesh districts as of 2012 sorted by population",
+             caption = "Uttar Pradesh districts as of 2012 population",
              booktabs = TRUE,
              longtable = FALSE ) %>%
   kable_styling("striped") 
 
 ```
+
 
 ```{r, include=FALSE}
 updistorder2 <- updist[
@@ -170,12 +230,14 @@ updistorder2
 
 ```{r tabtable2, echo=FALSE}
 knitr::kable(updistorder2[,c(2:7)], "html",
-             caption = "Uttar Pradesh districts sorted by name",
+             caption = "Uttar Pradesh districts by name",
              booktabs = TRUE,
              longtable = FALSE ) %>%
   kable_styling("striped") 
 
 ```
+
+
 
 ## 3. India parliamentary representation 
 
@@ -205,9 +267,9 @@ image_scale(indparl, "x478") # height: 300px
 
 * [Wikipedia](https://en.wikipedia.org/wiki/Elections_in_India#History_of_Lok_Sabha_Elections) details 17 Lok Sabha elections since 1951 with the latest being that of 2019. 
 
-* The most recent election result of 2019 gave 303 seats of 545 to BJP. 
+* The most recent election result of 2019 gave 303 seats to BJP. 
 
-* Next Lok Sabhya elections will be in 2024. 
+* Next Lok Sabha elections scheduled for 2024. 
 
 ```{r lsresults, include=FALSE}
 # get the URL for the wikipedia page with all states
@@ -234,7 +296,7 @@ lok_df <- as.data.frame(lselections)
 
 \newpage
 
-```{r loksabha, echo=FALSE}
+```{r loksabha table, echo=FALSE}
 knitr::kable(lok_df[,c(1:6)], "html",
              caption = "Lok Sabha election results",
              booktabs = TRUE,
@@ -274,7 +336,7 @@ rajya_df <- as.data.frame(rselections)
 
 \newpage
 
-```{r rajyasabha, echo=FALSE}
+```{r rajyasabha table, echo=FALSE}
 knitr::kable(rajya_df[,c(1:3)], "html",
              caption = "2020-06-19 Rajya Sabha composition by party",
              booktabs = TRUE,
@@ -317,7 +379,7 @@ rsseatorder
 
 * the BJP has 309 seats in the Vidhan Sabha and 319 seats for its Alliance representing share of 79% of total. The party with the next highest share of seats is that of Samajwadi Party with 49 seats or 12% share. Congress has 7 seats. 
 
-* Vidhan Sabha constituencies and elected members as of 2017^[Source: https://en.wikipedia.org/wiki/Seventeenth_Legislative_Assembly_of_Uttar_Pradesh]
+* Vidhan Sabha constituencies and elected members as of 2017^[https://en.wikipedia.org/wiki/Seventeenth_Legislative_Assembly_of_Uttar_Pradesh]
 
 \newpage
 
@@ -351,7 +413,7 @@ uplowerorder <- uplower_df[
 ```
 
 \newpage
-```{r uplower, echo=FALSE}
+```{r uplower table, echo=FALSE}
 knitr::kable(uplowerorder[,c(2,3,6)], "html",
              caption = "Uttar Pradesh Vidhan Sabha constituencies",
              booktabs = TRUE,
@@ -364,7 +426,7 @@ knitr::kable(uplowerorder[,c(2,3,6)], "html",
 
 * image within pdf file of size 967 KB
 
-* data source: [Chief Electoral Officer, Uttar Pradesh](http://ceouttarpradesh.nic.in/images/u2.pdf)
+* image source: [Chief Electoral Officer, Uttar Pradesh](http://ceouttarpradesh.nic.in/images/u2.pdf)
 
 ```{r upphases, echo=FALSE}
 up_phase <- image_read_pdf('http://ceouttarpradesh.nic.in/images/u2.pdf')
