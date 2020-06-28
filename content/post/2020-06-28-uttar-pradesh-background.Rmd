@@ -41,8 +41,8 @@ R packages used include magick^[Jeroen Ooms (2020). magick: Advanced Graphics an
 
 ## Electoral calendar
 
-```{r rs_cap, include=FALSE}
-up_cal <- data.frame("Date"=c("2021",
+```{r up_cal, include=FALSE}
+upcal <- data.frame("Date"=c("2021",
                               "2021",
                               "2021",
                               "2022",
@@ -67,10 +67,10 @@ up_cal <- data.frame("Date"=c("2021",
                                 "State",
                                 "National", 
                                 "State",
-                                "No elections",
+                                "-",
                                 "State",
                                 "State"),
-                     "Election" = c("Ragya Sabha", 
+                     "Election" = c("Rajya Sabha", 
                                     "Vidhan Parishad: legislative assembly",
                                     "Vidhan Parishad: nominated",
                                     "Vidhan Sabha",
@@ -81,15 +81,15 @@ up_cal <- data.frame("Date"=c("2021",
                                     "Vidhan Parishad: graduates",
                                     "Lok Sabha",
                                     "Vidhan Parishad: legislative assembly",
-                                    "None planned",
+                                    "-",
                                     "Vidhan Parishad: teachers",
                                     "Vidhan Parishad: graduates"
                                     ))
 
 ```
 
-```{r up_cal, echo=FALSE}
-knitr::kable(up_cal[,c(1:3)], "html",
+```{r upcal, echo=FALSE}
+knitr::kable(upcal[,c(1:3)], "html",
              caption = "Election calendar with focus on Uttar Pradesh",
              booktabs = TRUE,
              longtable = FALSE ) %>%
