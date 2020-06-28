@@ -307,7 +307,7 @@ knitr::kable(lok_df[,c(1:6)], "html",
 
 ## 5. Rajya Sabha composition by party 
 
-* After the past week's election the BJP party and its alliance National Democratic Alliance (NDA) have majority in Rajya Sabha with 84 seats and 114 seats. Congress 41 seats and its alliance United Progressive Alliance has 62 seats in total^[Source: https://en.wikipedia.org/wiki/Rajya_Sabha#Membership_by_party].
+* After the past week's election the BJP party and its alliance National Democratic Alliance (NDA) have majority in Rajya Sabha with 84 seats and 114 seats. Congress 41 seats and its alliance United Progressive Alliance has 62 seats in total^[https://en.wikipedia.org/wiki/Rajya_Sabha#Membership_by_party].
 
 * Elections occur as and when members retire and each term is for 6 years. Next elections scheduled for 2021. 
 
