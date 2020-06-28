@@ -28,11 +28,11 @@ inst = lapply(pkgs, library, character.only = TRUE) #load packages
 
 ## Task
 
-Aggregate data on Uttar Pradesh. 
+Aggregate data on Uttar Pradesh
 
 ## Data
 
-Sourced from Wikipedia and Wikimedia commons and comprised of open source user produced data.. 
+Sourced from Wikipedia and Wikimedia commons 
 
 ## Electoral calendar
 
@@ -236,15 +236,6 @@ knitr::kable(updistorder2[,c(2:7)], "html",
 
 ## 3. India parliamentary representation 
 
-* Original file size: 3818x4600 pixels and 75KB. PNG creator: [The,Manish](https://commons.wikimedia.org/wiki/File:Indian_Parliament_Seat_Composition.png).
-
-```{r indparl, echo=FALSE}
-# Example image
-
-indparl <- image_read("https://upload.wikimedia.org/wikipedia/commons/6/6e/Indian_Parliament_Seat_Composition.png")
-image_scale(indparl, "x478") # height: 300px
-```
-
 * Wikipedia^[https://en.wikipedia.org/wiki/Parliament_of_India] describes India's legislative body as:
 
 > bicameral with 788 seats divided as to Rajya Sabha (Council of States) of 245 members, and, the Lok Sabha (House of the People) of 543 members all presided over by President of India;
@@ -253,7 +244,16 @@ image_scale(indparl, "x478") # height: 300px
 
 > Rajya Sabha members elected by State Legislative assembly by proportional representation. 
 
-* For **Uttar Pradesh** there are 80 Lob Sabha seats and 31 Rajya Sabha seats representing 14% of total parliamentary seats. 
+* For **Uttar Pradesh** there are 80 Lok Sabha seats and 31 Rajya Sabha seats representing 14% of total parliamentary seats. 
+
+* Original file size: 3818x4600 pixels and 75KB. PNG creator: [The,Manish](https://commons.wikimedia.org/wiki/File:Indian_Parliament_Seat_Composition.png).
+
+```{r indparl, echo=FALSE}
+# Example image
+
+indparl <- image_read("https://upload.wikimedia.org/wikipedia/commons/6/6e/Indian_Parliament_Seat_Composition.png")
+image_scale(indparl, "x478") # height: 300px
+```
 
 
 ## 4. Lok Sabha election past
@@ -290,7 +290,7 @@ lok_df <- as.data.frame(lselections)
 \newpage
 
 ```{r loksabha, echo=FALSE}
-knitr::kable(lok_df[,c(1:6)], "html",
+knitr::kable(lok_df[,c(1:5)], "html",
              caption = "Lok Sabha election results",
              booktabs = TRUE,
              longtable = FALSE ) %>%
@@ -300,7 +300,7 @@ knitr::kable(lok_df[,c(1:6)], "html",
 
 ## 5. Rajya Sabha composition by party 
 
-* After the past week's election the BJP party and its alliance National Democratic Alliance (NDA) have majority in Rajya Sabha with 84 seats and 114 seats. Congress 41 seats and its alliance United Progressive Alliance has 62 seats in total^[Source: https://en.wikipedia.org/wiki/Rajya_Sabha#Membership_by_party].
+* After the past week's election the BJP party and its alliance National Democratic Alliance (NDA) have majority in Rajya Sabha with 84 seats and 114 seats. Congress have 41 seats and its alliance United Progressive Alliance has 62 seats in total^[Source: https://en.wikipedia.org/wiki/Rajya_Sabha#Membership_by_party].
 
 * Elections occur as and when members retire and each term is for 6 years. Next elections scheduled for 2021. 
 

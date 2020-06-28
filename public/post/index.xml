@@ -17,8 +17,8 @@
       <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/post/2020/06/28/uttar-pradesh-background/</guid>
-      <description>Task Aggregate data on Uttar Pradesh.
- Data Sourced from Wikipedia and Wikimedia commons and comprised of open source user produced data..
+      <description>Task Aggregate data on Uttar Pradesh
+ Data Sourced from Wikipedia and Wikimedia commons
  Electoral calendar  Table 1: Election calendar with focus on Uttar Pradesh    Date  Kind  Election      2021  National  Rajya Sabha    2021  State  Vidhan Parishad: legislative assembly    2021  State  Vidhan Parishad: nominated    2022  State  Vidhan Sabha    2022  State  Vidhan Parishad: legislative assembly    2022  State  Vidhan Parishad: local authorities    2022  State  Vidhan Parishad: nominated    2023  State  Vidhan Parishad: teachers    2023  State  Vidhan Parishad: graduates    2024  National  Lok Sabha    2024  State  Vidhan Parishad: legislative assembly    2025  No elections  None planned    2026  State  Vidhan Parishad: teachers    2026  State  Vidhan Parishad: graduates      Other information R packages used include magick1, rsvg2, rvest3, and, kableExtra4.</description>
     </item>
     
