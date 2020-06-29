@@ -534,7 +534,7 @@ knitr::kable(mahamerge[,c(1,3:6,10)], "html",
 
 > Rajya Sabha members elected by State Legislative assembly by proportional representation. 
 
-* For **Maharashtra** there are 26 Lok Sabha seats and 11 Rajya Sabha seats representing 5% of total parliamentary seats. 
+* For **Maharashtra** there are 48 Lok Sabha seats and 19 Rajya Sabha seats representing 9% of total parliamentary seats. 
 
 * Original file size: 3818x4600 pixels and 75KB. PNG creator: [The,Manish](https://commons.wikimedia.org/wiki/File:Indian_Parliament_Seat_Composition.png).
 
