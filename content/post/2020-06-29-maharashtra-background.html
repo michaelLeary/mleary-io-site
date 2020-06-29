@@ -1,0 +1,7890 @@
+---
+title: 'Maharashtra background '
+author: michael
+date: '2020-06-29'
+slug: maharashtra-background
+categories:
+  - R
+tags:
+  - Governance
+  - India
+  - Politics
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<div id="task" class="section level2">
+<h2>Task</h2>
+<p>Aggregate data on Maharashtra</p>
+</div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<p>Sourced from Wikipedia and Wikimedia commons</p>
+</div>
+<div id="electoral-calendar" class="section level2">
+<h2>Electoral calendar</h2>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:mahacalendar">Table 1: </span>Election calendar with focus on Maharashtra
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+date
+</th>
+<th style="text-align:left;">
+kind
+</th>
+<th style="text-align:left;">
+house
+</th>
+<th style="text-align:left;">
+body
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+teachers
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+graduates
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2021
+</td>
+<td style="text-align:left;">
+national
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+legislative
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+local authority
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+teachers
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+graduates
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2024
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+legislative
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2024
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+local authority
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2024
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+teachers
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2024
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+graduates
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2024
+</td>
+<td style="text-align:left;">
+national
+</td>
+<td style="text-align:left;">
+lower
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2024
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+lower
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2025
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+local authority
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2026
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+legislative
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="other-information" class="section level2">
+<h2>Other information</h2>
+<p>R packages used include magick<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, rsvg<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>, rvest<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>, and, kableExtra<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="state-seal" class="section level2">
+<h2>1. State seal</h2>
+<ul>
+<li>Original file size: 3401x3401 pixels and 74KB. Image source: <a href="https://commons.wikimedia.org/wiki/File:Seal_of_Maharashtra.svg">Not provided</a>.</li>
+</ul>
+<p><img src="/post/2020-06-29-maharashtra-background_files/figure-html/upseal-1.png" width="239" /></p>
+<p><a href="https://en.wikipedia.org/wiki/Emblem_of_Maharashtra">Wikipedia</a> suggests the seal:</p>
+<blockquote>
+<p>depicts a Samai diya lamp surrounded by 16 lotus blossoms. Between the lamp and lotus blossoms is text in marathi that translates as ``the glory of Maharashtra will grow like the first dat moon. It will be worshipped by the world and will shine only for the well being of people". That motto is based on a motto found on the royal seal of Rajmudra used by 17th century Maratha king Chhatrapati Shivaji.</p>
+</blockquote>
+</div>
+<div id="state-district-map" class="section level2">
+<h2>2. State district map</h2>
+<ul>
+<li>Original file size: 3106x2453 pixels and 248KB. Image source: <a href="https://commons.wikimedia.org/wiki/File:Maharashtra_Divisions_Eng.svg">Kaajawa</a>.</li>
+</ul>
+<p><img src="/post/2020-06-29-maharashtra-background_files/figure-html/district-1.png" width="302" /></p>
+<p><a href="https://en.wikipedia.org/wiki/List_of_districts_of_Maharashtra">Wikipedia</a> details 36 districts grouped into 6 divisions in Maharashtra as of 2014.</p>
+<div style="page-break-after: always;"></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tabtable">Table 2: </span>Maharashtra districts as of 2001 population
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+district
+</th>
+<th style="text-align:left;">
+headquarters
+</th>
+<th style="text-align:left;">
+division
+</th>
+<th style="text-align:right;">
+pop_2001
+</th>
+<th style="text-align:right;">
+area_km2
+</th>
+<th style="text-align:right;">
+density_per_km2
+</th>
+<th style="text-align:right;">
+tehsils
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Bandra
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+8587000
+</td>
+<td style="text-align:right;">
+446
+</td>
+<td style="text-align:right;">
+23271.00
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+33
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+8131849
+</td>
+<td style="text-align:right;">
+9558
+</td>
+<td style="text-align:right;">
+850.71
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+26
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:right;">
+7224224
+</td>
+<td style="text-align:right;">
+15642
+</td>
+<td style="text-align:right;">
+461.85
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:right;">
+4993796
+</td>
+<td style="text-align:right;">
+15530
+</td>
+<td style="text-align:right;">
+321.56
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Ahmednagar
+</td>
+<td style="text-align:left;">
+Ahmednagar
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:right;">
+4088077
+</td>
+<td style="text-align:right;">
+17413
+</td>
+<td style="text-align:right;">
+234.77
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+4051444
+</td>
+<td style="text-align:right;">
+9897
+</td>
+<td style="text-align:right;">
+409.36
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+32
+</td>
+<td style="text-align:left;">
+Solapur
+</td>
+<td style="text-align:left;">
+Solapur
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:right;">
+3849543
+</td>
+<td style="text-align:right;">
+14845
+</td>
+<td style="text-align:right;">
+259.32
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+Jalgaon
+</td>
+<td style="text-align:left;">
+Jalgaon
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:right;">
+3679936
+</td>
+<td style="text-align:right;">
+11765
+</td>
+<td style="text-align:right;">
+312.79
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+Kolhapur
+</td>
+<td style="text-align:left;">
+Kolhapur
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:right;">
+3515413
+</td>
+<td style="text-align:right;">
+7685
+</td>
+<td style="text-align:right;">
+457.44
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+17
+</td>
+<td style="text-align:left;">
+Mumbai City
+</td>
+<td style="text-align:left;">
+Mumbai
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+3326837
+</td>
+<td style="text-align:right;">
+157
+</td>
+<td style="text-align:right;">
+49140.90
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:left;">
+Palghar
+</td>
+<td style="text-align:left;">
+Palghar
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+2990116
+</td>
+<td style="text-align:right;">
+5344
+</td>
+<td style="text-align:right;">
+562.00
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+2897013
+</td>
+<td style="text-align:right;">
+10100
+</td>
+<td style="text-align:right;">
+286.83
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:left;">
+Nanded
+</td>
+<td style="text-align:left;">
+Nanded
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+2876259
+</td>
+<td style="text-align:right;">
+10422
+</td>
+<td style="text-align:right;">
+275.98
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+30
+</td>
+<td style="text-align:left;">
+Satara
+</td>
+<td style="text-align:left;">
+Satara
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:right;">
+2796906
+</td>
+<td style="text-align:right;">
+10484
+</td>
+<td style="text-align:right;">
+266.77
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:right;">
+2606063
+</td>
+<td style="text-align:right;">
+12626
+</td>
+<td style="text-align:right;">
+206.40
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+Sangli
+</td>
+<td style="text-align:left;">
+Sangli
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:right;">
+2583524
+</td>
+<td style="text-align:right;">
+8578
+</td>
+<td style="text-align:right;">
+301.18
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+Buldhana
+</td>
+<td style="text-align:left;">
+Buldhana
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:right;">
+2232480
+</td>
+<td style="text-align:right;">
+9680
+</td>
+<td style="text-align:right;">
+230.63
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+27
+</td>
+<td style="text-align:left;">
+Raigad
+</td>
+<td style="text-align:left;">
+Alibag
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+2207929
+</td>
+<td style="text-align:right;">
+7148
+</td>
+<td style="text-align:right;">
+308.89
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Beed
+</td>
+<td style="text-align:left;">
+Beed
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+2161250
+</td>
+<td style="text-align:right;">
+10439
+</td>
+<td style="text-align:right;">
+207.04
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:left;">
+Latur
+</td>
+<td style="text-align:left;">
+Latur
+</td>
+<td style="text-align:left;">
+Aurangabad Division
+</td>
+<td style="text-align:right;">
+2080285
+</td>
+<td style="text-align:right;">
+7372
+</td>
+<td style="text-align:right;">
+282.19
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+36
+</td>
+<td style="text-align:left;">
+Yavatmal
+</td>
+<td style="text-align:left;">
+Yavatmal
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:right;">
+2077144
+</td>
+<td style="text-align:right;">
+13584
+</td>
+<td style="text-align:right;">
+152.93
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+Chandrapur
+</td>
+<td style="text-align:left;">
+Chandrapur
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+2071101
+</td>
+<td style="text-align:right;">
+10695
+</td>
+<td style="text-align:right;">
+193.65
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Akola
+</td>
+<td style="text-align:left;">
+Akola
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:right;">
+1818617
+</td>
+<td style="text-align:right;">
+5417
+</td>
+<td style="text-align:right;">
+300.78
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+Dhule
+</td>
+<td style="text-align:left;">
+Dhule
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:right;">
+1707947
+</td>
+<td style="text-align:right;">
+8063
+</td>
+<td style="text-align:right;">
+211.83
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+28
+</td>
+<td style="text-align:left;">
+Ratnagiri
+</td>
+<td style="text-align:left;">
+Ratnagiri
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+1696777
+</td>
+<td style="text-align:right;">
+8208
+</td>
+<td style="text-align:right;">
+206.72
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+Jalna
+</td>
+<td style="text-align:left;">
+Jalna
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+1612357
+</td>
+<td style="text-align:right;">
+7612
+</td>
+<td style="text-align:right;">
+211.82
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+25
+</td>
+<td style="text-align:left;">
+Parbhani
+</td>
+<td style="text-align:left;">
+Parbhani
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+1527715
+</td>
+<td style="text-align:right;">
+6251
+</td>
+<td style="text-align:right;">
+244.40
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23
+</td>
+<td style="text-align:left;">
+Osmanabad
+</td>
+<td style="text-align:left;">
+Osmanabad
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+1486586
+</td>
+<td style="text-align:right;">
+7512
+</td>
+<td style="text-align:right;">
+197.89
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21
+</td>
+<td style="text-align:left;">
+Nandurbar
+</td>
+<td style="text-align:left;">
+Nandurbar
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:right;">
+1309135
+</td>
+<td style="text-align:right;">
+5035
+</td>
+<td style="text-align:right;">
+260.00
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+34
+</td>
+<td style="text-align:left;">
+Wardha
+</td>
+<td style="text-align:left;">
+Wardha
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+1230640
+</td>
+<td style="text-align:right;">
+6310
+</td>
+<td style="text-align:right;">
+195.03
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+Gondia
+</td>
+<td style="text-align:left;">
+Gondia
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+1200151
+</td>
+<td style="text-align:right;">
+4843
+</td>
+<td style="text-align:right;">
+247.81
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+Bhandara
+</td>
+<td style="text-align:left;">
+Bhandara
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+1135835
+</td>
+<td style="text-align:right;">
+3717
+</td>
+<td style="text-align:right;">
+305.58
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+35
+</td>
+<td style="text-align:left;">
+Washim
+</td>
+<td style="text-align:left;">
+Washim
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:right;">
+1020216
+</td>
+<td style="text-align:right;">
+5150
+</td>
+<td style="text-align:right;">
+275.98
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+Hingoli
+</td>
+<td style="text-align:left;">
+Hingoli
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+987160
+</td>
+<td style="text-align:right;">
+4526
+</td>
+<td style="text-align:right;">
+218.11
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Gadchiroli
+</td>
+<td style="text-align:left;">
+Gadchiroli
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+970294
+</td>
+<td style="text-align:right;">
+14412
+</td>
+<td style="text-align:right;">
+67.33
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+31
+</td>
+<td style="text-align:left;">
+Sindhudurg
+</td>
+<td style="text-align:left;">
+Oros
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+868825
+</td>
+<td style="text-align:right;">
+5207
+</td>
+<td style="text-align:right;">
+166.86
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tabtable2">Table 3: </span>Maharashtra districts by name
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+district
+</th>
+<th style="text-align:left;">
+headquarters
+</th>
+<th style="text-align:left;">
+division
+</th>
+<th style="text-align:right;">
+pop_2001
+</th>
+<th style="text-align:right;">
+area_km2
+</th>
+<th style="text-align:right;">
+density_per_km2
+</th>
+<th style="text-align:right;">
+tehsils
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Ahmednagar
+</td>
+<td style="text-align:left;">
+Ahmednagar
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:right;">
+4088077
+</td>
+<td style="text-align:right;">
+17413
+</td>
+<td style="text-align:right;">
+234.77
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Akola
+</td>
+<td style="text-align:left;">
+Akola
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:right;">
+1818617
+</td>
+<td style="text-align:right;">
+5417
+</td>
+<td style="text-align:right;">
+300.78
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:right;">
+2606063
+</td>
+<td style="text-align:right;">
+12626
+</td>
+<td style="text-align:right;">
+206.40
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+2897013
+</td>
+<td style="text-align:right;">
+10100
+</td>
+<td style="text-align:right;">
+286.83
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Beed
+</td>
+<td style="text-align:left;">
+Beed
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+2161250
+</td>
+<td style="text-align:right;">
+10439
+</td>
+<td style="text-align:right;">
+207.04
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bhandara
+</td>
+<td style="text-align:left;">
+Bhandara
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+1135835
+</td>
+<td style="text-align:right;">
+3717
+</td>
+<td style="text-align:right;">
+305.58
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buldhana
+</td>
+<td style="text-align:left;">
+Buldhana
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:right;">
+2232480
+</td>
+<td style="text-align:right;">
+9680
+</td>
+<td style="text-align:right;">
+230.63
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chandrapur
+</td>
+<td style="text-align:left;">
+Chandrapur
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+2071101
+</td>
+<td style="text-align:right;">
+10695
+</td>
+<td style="text-align:right;">
+193.65
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dhule
+</td>
+<td style="text-align:left;">
+Dhule
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:right;">
+1707947
+</td>
+<td style="text-align:right;">
+8063
+</td>
+<td style="text-align:right;">
+211.83
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gadchiroli
+</td>
+<td style="text-align:left;">
+Gadchiroli
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+970294
+</td>
+<td style="text-align:right;">
+14412
+</td>
+<td style="text-align:right;">
+67.33
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gondia
+</td>
+<td style="text-align:left;">
+Gondia
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+1200151
+</td>
+<td style="text-align:right;">
+4843
+</td>
+<td style="text-align:right;">
+247.81
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hingoli
+</td>
+<td style="text-align:left;">
+Hingoli
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+987160
+</td>
+<td style="text-align:right;">
+4526
+</td>
+<td style="text-align:right;">
+218.11
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jalgaon
+</td>
+<td style="text-align:left;">
+Jalgaon
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:right;">
+3679936
+</td>
+<td style="text-align:right;">
+11765
+</td>
+<td style="text-align:right;">
+312.79
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jalna
+</td>
+<td style="text-align:left;">
+Jalna
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+1612357
+</td>
+<td style="text-align:right;">
+7612
+</td>
+<td style="text-align:right;">
+211.82
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kolhapur
+</td>
+<td style="text-align:left;">
+Kolhapur
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:right;">
+3515413
+</td>
+<td style="text-align:right;">
+7685
+</td>
+<td style="text-align:right;">
+457.44
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Latur
+</td>
+<td style="text-align:left;">
+Latur
+</td>
+<td style="text-align:left;">
+Aurangabad Division
+</td>
+<td style="text-align:right;">
+2080285
+</td>
+<td style="text-align:right;">
+7372
+</td>
+<td style="text-align:right;">
+282.19
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mumbai City
+</td>
+<td style="text-align:left;">
+Mumbai
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+3326837
+</td>
+<td style="text-align:right;">
+157
+</td>
+<td style="text-align:right;">
+49140.90
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Bandra
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+8587000
+</td>
+<td style="text-align:right;">
+446
+</td>
+<td style="text-align:right;">
+23271.00
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+4051444
+</td>
+<td style="text-align:right;">
+9897
+</td>
+<td style="text-align:right;">
+409.36
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nanded
+</td>
+<td style="text-align:left;">
+Nanded
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+2876259
+</td>
+<td style="text-align:right;">
+10422
+</td>
+<td style="text-align:right;">
+275.98
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nandurbar
+</td>
+<td style="text-align:left;">
+Nandurbar
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:right;">
+1309135
+</td>
+<td style="text-align:right;">
+5035
+</td>
+<td style="text-align:right;">
+260.00
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:right;">
+4993796
+</td>
+<td style="text-align:right;">
+15530
+</td>
+<td style="text-align:right;">
+321.56
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Osmanabad
+</td>
+<td style="text-align:left;">
+Osmanabad
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+1486586
+</td>
+<td style="text-align:right;">
+7512
+</td>
+<td style="text-align:right;">
+197.89
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Palghar
+</td>
+<td style="text-align:left;">
+Palghar
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+2990116
+</td>
+<td style="text-align:right;">
+5344
+</td>
+<td style="text-align:right;">
+562.00
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Parbhani
+</td>
+<td style="text-align:left;">
+Parbhani
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+1527715
+</td>
+<td style="text-align:right;">
+6251
+</td>
+<td style="text-align:right;">
+244.40
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:right;">
+7224224
+</td>
+<td style="text-align:right;">
+15642
+</td>
+<td style="text-align:right;">
+461.85
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Raigad
+</td>
+<td style="text-align:left;">
+Alibag
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+2207929
+</td>
+<td style="text-align:right;">
+7148
+</td>
+<td style="text-align:right;">
+308.89
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ratnagiri
+</td>
+<td style="text-align:left;">
+Ratnagiri
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+1696777
+</td>
+<td style="text-align:right;">
+8208
+</td>
+<td style="text-align:right;">
+206.72
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sangli
+</td>
+<td style="text-align:left;">
+Sangli
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:right;">
+2583524
+</td>
+<td style="text-align:right;">
+8578
+</td>
+<td style="text-align:right;">
+301.18
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Satara
+</td>
+<td style="text-align:left;">
+Satara
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:right;">
+2796906
+</td>
+<td style="text-align:right;">
+10484
+</td>
+<td style="text-align:right;">
+266.77
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sindhudurg
+</td>
+<td style="text-align:left;">
+Oros
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+868825
+</td>
+<td style="text-align:right;">
+5207
+</td>
+<td style="text-align:right;">
+166.86
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Solapur
+</td>
+<td style="text-align:left;">
+Solapur
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:right;">
+3849543
+</td>
+<td style="text-align:right;">
+14845
+</td>
+<td style="text-align:right;">
+259.32
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+8131849
+</td>
+<td style="text-align:right;">
+9558
+</td>
+<td style="text-align:right;">
+850.71
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Wardha
+</td>
+<td style="text-align:left;">
+Wardha
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+1230640
+</td>
+<td style="text-align:right;">
+6310
+</td>
+<td style="text-align:right;">
+195.03
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Washim
+</td>
+<td style="text-align:left;">
+Washim
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:right;">
+1020216
+</td>
+<td style="text-align:right;">
+5150
+</td>
+<td style="text-align:right;">
+275.98
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Yavatmal
+</td>
+<td style="text-align:left;">
+Yavatmal
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:right;">
+2077144
+</td>
+<td style="text-align:right;">
+13584
+</td>
+<td style="text-align:right;">
+152.93
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="state-legislature" class="section level2">
+<h2>3. State legislature</h2>
+<div id="upper-house" class="section level3">
+<h3>Upper house</h3>
+<ul>
+<li><p>The state legislature is bicameral. The upper house of 78 members is called the legislative council or Vidhan Parishad<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p></li>
+<li><p>Term for Vidhan Parishad members is 6 years. The 78 seats are drawn from five groups: legislative assembly, local authority, nominated members, graduate and teachers. The distribution of seats is shown in table.</p></li>
+</ul>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:upperhousetable">Table 4: </span>Maharashtra upper house by constituency
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Constituency
+</th>
+<th style="text-align:right;">
+Seats
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+Legislative assembly
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+Local Authority
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Nominated members
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Graduate
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Teachers
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="lower-house" class="section level3">
+<h3>Lower house</h3>
+<ul>
+<li><p>The lower house has 288 members and is called the legislative assembly or Vidhan Sabha<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>.</p></li>
+<li><p>Term for Vidhan Sabha members is 5 years. Latest election was 2019. Upcoming election scheduled for 2024.</p></li>
+<li><p>BJP party has 105 seats in the Vidhan Sabha. Shiv Sena has 56 seats and Congress has 44 seats.</p></li>
+<li><p>Vidhan Sabha constituencies and elected members as of 2019<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p></li>
+<li><p>Original file size: 1468x980 pixels and 4310KB. Image source: <a href="https://commons.wikimedia.org/wiki/File:Wahlkreise_zur_Vidhan_Sabha_von_Maharashtra.svg">Furfur</a>.</p></li>
+</ul>
+<p><img src="/post/2020-06-29-maharashtra-background_files/figure-html/constituency-1.png" width="358" /></p>
+</div>
+</div>
+<div id="electoral-constituencies" class="section level2">
+<h2>5. Electoral constituencies</h2>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:mahadistconparty">Table 5: </span>District, constituency, party
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+district
+</th>
+<th style="text-align:left;">
+constituency
+</th>
+<th style="text-align:left;">
+party
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+216
+</td>
+<td style="text-align:left;">
+Ahmednagar
+</td>
+<td style="text-align:left;">
+Akole
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+217
+</td>
+<td style="text-align:left;">
+Ahmednagar
+</td>
+<td style="text-align:left;">
+Sangamner
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+218
+</td>
+<td style="text-align:left;">
+Ahmednagar
+</td>
+<td style="text-align:left;">
+Shirdi
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+219
+</td>
+<td style="text-align:left;">
+Ahmednagar
+</td>
+<td style="text-align:left;">
+Kopargaon
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+220
+</td>
+<td style="text-align:left;">
+Ahmednagar
+</td>
+<td style="text-align:left;">
+Shrirampur
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+221
+</td>
+<td style="text-align:left;">
+Ahmednagar
+</td>
+<td style="text-align:left;">
+Nevasa
+</td>
+<td style="text-align:left;">
+Krantikari Shetkari Paksha
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+222
+</td>
+<td style="text-align:left;">
+Ahmednagar
+</td>
+<td style="text-align:left;">
+Shevgaon
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+223
+</td>
+<td style="text-align:left;">
+Ahmednagar
+</td>
+<td style="text-align:left;">
+Rahuri
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+224
+</td>
+<td style="text-align:left;">
+Ahmednagar
+</td>
+<td style="text-align:left;">
+Parner
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+225
+</td>
+<td style="text-align:left;">
+Ahmednagar
+</td>
+<td style="text-align:left;">
+Ahmednagar City
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+226
+</td>
+<td style="text-align:left;">
+Ahmednagar
+</td>
+<td style="text-align:left;">
+Shrigonda
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+227
+</td>
+<td style="text-align:left;">
+Ahmednagar
+</td>
+<td style="text-align:left;">
+Karjat Jamkhed
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+28
+</td>
+<td style="text-align:left;">
+Akola
+</td>
+<td style="text-align:left;">
+Akot
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+Akola
+</td>
+<td style="text-align:left;">
+Balapur
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+30
+</td>
+<td style="text-align:left;">
+Akola
+</td>
+<td style="text-align:left;">
+Akola West
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+31
+</td>
+<td style="text-align:left;">
+Akola
+</td>
+<td style="text-align:left;">
+Akola East
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+32
+</td>
+<td style="text-align:left;">
+Akola
+</td>
+<td style="text-align:left;">
+Murtizapur
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+36
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:left;">
+Dhamangaon Railway
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+37
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:left;">
+Badnera
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+38
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+39
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:left;">
+Teosa
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+40
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:left;">
+Daryapur
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+41
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:left;">
+Melghat
+</td>
+<td style="text-align:left;">
+Prahar Janshakti Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+42
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:left;">
+Achalpur
+</td>
+<td style="text-align:left;">
+Prahar Janshakti Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+43
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:left;">
+Morshi
+</td>
+<td style="text-align:left;">
+Swabhimani Paksha
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+104
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Sillod
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+105
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Kannad
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+106
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Phulambri
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+107
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Aurangabad Central
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+108
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Aurangabad West
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+109
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Aurangabad East
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Paithan
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+111
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Gangapur
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+112
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Vaijapur
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+228
+</td>
+<td style="text-align:left;">
+Beed
+</td>
+<td style="text-align:left;">
+Georai
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+229
+</td>
+<td style="text-align:left;">
+Beed
+</td>
+<td style="text-align:left;">
+Majalgaon
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+230
+</td>
+<td style="text-align:left;">
+Beed
+</td>
+<td style="text-align:left;">
+Beed
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+231
+</td>
+<td style="text-align:left;">
+Beed
+</td>
+<td style="text-align:left;">
+Ashti
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+232
+</td>
+<td style="text-align:left;">
+Beed
+</td>
+<td style="text-align:left;">
+Kaij
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+233
+</td>
+<td style="text-align:left;">
+Beed
+</td>
+<td style="text-align:left;">
+Parli
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+60
+</td>
+<td style="text-align:left;">
+Bhandara
+</td>
+<td style="text-align:left;">
+Tumsar
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+61
+</td>
+<td style="text-align:left;">
+Bhandara
+</td>
+<td style="text-align:left;">
+Bhandara
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+62
+</td>
+<td style="text-align:left;">
+Bhandara
+</td>
+<td style="text-align:left;">
+Sakoli
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21
+</td>
+<td style="text-align:left;">
+Buldhana
+</td>
+<td style="text-align:left;">
+Malkapur
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+Buldhana
+</td>
+<td style="text-align:left;">
+Buldhana
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23
+</td>
+<td style="text-align:left;">
+Buldhana
+</td>
+<td style="text-align:left;">
+Chikhali
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:left;">
+Buldhana
+</td>
+<td style="text-align:left;">
+Sindkhed Raja
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+25
+</td>
+<td style="text-align:left;">
+Buldhana
+</td>
+<td style="text-align:left;">
+Mehkar
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+26
+</td>
+<td style="text-align:left;">
+Buldhana
+</td>
+<td style="text-align:left;">
+Khamgaon
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+27
+</td>
+<td style="text-align:left;">
+Buldhana
+</td>
+<td style="text-align:left;">
+Jalgaon (Jamod)
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+70
+</td>
+<td style="text-align:left;">
+Chandrapur
+</td>
+<td style="text-align:left;">
+Rajura
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+71
+</td>
+<td style="text-align:left;">
+Chandrapur
+</td>
+<td style="text-align:left;">
+Chandrapur
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+72
+</td>
+<td style="text-align:left;">
+Chandrapur
+</td>
+<td style="text-align:left;">
+Ballarpur
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+73
+</td>
+<td style="text-align:left;">
+Chandrapur
+</td>
+<td style="text-align:left;">
+Brahmapuri
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+74
+</td>
+<td style="text-align:left;">
+Chandrapur
+</td>
+<td style="text-align:left;">
+Chimur
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+75
+</td>
+<td style="text-align:left;">
+Chandrapur
+</td>
+<td style="text-align:left;">
+Warora
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Dhule
+</td>
+<td style="text-align:left;">
+Sakri
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+Dhule
+</td>
+<td style="text-align:left;">
+Dhule Rural
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+Dhule
+</td>
+<td style="text-align:left;">
+Dhule City
+</td>
+<td style="text-align:left;">
+All India Majlis-E-Ittehadul Muslimeen
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+Dhule
+</td>
+<td style="text-align:left;">
+Sindkheda
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+Dhule
+</td>
+<td style="text-align:left;">
+Shirpur
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+67
+</td>
+<td style="text-align:left;">
+Gadchiroli
+</td>
+<td style="text-align:left;">
+Armori
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+68
+</td>
+<td style="text-align:left;">
+Gadchiroli
+</td>
+<td style="text-align:left;">
+Gadchiroli
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+69
+</td>
+<td style="text-align:left;">
+Gadchiroli
+</td>
+<td style="text-align:left;">
+Aheri
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+63
+</td>
+<td style="text-align:left;">
+Gondiya
+</td>
+<td style="text-align:left;">
+Arjuni Morgaon
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+64
+</td>
+<td style="text-align:left;">
+Gondiya
+</td>
+<td style="text-align:left;">
+Tirora
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+65
+</td>
+<td style="text-align:left;">
+Gondiya
+</td>
+<td style="text-align:left;">
+Gondiya
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+66
+</td>
+<td style="text-align:left;">
+Gondiya
+</td>
+<td style="text-align:left;">
+Amgaon
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+92
+</td>
+<td style="text-align:left;">
+Hingoli
+</td>
+<td style="text-align:left;">
+Basmath
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+93
+</td>
+<td style="text-align:left;">
+Hingoli
+</td>
+<td style="text-align:left;">
+Kalamnuri
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+94
+</td>
+<td style="text-align:left;">
+Hingoli
+</td>
+<td style="text-align:left;">
+Hingoli
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Jalgaon
+</td>
+<td style="text-align:left;">
+Chopda
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+Jalgaon
+</td>
+<td style="text-align:left;">
+Raver
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+Jalgaon
+</td>
+<td style="text-align:left;">
+Bhusawal
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+Jalgaon
+</td>
+<td style="text-align:left;">
+Jalgaon City
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+Jalgaon
+</td>
+<td style="text-align:left;">
+Jalgaon Rural
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+Jalgaon
+</td>
+<td style="text-align:left;">
+Amalner
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:left;">
+Jalgaon
+</td>
+<td style="text-align:left;">
+Erandol
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+17
+</td>
+<td style="text-align:left;">
+Jalgaon
+</td>
+<td style="text-align:left;">
+Chalisgaon
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+Jalgaon
+</td>
+<td style="text-align:left;">
+Pachora
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19
+</td>
+<td style="text-align:left;">
+Jalgaon
+</td>
+<td style="text-align:left;">
+Jamner
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:left;">
+Jalgaon
+</td>
+<td style="text-align:left;">
+Muktainagar
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+99
+</td>
+<td style="text-align:left;">
+Jalna
+</td>
+<td style="text-align:left;">
+Partur
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+100
+</td>
+<td style="text-align:left;">
+Jalna
+</td>
+<td style="text-align:left;">
+Ghansawangi
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+101
+</td>
+<td style="text-align:left;">
+Jalna
+</td>
+<td style="text-align:left;">
+Jalna
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+102
+</td>
+<td style="text-align:left;">
+Jalna
+</td>
+<td style="text-align:left;">
+Badnapur
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+103
+</td>
+<td style="text-align:left;">
+Jalna
+</td>
+<td style="text-align:left;">
+Bhokardan
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+271
+</td>
+<td style="text-align:left;">
+Kolhapur
+</td>
+<td style="text-align:left;">
+Chandgad
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+272
+</td>
+<td style="text-align:left;">
+Kolhapur
+</td>
+<td style="text-align:left;">
+Radhanagari
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+273
+</td>
+<td style="text-align:left;">
+Kolhapur
+</td>
+<td style="text-align:left;">
+Kagal
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+274
+</td>
+<td style="text-align:left;">
+Kolhapur
+</td>
+<td style="text-align:left;">
+Kolhapur South
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+275
+</td>
+<td style="text-align:left;">
+Kolhapur
+</td>
+<td style="text-align:left;">
+Karvir
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+276
+</td>
+<td style="text-align:left;">
+Kolhapur
+</td>
+<td style="text-align:left;">
+Kolhapur North
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+277
+</td>
+<td style="text-align:left;">
+Kolhapur
+</td>
+<td style="text-align:left;">
+Shahuwadi
+</td>
+<td style="text-align:left;">
+Jan Surajya Shakti
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+278
+</td>
+<td style="text-align:left;">
+Kolhapur
+</td>
+<td style="text-align:left;">
+Hatkanangle
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+279
+</td>
+<td style="text-align:left;">
+Kolhapur
+</td>
+<td style="text-align:left;">
+Ichalkaranji
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+280
+</td>
+<td style="text-align:left;">
+Kolhapur
+</td>
+<td style="text-align:left;">
+Shirol
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+234
+</td>
+<td style="text-align:left;">
+Latur
+</td>
+<td style="text-align:left;">
+Latur Rural
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+235
+</td>
+<td style="text-align:left;">
+Latur
+</td>
+<td style="text-align:left;">
+Latur City
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+236
+</td>
+<td style="text-align:left;">
+Latur
+</td>
+<td style="text-align:left;">
+Ahmadpur
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+237
+</td>
+<td style="text-align:left;">
+Latur
+</td>
+<td style="text-align:left;">
+Udgir
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+238
+</td>
+<td style="text-align:left;">
+Latur
+</td>
+<td style="text-align:left;">
+Nilanga
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+239
+</td>
+<td style="text-align:left;">
+Latur
+</td>
+<td style="text-align:left;">
+Ausa
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+178
+</td>
+<td style="text-align:left;">
+Mumbai City
+</td>
+<td style="text-align:left;">
+Dharavi
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+179
+</td>
+<td style="text-align:left;">
+Mumbai City
+</td>
+<td style="text-align:left;">
+Sion Koliwada
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+180
+</td>
+<td style="text-align:left;">
+Mumbai City
+</td>
+<td style="text-align:left;">
+Wadala
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+181
+</td>
+<td style="text-align:left;">
+Mumbai City
+</td>
+<td style="text-align:left;">
+Mahim
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+182
+</td>
+<td style="text-align:left;">
+Mumbai City
+</td>
+<td style="text-align:left;">
+Worli
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+183
+</td>
+<td style="text-align:left;">
+Mumbai City
+</td>
+<td style="text-align:left;">
+Shivadi
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+184
+</td>
+<td style="text-align:left;">
+Mumbai City
+</td>
+<td style="text-align:left;">
+Byculla
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+185
+</td>
+<td style="text-align:left;">
+Mumbai City
+</td>
+<td style="text-align:left;">
+Malabar Hill
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+186
+</td>
+<td style="text-align:left;">
+Mumbai City
+</td>
+<td style="text-align:left;">
+Mumbadevi
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+187
+</td>
+<td style="text-align:left;">
+Mumbai City
+</td>
+<td style="text-align:left;">
+Colaba
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+152
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Borivali
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+153
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Dahisar
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+154
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Magathane
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+155
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Mulund
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+156
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Vikhroli
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+157
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Bhandup West
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+158
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Jogeshwari East
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+159
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Dindoshi
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+160
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Kandivali East
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+161
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Charkop
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+162
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Malad West
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+163
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Goregaon
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+164
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Versova
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+165
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Andheri West
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+166
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Andheri East
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+167
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Vile Parle
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+168
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Chandivali
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+169
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Ghatkopar West
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+170
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Ghatkopar East
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+171
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Mankhurd Shivaji Nagar
+</td>
+<td style="text-align:left;">
+Samajwadi Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+172
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Anushakti Nagar
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+173
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Chembur
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+174
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Kurla
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+175
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Kalina
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+176
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Vandre East
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+177
+</td>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Vandre West
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+48
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:left;">
+Katol
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+49
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:left;">
+Savner
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+50
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:left;">
+Hingna
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+51
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:left;">
+Umred
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:left;">
+Nagpur South West
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:left;">
+Nagpur South
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+54
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:left;">
+Nagpur East
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+55
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:left;">
+Nagpur Central
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+56
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:left;">
+Nagpur West
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+57
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:left;">
+Nagpur North
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+58
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:left;">
+Kamthi
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+59
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:left;">
+Ramtek
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+83
+</td>
+<td style="text-align:left;">
+Nanded
+</td>
+<td style="text-align:left;">
+Kinwat
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+84
+</td>
+<td style="text-align:left;">
+Nanded
+</td>
+<td style="text-align:left;">
+Hadgaon
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+85
+</td>
+<td style="text-align:left;">
+Nanded
+</td>
+<td style="text-align:left;">
+Bhokar
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+86
+</td>
+<td style="text-align:left;">
+Nanded
+</td>
+<td style="text-align:left;">
+Nanded North
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+87
+</td>
+<td style="text-align:left;">
+Nanded
+</td>
+<td style="text-align:left;">
+Nanded South
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+88
+</td>
+<td style="text-align:left;">
+Nanded
+</td>
+<td style="text-align:left;">
+Loha
+</td>
+<td style="text-align:left;">
+Peasants And Workers Party of India
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+89
+</td>
+<td style="text-align:left;">
+Nanded
+</td>
+<td style="text-align:left;">
+Naigaon
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+90
+</td>
+<td style="text-align:left;">
+Nanded
+</td>
+<td style="text-align:left;">
+Deglur
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+91
+</td>
+<td style="text-align:left;">
+Nanded
+</td>
+<td style="text-align:left;">
+Mukhed
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Nandurbar
+</td>
+<td style="text-align:left;">
+Akkalkuwa
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Nandurbar
+</td>
+<td style="text-align:left;">
+Shahada
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+Nandurbar
+</td>
+<td style="text-align:left;">
+Nandurbar
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+Nandurbar
+</td>
+<td style="text-align:left;">
+Navapur
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+113
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Nandgaon
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+114
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Malegaon Central
+</td>
+<td style="text-align:left;">
+All India Majlis-E-Ittehadul Muslimeen
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+115
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Malegaon Outer
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+116
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Baglan
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Kalvan
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+118
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Chandvad
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+119
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Yewla
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+120
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Sinnar
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+121
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Niphad
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+122
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Dindori
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+123
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Nashik East
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+124
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Nashik Central
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+125
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Nashik West
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+126
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Deolali
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+127
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Igatpuri
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+240
+</td>
+<td style="text-align:left;">
+Osmanabad
+</td>
+<td style="text-align:left;">
+Umarga
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+241
+</td>
+<td style="text-align:left;">
+Osmanabad
+</td>
+<td style="text-align:left;">
+Tuljapur
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+242
+</td>
+<td style="text-align:left;">
+Osmanabad
+</td>
+<td style="text-align:left;">
+Osmanabad
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+243
+</td>
+<td style="text-align:left;">
+Osmanabad
+</td>
+<td style="text-align:left;">
+Paranda
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+128
+</td>
+<td style="text-align:left;">
+Palghar
+</td>
+<td style="text-align:left;">
+Dahanu
+</td>
+<td style="text-align:left;">
+Communist Party of India (Marxist)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+129
+</td>
+<td style="text-align:left;">
+Palghar
+</td>
+<td style="text-align:left;">
+Vikramgad
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+130
+</td>
+<td style="text-align:left;">
+Palghar
+</td>
+<td style="text-align:left;">
+Palghar
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+131
+</td>
+<td style="text-align:left;">
+Palghar
+</td>
+<td style="text-align:left;">
+Boisar
+</td>
+<td style="text-align:left;">
+Bahujan Vikas Aghadi
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+132
+</td>
+<td style="text-align:left;">
+Palghar
+</td>
+<td style="text-align:left;">
+Nalasopara
+</td>
+<td style="text-align:left;">
+Bahujan Vikas Aghadi
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+133
+</td>
+<td style="text-align:left;">
+Palghar
+</td>
+<td style="text-align:left;">
+Vasai
+</td>
+<td style="text-align:left;">
+Bahujan Vikas Aghadi
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+95
+</td>
+<td style="text-align:left;">
+Parbhani
+</td>
+<td style="text-align:left;">
+Jintur
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+96
+</td>
+<td style="text-align:left;">
+Parbhani
+</td>
+<td style="text-align:left;">
+Parbhani
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+97
+</td>
+<td style="text-align:left;">
+Parbhani
+</td>
+<td style="text-align:left;">
+Gangakhed
+</td>
+<td style="text-align:left;">
+Rashtriya Samaj Paksha
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+98
+</td>
+<td style="text-align:left;">
+Parbhani
+</td>
+<td style="text-align:left;">
+Pathri
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+195
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Junnar
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+196
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Ambegaon
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+197
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Khed Alandi
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+198
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Shirur
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+199
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Daund
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+200
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Indapur
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+201
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Baramati
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+202
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Purandar
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+203
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Bhor
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+204
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Maval
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+205
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Chinchwad
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+206
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Pimpri
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+207
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Bhosari
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+208
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Vadgaon Sheri
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+209
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Shivajinagar
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+210
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Kothrud
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+211
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Khadakwasala
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+212
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Parvati
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+213
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Hadapsar
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+214
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Pune Cantonment
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+215
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Kasba Peth
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+188
+</td>
+<td style="text-align:left;">
+Raigad
+</td>
+<td style="text-align:left;">
+Panvel
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+189
+</td>
+<td style="text-align:left;">
+Raigad
+</td>
+<td style="text-align:left;">
+Karjat
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+190
+</td>
+<td style="text-align:left;">
+Raigad
+</td>
+<td style="text-align:left;">
+Uran
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+191
+</td>
+<td style="text-align:left;">
+Raigad
+</td>
+<td style="text-align:left;">
+Pen
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+192
+</td>
+<td style="text-align:left;">
+Raigad
+</td>
+<td style="text-align:left;">
+Alibag
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+193
+</td>
+<td style="text-align:left;">
+Raigad
+</td>
+<td style="text-align:left;">
+Shrivardhan
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+194
+</td>
+<td style="text-align:left;">
+Raigad
+</td>
+<td style="text-align:left;">
+Mahad
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+263
+</td>
+<td style="text-align:left;">
+Ratnagiri
+</td>
+<td style="text-align:left;">
+Dapoli
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+264
+</td>
+<td style="text-align:left;">
+Ratnagiri
+</td>
+<td style="text-align:left;">
+Guhagar
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+265
+</td>
+<td style="text-align:left;">
+Ratnagiri
+</td>
+<td style="text-align:left;">
+Chiplun
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+266
+</td>
+<td style="text-align:left;">
+Ratnagiri
+</td>
+<td style="text-align:left;">
+Ratnagiri
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+267
+</td>
+<td style="text-align:left;">
+Ratnagiri
+</td>
+<td style="text-align:left;">
+Rajapur
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+281
+</td>
+<td style="text-align:left;">
+Sangli
+</td>
+<td style="text-align:left;">
+Miraj
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+282
+</td>
+<td style="text-align:left;">
+Sangli
+</td>
+<td style="text-align:left;">
+Sangli
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+283
+</td>
+<td style="text-align:left;">
+Sangli district
+</td>
+<td style="text-align:left;">
+Islampur
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+284
+</td>
+<td style="text-align:left;">
+Sangli district
+</td>
+<td style="text-align:left;">
+Shirala
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+285
+</td>
+<td style="text-align:left;">
+Sangli district
+</td>
+<td style="text-align:left;">
+Palus-Kadegaon
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+286
+</td>
+<td style="text-align:left;">
+Sangli district
+</td>
+<td style="text-align:left;">
+Khanapur
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+287
+</td>
+<td style="text-align:left;">
+Sangli district
+</td>
+<td style="text-align:left;">
+Tasgaon-Kavathe Mahankal
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+288
+</td>
+<td style="text-align:left;">
+Sangli district
+</td>
+<td style="text-align:left;">
+Jat
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+255
+</td>
+<td style="text-align:left;">
+Satara
+</td>
+<td style="text-align:left;">
+Phaltan
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+256
+</td>
+<td style="text-align:left;">
+Satara
+</td>
+<td style="text-align:left;">
+Wai
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+257
+</td>
+<td style="text-align:left;">
+Satara
+</td>
+<td style="text-align:left;">
+Koregaon
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+258
+</td>
+<td style="text-align:left;">
+Satara
+</td>
+<td style="text-align:left;">
+Man
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+259
+</td>
+<td style="text-align:left;">
+Satara
+</td>
+<td style="text-align:left;">
+Karad North
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+260
+</td>
+<td style="text-align:left;">
+Satara
+</td>
+<td style="text-align:left;">
+Karad South
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+261
+</td>
+<td style="text-align:left;">
+Satara
+</td>
+<td style="text-align:left;">
+Patan
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+262
+</td>
+<td style="text-align:left;">
+Satara
+</td>
+<td style="text-align:left;">
+Satara
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+268
+</td>
+<td style="text-align:left;">
+Sindhudurg
+</td>
+<td style="text-align:left;">
+Kankavli
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+269
+</td>
+<td style="text-align:left;">
+Sindhudurg
+</td>
+<td style="text-align:left;">
+Kudal
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+270
+</td>
+<td style="text-align:left;">
+Sindhudurg
+</td>
+<td style="text-align:left;">
+Sawantwadi
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+244
+</td>
+<td style="text-align:left;">
+Solapur
+</td>
+<td style="text-align:left;">
+Karmala
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+245
+</td>
+<td style="text-align:left;">
+Solapur
+</td>
+<td style="text-align:left;">
+Madha
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+246
+</td>
+<td style="text-align:left;">
+Solapur
+</td>
+<td style="text-align:left;">
+Barshi
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+247
+</td>
+<td style="text-align:left;">
+Solapur
+</td>
+<td style="text-align:left;">
+Mohol
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+248
+</td>
+<td style="text-align:left;">
+Solapur
+</td>
+<td style="text-align:left;">
+Solapur City North
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+249
+</td>
+<td style="text-align:left;">
+Solapur
+</td>
+<td style="text-align:left;">
+Solapur City Central
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+250
+</td>
+<td style="text-align:left;">
+Solapur
+</td>
+<td style="text-align:left;">
+Akkalkot
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+251
+</td>
+<td style="text-align:left;">
+Solapur
+</td>
+<td style="text-align:left;">
+Solapur South
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+252
+</td>
+<td style="text-align:left;">
+Solapur
+</td>
+<td style="text-align:left;">
+Pandharpur
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+253
+</td>
+<td style="text-align:left;">
+Solapur
+</td>
+<td style="text-align:left;">
+Sangole
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+254
+</td>
+<td style="text-align:left;">
+Solapur
+</td>
+<td style="text-align:left;">
+Malshiras
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+134
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Bhiwandi Rural
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+135
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Shahapur
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+136
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Bhiwandi West
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+137
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Bhiwandi East
+</td>
+<td style="text-align:left;">
+Samajwadi Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+138
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Kalyan West
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+139
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Murbad
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+140
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Ambernath
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+141
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Ulhasnagar
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+142
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Kalyan East
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+143
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Dombivli
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+144
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Kalyan Rural
+</td>
+<td style="text-align:left;">
+Maharashtra Navnirman Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+145
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Mira Bhayandar
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+146
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Ovala-Majiwada
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+147
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Kopri-Pachpakhadi
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+148
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+149
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Mumbra-Kalwa
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+150
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Airoli
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+151
+</td>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Belapur
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+44
+</td>
+<td style="text-align:left;">
+Wardha
+</td>
+<td style="text-align:left;">
+Arvi
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+45
+</td>
+<td style="text-align:left;">
+Wardha
+</td>
+<td style="text-align:left;">
+Deoli
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+46
+</td>
+<td style="text-align:left;">
+Wardha
+</td>
+<td style="text-align:left;">
+Hinganghat
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+47
+</td>
+<td style="text-align:left;">
+Wardha
+</td>
+<td style="text-align:left;">
+Wardha
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+33
+</td>
+<td style="text-align:left;">
+Washim
+</td>
+<td style="text-align:left;">
+Risod
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+34
+</td>
+<td style="text-align:left;">
+Washim
+</td>
+<td style="text-align:left;">
+Washim
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+35
+</td>
+<td style="text-align:left;">
+Washim
+</td>
+<td style="text-align:left;">
+Karanja
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+76
+</td>
+<td style="text-align:left;">
+Yavatmal
+</td>
+<td style="text-align:left;">
+Wani
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+77
+</td>
+<td style="text-align:left;">
+Yavatmal
+</td>
+<td style="text-align:left;">
+Ralegaon
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+78
+</td>
+<td style="text-align:left;">
+Yavatmal
+</td>
+<td style="text-align:left;">
+Yavatmal
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+79
+</td>
+<td style="text-align:left;">
+Yavatmal
+</td>
+<td style="text-align:left;">
+Digras
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+80
+</td>
+<td style="text-align:left;">
+Yavatmal
+</td>
+<td style="text-align:left;">
+Arni
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+81
+</td>
+<td style="text-align:left;">
+Yavatmal
+</td>
+<td style="text-align:left;">
+Pusad
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+82
+</td>
+<td style="text-align:left;">
+Yavatmal
+</td>
+<td style="text-align:left;">
+Umarkhed
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="constituencies-by-district" class="section level2">
+<h2>6. Constituencies by district</h2>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:dupconcount">Table 6: </span>Maharashtra constituency count by district
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+district
+</th>
+<th style="text-align:left;">
+division
+</th>
+<th style="text-align:right;">
+pop_2001
+</th>
+<th style="text-align:right;">
+area_km2
+</th>
+<th style="text-align:right;">
+density_per_km2
+</th>
+<th style="text-align:right;">
+constituency_count
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Ahmednagar
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:right;">
+4088077
+</td>
+<td style="text-align:right;">
+17413
+</td>
+<td style="text-align:right;">
+235
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Akola
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:right;">
+1818617
+</td>
+<td style="text-align:right;">
+5417
+</td>
+<td style="text-align:right;">
+301
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:right;">
+2606063
+</td>
+<td style="text-align:right;">
+12626
+</td>
+<td style="text-align:right;">
+206
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+2897013
+</td>
+<td style="text-align:right;">
+10100
+</td>
+<td style="text-align:right;">
+287
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Beed
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+2161250
+</td>
+<td style="text-align:right;">
+10439
+</td>
+<td style="text-align:right;">
+207
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bhandara
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+1135835
+</td>
+<td style="text-align:right;">
+3717
+</td>
+<td style="text-align:right;">
+306
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buldhana
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:right;">
+2232480
+</td>
+<td style="text-align:right;">
+9680
+</td>
+<td style="text-align:right;">
+231
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chandrapur
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+2071101
+</td>
+<td style="text-align:right;">
+10695
+</td>
+<td style="text-align:right;">
+194
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dhule
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:right;">
+1707947
+</td>
+<td style="text-align:right;">
+8063
+</td>
+<td style="text-align:right;">
+212
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gadchiroli
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+970294
+</td>
+<td style="text-align:right;">
+14412
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gondia
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+1200151
+</td>
+<td style="text-align:right;">
+4843
+</td>
+<td style="text-align:right;">
+248
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hingoli
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+987160
+</td>
+<td style="text-align:right;">
+4526
+</td>
+<td style="text-align:right;">
+218
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jalgaon
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:right;">
+3679936
+</td>
+<td style="text-align:right;">
+11765
+</td>
+<td style="text-align:right;">
+313
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jalna
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+1612357
+</td>
+<td style="text-align:right;">
+7612
+</td>
+<td style="text-align:right;">
+212
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kolhapur
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:right;">
+3515413
+</td>
+<td style="text-align:right;">
+7685
+</td>
+<td style="text-align:right;">
+457
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Latur
+</td>
+<td style="text-align:left;">
+Aurangabad Division
+</td>
+<td style="text-align:right;">
+2080285
+</td>
+<td style="text-align:right;">
+7372
+</td>
+<td style="text-align:right;">
+282
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mumbai City
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+3326837
+</td>
+<td style="text-align:right;">
+157
+</td>
+<td style="text-align:right;">
+49141
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mumbai Suburban
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+8587000
+</td>
+<td style="text-align:right;">
+446
+</td>
+<td style="text-align:right;">
+23271
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+4051444
+</td>
+<td style="text-align:right;">
+9897
+</td>
+<td style="text-align:right;">
+409
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nanded
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+2876259
+</td>
+<td style="text-align:right;">
+10422
+</td>
+<td style="text-align:right;">
+276
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nandurbar
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:right;">
+1309135
+</td>
+<td style="text-align:right;">
+5035
+</td>
+<td style="text-align:right;">
+260
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:left;">
+Nashik
+</td>
+<td style="text-align:right;">
+4993796
+</td>
+<td style="text-align:right;">
+15530
+</td>
+<td style="text-align:right;">
+322
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Osmanabad
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+1486586
+</td>
+<td style="text-align:right;">
+7512
+</td>
+<td style="text-align:right;">
+198
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Palghar
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+2990116
+</td>
+<td style="text-align:right;">
+5344
+</td>
+<td style="text-align:right;">
+562
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Parbhani
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+1527715
+</td>
+<td style="text-align:right;">
+6251
+</td>
+<td style="text-align:right;">
+244
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:right;">
+7224224
+</td>
+<td style="text-align:right;">
+15642
+</td>
+<td style="text-align:right;">
+462
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Raigad
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+2207929
+</td>
+<td style="text-align:right;">
+7148
+</td>
+<td style="text-align:right;">
+309
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ratnagiri
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+1696777
+</td>
+<td style="text-align:right;">
+8208
+</td>
+<td style="text-align:right;">
+207
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sangli
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:right;">
+2583524
+</td>
+<td style="text-align:right;">
+8578
+</td>
+<td style="text-align:right;">
+301
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Satara
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:right;">
+2796906
+</td>
+<td style="text-align:right;">
+10484
+</td>
+<td style="text-align:right;">
+267
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sindhudurg
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+868825
+</td>
+<td style="text-align:right;">
+5207
+</td>
+<td style="text-align:right;">
+167
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Solapur
+</td>
+<td style="text-align:left;">
+Pune
+</td>
+<td style="text-align:right;">
+3849543
+</td>
+<td style="text-align:right;">
+14845
+</td>
+<td style="text-align:right;">
+259
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Thane
+</td>
+<td style="text-align:left;">
+Konkan
+</td>
+<td style="text-align:right;">
+8131849
+</td>
+<td style="text-align:right;">
+9558
+</td>
+<td style="text-align:right;">
+851
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Wardha
+</td>
+<td style="text-align:left;">
+Nagpur
+</td>
+<td style="text-align:right;">
+1230640
+</td>
+<td style="text-align:right;">
+6310
+</td>
+<td style="text-align:right;">
+195
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Washim
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:right;">
+1020216
+</td>
+<td style="text-align:right;">
+5150
+</td>
+<td style="text-align:right;">
+276
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Yavatmal
+</td>
+<td style="text-align:left;">
+Amravati
+</td>
+<td style="text-align:right;">
+2077144
+</td>
+<td style="text-align:right;">
+13584
+</td>
+<td style="text-align:right;">
+153
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="india-parliamentary-representation" class="section level2">
+<h2>7. India parliamentary representation</h2>
+<ul>
+<li>Wikipedia<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> describes India’s legislative body as:</li>
+</ul>
+<blockquote>
+<p>bicameral with 788 seats divided as to Rajya Sabha (Council of States) of 245 members, and, the Lok Sabha (House of the People) of 543 members all presided over by President of India;</p>
+</blockquote>
+<blockquote>
+<p>Lok Sabha members directly elected by public who vote in single member districts.</p>
+</blockquote>
+<blockquote>
+<p>Rajya Sabha members elected by State Legislative assembly by proportional representation.</p>
+</blockquote>
+<ul>
+<li><p>For <strong>Maharashtra</strong> there are 26 Lok Sabha seats and 11 Rajya Sabha seats representing 5% of total parliamentary seats.</p></li>
+<li><p>Original file size: 3818x4600 pixels and 75KB. PNG creator: <a href="https://commons.wikimedia.org/wiki/File:Indian_Parliament_Seat_Composition.png">The,Manish</a>.</p></li>
+</ul>
+<p><img src="/post/2020-06-29-maharashtra-background_files/figure-html/indparl-1.png" width="198" /></p>
+</div>
+<div id="lok-sabha-election-past" class="section level2">
+<h2>8. Lok Sabha election past</h2>
+<ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Elections_in_India#History_of_Lok_Sabha_Elections">Wikipedia</a> details 17 Lok Sabha elections since 1951 with the latest being that of 2019.</p></li>
+<li><p>The most recent election result of 2019 gave 303 seats to BJP.</p></li>
+<li><p>Next Lok Sabha elections scheduled for 2024.</p></li>
+</ul>
+<div style="page-break-after: always;"></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:loksabha">Table 7: </span>Lok Sabha election results
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Var.1
+</th>
+<th style="text-align:left;">
+Var.2
+</th>
+<th style="text-align:left;">
+Var.3
+</th>
+<th style="text-align:left;">
+First
+</th>
+<th style="text-align:left;">
+First.1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Year
+</td>
+<td style="text-align:left;">
+Election
+</td>
+<td style="text-align:left;">
+Total seats
+</td>
+<td style="text-align:left;">
+Party
+</td>
+<td style="text-align:left;">
+Seats
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1951–52 [4][5][6]
+</td>
+<td style="text-align:left;">
+1st Lok Sabha
+</td>
+<td style="text-align:left;">
+489
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+364
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1957[7]
+</td>
+<td style="text-align:left;">
+2nd Lok Sabha
+</td>
+<td style="text-align:left;">
+494
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+371
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1962
+</td>
+<td style="text-align:left;">
+3rd Lok Sabha
+</td>
+<td style="text-align:left;">
+494
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+361
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1967
+</td>
+<td style="text-align:left;">
+4th Lok Sabha
+</td>
+<td style="text-align:left;">
+520
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+283
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1971
+</td>
+<td style="text-align:left;">
+5th Lok Sabha
+</td>
+<td style="text-align:left;">
+518
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+352
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1977
+</td>
+<td style="text-align:left;">
+6th Lok Sabha
+</td>
+<td style="text-align:left;">
+542
+</td>
+<td style="text-align:left;">
+JP
+</td>
+<td style="text-align:left;">
+298
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1980
+</td>
+<td style="text-align:left;">
+7th Lok Sabha
+</td>
+<td style="text-align:left;">
+529 ( 542* )
+</td>
+<td style="text-align:left;">
+INC(I)
+</td>
+<td style="text-align:left;">
+351
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1984
+</td>
+<td style="text-align:left;">
+8th Lok Sabha
+</td>
+<td style="text-align:left;">
+514
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+404
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1989
+</td>
+<td style="text-align:left;">
+9th Lok Sabha
+</td>
+<td style="text-align:left;">
+529
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+195
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1991
+</td>
+<td style="text-align:left;">
+10th Lok Sabha
+</td>
+<td style="text-align:left;">
+521
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+244
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1996
+</td>
+<td style="text-align:left;">
+11th Lok Sabha
+</td>
+<td style="text-align:left;">
+543
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+<td style="text-align:left;">
+161
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1998
+</td>
+<td style="text-align:left;">
+12th Lok Sabha
+</td>
+<td style="text-align:left;">
+545
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+<td style="text-align:left;">
+182
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1999
+</td>
+<td style="text-align:left;">
+13th Lok Sabha
+</td>
+<td style="text-align:left;">
+545
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+<td style="text-align:left;">
+182
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2004
+</td>
+<td style="text-align:left;">
+14th Lok Sabha
+</td>
+<td style="text-align:left;">
+543
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+145
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2009
+</td>
+<td style="text-align:left;">
+15th Lok Sabha
+</td>
+<td style="text-align:left;">
+545
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+206
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2014
+</td>
+<td style="text-align:left;">
+16th Lok Sabha
+</td>
+<td style="text-align:left;">
+545
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+<td style="text-align:left;">
+282
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019
+</td>
+<td style="text-align:left;">
+17th Lok Sabha
+</td>
+<td style="text-align:left;">
+543
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+<td style="text-align:left;">
+303
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="rajya-sabha-composition-by-party" class="section level2">
+<h2>9. Rajya Sabha composition by party</h2>
+<ul>
+<li><p>After the past week’s election the BJP party and its alliance National Democratic Alliance (NDA) have majority in Rajya Sabha with 84 seats and 114 seats. Congress have 41 seats and its alliance United Progressive Alliance has 62 seats in total<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>.</p></li>
+<li><p>Elections occur as and when members retire and each term is for 6 years. Next elections scheduled for 2021.</p></li>
+</ul>
+<div style="page-break-after: always;"></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:rajyasabha">Table 8: </span>2020-06-19 Rajya Sabha composition by party
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Alliances
+</th>
+<th style="text-align:left;">
+Party
+</th>
+<th style="text-align:right;">
+No.of.MPs
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+<td style="text-align:right;">
+84
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+All India Anna Dravida Munnetra Kazhagam
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Janata Dal (United)
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Nominated
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Shiromani Akali Dal
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Asom Gana Parishad
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Bodoland People’s Front
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Lok Janshakti Party
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+National People’s Party
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Pattali Makkal Katchi
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Republican Party of India (A)
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Tamil Maanila Congress
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+<td style="text-align:right;">
+41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Dravida Munnetra Kazhagam
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Rashtriya Janata Dal
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Indian Union Muslim League
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Jharkhand Mukti Morcha
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Kerala Congress (M)
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Marumalarchi Dravida Munnetra Kazhagam
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+All India Trinamool Congress
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Biju Janata Dal
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Samajwadi Party
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Telangana Rashtra Samithi
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+YSR Congress Party
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Communist Party of India (M)
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Bahujan Samaj Party
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Aam Aadmi Party
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+J&amp;K Peoples Democratic Party
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Communist Party of India
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Janata Dal (Secular)[8]
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Naga People’s Front
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Mizo National Front
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Sikkim Democratic Front
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Telugu Desam Party
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vacant
+</td>
+<td style="text-align:left;">
+Vacant
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:right;">
+245
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Jeroen Ooms (2020). magick: Advanced Graphics and Image-Processing in R. R package version 2.4.0. <a href="https://CRAN.R-project.org/package=magick" class="uri">https://CRAN.R-project.org/package=magick</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Jeroen Ooms (2020). rsvg: Render SVG Images into PDF, PNG, PostScript, or Bitmap Arrays. R package version 2.1. <a href="https://CRAN.R-project.org/package=rsvg" class="uri">https://CRAN.R-project.org/package=rsvg</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Hadley Wickham (2019). rvest: Easily Harvest (Scrape) Web Pages. R package version 0.3.5. <a href="https://CRAN.R-project.org/package=rvest" class="uri">https://CRAN.R-project.org/package=rvest</a><a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Hao Zhu (2019). kableExtra: Construct Complex Table with ‘kable’ and Pipe Syntax. R
+package version 1.1.0. <a href="https://CRAN.R-project.org/package=kableExtra" class="uri">https://CRAN.R-project.org/package=kableExtra</a> <a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://en.wikipedia.org/wiki/Maharashtra_Legislative_Council" class="uri">https://en.wikipedia.org/wiki/Maharashtra_Legislative_Council</a><a href="#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://en.wikipedia.org/wiki/Maharashtra_Legislative_Assembly" class="uri">https://en.wikipedia.org/wiki/Maharashtra_Legislative_Assembly</a><a href="#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p><a href="https://en.wikipedia.org/wiki/List_of_constituencies_of_the_Maharashtra_Legislative_Assembly" class="uri">https://en.wikipedia.org/wiki/List_of_constituencies_of_the_Maharashtra_Legislative_Assembly</a><a href="#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p><a href="https://en.wikipedia.org/wiki/Parliament_of_India" class="uri">https://en.wikipedia.org/wiki/Parliament_of_India</a><a href="#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>Source: <a href="https://en.wikipedia.org/wiki/Rajya_Sabha#Membership_by_party" class="uri">https://en.wikipedia.org/wiki/Rajya_Sabha#Membership_by_party</a><a href="#fnref9" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

@@ -1,0 +1,630 @@
+---
+title: 'Maharashtra background '
+author: michael
+date: '2020-06-29'
+slug: maharashtra-background
+categories:
+  - R
+tags:
+  - Governance
+  - India
+  - Politics
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r pkgsused, include=FALSE}
+pkgs = c("magick", "rsvg", "rvest", "kableExtra", "dplyr", "janitor", "readr") 
+# manage images
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+
+```
+
+## Task
+
+Aggregate data on Maharashtra
+
+## Data
+
+Sourced from Wikipedia and Wikimedia commons 
+
+## Electoral calendar
+
+```{r data, include=FALSE}
+mahacal <- read_csv("/Users/michaelleary/Documents/GitHub/generalitems/mahacal.csv", col_names = TRUE,)
+```
+
+```{r mahacal, include=FALSE}
+mahacal_df <- as.data.frame(mahacal)
+mahacal_df
+```
+
+```{r mahacalendar, echo=FALSE}
+knitr::kable(mahacal_df[,c(1:4)], "html",
+             caption = "Election calendar with focus on Maharashtra",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+## Other information 
+
+R packages used include magick^[Jeroen Ooms (2020). magick: Advanced Graphics and Image-Processing in R. R package version 2.4.0. https://CRAN.R-project.org/package=magick], rsvg^[Jeroen Ooms (2020). rsvg: Render SVG Images into PDF, PNG, PostScript, or Bitmap Arrays. R package version 2.1. https://CRAN.R-project.org/package=rsvg], rvest^[Hadley Wickham (2019). rvest: Easily Harvest (Scrape) Web Pages. R package version 0.3.5. https://CRAN.R-project.org/package=rvest], and, kableExtra^[Hao Zhu (2019). kableExtra: Construct Complex Table with 'kable' and Pipe Syntax. R
+  package version 1.1.0. https://CRAN.R-project.org/package=kableExtra ]. 
+
+\newpage
+
+## 1. State seal 
+
+* Original file size: 3401x3401 pixels and 74KB. Image source: [Not provided](https://commons.wikimedia.org/wiki/File:Seal_of_Maharashtra.svg).
+
+```{r tigertest, include=FALSE}
+tiger <- image_read_svg('http://jeroen.github.io/images/tiger.svg', width = 350)
+print(tiger)
+```
+
+```{r upseal, echo=FALSE}
+maha_seal <- image_read_svg('https://upload.wikimedia.org/wikipedia/commons/d/d3/Seal_of_Maharashtra.svg', width=478)
+maha_seal
+```
+
+```{r, include=FALSE}
+# Seal svg rendered into png format. 
+image_write(maha_seal, path = "maha_seal.png", format = "png")
+maha_seal_png <- image_convert(maha_seal, "png")
+image_info(maha_seal_png)
+maha_seal_png
+```
+
+```{r, include=FALSE}
+# Svg rendered into bitmap form. 
+# Or: convert into raw bitmap data
+bitmap <- rsvg_raw('https://upload.wikimedia.org/wikipedia/commons/d/d3/Seal_of_Maharashtra.svg', width = 478)
+str(bitmap)
+# Read the bitmap in magick
+mahabitmap <- magick::image_read(bitmap)
+mahabitmap
+```
+
+[Wikipedia](https://en.wikipedia.org/wiki/Emblem_of_Maharashtra) suggests the seal:
+
+> depicts a Samai diya lamp surrounded by 16 lotus blossoms. Between the lamp and lotus blossoms is text in marathi that translates as ``the glory of Maharashtra will grow like the first dat moon. It will be worshipped by the world and will shine only for the well being of people". That motto is based on a motto found on the royal seal of Rajmudra used by 17th century Maratha king Chhatrapati Shivaji. 
+
+## 2. State district map 
+
+* Original file size: 3106x2453 pixels and 248KB. Image source: [Kaajawa](https://commons.wikimedia.org/wiki/File:Maharashtra_Divisions_Eng.svg).
+
+```{r district, echo=FALSE}
+maha_district <- image_read_svg('https://upload.wikimedia.org/wikipedia/commons/5/5f/Maharashtra_Divisions_Eng.svg', height=478)
+maha_district
+```
+
+```{r districtpng, include=FALSE}
+image_write(maha_district, path = "maha_district.png", format = "png")
+maha_district_png <- image_convert(maha_district, "png")
+```
+
+```{r distpng, include=FALSE}
+maha_district_png
+```
+
+[Wikipedia](https://en.wikipedia.org/wiki/List_of_districts_of_Maharashtra) details 36 districts grouped into 6 divisions in Maharashtra as of 2014. 
+
+```{r rawdatacollect, include=FALSE}
+# get the URL for the wikipedia page with all states
+url <- "https://en.wikipedia.org/w/index.php?title=List_of_districts_of_Maharashtra&oldid=965139428"
+
+# use that URL to scrape the states table using rvest
+mahadistricts <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '//*[@id="mw-content-text"]/div/table[2]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+head(mahadistricts)
+
+```
+
+```{r convertchar2num, include=FALSE}
+# convert character column to numeric in three steps
+# step 1 is population column - remove commas
+# step 2 is convert to numeric
+# step 3 is convert other char columns to numeric directly
+mahadist <- as.data.frame(mahadistricts)
+mahadist <- mahadist[-37,-c(1,8,10,12:14,16)]
+colnames(mahadist)
+mahadist[,"Population.2001.census."] <- gsub(",", "", mahadist[,"Population.2001.census."])
+mahadist
+mahadist[,"Population.2001.census."] <- as.numeric(mahadist[,"Population.2001.census."])
+colnames((mahadist))
+coltype <- c("Area..km2.", "Density.per.km2.", "Tehsils")
+mahadist
+mahadist[,coltype] <- 
+                     lapply(mahadist[,coltype], function(i) 
+                                                          as.numeric(sub(',', '', i)))
+mahadist
+
+mahadist[24,7] = 2990116
+mahadist
+
+# tody names to lower case and no spaces
+mahatidy <- mahadist %>% 
+  janitor::clean_names()
+mahatidy
+
+# change column names
+colnames(mahatidy)[1] <- "district"
+colnames(mahatidy)[5] <- "division"
+colnames(mahatidy)[7] <- "pop_2001"
+
+# order columns
+mahatidy2 <- mahatidy[,c(1,4,5,7,6,8,9,2,3)]
+head(mahatidy2)
+```
+
+```{r, include=FALSE}
+mahadistorder <- mahatidy2[
+  order(-mahatidy2[,4]),
+  ]
+mahadistorder
+
+```
+
+\newpage
+
+```{r tabtable, echo=FALSE}
+knitr::kable(mahadistorder[,c(1:7)], "html",
+             caption = "Maharashtra districts as of 2001 population",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+```{r, include=FALSE}
+mahadistorder2 <- mahatidy2[
+  order(mahadist[,1]),
+  ]
+mahadistorder2
+
+```
+
+\newpage
+
+```{r tabtable2, echo=FALSE}
+knitr::kable(mahadistorder2[,c(1:7)], "html",
+             caption = "Maharashtra districts by name",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+## 3. State legislature
+
+### Upper house 
+
+* The state legislature is bicameral. The upper house of 78 members is called the legislative council or Vidhan Parishad^[https://en.wikipedia.org/wiki/Maharashtra_Legislative_Council]. 
+
+* Term for Vidhan Parishad members is 6 years. The 78 seats are drawn from five groups: legislative assembly, local authority, nominated members, graduate and teachers. The distribution of seats is shown in table. 
+
+
+```{r rs_seats, include=FALSE}
+rs_seats <- data.frame("Constituency"=c("Graduate", 
+                                        "Teachers", 
+                                        "Local Authority",
+                                        "Legislative assembly",
+                                        "Nominated members"), 
+                     "Seats" = c(7, 7, 22, 30, 12))
+
+rs_seats
+```
+
+```{r, include=FALSE}
+rsseatorder <- rs_seats[
+  order(-rs_seats[,2]),
+  ]
+```
+
+```{r, include=FALSE}
+rsseatorder
+```
+
+```{r upperhousetable, echo=FALSE}
+knitr::kable(rsseatorder, "html",
+             caption = "Maharashtra upper house by constituency",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+### Lower house 
+
+* The lower house has 288 members and is called the legislative assembly or Vidhan Sabha^[https://en.wikipedia.org/wiki/Maharashtra_Legislative_Assembly].
+
+* Term for Vidhan Sabha members is 5 years. Latest election was 2019. Upcoming election scheduled for 2024. 
+
+* BJP party has 105 seats in the Vidhan Sabha. Shiv Sena has 56 seats and Congress has 44 seats. 
+
+* Vidhan Sabha constituencies and elected members as of 2019^[https://en.wikipedia.org/wiki/List_of_constituencies_of_the_Maharashtra_Legislative_Assembly]
+
+* Original file size: 1468x980 pixels and 4310KB. Image source: [Furfur](https://commons.wikimedia.org/wiki/File:Wahlkreise_zur_Vidhan_Sabha_von_Maharashtra.svg).
+
+```{r constituency, echo=FALSE}
+maha_constituency <- image_read_svg('https://upload.wikimedia.org/wikipedia/commons/c/c7/Wahlkreise_zur_Vidhan_Sabha_von_Maharashtra.svg', height=478)
+maha_constituency
+```
+
+```{r constituencypng, include=FALSE}
+image_write(maha_constituency, path = "maha_constituency.png", format = "png")
+maha_constituency_png <- image_convert(maha_constituency, "png")
+```
+
+```{r constitpng, include=FALSE}
+maha_constituency_png
+```
+
+```{r mahalowerresults, include=FALSE}
+# get the URL for the wikipedia page with all states
+url4 <- "https://en.wikipedia.org/wiki/2019_Maharashtra_Legislative_Assembly_election"
+
+# use that URL to scrape the states table using rvest
+mahalower <- url4 %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[10]') %>% 
+  html_table(fill=TRUE)
+#create a vector of election results
+head(mahalower)
+
+```
+
+```{r, include=FALSE}
+mahalower_df <- as.data.frame(mahalower)
+ml <- mahalower_df[-1,c(1,2,5)]
+ml
+```
+
+## 5. Electoral constituencies
+
+```{r, include=FALSE}
+head(ml)
+```
+
+```{r, include=FALSE}
+colnames(ml)[1] <- "id.no"
+colnames(ml)[2] <- "constituency"
+colnames(ml)[3] <- "party"
+head(ml)
+```
+
+```{r, include=FALSE}
+# get districts and constituencies
+# get the URL for the wikipedia page with all states
+url5 <- "https://en.wikipedia.org/wiki/List_of_constituencies_of_the_Maharashtra_Legislative_Assembly"
+
+# use that URL to scrape the states table using rvest
+mahacon <- url5 %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[2]') %>% 
+  html_table(fill=TRUE)
+#create a vector of election results
+head(mahacon)
+
+```
+
+```{r, include=FALSE}
+mahacon_df <- as.data.frame(mahacon)
+mahacon_df
+mlc <- mahacon_df[,c(1,2:5)]
+mlc
+```
+
+```{r, include=FALSE}
+colnames(mlc)[1] <- "id.no"
+colnames(mlc)[2] <- "constituency"
+colnames(mlc)[4] <- "district"
+colnames(mlc)[5] <- "lok.sab.constituencyname"
+mlc$id.no <- as.character(as.numeric(mlc$id.no))
+head(mlc)
+```
+
+```{r, include=FALSE}
+distmaha <- distinct(ml[2])
+```
+
+```{r, include=FALSE}
+distmaha2 <-distinct(mlc[2])
+```
+
+```{r, include=FALSE}
+identical(distmaha, distmaha2)
+```
+
+```{r, include=FALSE}
+# identify differences between the two data table district columns
+dplyr::anti_join(distmaha, distmaha2, by = "constituency")
+```
+
+```{r, include=FALSE}
+# edit cells identified as different so as to obtain consistency between data sets 
+# change Bagpat in distup dataframe to Baghpat
+
+ml <- ml %>%
+     mutate(constituency=replace(constituency, constituency == "Bramhapuri", "Brahmapuri")) %>%
+     as.data.frame()
+
+mlc <- mlc %>%
+     mutate(constituency=replace(constituency, constituency == "Dombivali", "Dombivli")) %>%
+     as.data.frame()
+
+```
+
+```{r, include=FALSE}
+# make a join of ml and mlc
+mlmlc <- dplyr::full_join(ml, mlc, by = "constituency")
+mlmlc
+```
+
+```{r, include=FALSE}
+#select columns required
+mlmlc2 <- mlmlc[,c(6,2,3)]
+
+```
+
+```{r, include=FALSE}
+mlmlc2 <- mlmlc2[
+  order(mlmlc2[,1]),
+  ]
+mlmlc2
+
+```
+
+```{r mahadistconparty, echo=FALSE}
+knitr::kable(mlmlc2, "html",
+             caption = "District, constituency, party",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+## 6. Constituencies by district  
+
+```{r, include=FALSE}
+# merge count no of constituencies by district
+head(mlmlc2)
+```
+
+```{r, include=FALSE}
+head(mahadistorder2)
+```
+
+```{r, include=FALSE}
+distmaha <- distinct(mlmlc2[1])
+```
+
+```{r, include=FALSE}
+distmaha2 <-distinct(mahadistorder2[1])
+```
+
+```{r, include=FALSE}
+identical(distmaha, distmaha2)
+```
+
+```{r, include=FALSE}
+# identify differences between the two data table district columns
+dplyr::anti_join(distmaha, distmaha2, by = "district")
+```
+
+```{r, include=FALSE}
+# edit cells identified as different so as to obtain consistency between data sets 
+
+md <- mahadistorder2
+mc <- mlmlc2
+
+mc <- mc %>%
+     mutate(district=replace(district, district == "Gondiya", "Gondia")) %>%
+     as.data.frame()
+
+mc <- mc %>%
+     mutate(constituency=replace(constituency, constituency == "Gondiya", "Gondia")) %>%
+     as.data.frame()
+
+mc <- mc %>%
+     mutate(district=replace(district, district == "Sangli district", "Sangli")) %>%
+     as.data.frame()
+
+```
+
+```{r, include=FALSE}
+# check for duplicates once more
+dm <- distinct(md[1])
+```
+
+```{r, include=FALSE}
+dc <-distinct(mc[1])
+```
+
+```{r, include=FALSE}
+identical(dm, dc)
+```
+
+```{r, include=FALSE}
+# identify differences between the two data table district columns
+dplyr::anti_join(dm, dc, by = "district")
+```
+
+```{r, include=FALSE}
+# make a join of dup and cup
+dmc <- dplyr::full_join(md, mc, by = "district")
+dmc
+```
+
+```{r, include=FALSE}
+# make district and division factors
+dmc$district <- as.factor(dmc$district)
+dmc$division <- as.factor(dmc$division)
+head(dmc)
+```
+
+```{r, include=FALSE}
+# count constituencies per district
+table(dmc$district)
+prop.table(table(dmc$district))
+
+```
+
+```{r, include=FALSE}
+# alternate method using dplyr to generate a frequency table of constituencies by district
+maha_constit <- dmc %>% count(district, sort = TRUE)
+```
+
+```{r, include=FALSE}
+maha_constit
+```
+
+```{r, include=FALSE}
+# bind constituency count to upd data frame 
+mahamerge <- merge(md, maha_constit, by.md = "district", by.maha_constit = "district", all = TRUE)
+
+
+# rename constituency count column
+colnames(mahamerge)[10] <- "constituency_count"
+mahamerge
+mahamerge[6] <- round(mahamerge[6],0)
+mahamerge
+
+```
+
+```{r dupconcount, echo=FALSE}
+knitr::kable(mahamerge[,c(1,3:6,10)], "html",
+             caption = "Maharashtra constituency count by district",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+## 7. India parliamentary representation 
+
+* Wikipedia^[https://en.wikipedia.org/wiki/Parliament_of_India] describes India's legislative body as:
+
+> bicameral with 788 seats divided as to Rajya Sabha (Council of States) of 245 members, and, the Lok Sabha (House of the People) of 543 members all presided over by President of India;
+
+> Lok Sabha members directly elected by public who vote in single member districts.
+
+> Rajya Sabha members elected by State Legislative assembly by proportional representation. 
+
+* For **Maharashtra** there are 26 Lok Sabha seats and 11 Rajya Sabha seats representing 5% of total parliamentary seats. 
+
+* Original file size: 3818x4600 pixels and 75KB. PNG creator: [The,Manish](https://commons.wikimedia.org/wiki/File:Indian_Parliament_Seat_Composition.png).
+
+```{r indparl, echo=FALSE}
+# Example image
+
+indparl <- image_read("https://upload.wikimedia.org/wikipedia/commons/6/6e/Indian_Parliament_Seat_Composition.png")
+image_scale(indparl, "x478") # height: 300px
+```
+
+
+## 8. Lok Sabha election past
+
+* [Wikipedia](https://en.wikipedia.org/wiki/Elections_in_India#History_of_Lok_Sabha_Elections) details 17 Lok Sabha elections since 1951 with the latest being that of 2019. 
+
+* The most recent election result of 2019 gave 303 seats to BJP. 
+
+* Next Lok Sabha elections scheduled for 2024. 
+
+```{r lsresults, include=FALSE}
+# get the URL for the wikipedia page with all states
+url2 <- "https://en.wikipedia.org/wiki/Elections_in_India#History_of_Lok_Sabha_Elections"
+
+# use that URL to scrape the states table using rvest
+lselections <- url2 %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[3]') %>% 
+  html_table(fill=TRUE)
+#create a vector of election results
+head(lselections)
+
+```
+
+```{r, include=FALSE}
+lok_df <- as.data.frame(lselections)
+
+```
+
+\newpage
+
+```{r loksabha, echo=FALSE}
+knitr::kable(lok_df[,c(1:5)], "html",
+             caption = "Lok Sabha election results",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+## 9. Rajya Sabha composition by party 
+
+* After the past week's election the BJP party and its alliance National Democratic Alliance (NDA) have majority in Rajya Sabha with 84 seats and 114 seats. Congress have 41 seats and its alliance United Progressive Alliance has 62 seats in total^[Source: https://en.wikipedia.org/wiki/Rajya_Sabha#Membership_by_party].
+
+* Elections occur as and when members retire and each term is for 6 years. Next elections scheduled for 2021. 
+
+```{r rsresults, include=FALSE}
+# get the URL for the wikipedia page with all states
+url3 <- "https://en.wikipedia.org/wiki/Rajya_Sabha#Membership_by_party"
+
+# use that URL to scrape the states table using rvest
+rselections <- url3 %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[3]') %>% 
+  html_table(fill=TRUE)
+#create a vector of election results
+head(rselections)
+
+```
+
+```{r, include=FALSE}
+rajya_df <- as.data.frame(rselections)
+
+```
+
+\newpage
+
+```{r rajyasabha, echo=FALSE}
+knitr::kable(rajya_df[,c(1:3)], "html",
+             caption = "2020-06-19 Rajya Sabha composition by party",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+

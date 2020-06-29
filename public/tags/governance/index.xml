@@ -6,10 +6,21 @@
     <description>Recent content in Governance on Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/governance/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Maharashtra background </title>
+      <link>/post/2020/06/29/maharashtra-background/</link>
+      <pubDate>Mon, 29 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/06/29/maharashtra-background/</guid>
+      <description>Task Aggregate data on Maharashtra
+ Data Sourced from Wikipedia and Wikimedia commons
+ Electoral calendar  Table 1: Election calendar with focus on Maharashtra    date  kind  house  body      2020  state  upper  teachers    2020  state  upper  graduates    2021  national  upper  NA    2022  state  upper  legislative    2022  state  upper  local authority    2023  state  upper  teachers    2023  state  upper  graduates    2024  state  upper  legislative    2024  state  upper  local authority    2024  state  upper  teachers    2024  state  upper  graduates    2024  national  lower  NA    2024  state  lower  NA    2025  state  upper  local authority    2026  state  upper  legislative      Other information R packages used include magick1, rsvg2, rvest3, and, kableExtra4.</description>
+    </item>
     
     <item>
       <title>Uttar Pradesh background</title>

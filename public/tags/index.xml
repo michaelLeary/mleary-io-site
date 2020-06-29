@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,27 @@
     <item>
       <title>Governance</title>
       <link>/tags/governance/</link>
-      <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 29 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/governance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>India</title>
+      <link>/tags/india/</link>
+      <pubDate>Mon, 29 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/india/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Politics</title>
+      <link>/tags/politics/</link>
+      <pubDate>Mon, 29 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/politics/</guid>
       <description></description>
     </item>
     
@@ -26,15 +44,6 @@
       <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/legislature/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Politics</title>
-      <link>/tags/politics/</link>
-      <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/politics/</guid>
       <description></description>
     </item>
     
@@ -89,15 +98,6 @@
       <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/geography/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>India</title>
-      <link>/tags/india/</link>
-      <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/india/</guid>
       <description></description>
     </item>
     
