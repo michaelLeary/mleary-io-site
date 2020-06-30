@@ -1,0 +1,7971 @@
+---
+title: Bihar background
+author: michael
+date: '2020-06-30'
+slug: bihar-background
+categories:
+  - R
+tags:
+  - Governance
+  - Politics
+  - India
+  - Bihar
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<div id="task" class="section level2">
+<h2>Task</h2>
+<p>Aggregate data on Bihar</p>
+</div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<p>Sourced from Wikipedia and Wikimedia commons</p>
+</div>
+<div id="electoral-calendar" class="section level2">
+<h2>Electoral calendar</h2>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:biharcalendar">Table 1: </span>Election calendar with focus on Bihar
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+date
+</th>
+<th style="text-align:left;">
+kind
+</th>
+<th style="text-align:left;">
+house
+</th>
+<th style="text-align:left;">
+body
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+lower
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2021
+</td>
+<td style="text-align:left;">
+national
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2021
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+local authority
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+legislative assembly
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+graduate
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+teachers
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2024
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+legislative assembly
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2024
+</td>
+<td style="text-align:left;">
+national
+</td>
+<td style="text-align:left;">
+lower
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2026
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+legislative assembly
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2026
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+graduate
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2026
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+teachers
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2026
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+nominated
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="other-information" class="section level2">
+<h2>Other information</h2>
+<p>R packages used include magick<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, rsvg<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>, rvest<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>, and, kableExtra<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="state-seal" class="section level2">
+<h2>1. State seal</h2>
+<ul>
+<li>Original file size: 458x548 pixels and 18KB. Image source: <a href="https://commons.wikimedia.org/wiki/File:Seal_of_Bihar.svg">Fred the Oyster</a>.</li>
+</ul>
+<p><img src="/post/2020-06-30-bihar-background_files/figure-html/upseal-1.png" width="239" /></p>
+<p><a href="https://en.wikipedia.org/wiki/Emblem_of_Bihar#:~:text=The%20emblem%20of%20Bihar%20depicts,%22Bihar%22%20inscribed%20on%20it.">Wikipedia</a> suggests the seal:</p>
+<blockquote>
+<p>depicts the Bodhi tree with prayer beads, flanked by two swastikas. The base of the tree is a brick with the letter Bihar inscribed on it that means bihar.</p>
+</blockquote>
+</div>
+<div id="state-district-map" class="section level2">
+<h2>2. State district map</h2>
+<ul>
+<li>Original file size: 512x380 pixels and 269KB. Image source: <a href="https://commons.wikimedia.org/wiki/File:Bihar_districts.svg">Nirinsanity</a>.</li>
+</ul>
+<p><img src="/post/2020-06-30-bihar-background_files/figure-html/district-1.png" width="322" /></p>
+<p><a href="https://en.wikipedia.org/wiki/List_of_districts_of_Bihar">Wikipedia</a> details 38 districts.</p>
+<div style="page-break-after: always;"></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:distorderpop">Table 2: </span>Bihar districts by 2011 population
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+district
+</th>
+<th style="text-align:left;">
+headquarters
+</th>
+<th style="text-align:right;">
+population_2011
+</th>
+<th style="text-align:right;">
+area_km
+</th>
+<th style="text-align:right;">
+density_km_2011
+</th>
+<th style="text-align:left;">
+code
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+26
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:right;">
+5838465
+</td>
+<td style="text-align:right;">
+3202
+</td>
+<td style="text-align:right;">
+1471
+</td>
+<td style="text-align:left;">
+PA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+East Champaran
+</td>
+<td style="text-align:left;">
+Motihari
+</td>
+<td style="text-align:right;">
+5099371
+</td>
+<td style="text-align:right;">
+3969
+</td>
+<td style="text-align:right;">
+991
+</td>
+<td style="text-align:left;">
+EC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23
+</td>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:right;">
+4801062
+</td>
+<td style="text-align:right;">
+3173
+</td>
+<td style="text-align:right;">
+1180
+</td>
+<td style="text-align:left;">
+MZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:left;">
+Madhubani
+</td>
+<td style="text-align:left;">
+Madhubani
+</td>
+<td style="text-align:right;">
+4487379
+</td>
+<td style="text-align:right;">
+3501
+</td>
+<td style="text-align:right;">
+1020
+</td>
+<td style="text-align:left;">
+MB
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+Gaya
+</td>
+<td style="text-align:left;">
+Gaya
+</td>
+<td style="text-align:right;">
+4391418
+</td>
+<td style="text-align:right;">
+4978
+</td>
+<td style="text-align:right;">
+696
+</td>
+<td style="text-align:left;">
+GA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+30
+</td>
+<td style="text-align:left;">
+Samastipur
+</td>
+<td style="text-align:left;">
+Samastipur
+</td>
+<td style="text-align:right;">
+4261566
+</td>
+<td style="text-align:right;">
+2905
+</td>
+<td style="text-align:right;">
+1175
+</td>
+<td style="text-align:left;">
+SM
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+33
+</td>
+<td style="text-align:left;">
+Saran
+</td>
+<td style="text-align:left;">
+Chhapra
+</td>
+<td style="text-align:right;">
+3951862
+</td>
+<td style="text-align:right;">
+2641
+</td>
+<td style="text-align:right;">
+1231
+</td>
+<td style="text-align:left;">
+SR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+Darbhanga
+</td>
+<td style="text-align:left;">
+Darbhanga
+</td>
+<td style="text-align:right;">
+3937385
+</td>
+<td style="text-align:right;">
+2278
+</td>
+<td style="text-align:right;">
+1442
+</td>
+<td style="text-align:left;">
+DA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+38
+</td>
+<td style="text-align:left;">
+West Champaran
+</td>
+<td style="text-align:left;">
+Bettiah
+</td>
+<td style="text-align:right;">
+3935042
+</td>
+<td style="text-align:right;">
+5229
+</td>
+<td style="text-align:right;">
+582
+</td>
+<td style="text-align:left;">
+WC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+37
+</td>
+<td style="text-align:left;">
+Vaishali
+</td>
+<td style="text-align:left;">
+Hajipur
+</td>
+<td style="text-align:right;">
+3495021
+</td>
+<td style="text-align:right;">
+2036
+</td>
+<td style="text-align:right;">
+1332
+</td>
+<td style="text-align:left;">
+VA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+34
+</td>
+<td style="text-align:left;">
+Sitamarhi
+</td>
+<td style="text-align:left;">
+Dumra, Sitamarhi
+</td>
+<td style="text-align:right;">
+3423574
+</td>
+<td style="text-align:right;">
+2199
+</td>
+<td style="text-align:right;">
+1214
+</td>
+<td style="text-align:left;">
+ST
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+36
+</td>
+<td style="text-align:left;">
+Siwan
+</td>
+<td style="text-align:left;">
+Siwan
+</td>
+<td style="text-align:right;">
+3330464
+</td>
+<td style="text-align:right;">
+2219
+</td>
+<td style="text-align:right;">
+1221
+</td>
+<td style="text-align:left;">
+SW
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+27
+</td>
+<td style="text-align:left;">
+Purnia
+</td>
+<td style="text-align:left;">
+Purnia
+</td>
+<td style="text-align:right;">
+3264619
+</td>
+<td style="text-align:right;">
+3228
+</td>
+<td style="text-align:right;">
+787
+</td>
+<td style="text-align:left;">
+PU
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+Katihar
+</td>
+<td style="text-align:left;">
+Katihar
+</td>
+<td style="text-align:right;">
+3071029
+</td>
+<td style="text-align:right;">
+3056
+</td>
+<td style="text-align:right;">
+782
+</td>
+<td style="text-align:left;">
+KT
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+Bhagalpur
+</td>
+<td style="text-align:left;">
+Bhagalpur
+</td>
+<td style="text-align:right;">
+3037766
+</td>
+<td style="text-align:right;">
+2569
+</td>
+<td style="text-align:right;">
+946
+</td>
+<td style="text-align:left;">
+BG
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Begusarai
+</td>
+<td style="text-align:left;">
+Begusarai
+</td>
+<td style="text-align:right;">
+2970541
+</td>
+<td style="text-align:right;">
+1917
+</td>
+<td style="text-align:right;">
+1222
+</td>
+<td style="text-align:left;">
+BE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+28
+</td>
+<td style="text-align:left;">
+Rohtas
+</td>
+<td style="text-align:left;">
+Sasaram
+</td>
+<td style="text-align:right;">
+2959918
+</td>
+<td style="text-align:right;">
+3850
+</td>
+<td style="text-align:right;">
+636
+</td>
+<td style="text-align:left;">
+RO
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:left;">
+Nalanda
+</td>
+<td style="text-align:left;">
+Bihar Sharif
+</td>
+<td style="text-align:right;">
+2877653
+</td>
+<td style="text-align:right;">
+2354
+</td>
+<td style="text-align:right;">
+1006
+</td>
+<td style="text-align:left;">
+NL
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Araria
+</td>
+<td style="text-align:left;">
+Araria
+</td>
+<td style="text-align:right;">
+2811569
+</td>
+<td style="text-align:right;">
+2829
+</td>
+<td style="text-align:right;">
+751
+</td>
+<td style="text-align:left;">
+AR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+Bhojpur
+</td>
+<td style="text-align:left;">
+Arrah
+</td>
+<td style="text-align:right;">
+2728407
+</td>
+<td style="text-align:right;">
+2473
+</td>
+<td style="text-align:right;">
+903
+</td>
+<td style="text-align:left;">
+BJ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+Gopalganj
+</td>
+<td style="text-align:left;">
+Gopalganj
+</td>
+<td style="text-align:right;">
+2562012
+</td>
+<td style="text-align:right;">
+2033
+</td>
+<td style="text-align:right;">
+1057
+</td>
+<td style="text-align:left;">
+GO
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+2540073
+</td>
+<td style="text-align:right;">
+3303
+</td>
+<td style="text-align:right;">
+607
+</td>
+<td style="text-align:left;">
+AU
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+35
+</td>
+<td style="text-align:left;">
+Supaul
+</td>
+<td style="text-align:left;">
+Supaul
+</td>
+<td style="text-align:right;">
+2229076
+</td>
+<td style="text-align:right;">
+2410
+</td>
+<td style="text-align:right;">
+724
+</td>
+<td style="text-align:left;">
+SU
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+25
+</td>
+<td style="text-align:left;">
+Nawada
+</td>
+<td style="text-align:left;">
+Nawada
+</td>
+<td style="text-align:right;">
+2219146
+</td>
+<td style="text-align:right;">
+2492
+</td>
+<td style="text-align:right;">
+726
+</td>
+<td style="text-align:left;">
+NW
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+Banka
+</td>
+<td style="text-align:left;">
+Banka
+</td>
+<td style="text-align:right;">
+2034763
+</td>
+<td style="text-align:right;">
+3018
+</td>
+<td style="text-align:right;">
+533
+</td>
+<td style="text-align:left;">
+BA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+Madhepura
+</td>
+<td style="text-align:left;">
+Madhepura
+</td>
+<td style="text-align:right;">
+2001762
+</td>
+<td style="text-align:right;">
+1787
+</td>
+<td style="text-align:right;">
+853
+</td>
+<td style="text-align:left;">
+MP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+Saharsa
+</td>
+<td style="text-align:left;">
+Saharsa
+</td>
+<td style="text-align:right;">
+1900661
+</td>
+<td style="text-align:right;">
+1702
+</td>
+<td style="text-align:right;">
+885
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+Jamui
+</td>
+<td style="text-align:left;">
+Jamui
+</td>
+<td style="text-align:right;">
+1760405
+</td>
+<td style="text-align:right;">
+3099
+</td>
+<td style="text-align:right;">
+451
+</td>
+<td style="text-align:left;">
+JA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+Buxar
+</td>
+<td style="text-align:left;">
+Buxar
+</td>
+<td style="text-align:right;">
+1706352
+</td>
+<td style="text-align:right;">
+1624
+</td>
+<td style="text-align:right;">
+864
+</td>
+<td style="text-align:left;">
+BU
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:left;">
+Kishanganj
+</td>
+<td style="text-align:left;">
+Kishanganj
+</td>
+<td style="text-align:right;">
+1690400
+</td>
+<td style="text-align:right;">
+1884
+</td>
+<td style="text-align:right;">
+687
+</td>
+<td style="text-align:left;">
+KI
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+Khagaria
+</td>
+<td style="text-align:left;">
+Khagaria
+</td>
+<td style="text-align:right;">
+1666886
+</td>
+<td style="text-align:right;">
+1486
+</td>
+<td style="text-align:right;">
+859
+</td>
+<td style="text-align:left;">
+KH
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+17
+</td>
+<td style="text-align:left;">
+Kaimur
+</td>
+<td style="text-align:left;">
+Bhabua
+</td>
+<td style="text-align:right;">
+1626384
+</td>
+<td style="text-align:right;">
+3363
+</td>
+<td style="text-align:right;">
+382
+</td>
+<td style="text-align:left;">
+KM
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21
+</td>
+<td style="text-align:left;">
+Munger
+</td>
+<td style="text-align:left;">
+Munger
+</td>
+<td style="text-align:right;">
+1367765
+</td>
+<td style="text-align:right;">
+1419
+</td>
+<td style="text-align:right;">
+800
+</td>
+<td style="text-align:left;">
+MG
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+Jehanabad
+</td>
+<td style="text-align:left;">
+Jehanabad
+</td>
+<td style="text-align:right;">
+1125313
+</td>
+<td style="text-align:right;">
+1569
+</td>
+<td style="text-align:right;">
+963
+</td>
+<td style="text-align:left;">
+JE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19
+</td>
+<td style="text-align:left;">
+Lakhisarai
+</td>
+<td style="text-align:left;">
+Lakhisarai
+</td>
+<td style="text-align:right;">
+1000912
+</td>
+<td style="text-align:right;">
+1229
+</td>
+<td style="text-align:right;">
+652
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Arwal
+</td>
+<td style="text-align:left;">
+Arwal
+</td>
+<td style="text-align:right;">
+699000
+</td>
+<td style="text-align:right;">
+637
+</td>
+<td style="text-align:right;">
+918
+</td>
+<td style="text-align:left;">
+AW
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+31
+</td>
+<td style="text-align:left;">
+Sheohar
+</td>
+<td style="text-align:left;">
+Sheohar
+</td>
+<td style="text-align:right;">
+656916
+</td>
+<td style="text-align:right;">
+443
+</td>
+<td style="text-align:right;">
+1161
+</td>
+<td style="text-align:left;">
+SO
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+32
+</td>
+<td style="text-align:left;">
+Sheikhpura
+</td>
+<td style="text-align:left;">
+Sheikhpura
+</td>
+<td style="text-align:right;">
+634927
+</td>
+<td style="text-align:right;">
+689
+</td>
+<td style="text-align:right;">
+762
+</td>
+<td style="text-align:left;">
+SP
+</td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:distordername">Table 3: </span>Bihar districts by name
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+district
+</th>
+<th style="text-align:left;">
+headquarters
+</th>
+<th style="text-align:right;">
+population_2011
+</th>
+<th style="text-align:right;">
+area_km
+</th>
+<th style="text-align:right;">
+density_km_2011
+</th>
+<th style="text-align:left;">
+code
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Araria
+</td>
+<td style="text-align:left;">
+Araria
+</td>
+<td style="text-align:right;">
+2811569
+</td>
+<td style="text-align:right;">
+2829
+</td>
+<td style="text-align:right;">
+751
+</td>
+<td style="text-align:left;">
+AR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Arwal
+</td>
+<td style="text-align:left;">
+Arwal
+</td>
+<td style="text-align:right;">
+699000
+</td>
+<td style="text-align:right;">
+637
+</td>
+<td style="text-align:right;">
+918
+</td>
+<td style="text-align:left;">
+AW
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+2540073
+</td>
+<td style="text-align:right;">
+3303
+</td>
+<td style="text-align:right;">
+607
+</td>
+<td style="text-align:left;">
+AU
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+Banka
+</td>
+<td style="text-align:left;">
+Banka
+</td>
+<td style="text-align:right;">
+2034763
+</td>
+<td style="text-align:right;">
+3018
+</td>
+<td style="text-align:right;">
+533
+</td>
+<td style="text-align:left;">
+BA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Begusarai
+</td>
+<td style="text-align:left;">
+Begusarai
+</td>
+<td style="text-align:right;">
+2970541
+</td>
+<td style="text-align:right;">
+1917
+</td>
+<td style="text-align:right;">
+1222
+</td>
+<td style="text-align:left;">
+BE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+Bhagalpur
+</td>
+<td style="text-align:left;">
+Bhagalpur
+</td>
+<td style="text-align:right;">
+3037766
+</td>
+<td style="text-align:right;">
+2569
+</td>
+<td style="text-align:right;">
+946
+</td>
+<td style="text-align:left;">
+BG
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+Bhojpur
+</td>
+<td style="text-align:left;">
+Arrah
+</td>
+<td style="text-align:right;">
+2728407
+</td>
+<td style="text-align:right;">
+2473
+</td>
+<td style="text-align:right;">
+903
+</td>
+<td style="text-align:left;">
+BJ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+Buxar
+</td>
+<td style="text-align:left;">
+Buxar
+</td>
+<td style="text-align:right;">
+1706352
+</td>
+<td style="text-align:right;">
+1624
+</td>
+<td style="text-align:right;">
+864
+</td>
+<td style="text-align:left;">
+BU
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+Darbhanga
+</td>
+<td style="text-align:left;">
+Darbhanga
+</td>
+<td style="text-align:right;">
+3937385
+</td>
+<td style="text-align:right;">
+2278
+</td>
+<td style="text-align:right;">
+1442
+</td>
+<td style="text-align:left;">
+DA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+East Champaran
+</td>
+<td style="text-align:left;">
+Motihari
+</td>
+<td style="text-align:right;">
+5099371
+</td>
+<td style="text-align:right;">
+3969
+</td>
+<td style="text-align:right;">
+991
+</td>
+<td style="text-align:left;">
+EC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+Gaya
+</td>
+<td style="text-align:left;">
+Gaya
+</td>
+<td style="text-align:right;">
+4391418
+</td>
+<td style="text-align:right;">
+4978
+</td>
+<td style="text-align:right;">
+696
+</td>
+<td style="text-align:left;">
+GA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+Gopalganj
+</td>
+<td style="text-align:left;">
+Gopalganj
+</td>
+<td style="text-align:right;">
+2562012
+</td>
+<td style="text-align:right;">
+2033
+</td>
+<td style="text-align:right;">
+1057
+</td>
+<td style="text-align:left;">
+GO
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+Jamui
+</td>
+<td style="text-align:left;">
+Jamui
+</td>
+<td style="text-align:right;">
+1760405
+</td>
+<td style="text-align:right;">
+3099
+</td>
+<td style="text-align:right;">
+451
+</td>
+<td style="text-align:left;">
+JA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+Jehanabad
+</td>
+<td style="text-align:left;">
+Jehanabad
+</td>
+<td style="text-align:right;">
+1125313
+</td>
+<td style="text-align:right;">
+1569
+</td>
+<td style="text-align:right;">
+963
+</td>
+<td style="text-align:left;">
+JE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+17
+</td>
+<td style="text-align:left;">
+Kaimur
+</td>
+<td style="text-align:left;">
+Bhabua
+</td>
+<td style="text-align:right;">
+1626384
+</td>
+<td style="text-align:right;">
+3363
+</td>
+<td style="text-align:right;">
+382
+</td>
+<td style="text-align:left;">
+KM
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+Katihar
+</td>
+<td style="text-align:left;">
+Katihar
+</td>
+<td style="text-align:right;">
+3071029
+</td>
+<td style="text-align:right;">
+3056
+</td>
+<td style="text-align:right;">
+782
+</td>
+<td style="text-align:left;">
+KT
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+Khagaria
+</td>
+<td style="text-align:left;">
+Khagaria
+</td>
+<td style="text-align:right;">
+1666886
+</td>
+<td style="text-align:right;">
+1486
+</td>
+<td style="text-align:right;">
+859
+</td>
+<td style="text-align:left;">
+KH
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:left;">
+Kishanganj
+</td>
+<td style="text-align:left;">
+Kishanganj
+</td>
+<td style="text-align:right;">
+1690400
+</td>
+<td style="text-align:right;">
+1884
+</td>
+<td style="text-align:right;">
+687
+</td>
+<td style="text-align:left;">
+KI
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19
+</td>
+<td style="text-align:left;">
+Lakhisarai
+</td>
+<td style="text-align:left;">
+Lakhisarai
+</td>
+<td style="text-align:right;">
+1000912
+</td>
+<td style="text-align:right;">
+1229
+</td>
+<td style="text-align:right;">
+652
+</td>
+<td style="text-align:left;">
+LA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+Madhepura
+</td>
+<td style="text-align:left;">
+Madhepura
+</td>
+<td style="text-align:right;">
+2001762
+</td>
+<td style="text-align:right;">
+1787
+</td>
+<td style="text-align:right;">
+853
+</td>
+<td style="text-align:left;">
+MP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:left;">
+Madhubani
+</td>
+<td style="text-align:left;">
+Madhubani
+</td>
+<td style="text-align:right;">
+4487379
+</td>
+<td style="text-align:right;">
+3501
+</td>
+<td style="text-align:right;">
+1020
+</td>
+<td style="text-align:left;">
+MB
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21
+</td>
+<td style="text-align:left;">
+Munger
+</td>
+<td style="text-align:left;">
+Munger
+</td>
+<td style="text-align:right;">
+1367765
+</td>
+<td style="text-align:right;">
+1419
+</td>
+<td style="text-align:right;">
+800
+</td>
+<td style="text-align:left;">
+MG
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23
+</td>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:right;">
+4801062
+</td>
+<td style="text-align:right;">
+3173
+</td>
+<td style="text-align:right;">
+1180
+</td>
+<td style="text-align:left;">
+MZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:left;">
+Nalanda
+</td>
+<td style="text-align:left;">
+Bihar Sharif
+</td>
+<td style="text-align:right;">
+2877653
+</td>
+<td style="text-align:right;">
+2354
+</td>
+<td style="text-align:right;">
+1006
+</td>
+<td style="text-align:left;">
+NL
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+25
+</td>
+<td style="text-align:left;">
+Nawada
+</td>
+<td style="text-align:left;">
+Nawada
+</td>
+<td style="text-align:right;">
+2219146
+</td>
+<td style="text-align:right;">
+2492
+</td>
+<td style="text-align:right;">
+726
+</td>
+<td style="text-align:left;">
+NW
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+26
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:right;">
+5838465
+</td>
+<td style="text-align:right;">
+3202
+</td>
+<td style="text-align:right;">
+1471
+</td>
+<td style="text-align:left;">
+PA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+27
+</td>
+<td style="text-align:left;">
+Purnia
+</td>
+<td style="text-align:left;">
+Purnia
+</td>
+<td style="text-align:right;">
+3264619
+</td>
+<td style="text-align:right;">
+3228
+</td>
+<td style="text-align:right;">
+787
+</td>
+<td style="text-align:left;">
+PU
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+28
+</td>
+<td style="text-align:left;">
+Rohtas
+</td>
+<td style="text-align:left;">
+Sasaram
+</td>
+<td style="text-align:right;">
+2959918
+</td>
+<td style="text-align:right;">
+3850
+</td>
+<td style="text-align:right;">
+636
+</td>
+<td style="text-align:left;">
+RO
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+Saharsa
+</td>
+<td style="text-align:left;">
+Saharsa
+</td>
+<td style="text-align:right;">
+1900661
+</td>
+<td style="text-align:right;">
+1702
+</td>
+<td style="text-align:right;">
+885
+</td>
+<td style="text-align:left;">
+SH
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+30
+</td>
+<td style="text-align:left;">
+Samastipur
+</td>
+<td style="text-align:left;">
+Samastipur
+</td>
+<td style="text-align:right;">
+4261566
+</td>
+<td style="text-align:right;">
+2905
+</td>
+<td style="text-align:right;">
+1175
+</td>
+<td style="text-align:left;">
+SM
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+33
+</td>
+<td style="text-align:left;">
+Saran
+</td>
+<td style="text-align:left;">
+Chhapra
+</td>
+<td style="text-align:right;">
+3951862
+</td>
+<td style="text-align:right;">
+2641
+</td>
+<td style="text-align:right;">
+1231
+</td>
+<td style="text-align:left;">
+SR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+32
+</td>
+<td style="text-align:left;">
+Sheikhpura
+</td>
+<td style="text-align:left;">
+Sheikhpura
+</td>
+<td style="text-align:right;">
+634927
+</td>
+<td style="text-align:right;">
+689
+</td>
+<td style="text-align:right;">
+762
+</td>
+<td style="text-align:left;">
+SP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+31
+</td>
+<td style="text-align:left;">
+Sheohar
+</td>
+<td style="text-align:left;">
+Sheohar
+</td>
+<td style="text-align:right;">
+656916
+</td>
+<td style="text-align:right;">
+443
+</td>
+<td style="text-align:right;">
+1161
+</td>
+<td style="text-align:left;">
+SO
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+34
+</td>
+<td style="text-align:left;">
+Sitamarhi
+</td>
+<td style="text-align:left;">
+Dumra, Sitamarhi
+</td>
+<td style="text-align:right;">
+3423574
+</td>
+<td style="text-align:right;">
+2199
+</td>
+<td style="text-align:right;">
+1214
+</td>
+<td style="text-align:left;">
+ST
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+36
+</td>
+<td style="text-align:left;">
+Siwan
+</td>
+<td style="text-align:left;">
+Siwan
+</td>
+<td style="text-align:right;">
+3330464
+</td>
+<td style="text-align:right;">
+2219
+</td>
+<td style="text-align:right;">
+1221
+</td>
+<td style="text-align:left;">
+SW
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+35
+</td>
+<td style="text-align:left;">
+Supaul
+</td>
+<td style="text-align:left;">
+Supaul
+</td>
+<td style="text-align:right;">
+2229076
+</td>
+<td style="text-align:right;">
+2410
+</td>
+<td style="text-align:right;">
+724
+</td>
+<td style="text-align:left;">
+SU
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+37
+</td>
+<td style="text-align:left;">
+Vaishali
+</td>
+<td style="text-align:left;">
+Hajipur
+</td>
+<td style="text-align:right;">
+3495021
+</td>
+<td style="text-align:right;">
+2036
+</td>
+<td style="text-align:right;">
+1332
+</td>
+<td style="text-align:left;">
+VA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+38
+</td>
+<td style="text-align:left;">
+West Champaran
+</td>
+<td style="text-align:left;">
+Bettiah
+</td>
+<td style="text-align:right;">
+3935042
+</td>
+<td style="text-align:right;">
+5229
+</td>
+<td style="text-align:right;">
+582
+</td>
+<td style="text-align:left;">
+WC
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="state-legislature" class="section level2">
+<h2>3. State legislature</h2>
+<div id="upper-house" class="section level3">
+<h3>Upper house</h3>
+<ul>
+<li><p>The state legislature is bicameral. The upper house of 75 members is called the legislative council or Vidhan Parishad<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p></li>
+<li><p>Term for Vidhan Parishad members is 6 years. Seats are drawn from five groups: legislative assembly, local authority, nominated members, graduate and teachers. The distribution of seats is shown in table.</p></li>
+</ul>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:upperhousetable">Table 4: </span>Bihar upper house by constituency
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Constituency
+</th>
+<th style="text-align:right;">
+Seats
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+Legislative assembly
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+Local Authority
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Nominated members
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Graduate
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Teachers
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="lower-house" class="section level3">
+<h3>Lower house</h3>
+<ul>
+<li><p>The lower house has 243 members and is called the legislative assembly or Vidhan Sabha<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>.</p></li>
+<li><p>Term for Vidhan Sabha members is 5 years. Latest election was 2017. Upcoming election scheduled for 2022.</p></li>
+<li><p>Janata Dal (United) party has 73 seats and BJP has 53 seats. Rashtriya Janata Dal and Indian National Congress have 80 and 26 seats.</p></li>
+<li><p>Vidhan Sabha constituencies and elected members as of 2015<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p></li>
+<li><p>Original file size: 953x1280 pixels and 8850KB. Image source: <a href="https://fr.m.wikipedia.org/wiki/Fichier:Wahlkreise_zur_Vidhan_Sabha_von_Bihar.svg">Furfur</a>.</p></li>
+</ul>
+<p><img src="/post/2020-06-30-bihar-background_files/figure-html/constituency-1.png" width="321" /></p>
+</div>
+</div>
+<div id="electoral-constituencies" class="section level2">
+<h2>5. Electoral constituencies</h2>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:vstable">Table 5: </span>Bihar lower house by constituency
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+id.no
+</th>
+<th style="text-align:left;">
+district
+</th>
+<th style="text-align:left;">
+constituency
+</th>
+<th style="text-align:left;">
+party
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+46
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:left;">
+Araria
+</td>
+<td style="text-align:left;">
+Narpatganj
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+47
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:left;">
+Araria
+</td>
+<td style="text-align:left;">
+Raniganj
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+48
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:left;">
+Araria
+</td>
+<td style="text-align:left;">
+Forbesganj
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+49
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:left;">
+Araria
+</td>
+<td style="text-align:left;">
+Araria
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+50
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:left;">
+Araria
+</td>
+<td style="text-align:left;">
+Jokihat
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+51
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:left;">
+Araria
+</td>
+<td style="text-align:left;">
+Sikti
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+214
+</td>
+<td style="text-align:right;">
+214
+</td>
+<td style="text-align:left;">
+Arwal
+</td>
+<td style="text-align:left;">
+Arwal
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+215
+</td>
+<td style="text-align:right;">
+215
+</td>
+<td style="text-align:left;">
+Arwal
+</td>
+<td style="text-align:left;">
+Kurtha
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+219
+</td>
+<td style="text-align:right;">
+219
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Goh
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+220
+</td>
+<td style="text-align:right;">
+220
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Obra
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+221
+</td>
+<td style="text-align:right;">
+221
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Nabinagar
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+222
+</td>
+<td style="text-align:right;">
+222
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Kutumba
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+223
+</td>
+<td style="text-align:right;">
+223
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+224
+</td>
+<td style="text-align:right;">
+224
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Rafiganj
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+159
+</td>
+<td style="text-align:right;">
+159
+</td>
+<td style="text-align:left;">
+Banka
+</td>
+<td style="text-align:left;">
+Amarpur
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+160
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:left;">
+Banka
+</td>
+<td style="text-align:left;">
+Dhoraiya
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+161
+</td>
+<td style="text-align:right;">
+161
+</td>
+<td style="text-align:left;">
+Banka
+</td>
+<td style="text-align:left;">
+Banka
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+162
+</td>
+<td style="text-align:right;">
+162
+</td>
+<td style="text-align:left;">
+Banka
+</td>
+<td style="text-align:left;">
+Katoria
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+163
+</td>
+<td style="text-align:right;">
+163
+</td>
+<td style="text-align:left;">
+Banka
+</td>
+<td style="text-align:left;">
+Belhar
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+141
+</td>
+<td style="text-align:right;">
+141
+</td>
+<td style="text-align:left;">
+Begusarai
+</td>
+<td style="text-align:left;">
+Cheria-Bariarpur
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+142
+</td>
+<td style="text-align:right;">
+142
+</td>
+<td style="text-align:left;">
+Begusarai
+</td>
+<td style="text-align:left;">
+Bachhwara
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+143
+</td>
+<td style="text-align:right;">
+143
+</td>
+<td style="text-align:left;">
+Begusarai
+</td>
+<td style="text-align:left;">
+Teghra
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+144
+</td>
+<td style="text-align:right;">
+144
+</td>
+<td style="text-align:left;">
+Begusarai
+</td>
+<td style="text-align:left;">
+Matihani
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+145
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:left;">
+Begusarai
+</td>
+<td style="text-align:left;">
+Sahebpur Kamal
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+146
+</td>
+<td style="text-align:right;">
+146
+</td>
+<td style="text-align:left;">
+Begusarai
+</td>
+<td style="text-align:left;">
+Begusarai
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+147
+</td>
+<td style="text-align:right;">
+147
+</td>
+<td style="text-align:left;">
+Begusarai
+</td>
+<td style="text-align:left;">
+Bakhri
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+152
+</td>
+<td style="text-align:right;">
+152
+</td>
+<td style="text-align:left;">
+Bhagalpur
+</td>
+<td style="text-align:left;">
+Bihpur
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+153
+</td>
+<td style="text-align:right;">
+153
+</td>
+<td style="text-align:left;">
+Bhagalpur
+</td>
+<td style="text-align:left;">
+Gopalpur
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+154
+</td>
+<td style="text-align:right;">
+154
+</td>
+<td style="text-align:left;">
+Bhagalpur
+</td>
+<td style="text-align:left;">
+Pirpainti
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+155
+</td>
+<td style="text-align:right;">
+155
+</td>
+<td style="text-align:left;">
+Bhagalpur
+</td>
+<td style="text-align:left;">
+Kahalgaon
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+156
+</td>
+<td style="text-align:right;">
+156
+</td>
+<td style="text-align:left;">
+Bhagalpur
+</td>
+<td style="text-align:left;">
+Bhagalpur
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+157
+</td>
+<td style="text-align:right;">
+157
+</td>
+<td style="text-align:left;">
+Bhagalpur
+</td>
+<td style="text-align:left;">
+Sultanganj
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+158
+</td>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:left;">
+Bhagalpur
+</td>
+<td style="text-align:left;">
+Nathnagar
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+192
+</td>
+<td style="text-align:right;">
+192
+</td>
+<td style="text-align:left;">
+Bhojpur
+</td>
+<td style="text-align:left;">
+Sandesh
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+193
+</td>
+<td style="text-align:right;">
+193
+</td>
+<td style="text-align:left;">
+Bhojpur
+</td>
+<td style="text-align:left;">
+Barhara
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+194
+</td>
+<td style="text-align:right;">
+194
+</td>
+<td style="text-align:left;">
+Bhojpur
+</td>
+<td style="text-align:left;">
+Arrah
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+195
+</td>
+<td style="text-align:right;">
+195
+</td>
+<td style="text-align:left;">
+Bhojpur
+</td>
+<td style="text-align:left;">
+Agiaon
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+196
+</td>
+<td style="text-align:right;">
+196
+</td>
+<td style="text-align:left;">
+Bhojpur
+</td>
+<td style="text-align:left;">
+Tarari
+</td>
+<td style="text-align:left;">
+CPI (ML) (L)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+197
+</td>
+<td style="text-align:right;">
+197
+</td>
+<td style="text-align:left;">
+Bhojpur
+</td>
+<td style="text-align:left;">
+Jagdishpur
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+198
+</td>
+<td style="text-align:right;">
+198
+</td>
+<td style="text-align:left;">
+Bhojpur
+</td>
+<td style="text-align:left;">
+Shahpur
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+199
+</td>
+<td style="text-align:right;">
+199
+</td>
+<td style="text-align:left;">
+Buxar
+</td>
+<td style="text-align:left;">
+Brahampur
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+200
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:left;">
+Buxar
+</td>
+<td style="text-align:left;">
+Buxar
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+201
+</td>
+<td style="text-align:right;">
+201
+</td>
+<td style="text-align:left;">
+Buxar
+</td>
+<td style="text-align:left;">
+Dumraon
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+202
+</td>
+<td style="text-align:right;">
+202
+</td>
+<td style="text-align:left;">
+Buxar
+</td>
+<td style="text-align:left;">
+Rajpur
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+78
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:left;">
+Darbhanga
+</td>
+<td style="text-align:left;">
+Kusheshwar Asthan
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+79
+</td>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:left;">
+Darbhanga
+</td>
+<td style="text-align:left;">
+Gaura Bauram
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+80
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:left;">
+Darbhanga
+</td>
+<td style="text-align:left;">
+Benipur
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+81
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:left;">
+Darbhanga
+</td>
+<td style="text-align:left;">
+Alinagar
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+82
+</td>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:left;">
+Darbhanga
+</td>
+<td style="text-align:left;">
+Darbhanga Rural
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+83
+</td>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:left;">
+Darbhanga
+</td>
+<td style="text-align:left;">
+Darbhanga
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+84
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+Darbhanga
+</td>
+<td style="text-align:left;">
+Hayaghat
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+85
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:left;">
+Darbhanga
+</td>
+<td style="text-align:left;">
+Bahadurpur
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+86
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:left;">
+Darbhanga
+</td>
+<td style="text-align:left;">
+Keoti
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+87
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+Darbhanga
+</td>
+<td style="text-align:left;">
+Jale
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+225
+</td>
+<td style="text-align:right;">
+225
+</td>
+<td style="text-align:left;">
+Gaya
+</td>
+<td style="text-align:left;">
+Gurua
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+226
+</td>
+<td style="text-align:right;">
+226
+</td>
+<td style="text-align:left;">
+Gaya
+</td>
+<td style="text-align:left;">
+Sherghati
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+227
+</td>
+<td style="text-align:right;">
+227
+</td>
+<td style="text-align:left;">
+Gaya
+</td>
+<td style="text-align:left;">
+Imamganj
+</td>
+<td style="text-align:left;">
+HAM
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+228
+</td>
+<td style="text-align:right;">
+228
+</td>
+<td style="text-align:left;">
+Gaya
+</td>
+<td style="text-align:left;">
+Barachatti
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+229
+</td>
+<td style="text-align:right;">
+229
+</td>
+<td style="text-align:left;">
+Gaya
+</td>
+<td style="text-align:left;">
+Bodh Gaya
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+230
+</td>
+<td style="text-align:right;">
+230
+</td>
+<td style="text-align:left;">
+Gaya
+</td>
+<td style="text-align:left;">
+Gaya Town
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+231
+</td>
+<td style="text-align:right;">
+231
+</td>
+<td style="text-align:left;">
+Gaya
+</td>
+<td style="text-align:left;">
+Tikari
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+232
+</td>
+<td style="text-align:right;">
+232
+</td>
+<td style="text-align:left;">
+Gaya
+</td>
+<td style="text-align:left;">
+Belaganj
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+233
+</td>
+<td style="text-align:right;">
+233
+</td>
+<td style="text-align:left;">
+Gaya
+</td>
+<td style="text-align:left;">
+Atri
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+234
+</td>
+<td style="text-align:right;">
+234
+</td>
+<td style="text-align:left;">
+Gaya
+</td>
+<td style="text-align:left;">
+Wazirganj
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+99
+</td>
+<td style="text-align:right;">
+99
+</td>
+<td style="text-align:left;">
+Gopalganj
+</td>
+<td style="text-align:left;">
+Baikunthpur
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+100
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:left;">
+Gopalganj
+</td>
+<td style="text-align:left;">
+Barauli
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+101
+</td>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:left;">
+Gopalganj
+</td>
+<td style="text-align:left;">
+Gopalganj
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+102
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:left;">
+Gopalganj
+</td>
+<td style="text-align:left;">
+Kuchaikote
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+103
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:left;">
+Gopalganj
+</td>
+<td style="text-align:left;">
+Bhore
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+104
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:left;">
+Gopalganj
+</td>
+<td style="text-align:left;">
+Hathua
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+240
+</td>
+<td style="text-align:right;">
+240
+</td>
+<td style="text-align:left;">
+Jamui
+</td>
+<td style="text-align:left;">
+Sikandra
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+241
+</td>
+<td style="text-align:right;">
+241
+</td>
+<td style="text-align:left;">
+Jamui
+</td>
+<td style="text-align:left;">
+Jamui
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+242
+</td>
+<td style="text-align:right;">
+242
+</td>
+<td style="text-align:left;">
+Jamui
+</td>
+<td style="text-align:left;">
+Jhajha
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+243
+</td>
+<td style="text-align:right;">
+243
+</td>
+<td style="text-align:left;">
+Jamui
+</td>
+<td style="text-align:left;">
+Chakai
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+216
+</td>
+<td style="text-align:right;">
+216
+</td>
+<td style="text-align:left;">
+Jehanabad
+</td>
+<td style="text-align:left;">
+Jehanabad
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+217
+</td>
+<td style="text-align:right;">
+217
+</td>
+<td style="text-align:left;">
+Jehanabad
+</td>
+<td style="text-align:left;">
+Ghosi
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+218
+</td>
+<td style="text-align:right;">
+218
+</td>
+<td style="text-align:left;">
+Jehanabad
+</td>
+<td style="text-align:left;">
+Makhdumpur
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+203
+</td>
+<td style="text-align:right;">
+203
+</td>
+<td style="text-align:left;">
+Kaimur
+</td>
+<td style="text-align:left;">
+Ramgarh
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+204
+</td>
+<td style="text-align:right;">
+204
+</td>
+<td style="text-align:left;">
+Kaimur
+</td>
+<td style="text-align:left;">
+Mohania
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+205
+</td>
+<td style="text-align:right;">
+205
+</td>
+<td style="text-align:left;">
+Kaimur
+</td>
+<td style="text-align:left;">
+Bhabua
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+206
+</td>
+<td style="text-align:right;">
+206
+</td>
+<td style="text-align:left;">
+Kaimur
+</td>
+<td style="text-align:left;">
+Chainpur
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+63
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:left;">
+Katihar
+</td>
+<td style="text-align:left;">
+Katihar
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+64
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:left;">
+Katihar
+</td>
+<td style="text-align:left;">
+Kadwa
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+65
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:left;">
+Katihar
+</td>
+<td style="text-align:left;">
+Balrampur
+</td>
+<td style="text-align:left;">
+CPI (ML) (L)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+66
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:left;">
+Katihar
+</td>
+<td style="text-align:left;">
+Pranpur
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+67
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:left;">
+Katihar
+</td>
+<td style="text-align:left;">
+Manihari
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+68
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:left;">
+Katihar
+</td>
+<td style="text-align:left;">
+Barari
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+69
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:left;">
+Katihar
+</td>
+<td style="text-align:left;">
+Korha
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+148
+</td>
+<td style="text-align:right;">
+148
+</td>
+<td style="text-align:left;">
+Khagaria
+</td>
+<td style="text-align:left;">
+Alauli
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+149
+</td>
+<td style="text-align:right;">
+149
+</td>
+<td style="text-align:left;">
+Khagaria
+</td>
+<td style="text-align:left;">
+Khagaria
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+150
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:left;">
+Khagaria
+</td>
+<td style="text-align:left;">
+Beldaur
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+151
+</td>
+<td style="text-align:right;">
+151
+</td>
+<td style="text-align:left;">
+Khagaria
+</td>
+<td style="text-align:left;">
+Parbatta
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:left;">
+Kishanganj
+</td>
+<td style="text-align:left;">
+Bahadurganj
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:left;">
+Kishanganj
+</td>
+<td style="text-align:left;">
+Thakurganj
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+54
+</td>
+<td style="text-align:right;">
+54
+</td>
+<td style="text-align:left;">
+Kishanganj
+</td>
+<td style="text-align:left;">
+Kishanganj
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+55
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:left;">
+Kishanganj
+</td>
+<td style="text-align:left;">
+Kochadhaman
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+167
+</td>
+<td style="text-align:right;">
+167
+</td>
+<td style="text-align:left;">
+Lakhisarai
+</td>
+<td style="text-align:left;">
+Suryagarha
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+168
+</td>
+<td style="text-align:right;">
+168
+</td>
+<td style="text-align:left;">
+Lakhisarai
+</td>
+<td style="text-align:left;">
+Lakhisarai
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+70
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:left;">
+Madhepura
+</td>
+<td style="text-align:left;">
+Alamnagar
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+71
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:left;">
+Madhepura
+</td>
+<td style="text-align:left;">
+Bihariganj
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+72
+</td>
+<td style="text-align:right;">
+72
+</td>
+<td style="text-align:left;">
+Madhepura
+</td>
+<td style="text-align:left;">
+Singheshwar
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+73
+</td>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:left;">
+Madhepura
+</td>
+<td style="text-align:left;">
+Madhepura
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+31
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+Madhubani
+</td>
+<td style="text-align:left;">
+Harlakhi
+</td>
+<td style="text-align:left;">
+RLSP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+32
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:left;">
+Madhubani
+</td>
+<td style="text-align:left;">
+Benipatti
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+33
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:left;">
+Madhubani
+</td>
+<td style="text-align:left;">
+Khajauli
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+34
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:left;">
+Madhubani
+</td>
+<td style="text-align:left;">
+Babubarhi
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+35
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+Madhubani
+</td>
+<td style="text-align:left;">
+Bisfi
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+36
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+Madhubani
+</td>
+<td style="text-align:left;">
+Madhubani
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+37
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:left;">
+Madhubani
+</td>
+<td style="text-align:left;">
+Rajnagar
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+38
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:left;">
+Madhubani
+</td>
+<td style="text-align:left;">
+Jhanjharpur
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+39
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:left;">
+Madhubani
+</td>
+<td style="text-align:left;">
+Phulparas
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+40
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:left;">
+Madhubani
+</td>
+<td style="text-align:left;">
+Laukaha
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+164
+</td>
+<td style="text-align:right;">
+164
+</td>
+<td style="text-align:left;">
+Munger
+</td>
+<td style="text-align:left;">
+Tarapur
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+165
+</td>
+<td style="text-align:right;">
+165
+</td>
+<td style="text-align:left;">
+Munger
+</td>
+<td style="text-align:left;">
+Munger
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+166
+</td>
+<td style="text-align:right;">
+166
+</td>
+<td style="text-align:left;">
+Munger
+</td>
+<td style="text-align:left;">
+Jamalpur
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+88
+</td>
+<td style="text-align:right;">
+88
+</td>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:left;">
+Gaighat
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+89
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:left;">
+Aurai
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+90
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:left;">
+Minapur
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+91
+</td>
+<td style="text-align:right;">
+91
+</td>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:left;">
+Bochahan
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+92
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:left;">
+Sakra
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+93
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:left;">
+Kurhani
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+94
+</td>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+95
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:left;">
+Kanti
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+96
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:left;">
+Baruraj
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+97
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:left;">
+Paroo
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+98
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:left;">
+Sahebganj
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+171
+</td>
+<td style="text-align:right;">
+171
+</td>
+<td style="text-align:left;">
+Nalanda
+</td>
+<td style="text-align:left;">
+Asthawan
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+172
+</td>
+<td style="text-align:right;">
+172
+</td>
+<td style="text-align:left;">
+Nalanda
+</td>
+<td style="text-align:left;">
+Biharsharif
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+173
+</td>
+<td style="text-align:right;">
+173
+</td>
+<td style="text-align:left;">
+Nalanda
+</td>
+<td style="text-align:left;">
+Rajgir
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+174
+</td>
+<td style="text-align:right;">
+174
+</td>
+<td style="text-align:left;">
+Nalanda
+</td>
+<td style="text-align:left;">
+Islampur
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+175
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:left;">
+Nalanda
+</td>
+<td style="text-align:left;">
+Hilsa
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+176
+</td>
+<td style="text-align:right;">
+176
+</td>
+<td style="text-align:left;">
+Nalanda
+</td>
+<td style="text-align:left;">
+Nalanda
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+177
+</td>
+<td style="text-align:right;">
+177
+</td>
+<td style="text-align:left;">
+Nalanda
+</td>
+<td style="text-align:left;">
+Harnaut
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+235
+</td>
+<td style="text-align:right;">
+235
+</td>
+<td style="text-align:left;">
+Nawada
+</td>
+<td style="text-align:left;">
+Rajauli
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+236
+</td>
+<td style="text-align:right;">
+236
+</td>
+<td style="text-align:left;">
+Nawada
+</td>
+<td style="text-align:left;">
+Hisua
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+237
+</td>
+<td style="text-align:right;">
+237
+</td>
+<td style="text-align:left;">
+Nawada
+</td>
+<td style="text-align:left;">
+Nawada
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+238
+</td>
+<td style="text-align:right;">
+238
+</td>
+<td style="text-align:left;">
+Nawada
+</td>
+<td style="text-align:left;">
+Gobindpur
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+239
+</td>
+<td style="text-align:right;">
+239
+</td>
+<td style="text-align:left;">
+Nawada
+</td>
+<td style="text-align:left;">
+Warsaliganj
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Paschim Champaran
+</td>
+<td style="text-align:left;">
+Valmiki Nagar
+</td>
+<td style="text-align:left;">
+Independent[277]
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Paschim Champaran
+</td>
+<td style="text-align:left;">
+Ramnagar
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Paschim Champaran
+</td>
+<td style="text-align:left;">
+Narkatiaganj
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Paschim Champaran
+</td>
+<td style="text-align:left;">
+Bagaha
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Paschim Champaran
+</td>
+<td style="text-align:left;">
+Lauriya
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Paschim Champaran
+</td>
+<td style="text-align:left;">
+Nautan
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Paschim Champaran
+</td>
+<td style="text-align:left;">
+Chanpatiya
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Paschim Champaran
+</td>
+<td style="text-align:left;">
+Bettiah
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Paschim Champaran
+</td>
+<td style="text-align:left;">
+Sikta
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+178
+</td>
+<td style="text-align:right;">
+178
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:left;">
+Mokama
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+179
+</td>
+<td style="text-align:right;">
+179
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:left;">
+Barh
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+180
+</td>
+<td style="text-align:right;">
+180
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:left;">
+Bakhtiarpur
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+181
+</td>
+<td style="text-align:right;">
+181
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:left;">
+Digha
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+182
+</td>
+<td style="text-align:right;">
+182
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:left;">
+Bankipur
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+183
+</td>
+<td style="text-align:right;">
+183
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:left;">
+Kumhrar
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+184
+</td>
+<td style="text-align:right;">
+184
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:left;">
+Patna Sahib
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+185
+</td>
+<td style="text-align:right;">
+185
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:left;">
+Fatuha
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+186
+</td>
+<td style="text-align:right;">
+186
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:left;">
+Danapur
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+187
+</td>
+<td style="text-align:right;">
+187
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:left;">
+Maner
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+188
+</td>
+<td style="text-align:right;">
+188
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:left;">
+Phulwari
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+189
+</td>
+<td style="text-align:right;">
+189
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:left;">
+Masaurhi
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+190
+</td>
+<td style="text-align:right;">
+190
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:left;">
+Paliganj
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+191
+</td>
+<td style="text-align:right;">
+191
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:left;">
+Bikram
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+56
+</td>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:left;">
+Purnia
+</td>
+<td style="text-align:left;">
+Amour
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+57
+</td>
+<td style="text-align:right;">
+57
+</td>
+<td style="text-align:left;">
+Purnia
+</td>
+<td style="text-align:left;">
+Baisi
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+58
+</td>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:left;">
+Purnia
+</td>
+<td style="text-align:left;">
+Kasba
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+59
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:left;">
+Purnia
+</td>
+<td style="text-align:left;">
+Banmankhi
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+60
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:left;">
+Purnia
+</td>
+<td style="text-align:left;">
+Rupauli
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+61
+</td>
+<td style="text-align:right;">
+61
+</td>
+<td style="text-align:left;">
+Purnia
+</td>
+<td style="text-align:left;">
+Dhamdaha
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+62
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:left;">
+Purnia
+</td>
+<td style="text-align:left;">
+Purnia
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Purvi Champaran
+</td>
+<td style="text-align:left;">
+Raxaul
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Purvi Champaran
+</td>
+<td style="text-align:left;">
+Sugauli
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Purvi Champaran
+</td>
+<td style="text-align:left;">
+Narkatiya
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Purvi Champaran
+</td>
+<td style="text-align:left;">
+Harsidhi
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Purvi Champaran
+</td>
+<td style="text-align:left;">
+Govindganj
+</td>
+<td style="text-align:left;">
+LJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Purvi Champaran
+</td>
+<td style="text-align:left;">
+Kesaria
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+Purvi Champaran
+</td>
+<td style="text-align:left;">
+Kalyanpur
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+17
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+Purvi Champaran
+</td>
+<td style="text-align:left;">
+Pipra
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+Purvi Champaran
+</td>
+<td style="text-align:left;">
+Madhuban
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+Purvi Champaran
+</td>
+<td style="text-align:left;">
+Motihari
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+Purvi Champaran
+</td>
+<td style="text-align:left;">
+Chiraia
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+Purvi Champaran
+</td>
+<td style="text-align:left;">
+Dhaka
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+207
+</td>
+<td style="text-align:right;">
+207
+</td>
+<td style="text-align:left;">
+Rohtas
+</td>
+<td style="text-align:left;">
+Chenari
+</td>
+<td style="text-align:left;">
+RLSP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+208
+</td>
+<td style="text-align:right;">
+208
+</td>
+<td style="text-align:left;">
+Rohtas
+</td>
+<td style="text-align:left;">
+Sasaram
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+209
+</td>
+<td style="text-align:right;">
+209
+</td>
+<td style="text-align:left;">
+Rohtas
+</td>
+<td style="text-align:left;">
+Kargahar
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+210
+</td>
+<td style="text-align:right;">
+210
+</td>
+<td style="text-align:left;">
+Rohtas
+</td>
+<td style="text-align:left;">
+Dinara
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+211
+</td>
+<td style="text-align:right;">
+211
+</td>
+<td style="text-align:left;">
+Rohtas
+</td>
+<td style="text-align:left;">
+Nokha
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+212
+</td>
+<td style="text-align:right;">
+212
+</td>
+<td style="text-align:left;">
+Rohtas
+</td>
+<td style="text-align:left;">
+Dehri
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+213
+</td>
+<td style="text-align:right;">
+213
+</td>
+<td style="text-align:left;">
+Rohtas
+</td>
+<td style="text-align:left;">
+Karakat
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+74
+</td>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:left;">
+Saharsa
+</td>
+<td style="text-align:left;">
+Sonbarsha
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+75
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:left;">
+Saharsa
+</td>
+<td style="text-align:left;">
+Saharsa
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+76
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:left;">
+Saharsa
+</td>
+<td style="text-align:left;">
+Simri Bakhtiarpur
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+77
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:left;">
+Saharsa
+</td>
+<td style="text-align:left;">
+Mahishi
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+131
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:left;">
+Samastipur
+</td>
+<td style="text-align:left;">
+Kalyanpur
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+132
+</td>
+<td style="text-align:right;">
+132
+</td>
+<td style="text-align:left;">
+Samastipur
+</td>
+<td style="text-align:left;">
+Warisnagar
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+133
+</td>
+<td style="text-align:right;">
+133
+</td>
+<td style="text-align:left;">
+Samastipur
+</td>
+<td style="text-align:left;">
+Samastipur
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+134
+</td>
+<td style="text-align:right;">
+134
+</td>
+<td style="text-align:left;">
+Samastipur
+</td>
+<td style="text-align:left;">
+Ujiarpur
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+135
+</td>
+<td style="text-align:right;">
+135
+</td>
+<td style="text-align:left;">
+Samastipur
+</td>
+<td style="text-align:left;">
+Morwa
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+136
+</td>
+<td style="text-align:right;">
+136
+</td>
+<td style="text-align:left;">
+Samastipur
+</td>
+<td style="text-align:left;">
+Sarairanjan
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+137
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:left;">
+Samastipur
+</td>
+<td style="text-align:left;">
+Mohiuddinnagar
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+138
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:left;">
+Samastipur
+</td>
+<td style="text-align:left;">
+Bibhutipur
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+139
+</td>
+<td style="text-align:right;">
+139
+</td>
+<td style="text-align:left;">
+Samastipur
+</td>
+<td style="text-align:left;">
+Rosera
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+140
+</td>
+<td style="text-align:right;">
+140
+</td>
+<td style="text-align:left;">
+Samastipur
+</td>
+<td style="text-align:left;">
+Hasanpur
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+113
+</td>
+<td style="text-align:right;">
+113
+</td>
+<td style="text-align:left;">
+Saran
+</td>
+<td style="text-align:left;">
+Ekma
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+114
+</td>
+<td style="text-align:right;">
+114
+</td>
+<td style="text-align:left;">
+Saran
+</td>
+<td style="text-align:left;">
+Manjhi
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+115
+</td>
+<td style="text-align:right;">
+115
+</td>
+<td style="text-align:left;">
+Saran
+</td>
+<td style="text-align:left;">
+Baniapur
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+116
+</td>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:left;">
+Saran
+</td>
+<td style="text-align:left;">
+Taraiya
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:right;">
+117
+</td>
+<td style="text-align:left;">
+Saran
+</td>
+<td style="text-align:left;">
+Marhaura
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+118
+</td>
+<td style="text-align:right;">
+118
+</td>
+<td style="text-align:left;">
+Saran
+</td>
+<td style="text-align:left;">
+Chapra
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+119
+</td>
+<td style="text-align:right;">
+119
+</td>
+<td style="text-align:left;">
+Saran
+</td>
+<td style="text-align:left;">
+Garkha
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+120
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:left;">
+Saran
+</td>
+<td style="text-align:left;">
+Amnour
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+121
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:left;">
+Saran
+</td>
+<td style="text-align:left;">
+Parsa
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+122
+</td>
+<td style="text-align:right;">
+122
+</td>
+<td style="text-align:left;">
+Saran
+</td>
+<td style="text-align:left;">
+Sonepur
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+169
+</td>
+<td style="text-align:right;">
+169
+</td>
+<td style="text-align:left;">
+Sheikhpura
+</td>
+<td style="text-align:left;">
+Sheikhpura
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+170
+</td>
+<td style="text-align:right;">
+170
+</td>
+<td style="text-align:left;">
+Sheikhpura
+</td>
+<td style="text-align:left;">
+Barbigha
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+Sheohar
+</td>
+<td style="text-align:left;">
+Sheohar
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+Sitamarhi
+</td>
+<td style="text-align:left;">
+Riga
+</td>
+<td style="text-align:left;">
+INC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Sitamarhi
+</td>
+<td style="text-align:left;">
+Bathnaha
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+25
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+Sitamarhi
+</td>
+<td style="text-align:left;">
+Parihar
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+26
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+Sitamarhi
+</td>
+<td style="text-align:left;">
+Sursand
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+27
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+Sitamarhi
+</td>
+<td style="text-align:left;">
+Bajpatti
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+28
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+Sitamarhi
+</td>
+<td style="text-align:left;">
+Sitamarhi
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+Sitamarhi
+</td>
+<td style="text-align:left;">
+Runnisaidpur
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+30
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+Sitamarhi
+</td>
+<td style="text-align:left;">
+Belsand
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+105
+</td>
+<td style="text-align:right;">
+105
+</td>
+<td style="text-align:left;">
+Siwan
+</td>
+<td style="text-align:left;">
+Siwan
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+106
+</td>
+<td style="text-align:right;">
+106
+</td>
+<td style="text-align:left;">
+Siwan
+</td>
+<td style="text-align:left;">
+Ziradei
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+107
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:left;">
+Siwan
+</td>
+<td style="text-align:left;">
+Darauli
+</td>
+<td style="text-align:left;">
+CPI (ML) (L)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+108
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:left;">
+Siwan
+</td>
+<td style="text-align:left;">
+Raghunathpur
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+109
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:left;">
+Siwan
+</td>
+<td style="text-align:left;">
+Daraunda
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:left;">
+Siwan
+</td>
+<td style="text-align:left;">
+Barharia
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+111
+</td>
+<td style="text-align:right;">
+111
+</td>
+<td style="text-align:left;">
+Siwan
+</td>
+<td style="text-align:left;">
+Goriakothi
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+112
+</td>
+<td style="text-align:right;">
+112
+</td>
+<td style="text-align:left;">
+Siwan
+</td>
+<td style="text-align:left;">
+Maharajganj
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+41
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:left;">
+Supaul
+</td>
+<td style="text-align:left;">
+Nirmali
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+42
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:left;">
+Supaul
+</td>
+<td style="text-align:left;">
+Pipra
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+43
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:left;">
+Supaul
+</td>
+<td style="text-align:left;">
+Supaul
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+44
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:left;">
+Supaul
+</td>
+<td style="text-align:left;">
+Triveniganj
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+45
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+Supaul
+</td>
+<td style="text-align:left;">
+Chhatapur
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+123
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:left;">
+Vaishali
+</td>
+<td style="text-align:left;">
+Hajipur
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+124
+</td>
+<td style="text-align:right;">
+124
+</td>
+<td style="text-align:left;">
+Vaishali
+</td>
+<td style="text-align:left;">
+Lalganj
+</td>
+<td style="text-align:left;">
+LJP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+125
+</td>
+<td style="text-align:right;">
+125
+</td>
+<td style="text-align:left;">
+Vaishali
+</td>
+<td style="text-align:left;">
+Vaishali
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+126
+</td>
+<td style="text-align:right;">
+126
+</td>
+<td style="text-align:left;">
+Vaishali
+</td>
+<td style="text-align:left;">
+Mahua
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+127
+</td>
+<td style="text-align:right;">
+127
+</td>
+<td style="text-align:left;">
+Vaishali
+</td>
+<td style="text-align:left;">
+Raja Pakar
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+128
+</td>
+<td style="text-align:right;">
+128
+</td>
+<td style="text-align:left;">
+Vaishali
+</td>
+<td style="text-align:left;">
+Raghopur
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+129
+</td>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:left;">
+Vaishali
+</td>
+<td style="text-align:left;">
+Mahnar
+</td>
+<td style="text-align:left;">
+JD(U)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+130
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:left;">
+Vaishali
+</td>
+<td style="text-align:left;">
+Patepur
+</td>
+<td style="text-align:left;">
+RJD
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="constituencies-by-district" class="section level2">
+<h2>6. Constituencies by district</h2>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:dupconcount">Table 6: </span>Bihar constituency count by district
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+district
+</th>
+<th style="text-align:left;">
+headquarters
+</th>
+<th style="text-align:right;">
+population_2011
+</th>
+<th style="text-align:right;">
+area_km
+</th>
+<th style="text-align:right;">
+density_km_2011
+</th>
+<th style="text-align:right;">
+constituency_count
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Araria
+</td>
+<td style="text-align:left;">
+Araria
+</td>
+<td style="text-align:right;">
+2811569
+</td>
+<td style="text-align:right;">
+2829
+</td>
+<td style="text-align:right;">
+751
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Arwal
+</td>
+<td style="text-align:left;">
+Arwal
+</td>
+<td style="text-align:right;">
+699000
+</td>
+<td style="text-align:right;">
+637
+</td>
+<td style="text-align:right;">
+918
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:left;">
+Aurangabad
+</td>
+<td style="text-align:right;">
+2540073
+</td>
+<td style="text-align:right;">
+3303
+</td>
+<td style="text-align:right;">
+607
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Banka
+</td>
+<td style="text-align:left;">
+Banka
+</td>
+<td style="text-align:right;">
+2034763
+</td>
+<td style="text-align:right;">
+3018
+</td>
+<td style="text-align:right;">
+533
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Begusarai
+</td>
+<td style="text-align:left;">
+Begusarai
+</td>
+<td style="text-align:right;">
+2970541
+</td>
+<td style="text-align:right;">
+1917
+</td>
+<td style="text-align:right;">
+1222
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bhagalpur
+</td>
+<td style="text-align:left;">
+Bhagalpur
+</td>
+<td style="text-align:right;">
+3037766
+</td>
+<td style="text-align:right;">
+2569
+</td>
+<td style="text-align:right;">
+946
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bhojpur
+</td>
+<td style="text-align:left;">
+Arrah
+</td>
+<td style="text-align:right;">
+2728407
+</td>
+<td style="text-align:right;">
+2473
+</td>
+<td style="text-align:right;">
+903
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buxar
+</td>
+<td style="text-align:left;">
+Buxar
+</td>
+<td style="text-align:right;">
+1706352
+</td>
+<td style="text-align:right;">
+1624
+</td>
+<td style="text-align:right;">
+864
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Darbhanga
+</td>
+<td style="text-align:left;">
+Darbhanga
+</td>
+<td style="text-align:right;">
+3937385
+</td>
+<td style="text-align:right;">
+2278
+</td>
+<td style="text-align:right;">
+1442
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gaya
+</td>
+<td style="text-align:left;">
+Gaya
+</td>
+<td style="text-align:right;">
+4391418
+</td>
+<td style="text-align:right;">
+4978
+</td>
+<td style="text-align:right;">
+696
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gopalganj
+</td>
+<td style="text-align:left;">
+Gopalganj
+</td>
+<td style="text-align:right;">
+2562012
+</td>
+<td style="text-align:right;">
+2033
+</td>
+<td style="text-align:right;">
+1057
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jamui
+</td>
+<td style="text-align:left;">
+Jamui
+</td>
+<td style="text-align:right;">
+1760405
+</td>
+<td style="text-align:right;">
+3099
+</td>
+<td style="text-align:right;">
+451
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jehanabad
+</td>
+<td style="text-align:left;">
+Jehanabad
+</td>
+<td style="text-align:right;">
+1125313
+</td>
+<td style="text-align:right;">
+1569
+</td>
+<td style="text-align:right;">
+963
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kaimur
+</td>
+<td style="text-align:left;">
+Bhabua
+</td>
+<td style="text-align:right;">
+1626384
+</td>
+<td style="text-align:right;">
+3363
+</td>
+<td style="text-align:right;">
+382
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Katihar
+</td>
+<td style="text-align:left;">
+Katihar
+</td>
+<td style="text-align:right;">
+3071029
+</td>
+<td style="text-align:right;">
+3056
+</td>
+<td style="text-align:right;">
+782
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Khagaria
+</td>
+<td style="text-align:left;">
+Khagaria
+</td>
+<td style="text-align:right;">
+1666886
+</td>
+<td style="text-align:right;">
+1486
+</td>
+<td style="text-align:right;">
+859
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kishanganj
+</td>
+<td style="text-align:left;">
+Kishanganj
+</td>
+<td style="text-align:right;">
+1690400
+</td>
+<td style="text-align:right;">
+1884
+</td>
+<td style="text-align:right;">
+687
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lakhisarai
+</td>
+<td style="text-align:left;">
+Lakhisarai
+</td>
+<td style="text-align:right;">
+1000912
+</td>
+<td style="text-align:right;">
+1229
+</td>
+<td style="text-align:right;">
+652
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Madhepura
+</td>
+<td style="text-align:left;">
+Madhepura
+</td>
+<td style="text-align:right;">
+2001762
+</td>
+<td style="text-align:right;">
+1787
+</td>
+<td style="text-align:right;">
+853
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Madhubani
+</td>
+<td style="text-align:left;">
+Madhubani
+</td>
+<td style="text-align:right;">
+4487379
+</td>
+<td style="text-align:right;">
+3501
+</td>
+<td style="text-align:right;">
+1020
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Munger
+</td>
+<td style="text-align:left;">
+Munger
+</td>
+<td style="text-align:right;">
+1367765
+</td>
+<td style="text-align:right;">
+1419
+</td>
+<td style="text-align:right;">
+800
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:left;">
+Muzaffarpur
+</td>
+<td style="text-align:right;">
+4801062
+</td>
+<td style="text-align:right;">
+3173
+</td>
+<td style="text-align:right;">
+1180
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nalanda
+</td>
+<td style="text-align:left;">
+Bihar Sharif
+</td>
+<td style="text-align:right;">
+2877653
+</td>
+<td style="text-align:right;">
+2354
+</td>
+<td style="text-align:right;">
+1006
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nawada
+</td>
+<td style="text-align:left;">
+Nawada
+</td>
+<td style="text-align:right;">
+2219146
+</td>
+<td style="text-align:right;">
+2492
+</td>
+<td style="text-align:right;">
+726
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Paschim Champaran
+</td>
+<td style="text-align:left;">
+Bettiah
+</td>
+<td style="text-align:right;">
+3935042
+</td>
+<td style="text-align:right;">
+5229
+</td>
+<td style="text-align:right;">
+582
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:left;">
+Patna
+</td>
+<td style="text-align:right;">
+5838465
+</td>
+<td style="text-align:right;">
+3202
+</td>
+<td style="text-align:right;">
+1471
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Purnia
+</td>
+<td style="text-align:left;">
+Purnia
+</td>
+<td style="text-align:right;">
+3264619
+</td>
+<td style="text-align:right;">
+3228
+</td>
+<td style="text-align:right;">
+787
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Purvi Champaran
+</td>
+<td style="text-align:left;">
+Motihari
+</td>
+<td style="text-align:right;">
+5099371
+</td>
+<td style="text-align:right;">
+3969
+</td>
+<td style="text-align:right;">
+991
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rohtas
+</td>
+<td style="text-align:left;">
+Sasaram
+</td>
+<td style="text-align:right;">
+2959918
+</td>
+<td style="text-align:right;">
+3850
+</td>
+<td style="text-align:right;">
+636
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Saharsa
+</td>
+<td style="text-align:left;">
+Saharsa
+</td>
+<td style="text-align:right;">
+1900661
+</td>
+<td style="text-align:right;">
+1702
+</td>
+<td style="text-align:right;">
+885
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Samastipur
+</td>
+<td style="text-align:left;">
+Samastipur
+</td>
+<td style="text-align:right;">
+4261566
+</td>
+<td style="text-align:right;">
+2905
+</td>
+<td style="text-align:right;">
+1175
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Saran
+</td>
+<td style="text-align:left;">
+Chhapra
+</td>
+<td style="text-align:right;">
+3951862
+</td>
+<td style="text-align:right;">
+2641
+</td>
+<td style="text-align:right;">
+1231
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sheikhpura
+</td>
+<td style="text-align:left;">
+Sheikhpura
+</td>
+<td style="text-align:right;">
+634927
+</td>
+<td style="text-align:right;">
+689
+</td>
+<td style="text-align:right;">
+762
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sheohar
+</td>
+<td style="text-align:left;">
+Sheohar
+</td>
+<td style="text-align:right;">
+656916
+</td>
+<td style="text-align:right;">
+443
+</td>
+<td style="text-align:right;">
+1161
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sitamarhi
+</td>
+<td style="text-align:left;">
+Dumra, Sitamarhi
+</td>
+<td style="text-align:right;">
+3423574
+</td>
+<td style="text-align:right;">
+2199
+</td>
+<td style="text-align:right;">
+1214
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Siwan
+</td>
+<td style="text-align:left;">
+Siwan
+</td>
+<td style="text-align:right;">
+3330464
+</td>
+<td style="text-align:right;">
+2219
+</td>
+<td style="text-align:right;">
+1221
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Supaul
+</td>
+<td style="text-align:left;">
+Supaul
+</td>
+<td style="text-align:right;">
+2229076
+</td>
+<td style="text-align:right;">
+2410
+</td>
+<td style="text-align:right;">
+724
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vaishali
+</td>
+<td style="text-align:left;">
+Hajipur
+</td>
+<td style="text-align:right;">
+3495021
+</td>
+<td style="text-align:right;">
+2036
+</td>
+<td style="text-align:right;">
+1332
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="india-parliamentary-representation" class="section level2">
+<h2>7. India parliamentary representation</h2>
+<ul>
+<li>Wikipedia<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> describes India’s legislative body as:</li>
+</ul>
+<blockquote>
+<p>bicameral with 788 seats divided as to Rajya Sabha (Council of States) of 245 members, and, the Lok Sabha (House of the People) of 543 members all presided over by President of India;</p>
+</blockquote>
+<blockquote>
+<p>Lok Sabha members directly elected by public who vote in single member districts.</p>
+</blockquote>
+<blockquote>
+<p>Rajya Sabha members elected by State Legislative assembly by proportional representation.</p>
+</blockquote>
+<ul>
+<li><p>For <strong>Bihar</strong> there are 40 Lok Sabha seats and 16 Rajya Sabha seats representing 9% of total parliamentary seats.</p></li>
+<li><p>Original file size: 3818x4600 pixels and 75KB. PNG creator: <a href="https://commons.wikimedia.org/wiki/File:Indian_Parliament_Seat_Composition.png">The,Manish</a>.</p></li>
+</ul>
+<p><img src="/post/2020-06-30-bihar-background_files/figure-html/indparl-1.png" width="198" /></p>
+</div>
+<div id="lok-sabha-election-past" class="section level2">
+<h2>8. Lok Sabha election past</h2>
+<ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Elections_in_India#History_of_Lok_Sabha_Elections">Wikipedia</a> details 17 Lok Sabha elections since 1951 with the latest being that of 2019.</p></li>
+<li><p>The most recent election result of 2019 gave 303 seats to BJP.</p></li>
+<li><p>Next Lok Sabha elections scheduled for 2024.</p></li>
+</ul>
+<div style="page-break-after: always;"></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:loksabha">Table 7: </span>Lok Sabha election results
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Var.1
+</th>
+<th style="text-align:left;">
+Var.2
+</th>
+<th style="text-align:left;">
+Var.3
+</th>
+<th style="text-align:left;">
+First
+</th>
+<th style="text-align:left;">
+First.1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Year
+</td>
+<td style="text-align:left;">
+Election
+</td>
+<td style="text-align:left;">
+Total seats
+</td>
+<td style="text-align:left;">
+Party
+</td>
+<td style="text-align:left;">
+Seats
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1951–52 [4][5][6]
+</td>
+<td style="text-align:left;">
+1st Lok Sabha
+</td>
+<td style="text-align:left;">
+489
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+364
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1957[7]
+</td>
+<td style="text-align:left;">
+2nd Lok Sabha
+</td>
+<td style="text-align:left;">
+494
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+371
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1962
+</td>
+<td style="text-align:left;">
+3rd Lok Sabha
+</td>
+<td style="text-align:left;">
+494
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+361
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1967
+</td>
+<td style="text-align:left;">
+4th Lok Sabha
+</td>
+<td style="text-align:left;">
+520
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+283
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1971
+</td>
+<td style="text-align:left;">
+5th Lok Sabha
+</td>
+<td style="text-align:left;">
+518
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+352
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1977
+</td>
+<td style="text-align:left;">
+6th Lok Sabha
+</td>
+<td style="text-align:left;">
+542
+</td>
+<td style="text-align:left;">
+JP
+</td>
+<td style="text-align:left;">
+298
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1980
+</td>
+<td style="text-align:left;">
+7th Lok Sabha
+</td>
+<td style="text-align:left;">
+529 ( 542* )
+</td>
+<td style="text-align:left;">
+INC(I)
+</td>
+<td style="text-align:left;">
+351
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1984
+</td>
+<td style="text-align:left;">
+8th Lok Sabha
+</td>
+<td style="text-align:left;">
+514
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+404
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1989
+</td>
+<td style="text-align:left;">
+9th Lok Sabha
+</td>
+<td style="text-align:left;">
+529
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+195
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1991
+</td>
+<td style="text-align:left;">
+10th Lok Sabha
+</td>
+<td style="text-align:left;">
+521
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+244
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1996
+</td>
+<td style="text-align:left;">
+11th Lok Sabha
+</td>
+<td style="text-align:left;">
+543
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+<td style="text-align:left;">
+161
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1998
+</td>
+<td style="text-align:left;">
+12th Lok Sabha
+</td>
+<td style="text-align:left;">
+545
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+<td style="text-align:left;">
+182
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1999
+</td>
+<td style="text-align:left;">
+13th Lok Sabha
+</td>
+<td style="text-align:left;">
+545
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+<td style="text-align:left;">
+182
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2004
+</td>
+<td style="text-align:left;">
+14th Lok Sabha
+</td>
+<td style="text-align:left;">
+543
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+145
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2009
+</td>
+<td style="text-align:left;">
+15th Lok Sabha
+</td>
+<td style="text-align:left;">
+545
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+206
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2014
+</td>
+<td style="text-align:left;">
+16th Lok Sabha
+</td>
+<td style="text-align:left;">
+545
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+<td style="text-align:left;">
+282
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019
+</td>
+<td style="text-align:left;">
+17th Lok Sabha
+</td>
+<td style="text-align:left;">
+543
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+<td style="text-align:left;">
+303
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="rajya-sabha-composition-by-party" class="section level2">
+<h2>9. Rajya Sabha composition by party</h2>
+<ul>
+<li><p>After the past week’s election the BJP party and its alliance National Democratic Alliance (NDA) have majority in Rajya Sabha with 84 seats and 114 seats. Congress have 41 seats and its alliance United Progressive Alliance has 62 seats in total<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>.</p></li>
+<li><p>Elections occur as and when members retire and each term is for 6 years. Next elections scheduled for 2021.</p></li>
+</ul>
+<div style="page-break-after: always;"></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:rajyasabha">Table 8: </span>2020-06-19 Rajya Sabha composition by party
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Alliances
+</th>
+<th style="text-align:left;">
+Party
+</th>
+<th style="text-align:right;">
+No.of.MPs
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+<td style="text-align:right;">
+84
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+All India Anna Dravida Munnetra Kazhagam
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Janata Dal (United)
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Nominated
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Shiromani Akali Dal
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Asom Gana Parishad
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Bodoland People’s Front
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Lok Janshakti Party
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+National People’s Party
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Pattali Makkal Katchi
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Republican Party of India (A)
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Tamil Maanila Congress
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+<td style="text-align:right;">
+41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Dravida Munnetra Kazhagam
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Rashtriya Janata Dal
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Indian Union Muslim League
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Jharkhand Mukti Morcha
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Kerala Congress (M)
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Marumalarchi Dravida Munnetra Kazhagam
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+All India Trinamool Congress
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Biju Janata Dal
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Samajwadi Party
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Telangana Rashtra Samithi
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+YSR Congress Party
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Communist Party of India (M)
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Bahujan Samaj Party
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Aam Aadmi Party
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+J&amp;K Peoples Democratic Party
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Communist Party of India
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Janata Dal (Secular)[8]
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Naga People’s Front
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Mizo National Front
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Sikkim Democratic Front
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Telugu Desam Party
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vacant
+</td>
+<td style="text-align:left;">
+Vacant
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:right;">
+245
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Jeroen Ooms (2020). magick: Advanced Graphics and Image-Processing in R. R package version 2.4.0. <a href="https://CRAN.R-project.org/package=magick" class="uri">https://CRAN.R-project.org/package=magick</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Jeroen Ooms (2020). rsvg: Render SVG Images into PDF, PNG, PostScript, or Bitmap Arrays. R package version 2.1. <a href="https://CRAN.R-project.org/package=rsvg" class="uri">https://CRAN.R-project.org/package=rsvg</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Hadley Wickham (2019). rvest: Easily Harvest (Scrape) Web Pages. R package version 0.3.5. <a href="https://CRAN.R-project.org/package=rvest" class="uri">https://CRAN.R-project.org/package=rvest</a><a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Hao Zhu (2019). kableExtra: Construct Complex Table with ‘kable’ and Pipe Syntax. R
+package version 1.1.0. <a href="https://CRAN.R-project.org/package=kableExtra" class="uri">https://CRAN.R-project.org/package=kableExtra</a> <a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://en.wikipedia.org/wiki/Bihar_Legislative_Council" class="uri">https://en.wikipedia.org/wiki/Bihar_Legislative_Council</a><a href="#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://en.wikipedia.org/wiki/Bihar_Legislative_Assembly" class="uri">https://en.wikipedia.org/wiki/Bihar_Legislative_Assembly</a><a href="#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p><a href="https://en.wikipedia.org/wiki/2015_Bihar_Legislative_Assembly_election" class="uri">https://en.wikipedia.org/wiki/2015_Bihar_Legislative_Assembly_election</a><a href="#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p><a href="https://en.wikipedia.org/wiki/Parliament_of_India" class="uri">https://en.wikipedia.org/wiki/Parliament_of_India</a><a href="#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>Source: <a href="https://en.wikipedia.org/wiki/Rajya_Sabha#Membership_by_party" class="uri">https://en.wikipedia.org/wiki/Rajya_Sabha#Membership_by_party</a><a href="#fnref9" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

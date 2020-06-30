@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bihar on Thoughts</title>
+    <link>/tags/bihar/</link>
+    <description>Recent content in Bihar on Thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 30 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/bihar/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Bihar background</title>
+      <link>/post/2020/06/30/bihar-background/</link>
+      <pubDate>Tue, 30 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/06/30/bihar-background/</guid>
+      <description>Task Aggregate data on Bihar
+ Data Sourced from Wikipedia and Wikimedia commons
+ Electoral calendar  Table 1: Election calendar with focus on Bihar    date  kind  house  body      2020  state  lower  NA    2021  national  upper  NA    2021  state  upper  local authority    2022  state  upper  legislative assembly    2023  state  upper  graduate    2023  state  upper  teachers    2024  state  upper  legislative assembly    2024  national  lower  NA    2026  state  upper  legislative assembly    2026  state  upper  graduate    2026  state  upper  teachers    2026  state  upper  nominated      Other information R packages used include magick1, rsvg2, rvest3, and, kableExtra4.</description>
+    </item>
+    
+  </channel>
+</rss>
