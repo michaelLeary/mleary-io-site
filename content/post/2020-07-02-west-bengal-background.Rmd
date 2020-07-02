@@ -1,0 +1,490 @@
+---
+title: West Bengal background
+author: michael
+date: '2020-07-02'
+slug: west-bengal-background
+categories:
+  - R
+tags:
+  - Governance
+  - Politics
+  - West Bengal
+  - India
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r pkgsused, include=FALSE}
+pkgs = c("magick", "rsvg", "rvest", "kableExtra", "dplyr", "janitor", "readr", "data.table") 
+# manage images
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+
+```
+
+## Task
+
+Aggregate data on West Bengal
+
+## Data
+
+Sourced from Wikipedia and Wikimedia commons 
+
+## Electoral calendar
+
+```{r caldata, include=FALSE}
+cal <- read_csv("/Users/michaelleary/Documents/GitHub/generalitems/wbcal.csv", col_names = TRUE,)
+```
+
+```{r wbcal, include=FALSE}
+cal_df <- as.data.frame(cal)
+cal_df
+```
+
+```{r wbcalendar, echo=FALSE}
+knitr::kable(cal_df[,c(1:4)], "html",
+             caption = "Election calendar",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+## Other information 
+
+R packages used include magick^[Jeroen Ooms (2020). magick: Advanced Graphics and Image-Processing in R. R package version 2.4.0. https://CRAN.R-project.org/package=magick], rsvg^[Jeroen Ooms (2020). rsvg: Render SVG Images into PDF, PNG, PostScript, or Bitmap Arrays. R package version 2.1. https://CRAN.R-project.org/package=rsvg], rvest^[Hadley Wickham (2019). rvest: Easily Harvest (Scrape) Web Pages. R package version 0.3.5. https://CRAN.R-project.org/package=rvest], and, kableExtra^[Hao Zhu (2019). kableExtra: Construct Complex Table with 'kable' and Pipe Syntax. R
+  package version 1.1.0. https://CRAN.R-project.org/package=kableExtra ]. 
+
+\newpage
+
+## 1. State seal 
+
+* Original file size: 334x436 pixels and 302KB. Image source: [Government of West Bengal](https://commons.wikimedia.org/wiki/File:Emblem_of_West_Bengal.svg).
+
+```{r tigertest, include=FALSE}
+tiger <- image_read_svg('http://jeroen.github.io/images/tiger.svg', width = 350)
+print(tiger)
+```
+
+```{r wbseal, echo=FALSE}
+wbseal <- image_read_svg('https://upload.wikimedia.org/wikipedia/commons/d/d5/Emblem_of_West_Bengal.svg', width=478)
+wbseal
+```
+
+```{r, include=FALSE}
+# Seal svg rendered into png format. 
+image_write(wbseal, path = "wbseal.png", format = "png")
+wbseal_png <- image_convert(wbseal, "png")
+image_info(wbseal_png)
+wbseal_png
+```
+
+[Wikipedia](https://commons.wikimedia.org/wiki/File:Emblem_of_West_Bengal.svg) suggests the seal:
+
+> consists of a circle depicting a globe with the state of West bengal highlighted by a representation of the Bengali alphabet. The national emblem appears above the globe and the emblem includes the name of the state in english and in Bengali. 
+
+## 2. State district map 
+
+* Original file size: 768x1159 pixels and 311KB. Image source: [Antorjal](https://commons.wikimedia.org/wiki/File:WestBengalDistricts_numbered.svg).
+
+```{r dist, include=FALSE}
+districten <- image_read_svg('https://upload.wikimedia.org/wikipedia/commons/1/12/WestBengalDistricts_numbered.svg', height=478)
+districten
+```
+
+```{r districtpng, include=FALSE}
+image_write(districten, path = "districten.png", format = "png")
+districten_png <- image_convert(districten, "png")
+```
+
+```{r distpng, include=FALSE}
+districten_png
+```
+
+* Original file size: 768x1159 pixels and 311KB. Image source: [Antorjal](https://commons.wikimedia.org/wiki/File:WestBengalDistricts_numbered.svg#/media/File:WestBengalDistricts_numbered_as.svg).
+
+```{r dist2, include=FALSE}
+districtben <- image_read_svg('https://upload.wikimedia.org/wikipedia/commons/2/2d/WestBengalDistricts_numbered_bpy.svg', height=478)
+districten
+```
+
+```{r districtpng2, include=FALSE}
+image_write(districtben, path = "districtben.png", format = "png")
+districtben_png <- image_convert(districtben, "png")
+```
+
+```{r distpng2, include=FALSE}
+districtben_png
+```
+
+```{r districts, echo=FALSE}
+image_append(c(districtben_png, districten_png))
+```
+
+[Wikipedia](https://en.wikipedia.org/wiki/List_of_districts_of_West_Bengal#:~:text=West%20Bengal%20is%20now%20divided,Bardhaman%20district%20and%20Paschim%20Bardhaman) details 23 districts in five divisions. 
+
+```{r rawdatacollect, include=FALSE}
+# get the URL for the wikipedia page with all states
+url <- "https://en.wikipedia.org/wiki/List_of_districts_of_West_Bengal#:~:text=West%20Bengal%20is%20now%20divided,Bardhaman%20district%20and%20Paschim%20Bardhaman"
+
+# use that URL to scrape the states table using rvest
+districttable <- url %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[2]') %>% 
+  html_table(fill=TRUE)
+#create a vector of states
+head(districttable)
+
+```
+
+```{r convertchar2num, include=FALSE}
+# convert character column to numeric in three steps
+# step 1 is population column - remove
+# step 2 is convert to numeric
+# step 3 is convert other char columns to numeric directly
+distdf <- as.data.frame(districttable)
+# remove unwanted columns
+distdf <- distdf[,c(3,4,8,7,9,2,1)]
+colnames(distdf)
+# tidy column names with janitor
+disttidy <- distdf %>% 
+  janitor::clean_names()
+disttidy
+colnames(disttidy)[2] <- "hq"
+colnames(disttidy)[3] <- "pop_2011"
+colnames(disttidy)[4] <- "area_km2"
+colnames(disttidy)[5] <- "density_km2"
+colnames(disttidy)[6] <- "code"
+disttidy
+# convert character columns to numeric
+disttidy[,"pop_2011"] <- gsub(",", "", disttidy[,"pop_2011"])
+disttidy[,"area_km2"] <- gsub(",", "", disttidy[,"area_km2"])
+disttidy[,"area_km2"] <- strtrim(disttidy$area_km2,4)
+disttidy[,"density_km2"] <- gsub(",", "", disttidy[,"density_km2"])
+disttidy[,"density_km2"] <- strtrim(disttidy$density_km2,3)
+disttidy[3,5] <- "1100"
+disttidy[10,5] <- "1753"
+disttidy[11,5] <- "3306"
+disttidy[14,5] <- "24252"
+disttidy[16,5] <- "1071"
+disttidy[18,5] <- "1076"
+disttidy[19,5] <- "1334"
+disttidy[20,5] <- "1316"
+disttidy[21,5] <- "2463"
+disttidy[24,5] <- "1029"
+disttidy[,"pop_2011"] <- as.numeric(disttidy[,"pop_2011"])
+disttidy[,"area_km2"] <- as.numeric(disttidy[,"area_km2"])
+disttidy[,"density_km2"] <- as.numeric(disttidy[,"density_km2"])
+disttidy <- disttidy[-24,]
+disttidy
+
+# order columns
+disttidy2 <- disttidy[,c(1:7)]
+disttidy2
+head(disttidy2)
+```
+
+```{r, include=FALSE}
+distorderpop <- disttidy2[
+  order(-disttidy2[,3]),
+  ]
+distorderpop
+
+```
+
+\newpage
+
+```{r distorderpop, echo=FALSE}
+knitr::kable(distorderpop[,c(1:6)], "html",
+             caption = "West Bengal districts by 2011 population",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+```{r, include=FALSE}
+distordername <- disttidy2[
+  order(disttidy2[,1]),
+  ]
+distordername
+
+```
+
+\newpage
+
+```{r distordername, echo=FALSE}
+knitr::kable(distordername[,c(1:6)], "html",
+             caption = "West Bengal districts by name",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+## 3. State legislature
+
+* The state legislature is unicameral and called the legislative assembly with 295 members. 
+
+* Term is for 5 years. Latest election was 2016. Upcoming election scheduled for 2021. 
+
+* All India Trinamool Congress party won 211 seats in 2016 election for 72%.  
+
+## 4. Electoral constituencies
+
+* Vidhan Sabha constituencies and elected members as of 2016^[https://en.wikipedia.org/wiki/2016_West_Bengal_Legislative_Assembly_election]
+
+* Original file size: 1091x1310 pixels and 6050KB. Image source: [Furfur](https://commons.wikimedia.org/wiki/File:Wahlkreise_zur_Vidhan_Sabha_von_Westbengalen.svg).
+
+```{r constituency, echo=FALSE}
+constituency <- image_read_svg('https://upload.wikimedia.org/wikipedia/commons/4/44/Wahlkreise_zur_Vidhan_Sabha_von_Westbengalen.svg', height=478)
+constituency
+```
+
+```{r constituencypng, include=FALSE}
+image_write(constituency, path = "constituency.png", format = "png")
+constituency_png <- image_convert(constituency, "png")
+```
+
+```{r constitpng, include=FALSE}
+constituency_png
+```
+
+
+```{r constitdata, include=FALSE}
+wbc <- read_csv("/Users/michaelleary/Documents/GitHub/generalitems/wbcon.csv", col_names = TRUE,)
+```
+
+```{r wbconstit, include=FALSE}
+wbc_df <- as.data.frame(wbc)
+wbc_df <- wbc_df[,c(1,3,2,4)]
+wbc_df
+```
+
+```{r vstable, echo=FALSE}
+knitr::kable(wbc_df, "html",
+             caption = "West Bengal Vidhan Sabha by constituency",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+## 5. Constituencies by district  
+
+```{r, include=FALSE}
+d <- distinct(disttidy2[1])
+```
+
+```{r, include=FALSE}
+c <-distinct(wbc_df[2])
+```
+
+```{r, include=FALSE}
+identical(d, c)
+```
+
+```{r, include=FALSE}
+# identify differences between the two data table district columns
+dplyr::anti_join(d, c, by = "district")
+```
+
+```{r, include=FALSE}
+# edit cells identified as different so as to obtain consistency between data sets 
+# change Bagpat in distup dataframe to Baghpat
+
+wbc_df <- wbc_df %>%
+     mutate(district=replace(district, district == "Kolkata Corporation", "Kolkata")) %>%
+     as.data.frame()
+
+wbc_df <- wbc_df %>%
+     mutate(district=replace(district, district == "Malda", "Maldah")) %>%
+     as.data.frame()
+
+disttidy2 <- disttidy2 %>%
+     mutate(district=replace(district, district == "Malda", "Maldah")) %>%
+     as.data.frame()
+
+```
+
+```{r, include=FALSE}
+# make a join of ml and mlc
+dc <- dplyr::full_join(disttidy2, wbc_df, by = "district")
+dc
+```
+
+```{r, include=FALSE}
+#select columns required
+dc2 <- dc[,c(1:5,9)]
+dc2
+```
+
+```{r, include=FALSE}
+fwrite(dc2, file = "/Users/michaelleary/Documents/GitHub/generalitems/wbdc2.csv", row.names = TRUE) # in csv form using data.table - fast
+
+```
+
+```{r distconstdata, include=FALSE}
+wbdc3 <- read_csv("/Users/michaelleary/Documents/GitHub/generalitems/wbdc2.csv", col_names = TRUE,)
+```
+
+```{r, include=FALSE}
+wbdc3
+```
+
+```{r, include=FALSE}
+# merge count no of constituencies by district
+# make district and division factors
+wbdc3$district <- as.factor(wbdc3$district)
+head(wbdc3)
+```
+
+```{r, include=FALSE}
+# count constituencies per district
+table(wbdc3$district)
+prop.table(table(wbdc3$district))
+
+```
+
+```{r, include=FALSE}
+# alternate method using dplyr to generate a frequency table of constituencies by district
+wb_constit <- wbdc3 %>% count(district, sort = TRUE)
+```
+
+```{r, include=FALSE}
+wb_constit
+```
+
+```{r, include=FALSE}
+# bind constituency count to upd data frame 
+wbdc3merge <- merge(disttidy2, wb_constit, by.disttidy2 = "district", by.wb_constit = "district", all = TRUE)
+
+
+# rename constituency count column
+colnames(wbdc3merge)[8] <- "constituency_count"
+wbdc3merge
+
+```
+
+```{r dupconcount, echo=FALSE}
+knitr::kable(wbdc3merge[,c(1:5,8)], "html",
+             caption = "Bihar constituency count by district",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+## 6. India parliamentary representation 
+
+* Wikipedia^[https://en.wikipedia.org/wiki/Parliament_of_India] describes India's legislative body as:
+
+> bicameral with 788 seats divided as to Rajya Sabha (Council of States) of 245 members, and, the Lok Sabha (House of the People) of 543 members all presided over by President of India;
+
+> Lok Sabha members directly elected by public who vote in single member districts.
+
+> Rajya Sabha members elected by State Legislative assembly by proportional representation. 
+
+* For **West Bengal** there are 42 Lok Sabha seats and 16 Rajya Sabha seats representing 7% of total parliamentary seats. 
+
+* Original file size: 3818x4600 pixels and 75KB. PNG creator: [The,Manish](https://commons.wikimedia.org/wiki/File:Indian_Parliament_Seat_Composition.png).
+
+```{r indparl, echo=FALSE}
+# Example image
+
+indparl <- image_read("https://upload.wikimedia.org/wikipedia/commons/6/6e/Indian_Parliament_Seat_Composition.png")
+image_scale(indparl, "x478") # height: 300px
+```
+
+
+## 7. Lok Sabha election past
+
+* [Wikipedia](https://en.wikipedia.org/wiki/Elections_in_India#History_of_Lok_Sabha_Elections) details 17 Lok Sabha elections since 1951 with the latest being that of 2019. 
+
+* The most recent election result of 2019 gave 303 seats to BJP. 
+
+* Next Lok Sabha elections scheduled for 2024. 
+
+```{r lsresults, include=FALSE}
+# get the URL for the wikipedia page with all states
+url2 <- "https://en.wikipedia.org/wiki/Elections_in_India#History_of_Lok_Sabha_Elections"
+
+# use that URL to scrape the states table using rvest
+lselections <- url2 %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[3]') %>% 
+  html_table(fill=TRUE)
+#create a vector of election results
+head(lselections)
+
+```
+
+```{r, include=FALSE}
+lok_df <- as.data.frame(lselections)
+
+```
+
+\newpage
+
+```{r loksabha, echo=FALSE}
+knitr::kable(lok_df[,c(1:5)], "html",
+             caption = "Lok Sabha election results",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+
+## 8. Rajya Sabha composition by party 
+
+* After the past week's election the BJP party and its alliance National Democratic Alliance (NDA) have majority in Rajya Sabha with 84 seats and 114 seats. Congress have 41 seats and its alliance United Progressive Alliance has 62 seats in total^[Source: https://en.wikipedia.org/wiki/Rajya_Sabha#Membership_by_party].
+
+* Elections occur as and when members retire and each term is for 6 years. Next elections scheduled for 2021. 
+
+```{r rsresults, include=FALSE}
+# get the URL for the wikipedia page with all states
+url3 <- "https://en.wikipedia.org/wiki/Rajya_Sabha#Membership_by_party"
+
+# use that URL to scrape the states table using rvest
+rselections <- url3 %>%
+# read the HTML from the webpage
+  read_html() %>%
+  # one way to get table
+  #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+  # easier way to get table
+  html_nodes(xpath = '/html/body/div[3]/div[3]/div[4]/div/table[3]') %>% 
+  html_table(fill=TRUE)
+#create a vector of election results
+head(rselections)
+
+```
+
+```{r, include=FALSE}
+rajya_df <- as.data.frame(rselections)
+
+```
+
+\newpage
+
+```{r rajyasabha, echo=FALSE}
+knitr::kable(rajya_df[,c(1:3)], "html",
+             caption = "2020-06-19 Rajya Sabha composition by party",
+             booktabs = TRUE,
+             longtable = FALSE ) %>%
+  kable_styling("striped") 
+
+```
+

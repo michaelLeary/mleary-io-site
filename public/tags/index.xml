@@ -6,24 +6,15 @@
     <description>Recent content in Tags on Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Bihar</title>
-      <link>/tags/bihar/</link>
-      <pubDate>Tue, 30 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/bihar/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Governance</title>
       <link>/tags/governance/</link>
-      <pubDate>Tue, 30 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/governance/</guid>
       <description></description>
@@ -32,7 +23,7 @@
     <item>
       <title>India</title>
       <link>/tags/india/</link>
-      <pubDate>Tue, 30 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/india/</guid>
       <description></description>
@@ -41,9 +32,27 @@
     <item>
       <title>Politics</title>
       <link>/tags/politics/</link>
-      <pubDate>Tue, 30 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/politics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>West Bengal</title>
+      <link>/tags/west-bengal/</link>
+      <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/west-bengal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bihar</title>
+      <link>/tags/bihar/</link>
+      <pubDate>Tue, 30 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/bihar/</guid>
       <description></description>
     </item>
     

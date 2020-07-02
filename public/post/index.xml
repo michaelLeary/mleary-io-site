@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>West Bengal background</title>
+      <link>/post/2020/07/02/west-bengal-background/</link>
+      <pubDate>Thu, 02 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/07/02/west-bengal-background/</guid>
+      <description>Task Aggregate data on West Bengal
+ Data Sourced from Wikipedia and Wikimedia commons
+ Electoral calendar  Table 1: Election calendar    date  kind  house  body      2021  national  upper  NA    2021  state  vidhan sabha  NA    2024  national  lower  NA      Other information R packages used include magick1, rsvg2, rvest3, and, kableExtra4.</description>
+    </item>
     
     <item>
       <title>Bihar background</title>

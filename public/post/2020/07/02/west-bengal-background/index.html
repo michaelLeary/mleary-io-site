@@ -1,0 +1,6815 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>West Bengal background | Thoughts</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+      <li><a href="/index.xml">Subscribe</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">West Bengal background</span></h1>
+<h2 class="author">michael</h2>
+<h2 class="date">2020/07/02</h2>
+</div>
+
+<main>
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<div id="task" class="section level2">
+<h2>Task</h2>
+<p>Aggregate data on West Bengal</p>
+</div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<p>Sourced from Wikipedia and Wikimedia commons</p>
+</div>
+<div id="electoral-calendar" class="section level2">
+<h2>Electoral calendar</h2>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:wbcalendar">Table 1: </span>Election calendar
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+date
+</th>
+<th style="text-align:left;">
+kind
+</th>
+<th style="text-align:left;">
+house
+</th>
+<th style="text-align:left;">
+body
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+2021
+</td>
+<td style="text-align:left;">
+national
+</td>
+<td style="text-align:left;">
+upper
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2021
+</td>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+vidhan sabha
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2024
+</td>
+<td style="text-align:left;">
+national
+</td>
+<td style="text-align:left;">
+lower
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="other-information" class="section level2">
+<h2>Other information</h2>
+<p>R packages used include magick<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, rsvg<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>, rvest<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>, and, kableExtra<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="state-seal" class="section level2">
+<h2>1. State seal</h2>
+<ul>
+<li>Original file size: 334x436 pixels and 302KB. Image source: <a href="https://commons.wikimedia.org/wiki/File:Emblem_of_West_Bengal.svg">Government of West Bengal</a>.</li>
+</ul>
+<p><img src="/post/2020-07-02-west-bengal-background_files/figure-html/wbseal-1.png" width="239" /></p>
+<p><a href="https://commons.wikimedia.org/wiki/File:Emblem_of_West_Bengal.svg">Wikipedia</a> suggests the seal:</p>
+<blockquote>
+<p>consists of a circle depicting a globe with the state of West bengal highlighted by a representation of the Bengali alphabet. The national emblem appears above the globe and the emblem includes the name of the state in english and in Bengali.</p>
+</blockquote>
+</div>
+<div id="state-district-map" class="section level2">
+<h2>2. State district map</h2>
+<ul>
+<li><p>Original file size: 768x1159 pixels and 311KB. Image source: <a href="https://commons.wikimedia.org/wiki/File:WestBengalDistricts_numbered.svg">Antorjal</a>.</p></li>
+<li><p>Original file size: 768x1159 pixels and 311KB. Image source: <a href="https://commons.wikimedia.org/wiki/File:WestBengalDistricts_numbered.svg#/media/File:WestBengalDistricts_numbered_as.svg">Antorjal</a>.</p></li>
+</ul>
+<p><img src="/post/2020-07-02-west-bengal-background_files/figure-html/districts-1.png" width="328" /></p>
+<p><a href="https://en.wikipedia.org/wiki/List_of_districts_of_West_Bengal#:~:text=West%20Bengal%20is%20now%20divided,Bardhaman%20district%20and%20Paschim%20Bardhaman">Wikipedia</a> details 23 districts in five divisions.</p>
+<div style="page-break-after: always;"></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:distorderpop">Table 2: </span>West Bengal districts by 2011 population
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+district
+</th>
+<th style="text-align:left;">
+hq
+</th>
+<th style="text-align:right;">
+pop_2011
+</th>
+<th style="text-align:right;">
+area_km2
+</th>
+<th style="text-align:right;">
+density_km2
+</th>
+<th style="text-align:left;">
+code
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+21
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Barasat
+</td>
+<td style="text-align:right;">
+10082852
+</td>
+<td style="text-align:right;">
+4094
+</td>
+<td style="text-align:right;">
+2463
+</td>
+<td style="text-align:left;">
+PN
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Alipore
+</td>
+<td style="text-align:right;">
+8153176
+</td>
+<td style="text-align:right;">
+9960
+</td>
+<td style="text-align:right;">
+819
+</td>
+<td style="text-align:left;">
+PS
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Baharampur
+</td>
+<td style="text-align:right;">
+7102430
+</td>
+<td style="text-align:right;">
+5324
+</td>
+<td style="text-align:right;">
+1334
+</td>
+<td style="text-align:left;">
+MU
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+17
+</td>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:left;">
+Medinipur
+</td>
+<td style="text-align:right;">
+5943300
+</td>
+<td style="text-align:right;">
+9345
+</td>
+<td style="text-align:right;">
+636
+</td>
+<td style="text-align:left;">
+ME
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Chinsura
+</td>
+<td style="text-align:right;">
+5520389
+</td>
+<td style="text-align:right;">
+3149
+</td>
+<td style="text-align:right;">
+1753
+</td>
+<td style="text-align:left;">
+HG
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Krishnanagar
+</td>
+<td style="text-align:right;">
+5168488
+</td>
+<td style="text-align:right;">
+3927
+</td>
+<td style="text-align:right;">
+1316
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Tamluk
+</td>
+<td style="text-align:right;">
+5094238
+</td>
+<td style="text-align:right;">
+4736
+</td>
+<td style="text-align:right;">
+1076
+</td>
+<td style="text-align:left;">
+ME
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:right;">
+4850029
+</td>
+<td style="text-align:right;">
+1467
+</td>
+<td style="text-align:right;">
+3306
+</td>
+<td style="text-align:left;">
+HR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+Purba Bardhaman
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:right;">
+4835532
+</td>
+<td style="text-align:right;">
+5432
+</td>
+<td style="text-align:right;">
+890
+</td>
+<td style="text-align:left;">
+BR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+Kolkata
+</td>
+<td style="text-align:left;">
+Kolkata
+</td>
+<td style="text-align:right;">
+4486679
+</td>
+<td style="text-align:right;">
+185
+</td>
+<td style="text-align:right;">
+24252
+</td>
+<td style="text-align:left;">
+KO
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:left;">
+Malda
+</td>
+<td style="text-align:left;">
+English Bazar
+</td>
+<td style="text-align:right;">
+3997970
+</td>
+<td style="text-align:right;">
+3733
+</td>
+<td style="text-align:right;">
+1071
+</td>
+<td style="text-align:left;">
+MA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:right;">
+3596292
+</td>
+<td style="text-align:right;">
+6882
+</td>
+<td style="text-align:right;">
+523
+</td>
+<td style="text-align:left;">
+BN
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Birbhum
+</td>
+<td style="text-align:left;">
+Suri
+</td>
+<td style="text-align:right;">
+3502387
+</td>
+<td style="text-align:right;">
+4545
+</td>
+<td style="text-align:right;">
+771
+</td>
+<td style="text-align:left;">
+BI
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+Uttar Dinajpur
+</td>
+<td style="text-align:left;">
+Raiganj
+</td>
+<td style="text-align:right;">
+3000849
+</td>
+<td style="text-align:right;">
+3140
+</td>
+<td style="text-align:right;">
+956
+</td>
+<td style="text-align:left;">
+UD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23
+</td>
+<td style="text-align:left;">
+Purulia
+</td>
+<td style="text-align:left;">
+Purulia
+</td>
+<td style="text-align:right;">
+2927965
+</td>
+<td style="text-align:right;">
+6259
+</td>
+<td style="text-align:right;">
+468
+</td>
+<td style="text-align:left;">
+PU
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+Paschim Bardhaman
+</td>
+<td style="text-align:left;">
+Asansol
+</td>
+<td style="text-align:right;">
+2882031
+</td>
+<td style="text-align:right;">
+1603
+</td>
+<td style="text-align:right;">
+1100
+</td>
+<td style="text-align:left;">
+BR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+Cooch Behar
+</td>
+<td style="text-align:left;">
+Cooch Behar
+</td>
+<td style="text-align:right;">
+2822780
+</td>
+<td style="text-align:right;">
+3387
+</td>
+<td style="text-align:right;">
+833
+</td>
+<td style="text-align:left;">
+KB
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+Jalpaiguri
+</td>
+<td style="text-align:left;">
+Jalpaiguri
+</td>
+<td style="text-align:right;">
+2172846
+</td>
+<td style="text-align:right;">
+2844
+</td>
+<td style="text-align:right;">
+621
+</td>
+<td style="text-align:left;">
+JP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+Darjeeling
+</td>
+<td style="text-align:left;">
+Darjeeling
+</td>
+<td style="text-align:right;">
+1797422
+</td>
+<td style="text-align:right;">
+2092
+</td>
+<td style="text-align:right;">
+859
+</td>
+<td style="text-align:left;">
+DA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Alipurduar
+</td>
+<td style="text-align:left;">
+Alipurduar
+</td>
+<td style="text-align:right;">
+1700000
+</td>
+<td style="text-align:right;">
+3383
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:left;">
+AD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+Dakshin Dinajpur
+</td>
+<td style="text-align:left;">
+Balurghat
+</td>
+<td style="text-align:right;">
+1670931
+</td>
+<td style="text-align:right;">
+2219
+</td>
+<td style="text-align:right;">
+753
+</td>
+<td style="text-align:left;">
+DD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+Jhargram
+</td>
+<td style="text-align:left;">
+Jhargram
+</td>
+<td style="text-align:right;">
+1136548
+</td>
+<td style="text-align:right;">
+3037
+</td>
+<td style="text-align:right;">
+374
+</td>
+<td style="text-align:left;">
+JH
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+Kalimpong
+</td>
+<td style="text-align:left;">
+Kalimpong
+</td>
+<td style="text-align:right;">
+251642
+</td>
+<td style="text-align:right;">
+1044
+</td>
+<td style="text-align:right;">
+239
+</td>
+<td style="text-align:left;">
+KA
+</td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:distordername">Table 3: </span>West Bengal districts by name
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+district
+</th>
+<th style="text-align:left;">
+hq
+</th>
+<th style="text-align:right;">
+pop_2011
+</th>
+<th style="text-align:right;">
+area_km2
+</th>
+<th style="text-align:right;">
+density_km2
+</th>
+<th style="text-align:left;">
+code
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Alipurduar
+</td>
+<td style="text-align:left;">
+Alipurduar
+</td>
+<td style="text-align:right;">
+1700000
+</td>
+<td style="text-align:right;">
+3383
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:left;">
+AD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:right;">
+3596292
+</td>
+<td style="text-align:right;">
+6882
+</td>
+<td style="text-align:right;">
+523
+</td>
+<td style="text-align:left;">
+BN
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Birbhum
+</td>
+<td style="text-align:left;">
+Suri
+</td>
+<td style="text-align:right;">
+3502387
+</td>
+<td style="text-align:right;">
+4545
+</td>
+<td style="text-align:right;">
+771
+</td>
+<td style="text-align:left;">
+BI
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+Cooch Behar
+</td>
+<td style="text-align:left;">
+Cooch Behar
+</td>
+<td style="text-align:right;">
+2822780
+</td>
+<td style="text-align:right;">
+3387
+</td>
+<td style="text-align:right;">
+833
+</td>
+<td style="text-align:left;">
+KB
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+Dakshin Dinajpur
+</td>
+<td style="text-align:left;">
+Balurghat
+</td>
+<td style="text-align:right;">
+1670931
+</td>
+<td style="text-align:right;">
+2219
+</td>
+<td style="text-align:right;">
+753
+</td>
+<td style="text-align:left;">
+DD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+Darjeeling
+</td>
+<td style="text-align:left;">
+Darjeeling
+</td>
+<td style="text-align:right;">
+1797422
+</td>
+<td style="text-align:right;">
+2092
+</td>
+<td style="text-align:right;">
+859
+</td>
+<td style="text-align:left;">
+DA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Chinsura
+</td>
+<td style="text-align:right;">
+5520389
+</td>
+<td style="text-align:right;">
+3149
+</td>
+<td style="text-align:right;">
+1753
+</td>
+<td style="text-align:left;">
+HG
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:right;">
+4850029
+</td>
+<td style="text-align:right;">
+1467
+</td>
+<td style="text-align:right;">
+3306
+</td>
+<td style="text-align:left;">
+HR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+Jalpaiguri
+</td>
+<td style="text-align:left;">
+Jalpaiguri
+</td>
+<td style="text-align:right;">
+2172846
+</td>
+<td style="text-align:right;">
+2844
+</td>
+<td style="text-align:right;">
+621
+</td>
+<td style="text-align:left;">
+JP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+Jhargram
+</td>
+<td style="text-align:left;">
+Jhargram
+</td>
+<td style="text-align:right;">
+1136548
+</td>
+<td style="text-align:right;">
+3037
+</td>
+<td style="text-align:right;">
+374
+</td>
+<td style="text-align:left;">
+JH
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+Kalimpong
+</td>
+<td style="text-align:left;">
+Kalimpong
+</td>
+<td style="text-align:right;">
+251642
+</td>
+<td style="text-align:right;">
+1044
+</td>
+<td style="text-align:right;">
+239
+</td>
+<td style="text-align:left;">
+KA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+Kolkata
+</td>
+<td style="text-align:left;">
+Kolkata
+</td>
+<td style="text-align:right;">
+4486679
+</td>
+<td style="text-align:right;">
+185
+</td>
+<td style="text-align:right;">
+24252
+</td>
+<td style="text-align:left;">
+KO
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:left;">
+Malda
+</td>
+<td style="text-align:left;">
+English Bazar
+</td>
+<td style="text-align:right;">
+3997970
+</td>
+<td style="text-align:right;">
+3733
+</td>
+<td style="text-align:right;">
+1071
+</td>
+<td style="text-align:left;">
+MA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Baharampur
+</td>
+<td style="text-align:right;">
+7102430
+</td>
+<td style="text-align:right;">
+5324
+</td>
+<td style="text-align:right;">
+1334
+</td>
+<td style="text-align:left;">
+MU
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Krishnanagar
+</td>
+<td style="text-align:right;">
+5168488
+</td>
+<td style="text-align:right;">
+3927
+</td>
+<td style="text-align:right;">
+1316
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Barasat
+</td>
+<td style="text-align:right;">
+10082852
+</td>
+<td style="text-align:right;">
+4094
+</td>
+<td style="text-align:right;">
+2463
+</td>
+<td style="text-align:left;">
+PN
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+Paschim Bardhaman
+</td>
+<td style="text-align:left;">
+Asansol
+</td>
+<td style="text-align:right;">
+2882031
+</td>
+<td style="text-align:right;">
+1603
+</td>
+<td style="text-align:right;">
+1100
+</td>
+<td style="text-align:left;">
+BR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+17
+</td>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:left;">
+Medinipur
+</td>
+<td style="text-align:right;">
+5943300
+</td>
+<td style="text-align:right;">
+9345
+</td>
+<td style="text-align:right;">
+636
+</td>
+<td style="text-align:left;">
+ME
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+Purba Bardhaman
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:right;">
+4835532
+</td>
+<td style="text-align:right;">
+5432
+</td>
+<td style="text-align:right;">
+890
+</td>
+<td style="text-align:left;">
+BR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Tamluk
+</td>
+<td style="text-align:right;">
+5094238
+</td>
+<td style="text-align:right;">
+4736
+</td>
+<td style="text-align:right;">
+1076
+</td>
+<td style="text-align:left;">
+ME
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23
+</td>
+<td style="text-align:left;">
+Purulia
+</td>
+<td style="text-align:left;">
+Purulia
+</td>
+<td style="text-align:right;">
+2927965
+</td>
+<td style="text-align:right;">
+6259
+</td>
+<td style="text-align:right;">
+468
+</td>
+<td style="text-align:left;">
+PU
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Alipore
+</td>
+<td style="text-align:right;">
+8153176
+</td>
+<td style="text-align:right;">
+9960
+</td>
+<td style="text-align:right;">
+819
+</td>
+<td style="text-align:left;">
+PS
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+Uttar Dinajpur
+</td>
+<td style="text-align:left;">
+Raiganj
+</td>
+<td style="text-align:right;">
+3000849
+</td>
+<td style="text-align:right;">
+3140
+</td>
+<td style="text-align:right;">
+956
+</td>
+<td style="text-align:left;">
+UD
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="state-legislature" class="section level2">
+<h2>3. State legislature</h2>
+<ul>
+<li><p>The state legislature is unicameral and called the legislative assembly with 295 members.</p></li>
+<li><p>Term is for 5 years. Latest election was 2016. Upcoming election scheduled for 2021.</p></li>
+<li><p>All India Trinamool Congress party won 211 seats in 2016 election for 72%.</p></li>
+</ul>
+</div>
+<div id="electoral-constituencies" class="section level2">
+<h2>4. Electoral constituencies</h2>
+<ul>
+<li><p>Vidhan Sabha constituencies and elected members as of 2016<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p></li>
+<li><p>Original file size: 1091x1310 pixels and 6050KB. Image source: <a href="https://commons.wikimedia.org/wiki/File:Wahlkreise_zur_Vidhan_Sabha_von_Westbengalen.svg">Furfur</a>.</p></li>
+</ul>
+<p><img src="/post/2020-07-02-west-bengal-background_files/figure-html/constituency-1.png" width="199" /></p>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:vstable">Table 4: </span>West Bengal Vidhan Sabha by constituency
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+id
+</th>
+<th style="text-align:left;">
+district
+</th>
+<th style="text-align:left;">
+constituency
+</th>
+<th style="text-align:left;">
+reserved
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Cooch Behar
+</td>
+<td style="text-align:left;">
+Mekliganj
+</td>
+<td style="text-align:left;">
+Scheduled Castes (SC)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Cooch Behar
+</td>
+<td style="text-align:left;">
+Mathabhanga
+</td>
+<td style="text-align:left;">
+Scheduled Castes (SC)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Cooch Behar
+</td>
+<td style="text-align:left;">
+Cooch Behar (Uttar)
+</td>
+<td style="text-align:left;">
+Scheduled Castes (SC)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Cooch Behar
+</td>
+<td style="text-align:left;">
+Cooch Behar (Dakshin)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Cooch Behar
+</td>
+<td style="text-align:left;">
+Sitalkuchi
+</td>
+<td style="text-align:left;">
+Scheduled Castes (SC)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Cooch Behar
+</td>
+<td style="text-align:left;">
+Sitai (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Castes (SC)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Cooch Behar
+</td>
+<td style="text-align:left;">
+Dinhata (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Cooch Behar
+</td>
+<td style="text-align:left;">
+Natabari (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Cooch Behar
+</td>
+<td style="text-align:left;">
+Tufanganj (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Alipurduar
+</td>
+<td style="text-align:left;">
+Kumargram (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Tribes (ST)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Alipurduar
+</td>
+<td style="text-align:left;">
+Kalchini (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Tribes (ST)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Alipurduar
+</td>
+<td style="text-align:left;">
+Alipurduars (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Alipurduar
+</td>
+<td style="text-align:left;">
+Falakata (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Castes (SC)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Alipurduar
+</td>
+<td style="text-align:left;">
+Madarihat (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Tribes (ST)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Jalpaiguri
+</td>
+<td style="text-align:left;">
+Dhupguri (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Castes (SC)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+Jalpaiguri
+</td>
+<td style="text-align:left;">
+Maynaguri (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Castes (SC)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+Jalpaiguri
+</td>
+<td style="text-align:left;">
+Jalpaiguri (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Castes (SC)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+Jalpaiguri
+</td>
+<td style="text-align:left;">
+Rajganj (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Castes (SC)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+Jalpaiguri
+</td>
+<td style="text-align:left;">
+Dabgram-Phulbari (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+Jalpaiguri
+</td>
+<td style="text-align:left;">
+Mal (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Tribes (ST)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+Jalpaiguri
+</td>
+<td style="text-align:left;">
+Nagrakata (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Tribes (ST)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+Darjeeling
+</td>
+<td style="text-align:left;">
+Kalimpong (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+Darjeeling
+</td>
+<td style="text-align:left;">
+Darjeeling (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Darjeeling
+</td>
+<td style="text-align:left;">
+Kurseong (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+Darjeeling
+</td>
+<td style="text-align:left;">
+Matigara-Naxalbari (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Castes (SC)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+Darjeeling
+</td>
+<td style="text-align:left;">
+Siliguri (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+Darjeeling
+</td>
+<td style="text-align:left;">
+Phansidewa (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Tribes (ST)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+Uttar Dinajpur
+</td>
+<td style="text-align:left;">
+Chopra (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+Uttar Dinajpur
+</td>
+<td style="text-align:left;">
+Islampur, Uttar Dinajpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+Uttar Dinajpur
+</td>
+<td style="text-align:left;">
+Goalpokhar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+Uttar Dinajpur
+</td>
+<td style="text-align:left;">
+Chakulia (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:left;">
+Uttar Dinajpur
+</td>
+<td style="text-align:left;">
+Karandighi (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:left;">
+Uttar Dinajpur
+</td>
+<td style="text-align:left;">
+Hemtabad (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Castes (SC)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:left;">
+Uttar Dinajpur
+</td>
+<td style="text-align:left;">
+Kaliaganj (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Castes (SC)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+Uttar Dinajpur
+</td>
+<td style="text-align:left;">
+Raiganj (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+Uttar Dinajpur
+</td>
+<td style="text-align:left;">
+Itahar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:left;">
+Dakshin Dinajpur
+</td>
+<td style="text-align:left;">
+Kushmandi (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Castes (SC)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:left;">
+Dakshin Dinajpur
+</td>
+<td style="text-align:left;">
+Kumarganj (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:left;">
+Dakshin Dinajpur
+</td>
+<td style="text-align:left;">
+Balurghat (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:left;">
+Dakshin Dinajpur
+</td>
+<td style="text-align:left;">
+Tapan (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Tribes (ST)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:left;">
+Dakshin Dinajpur
+</td>
+<td style="text-align:left;">
+Gangarampur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Castes (SC)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:left;">
+Dakshin Dinajpur
+</td>
+<td style="text-align:left;">
+Harirampur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:left;">
+Maldah
+</td>
+<td style="text-align:left;">
+Habibpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Tribes (ST)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:left;">
+Maldah
+</td>
+<td style="text-align:left;">
+Gazole (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+Scheduled Castes (SC)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+Maldah
+</td>
+<td style="text-align:left;">
+Chanchal (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:left;">
+Maldah
+</td>
+<td style="text-align:left;">
+Harishchandrapur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:left;">
+Maldah
+</td>
+<td style="text-align:left;">
+Malatipur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:left;">
+Maldah
+</td>
+<td style="text-align:left;">
+Ratua (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:left;">
+Maldah
+</td>
+<td style="text-align:left;">
+Manikchak (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:left;">
+Maldah
+</td>
+<td style="text-align:left;">
+Maldah (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:left;">
+Maldah
+</td>
+<td style="text-align:left;">
+English Bazar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:left;">
+Maldah
+</td>
+<td style="text-align:left;">
+Mothabari (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:left;">
+Maldah
+</td>
+<td style="text-align:left;">
+Sujapur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+54
+</td>
+<td style="text-align:left;">
+Maldah
+</td>
+<td style="text-align:left;">
+Baisnabnagar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Farakka (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Samserganj (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+57
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Suti (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Jangipur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Raghunathganj (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Sagardighi (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+61
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Lalgola (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Bhagabangola (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Raninagar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Murshidabad (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Nabagram (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Khargram (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Burwan (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Kandi (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Bharatpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Rejinagar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Beldanga (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+72
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Baharampur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Hariharpara (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Naoda (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Domkal (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Jalangi (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Karimpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Tehatta (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Palashipara (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Kaliganj (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Nakashipara (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Chapra (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Krishnanagar Uttar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Nabadwip (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Krishnanagar Dakshin (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Santipur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Ranaghat Uttar Paschim (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+88
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Krishnaganj (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Ranaghat Uttar Purba (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Ranaghat Dakshin (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+91
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Chakdaha (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Kalyani (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Haringhata (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Bagda (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Bangaon Uttar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Bangaon Dakshin (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Gaighata (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Swarupnagar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+99
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Baduria (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Habra (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Ashoknagar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Amdanga (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Bijpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Naihati (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+105
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Bhatpara (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+106
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Jagatdal (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Noapara (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Barrackpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Khardaha (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Dum Dum Uttar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+111
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Panihati (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+112
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Kamarhati (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+113
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Baranagar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+114
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Dum Dum (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+115
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Rajarhat New Town (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Bidhannagar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+117
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Rajarhat Gopalpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+118
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Madhyamgram (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+119
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Barasat (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Deganga (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Haroa (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+122
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Minakhan (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Sandeshkhali (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+ST
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+124
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Basirhat Dakshin (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+125
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Basirhat Uttar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+126
+</td>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Hingalganj (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+127
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Gosaba (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+128
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Basanti (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Kultali (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Patharpratima (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Kakdwip (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+132
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Sagar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+133
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Kulpi (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+134
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Raidighi (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+135
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Mandirbazar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+136
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Jaynagar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Baruipur Purba (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Canning Paschim (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+139
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Canning Purba (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+140
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Baruipur Paschim (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+141
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Magrahat Purba (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+142
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Magrahat Paschim (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+143
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Diamond Harbour (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+144
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Falta (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Satgachhia (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+146
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Bishnupur, South 24 Parganas (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+147
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Sonarpur Dakshin (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+148
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Bhangar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+149
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Kasba (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Jadavpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+151
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Sonarpur Uttar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+152
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Tollyganj (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+153
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Behala Purba (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+154
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Behala Paschim (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+155
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Maheshtala (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+156
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Budge Budge (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+157
+</td>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Metiaburuz (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:left;">
+Kolkata Corporation
+</td>
+<td style="text-align:left;">
+Kolkata Port (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+159
+</td>
+<td style="text-align:left;">
+Kolkata Corporation
+</td>
+<td style="text-align:left;">
+Bhabanipur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:left;">
+Kolkata Corporation
+</td>
+<td style="text-align:left;">
+Rashbehari (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+161
+</td>
+<td style="text-align:left;">
+Kolkata Corporation
+</td>
+<td style="text-align:left;">
+Ballygunge (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+162
+</td>
+<td style="text-align:left;">
+Kolkata Corporation
+</td>
+<td style="text-align:left;">
+Chowranghee (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+163
+</td>
+<td style="text-align:left;">
+Kolkata Corporation
+</td>
+<td style="text-align:left;">
+Entally (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+164
+</td>
+<td style="text-align:left;">
+Kolkata Corporation
+</td>
+<td style="text-align:left;">
+Beleghata (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+165
+</td>
+<td style="text-align:left;">
+Kolkata Corporation
+</td>
+<td style="text-align:left;">
+Jorasanko (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+166
+</td>
+<td style="text-align:left;">
+Kolkata Corporation
+</td>
+<td style="text-align:left;">
+Shyampukur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+167
+</td>
+<td style="text-align:left;">
+Kolkata Corporation
+</td>
+<td style="text-align:left;">
+Maniktala (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+168
+</td>
+<td style="text-align:left;">
+Kolkata Corporation
+</td>
+<td style="text-align:left;">
+Kashipur Belgachhia (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+169
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Bally (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+170
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Howrah Uttar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+171
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Howrah Madhya (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+172
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Shibpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+173
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Howrah Dakshin (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+174
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Sankrail (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Panchla (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+176
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Uluberia Purba (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+177
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Uluberia Uttar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+178
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Uluberia Dakshin (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+179
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Shyampur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+180
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Bagnan (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+181
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Amta (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+182
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Udaynarayanpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+183
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Jagatballavpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+184
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Domjur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+185
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Uttarpara (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+186
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Sreerampur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+187
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Champdani (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+188
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Singur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+189
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Chandannagar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+190
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Chunchura (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+191
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Balagarh (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+192
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Pandua (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+193
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Saptagram (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+194
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Chanditala (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+195
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Jangipara (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+196
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Haripal (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+197
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Dhanekhali (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+198
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Tarakeswar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+199
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Pursurah (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Arambag (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+201
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Goghat (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+202
+</td>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Khanakul (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+203
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Tamluk (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+204
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Panskura Purba (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+205
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Panskura Paschim (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+206
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Moyna (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+207
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Nandakumar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+208
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Mahisadal (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+209
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Haldia (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+210
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Nandigram (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+211
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Chandipur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+212
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Patashpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+213
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Kanthi Uttar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+214
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Bhagabanpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+215
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Khejuri (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+216
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Kanthi Dakshin (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+217
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Ramnagar, Purba Medinipur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+218
+</td>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Egra (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+219
+</td>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:left;">
+Dantan (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+220
+</td>
+<td style="text-align:left;">
+Jhargram
+</td>
+<td style="text-align:left;">
+Nayagram (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+ST
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+221
+</td>
+<td style="text-align:left;">
+Jhargram
+</td>
+<td style="text-align:left;">
+Gopiballavpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+222
+</td>
+<td style="text-align:left;">
+Jhargram
+</td>
+<td style="text-align:left;">
+Jhargram (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+223
+</td>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:left;">
+Keshiary (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+ST
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+224
+</td>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:left;">
+Kharagpur Sadar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+225
+</td>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:left;">
+Narayangarh (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+226
+</td>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:left;">
+Sabang (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+227
+</td>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:left;">
+Pingla (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+228
+</td>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:left;">
+Kharagpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+229
+</td>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:left;">
+Debra (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+230
+</td>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:left;">
+Daspur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+231
+</td>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:left;">
+Ghatal (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+232
+</td>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:left;">
+Chandrakona (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+233
+</td>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:left;">
+Garbeta (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+234
+</td>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:left;">
+Salboni (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+235
+</td>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:left;">
+Keshpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+236
+</td>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:left;">
+Medinipur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+237
+</td>
+<td style="text-align:left;">
+Jhargram
+</td>
+<td style="text-align:left;">
+Binpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+ST
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+238
+</td>
+<td style="text-align:left;">
+Purulia
+</td>
+<td style="text-align:left;">
+Bandwan (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+ST
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+239
+</td>
+<td style="text-align:left;">
+Purulia
+</td>
+<td style="text-align:left;">
+Balarampur, Purulia (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+240
+</td>
+<td style="text-align:left;">
+Purulia
+</td>
+<td style="text-align:left;">
+Baghmundi (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+241
+</td>
+<td style="text-align:left;">
+Purulia
+</td>
+<td style="text-align:left;">
+Joypur, Purulia (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+242
+</td>
+<td style="text-align:left;">
+Purulia
+</td>
+<td style="text-align:left;">
+Purulia (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+243
+</td>
+<td style="text-align:left;">
+Purulia
+</td>
+<td style="text-align:left;">
+Manbazar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+ST
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+244
+</td>
+<td style="text-align:left;">
+Purulia
+</td>
+<td style="text-align:left;">
+Kashipur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+245
+</td>
+<td style="text-align:left;">
+Purulia
+</td>
+<td style="text-align:left;">
+Para (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+246
+</td>
+<td style="text-align:left;">
+Purulia
+</td>
+<td style="text-align:left;">
+Raghunathpur, Purulia (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+247
+</td>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:left;">
+Saltora (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+248
+</td>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:left;">
+Chhatna (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+249
+</td>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:left;">
+Ranibandh (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+ST
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+250
+</td>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:left;">
+Raipur, Bankura (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+ST
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+251
+</td>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:left;">
+Taldangra (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+252
+</td>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:left;">
+Bankura (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+253
+</td>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:left;">
+Barjora (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+254
+</td>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:left;">
+Onda (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+255
+</td>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:left;">
+Bishnupur, Bankura (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+256
+</td>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:left;">
+Katulpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+257
+</td>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:left;">
+Indas (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:left;">
+Sonamukhi (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+259
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Khandaghosh (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+260
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Bardhaman Dakshin (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+261
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Raina (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+262
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Jamalpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+263
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Manteswar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+264
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Kalna (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+265
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Memari (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+266
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Bardhaman Uttar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+267
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Bhatar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+268
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Purbasthali Dakshin (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+269
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Purbasthali Uttar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+270
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Katwa (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+271
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Ketugram (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+272
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Mangalkot (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+273
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Ausgram (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+274
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Galsi (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+275
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Pandaveswar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+276
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Durgapur Purba (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+277
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Durgapur Paschim (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+278
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Raniganj (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+279
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Jamuria (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+280
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Asansol Dakshin (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+281
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Asansol Uttar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+282
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Kulti (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+283
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+Barabani (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+284
+</td>
+<td style="text-align:left;">
+Birbhum
+</td>
+<td style="text-align:left;">
+Dubrajpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+285
+</td>
+<td style="text-align:left;">
+Birbhum
+</td>
+<td style="text-align:left;">
+Suri (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+286
+</td>
+<td style="text-align:left;">
+Birbhum
+</td>
+<td style="text-align:left;">
+Bolpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+287
+</td>
+<td style="text-align:left;">
+Birbhum
+</td>
+<td style="text-align:left;">
+Nanoor (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+288
+</td>
+<td style="text-align:left;">
+Birbhum
+</td>
+<td style="text-align:left;">
+Labpur (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+289
+</td>
+<td style="text-align:left;">
+Birbhum
+</td>
+<td style="text-align:left;">
+Sainthia (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+SC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+290
+</td>
+<td style="text-align:left;">
+Birbhum
+</td>
+<td style="text-align:left;">
+Mayureswar (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+291
+</td>
+<td style="text-align:left;">
+Birbhum
+</td>
+<td style="text-align:left;">
+Rampurhat (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+292
+</td>
+<td style="text-align:left;">
+Birbhum
+</td>
+<td style="text-align:left;">
+Hansan (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+293
+</td>
+<td style="text-align:left;">
+Birbhum
+</td>
+<td style="text-align:left;">
+Nalhati (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+294
+</td>
+<td style="text-align:left;">
+Birbhum
+</td>
+<td style="text-align:left;">
+Murarai (Vidhan Sabha constituency)
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="constituencies-by-district" class="section level2">
+<h2>5. Constituencies by district</h2>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:dupconcount">Table 5: </span>Bihar constituency count by district
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+district
+</th>
+<th style="text-align:left;">
+hq
+</th>
+<th style="text-align:right;">
+pop_2011
+</th>
+<th style="text-align:right;">
+area_km2
+</th>
+<th style="text-align:right;">
+density_km2
+</th>
+<th style="text-align:right;">
+constituency_count
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Alipurduar
+</td>
+<td style="text-align:left;">
+Alipurduar
+</td>
+<td style="text-align:right;">
+1700000
+</td>
+<td style="text-align:right;">
+3383
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:left;">
+Bankura
+</td>
+<td style="text-align:right;">
+3596292
+</td>
+<td style="text-align:right;">
+6882
+</td>
+<td style="text-align:right;">
+523
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Birbhum
+</td>
+<td style="text-align:left;">
+Suri
+</td>
+<td style="text-align:right;">
+3502387
+</td>
+<td style="text-align:right;">
+4545
+</td>
+<td style="text-align:right;">
+771
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cooch Behar
+</td>
+<td style="text-align:left;">
+Cooch Behar
+</td>
+<td style="text-align:right;">
+2822780
+</td>
+<td style="text-align:right;">
+3387
+</td>
+<td style="text-align:right;">
+833
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dakshin Dinajpur
+</td>
+<td style="text-align:left;">
+Balurghat
+</td>
+<td style="text-align:right;">
+1670931
+</td>
+<td style="text-align:right;">
+2219
+</td>
+<td style="text-align:right;">
+753
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Darjeeling
+</td>
+<td style="text-align:left;">
+Darjeeling
+</td>
+<td style="text-align:right;">
+1797422
+</td>
+<td style="text-align:right;">
+2092
+</td>
+<td style="text-align:right;">
+859
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hooghly
+</td>
+<td style="text-align:left;">
+Chinsura
+</td>
+<td style="text-align:right;">
+5520389
+</td>
+<td style="text-align:right;">
+3149
+</td>
+<td style="text-align:right;">
+1753
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:left;">
+Howrah
+</td>
+<td style="text-align:right;">
+4850029
+</td>
+<td style="text-align:right;">
+1467
+</td>
+<td style="text-align:right;">
+3306
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jalpaiguri
+</td>
+<td style="text-align:left;">
+Jalpaiguri
+</td>
+<td style="text-align:right;">
+2172846
+</td>
+<td style="text-align:right;">
+2844
+</td>
+<td style="text-align:right;">
+621
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jhargram
+</td>
+<td style="text-align:left;">
+Jhargram
+</td>
+<td style="text-align:right;">
+1136548
+</td>
+<td style="text-align:right;">
+3037
+</td>
+<td style="text-align:right;">
+374
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kalimpong
+</td>
+<td style="text-align:left;">
+Kalimpong
+</td>
+<td style="text-align:right;">
+251642
+</td>
+<td style="text-align:right;">
+1044
+</td>
+<td style="text-align:right;">
+239
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kolkata
+</td>
+<td style="text-align:left;">
+Kolkata
+</td>
+<td style="text-align:right;">
+4486679
+</td>
+<td style="text-align:right;">
+185
+</td>
+<td style="text-align:right;">
+24252
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Maldah
+</td>
+<td style="text-align:left;">
+English Bazar
+</td>
+<td style="text-align:right;">
+3997970
+</td>
+<td style="text-align:right;">
+3733
+</td>
+<td style="text-align:right;">
+1071
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Murshidabad
+</td>
+<td style="text-align:left;">
+Baharampur
+</td>
+<td style="text-align:right;">
+7102430
+</td>
+<td style="text-align:right;">
+5324
+</td>
+<td style="text-align:right;">
+1334
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nadia
+</td>
+<td style="text-align:left;">
+Krishnanagar
+</td>
+<td style="text-align:right;">
+5168488
+</td>
+<td style="text-align:right;">
+3927
+</td>
+<td style="text-align:right;">
+1316
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+North 24 Parganas
+</td>
+<td style="text-align:left;">
+Barasat
+</td>
+<td style="text-align:right;">
+10082852
+</td>
+<td style="text-align:right;">
+4094
+</td>
+<td style="text-align:right;">
+2463
+</td>
+<td style="text-align:right;">
+33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Paschim Bardhaman
+</td>
+<td style="text-align:left;">
+Asansol
+</td>
+<td style="text-align:right;">
+2882031
+</td>
+<td style="text-align:right;">
+1603
+</td>
+<td style="text-align:right;">
+1100
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Paschim Medinipur
+</td>
+<td style="text-align:left;">
+Medinipur
+</td>
+<td style="text-align:right;">
+5943300
+</td>
+<td style="text-align:right;">
+9345
+</td>
+<td style="text-align:right;">
+636
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Purba Bardhaman
+</td>
+<td style="text-align:left;">
+Bardhaman
+</td>
+<td style="text-align:right;">
+4835532
+</td>
+<td style="text-align:right;">
+5432
+</td>
+<td style="text-align:right;">
+890
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Purba Medinipur
+</td>
+<td style="text-align:left;">
+Tamluk
+</td>
+<td style="text-align:right;">
+5094238
+</td>
+<td style="text-align:right;">
+4736
+</td>
+<td style="text-align:right;">
+1076
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Purulia
+</td>
+<td style="text-align:left;">
+Purulia
+</td>
+<td style="text-align:right;">
+2927965
+</td>
+<td style="text-align:right;">
+6259
+</td>
+<td style="text-align:right;">
+468
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+South 24 Parganas
+</td>
+<td style="text-align:left;">
+Alipore
+</td>
+<td style="text-align:right;">
+8153176
+</td>
+<td style="text-align:right;">
+9960
+</td>
+<td style="text-align:right;">
+819
+</td>
+<td style="text-align:right;">
+31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Uttar Dinajpur
+</td>
+<td style="text-align:left;">
+Raiganj
+</td>
+<td style="text-align:right;">
+3000849
+</td>
+<td style="text-align:right;">
+3140
+</td>
+<td style="text-align:right;">
+956
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="india-parliamentary-representation" class="section level2">
+<h2>6. India parliamentary representation</h2>
+<ul>
+<li>Wikipedia<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> describes India’s legislative body as:</li>
+</ul>
+<blockquote>
+<p>bicameral with 788 seats divided as to Rajya Sabha (Council of States) of 245 members, and, the Lok Sabha (House of the People) of 543 members all presided over by President of India;</p>
+</blockquote>
+<blockquote>
+<p>Lok Sabha members directly elected by public who vote in single member districts.</p>
+</blockquote>
+<blockquote>
+<p>Rajya Sabha members elected by State Legislative assembly by proportional representation.</p>
+</blockquote>
+<ul>
+<li><p>For <strong>West Bengal</strong> there are 42 Lok Sabha seats and 16 Rajya Sabha seats representing 7% of total parliamentary seats.</p></li>
+<li><p>Original file size: 3818x4600 pixels and 75KB. PNG creator: <a href="https://commons.wikimedia.org/wiki/File:Indian_Parliament_Seat_Composition.png">The,Manish</a>.</p></li>
+</ul>
+<p><img src="/post/2020-07-02-west-bengal-background_files/figure-html/indparl-1.png" width="198" /></p>
+</div>
+<div id="lok-sabha-election-past" class="section level2">
+<h2>7. Lok Sabha election past</h2>
+<ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Elections_in_India#History_of_Lok_Sabha_Elections">Wikipedia</a> details 17 Lok Sabha elections since 1951 with the latest being that of 2019.</p></li>
+<li><p>The most recent election result of 2019 gave 303 seats to BJP.</p></li>
+<li><p>Next Lok Sabha elections scheduled for 2024.</p></li>
+</ul>
+<div style="page-break-after: always;"></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:loksabha">Table 6: </span>Lok Sabha election results
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Var.1
+</th>
+<th style="text-align:left;">
+Var.2
+</th>
+<th style="text-align:left;">
+Var.3
+</th>
+<th style="text-align:left;">
+First
+</th>
+<th style="text-align:left;">
+First.1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Year
+</td>
+<td style="text-align:left;">
+Election
+</td>
+<td style="text-align:left;">
+Total seats
+</td>
+<td style="text-align:left;">
+Party
+</td>
+<td style="text-align:left;">
+Seats
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1951–52 [4][5][6]
+</td>
+<td style="text-align:left;">
+1st Lok Sabha
+</td>
+<td style="text-align:left;">
+489
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+364
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1957[7]
+</td>
+<td style="text-align:left;">
+2nd Lok Sabha
+</td>
+<td style="text-align:left;">
+494
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+371
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1962
+</td>
+<td style="text-align:left;">
+3rd Lok Sabha
+</td>
+<td style="text-align:left;">
+494
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+361
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1967
+</td>
+<td style="text-align:left;">
+4th Lok Sabha
+</td>
+<td style="text-align:left;">
+520
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+283
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1971
+</td>
+<td style="text-align:left;">
+5th Lok Sabha
+</td>
+<td style="text-align:left;">
+518
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+352
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1977
+</td>
+<td style="text-align:left;">
+6th Lok Sabha
+</td>
+<td style="text-align:left;">
+542
+</td>
+<td style="text-align:left;">
+JP
+</td>
+<td style="text-align:left;">
+298
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1980
+</td>
+<td style="text-align:left;">
+7th Lok Sabha
+</td>
+<td style="text-align:left;">
+529 ( 542* )
+</td>
+<td style="text-align:left;">
+INC(I)
+</td>
+<td style="text-align:left;">
+351
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1984
+</td>
+<td style="text-align:left;">
+8th Lok Sabha
+</td>
+<td style="text-align:left;">
+514
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+404
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1989
+</td>
+<td style="text-align:left;">
+9th Lok Sabha
+</td>
+<td style="text-align:left;">
+529
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+195
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1991
+</td>
+<td style="text-align:left;">
+10th Lok Sabha
+</td>
+<td style="text-align:left;">
+521
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+244
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1996
+</td>
+<td style="text-align:left;">
+11th Lok Sabha
+</td>
+<td style="text-align:left;">
+543
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+<td style="text-align:left;">
+161
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1998
+</td>
+<td style="text-align:left;">
+12th Lok Sabha
+</td>
+<td style="text-align:left;">
+545
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+<td style="text-align:left;">
+182
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1999
+</td>
+<td style="text-align:left;">
+13th Lok Sabha
+</td>
+<td style="text-align:left;">
+545
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+<td style="text-align:left;">
+182
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2004
+</td>
+<td style="text-align:left;">
+14th Lok Sabha
+</td>
+<td style="text-align:left;">
+543
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+145
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2009
+</td>
+<td style="text-align:left;">
+15th Lok Sabha
+</td>
+<td style="text-align:left;">
+545
+</td>
+<td style="text-align:left;">
+INC
+</td>
+<td style="text-align:left;">
+206
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2014
+</td>
+<td style="text-align:left;">
+16th Lok Sabha
+</td>
+<td style="text-align:left;">
+545
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+<td style="text-align:left;">
+282
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019
+</td>
+<td style="text-align:left;">
+17th Lok Sabha
+</td>
+<td style="text-align:left;">
+543
+</td>
+<td style="text-align:left;">
+BJP
+</td>
+<td style="text-align:left;">
+303
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="rajya-sabha-composition-by-party" class="section level2">
+<h2>8. Rajya Sabha composition by party</h2>
+<ul>
+<li><p>After the past week’s election the BJP party and its alliance National Democratic Alliance (NDA) have majority in Rajya Sabha with 84 seats and 114 seats. Congress have 41 seats and its alliance United Progressive Alliance has 62 seats in total<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>.</p></li>
+<li><p>Elections occur as and when members retire and each term is for 6 years. Next elections scheduled for 2021.</p></li>
+</ul>
+<div style="page-break-after: always;"></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:rajyasabha">Table 7: </span>2020-06-19 Rajya Sabha composition by party
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Alliances
+</th>
+<th style="text-align:left;">
+Party
+</th>
+<th style="text-align:right;">
+No.of.MPs
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Bharatiya Janata Party
+</td>
+<td style="text-align:right;">
+84
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+All India Anna Dravida Munnetra Kazhagam
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Janata Dal (United)
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Nominated
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Shiromani Akali Dal
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Asom Gana Parishad
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Bodoland People’s Front
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Lok Janshakti Party
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+National People’s Party
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Pattali Makkal Katchi
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Republican Party of India (A)
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Tamil Maanila Congress
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+National Democratic AllianceSeats: 114
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Indian National Congress
+</td>
+<td style="text-align:right;">
+41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Dravida Munnetra Kazhagam
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Rashtriya Janata Dal
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Nationalist Congress Party
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Indian Union Muslim League
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Jharkhand Mukti Morcha
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Kerala Congress (M)
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Marumalarchi Dravida Munnetra Kazhagam
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+United Progressive AllianceSeats: 62
+</td>
+<td style="text-align:left;">
+Independent
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+All India Trinamool Congress
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Biju Janata Dal
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Samajwadi Party
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Telangana Rashtra Samithi
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+YSR Congress Party
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Communist Party of India (M)
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Bahujan Samaj Party
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Aam Aadmi Party
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Shiv Sena
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+J&amp;K Peoples Democratic Party
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Communist Party of India
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Janata Dal (Secular)[8]
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Naga People’s Front
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Mizo National Front
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Sikkim Democratic Front
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Opposition -
+OthersSeats: 66
+</td>
+<td style="text-align:left;">
+Telugu Desam Party
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vacant
+</td>
+<td style="text-align:left;">
+Vacant
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:right;">
+245
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Jeroen Ooms (2020). magick: Advanced Graphics and Image-Processing in R. R package version 2.4.0. <a href="https://CRAN.R-project.org/package=magick" class="uri">https://CRAN.R-project.org/package=magick</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Jeroen Ooms (2020). rsvg: Render SVG Images into PDF, PNG, PostScript, or Bitmap Arrays. R package version 2.1. <a href="https://CRAN.R-project.org/package=rsvg" class="uri">https://CRAN.R-project.org/package=rsvg</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Hadley Wickham (2019). rvest: Easily Harvest (Scrape) Web Pages. R package version 0.3.5. <a href="https://CRAN.R-project.org/package=rvest" class="uri">https://CRAN.R-project.org/package=rvest</a><a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Hao Zhu (2019). kableExtra: Construct Complex Table with ‘kable’ and Pipe Syntax. R
+package version 1.1.0. <a href="https://CRAN.R-project.org/package=kableExtra" class="uri">https://CRAN.R-project.org/package=kableExtra</a> <a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://en.wikipedia.org/wiki/2016_West_Bengal_Legislative_Assembly_election" class="uri">https://en.wikipedia.org/wiki/2016_West_Bengal_Legislative_Assembly_election</a><a href="#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://en.wikipedia.org/wiki/Parliament_of_India" class="uri">https://en.wikipedia.org/wiki/Parliament_of_India</a><a href="#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>Source: <a href="https://en.wikipedia.org/wiki/Rajya_Sabha#Membership_by_party" class="uri">https://en.wikipedia.org/wiki/Rajya_Sabha#Membership_by_party</a><a href="#fnref7" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+</main>
+
+  <footer>
+  <script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+  
+  <hr/>
+  © <a href="https://github.com/michaelleary">Github</a>
+  
+  </footer>
+  </body>
+</html>
+
