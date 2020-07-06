@@ -1,0 +1,194 @@
+---
+title: Highways in India
+author: michael
+date: '2020-07-06'
+slug: highways-in-india
+categories:
+  - R
+tags:
+  - Highways
+  - Transport
+  - Communication
+  - India
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r pkgs, include=FALSE}
+pkgs = c("dplyr","ggplot2", "kableExtra", "plyr", "cowplot") 
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+```{r, include=FALSE}
+#x <- readRDS("/Users/michaelleary/testR/x.rds") #in rds form
+roads <- read.csv(file = "~/Documents/GitHub/IndiaRoads/indhighway.csv", stringsAsFactors = TRUE) #in csv form
+
+```
+
+```{r, include=FALSE}
+str(roads)
+```
+
+```{r, include=FALSE}
+# transform factor to numeric values 
+roads$highwaycode <- as.factor(roads$highwaycode)
+```
+
+```{r, include=FALSE}
+str(roads)
+```
+
+```{r, include=FALSE}
+ds <- roads
+```
+
+```{r, include=FALSE}
+dsmat <- as.matrix(ds$kms_in_state)
+totallength <- colSums(dsmat)
+
+```
+
+```{r, include=FALSE}
+summary(ds)
+```
+
+```{r, include=FALSE}
+attributes(ds)
+```
+
+```{r, include=FALSE}
+ds["state_passing"]
+```
+
+```{r, include=FALSE}
+ds[ds$state_passing=="Assam",]
+```
+
+```{r, include=FALSE}
+ds %>%
+  filter((state_passing == "Maharashtra") ) %>%
+  select(state_passing, new_nh_no, kms_in_state, highwaycode)
+  
+```
+
+```{r, include=FALSE}
+ds %>%
+  group_by(state_passing, highwaycode) %>%
+  summarise_at("kms_in_state", sum)
+```
+
+```{r, include=FALSE}
+dso <- ds[order(ds$state_passing),]
+
+plot(ds$state_passing, ds$kms_in_state)
+```
+
+```{r, include=FALSE}
+ggplot(data=dso, aes(y=ds$state_passing)) + geom_bar(stat="count")
+```
+
+```{r, include=FALSE}
+plot(ds)
+plot(as.numeric(ds$state_passing), ds$kms_in_state)
+qplot(y=ds$state_passing, ds$kms_in_state)
+```
+
+```{r, include=FALSE}
+qplot(highwaycode, kms_in_state, data = ds, geom="boxplot", fill=state_passing)
+```
+
+```{r, include=FALSE}
+mu <- ddply(ds, "highwaycode", summarise, grp.mean=mean(kms_in_state))
+mu
+```
+
+```{r, include=FALSE}
+skimr::skim(ds)
+```
+
+```{r, include=FALSE}
+ds %>%
+  group_by(state_passing, highwaycode) %>%
+  dplyr::summarise(count=n())
+```
+
+```{r, include=FALSE}
+ds %>%
+  group_by(state_passing, highwaycode) %>%
+  dplyr::summarise(count=n(),
+                   sum = sum(kms_in_state))
+```
+
+# Task
+
+This task focused on India's national highway system. Two tables are generated that show the number of states each highway passes through and the length of each highway. 
+
+Data was sourced from [Ministry of Road Transport and Highways's](https://morth.nic.in/sites/default/files/Details-of-National-Highways-as-on-31.03_1.pdf) report dated 2019-03-31 (accessed on 2020-07-06).  
+
+The data set contained `r nrow(ds)` observations of India highways for `r totallength` kilometers. Each row gives the kilometers of highway in each state it traverses. A factor was added to the data set to distinguish between national highways that have a numeric label and highways with a non numeric label. 
+
+#### Other links
+
+1. 2010 List of highways - [Wikipedia](https://en.wikipedia.org/wiki/List_of_National_Highways_in_India_by_highway_number)
+
+1. Highways map - [Wikipedia](https://en.wikipedia.org/wiki/List_of_National_Highways_in_India_by_highway_number#/media/File:Renumbered_National_Highways_map_of_India_(Schematic).jpg)
+
+
+```{r, include=FALSE}
+statehighwaysummary <- ds %>%
+  group_by(state_passing) %>%
+  dplyr::summarise(count=n(),
+                   sum_kms = sum(kms_in_state))
+```
+
+```{r, include=FALSE}
+statehighwaysummary
+```
+
+\newpage
+
+Count and length of national highways by State
+
+```{r, echo=FALSE}
+statehighwaysummary %>%
+  kable(caption="National highways by state by kms") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+```{r, include=FALSE}
+statehighwaylength <- ds %>%
+  group_by(new_nh_no) %>%
+  dplyr::summarise(count=n(),
+                   sum_kms = sum(kms_in_state)) %>%
+  arrange(desc(sum_kms))
+```
+
+```{r kablefunction, include=FALSE}
+my_kable = function(x, max.rows=20, ...) {
+  kable(x[1:max.rows, ], ...)
+}
+```
+
+\newpage
+
+Count of states traversed and length of national highways 
+
+
+```{r, echo=FALSE}
+statehighwaylength %>%
+  my_kable( caption="20 longest national highways in India") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+
+```
+
+
+
+
+
+
+
+
+

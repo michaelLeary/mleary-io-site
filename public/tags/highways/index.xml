@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Highways on Thoughts</title>
+    <link>/tags/highways/</link>
+    <description>Recent content in Highways on Thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 06 Jul 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/highways/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Highways in India</title>
+      <link>/post/2020/07/06/highways-in-india/</link>
+      <pubDate>Mon, 06 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/07/06/highways-in-india/</guid>
+      <description>Task This task focused on India’s national highway system. Two tables are generated that show the number of states each highway passes through and the length of each highway.
+Data was sourced from Ministry of Road Transport and Highways’s report dated 2019-03-31 (accessed on 2020-07-06).
+The data set contained 874 observations of India highways for 1.3296^{5} kilometers. Each row gives the kilometers of highway in each state it traverses.</description>
+    </item>
+    
+  </channel>
+</rss>

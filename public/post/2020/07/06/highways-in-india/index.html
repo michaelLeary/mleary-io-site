@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Highways in India | Thoughts</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+      <li><a href="/index.xml">Subscribe</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">Highways in India</span></h1>
+<h2 class="author">michael</h2>
+<h2 class="date">2020/07/06</h2>
+</div>
+
+<main>
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<div id="task" class="section level1">
+<h1>Task</h1>
+<p>This task focused on India’s national highway system. Two tables are generated that show the number of states each highway passes through and the length of each highway.</p>
+<p>Data was sourced from <a href="https://morth.nic.in/sites/default/files/Details-of-National-Highways-as-on-31.03_1.pdf">Ministry of Road Transport and Highways’s</a> report dated 2019-03-31 (accessed on 2020-07-06).</p>
+<p>The data set contained 874 observations of India highways for 1.3296^{5} kilometers. Each row gives the kilometers of highway in each state it traverses. A factor was added to the data set to distinguish between national highways that have a numeric label and highways with a non numeric label.</p>
+<div id="other-links" class="section level4">
+<h4>Other links</h4>
+<ol style="list-style-type: decimal">
+<li><p>2010 List of highways - <a href="https://en.wikipedia.org/wiki/List_of_National_Highways_in_India_by_highway_number">Wikipedia</a></p></li>
+<li><p>Highways map - <a href="https://en.wikipedia.org/wiki/List_of_National_Highways_in_India_by_highway_number#/media/File:Renumbered_National_Highways_map_of_India_(Schematic).jpg">Wikipedia</a></p></li>
+</ol>
+<div style="page-break-after: always;"></div>
+<p>Count and length of national highways by State</p>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-23">Table 1: </span>National highways by state by kms
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+state_passing
+</th>
+<th style="text-align:right;">
+count
+</th>
+<th style="text-align:right;">
+sum_kms
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Andaman and Nicobar
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+331
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Andhra Pradesh
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+6915
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Arunachal Pradesh
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+2538
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Assam
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+3908
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bihar
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+5358
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chandigarh
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chhattisgarh
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+3605
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dadar Nagar Havali (U.T)
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Daman and Diu
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Delhi
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+169
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Goa
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+293
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gujarat
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+6635
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Haryana
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+3238
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Himachal Pradesh
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+2607
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jammu and Kashmir
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+2423
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jharkhand
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+3370
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Karnataka
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:right;">
+7363
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kerala
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1782
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Madhya Pradesh
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+8772
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Maharashtra
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+17788
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Manipur
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1751
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Meghalaya
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1156
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mizoram
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+1423
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nagaland
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1549
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Orissa
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+5762
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Puducherry
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Punjab
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+3275
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rajasthan
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+10648
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sikkim
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+463
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tamil Nadu
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+6741
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Telangana
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+3797
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tripura
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+854
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Uttar Pradesh
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+11737
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Uttarakhand
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+2949
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+West Bengal
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+3665
+</td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+<p>Count of states traversed and length of national highways</p>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-25">Table 2: </span>20 longest national highways in India
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+new_nh_no
+</th>
+<th style="text-align:right;">
+count
+</th>
+<th style="text-align:right;">
+sum_kms
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+27
+E.W.
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+4113
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+44 N.S.
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+3717
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+48
+G.Q.
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+2629
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+2125
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+30
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1987
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1862
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1782
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+66
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1641
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16
+G.Q.
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1622
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+34
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1482
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19
+G.Q.
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1356
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1293
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+43
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1062
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+754K
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1015
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+47
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1006
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+31
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+884
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+148N
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+880
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+65
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+852
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+848
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</main>
+
+  <footer>
+  <script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+  
+  <hr/>
+  © <a href="https://github.com/michaelleary">Github</a>
+  
+  </footer>
+  </body>
+</html>
+
