@@ -122,7 +122,7 @@ ds %>%
                    sum = sum(kms_in_state))
 ```
 
-# Task
+## Task
 
 This task focused on India's national highway system. Two tables are generated that show the number of states each highway passes through and the length of each highway. 
 
@@ -135,6 +135,8 @@ The data set contained `r nrow(ds)` observations of India highways for `r totall
 1. 2010 List of highways - [Wikipedia](https://en.wikipedia.org/wiki/List_of_National_Highways_in_India_by_highway_number)
 
 1. Highways map - [Wikipedia](https://en.wikipedia.org/wiki/List_of_National_Highways_in_India_by_highway_number#/media/File:Renumbered_National_Highways_map_of_India_(Schematic).jpg)
+
+
 
 
 ```{r, include=FALSE}
@@ -183,6 +185,15 @@ statehighwaylength %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
 
 ```
+
+### Highway links
+
+* [nh-27](https://en.wikipedia.org/wiki/National_Highway_27_(India))
+* [nh-44](https://en.wikipedia.org/wiki/National_Highway_44_(India))
+* [nh-48](https://en.wikipedia.org/wiki/National_Highway_48_(India))
+* [nh-52](https://en.wikipedia.org/wiki/National_Highway_52_(India))
+* [nh-30](https://en.wikipedia.org/wiki/National_Highway_30_(India))
+
 
 
 
