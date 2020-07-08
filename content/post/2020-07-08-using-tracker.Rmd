@@ -220,7 +220,7 @@ ggplot(d) + geom_point(aes(x = avgSpeedMoving, y = speed_pc2)) + theme_bw()
 Bike activity
 
 ```{r, echo=FALSE, message=FALSE}
-data(ml_act_bike, package = "trackeR")
+#data(ml_act_bike, package = "trackeR")
 plot(ml_act_bike, session = 1:6)
 ```
 
