@@ -6,10 +6,20 @@
     <description>Recent content in Home on Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Garmin fitness data</title>
+      <link>/post/2020/07/08/garmin-fitness-data/</link>
+      <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/07/08/garmin-fitness-data/</guid>
+      <description>The note was triggered by a desire to know more about data collected and stored by Garmin devices during activity. After completion of activity a tcx file was imported into R. Various data were identified and placed into a data frame. And then certain information - in this case - heart rate data over time were plotted.
+Helpful links: * parsing * chart colors</description>
+    </item>
     
     <item>
       <title>Highways in India</title>

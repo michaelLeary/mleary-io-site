@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Fitness</title>
+      <link>/tags/fitness/</link>
+      <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/fitness/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Garmin</title>
+      <link>/tags/garmin/</link>
+      <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/garmin/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Communication</title>

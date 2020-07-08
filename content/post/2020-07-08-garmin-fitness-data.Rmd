@@ -1,0 +1,137 @@
+---
+title: Garmin fitness data
+author: michael
+date: '2020-07-08'
+slug: garmin-fitness-data
+categories:
+  - R
+tags:
+  - Garmin
+  - Fitness
+---
+
+The note was triggered by a desire to know more about data collected and stored by Garmin devices during activity. After completion of activity a tcx file was imported into R. Various data were identified and placed into a data frame. And then certain information - in this case - heart rate data over time were plotted. 
+
+Helpful links:
+* [parsing](https://stackoverflow.com/questions/41798040/use-the-xml-package-in-r-to-read-a-complex-tcx-file/41859689)
+* [chart colors](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#:~:text=The%20colors%20of%20lines%20and,%2C%20like%20%22%23FF6699%22%20)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r pkgs, include=FALSE}
+pkgs = c("XML", "dplyr","readr", "kableExtra", "lubridate", "tidyverse", "ggplot2", "gganimate") 
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+```{r, include=FALSE}
+# https://stackoverflow.com/questions/41798040/use-the-xml-package-in-r-to-read-a-complex-tcx-file/41859689
+doc = xmlParse("~/Documents/GitHub/fitness/data/activity_5201170048.tcx")
+summary(doc)
+basic = xmlToDataFrame(nodes <- getNodeSet(doc, "//ns:Trackpoint", "ns"))
+
+```
+
+```{r, include=FALSE}
+str(basic)
+```
+
+```{r, include=FALSE}
+head(basic)
+```
+
+```{r, include=FALSE}
+nodes <- getNodeSet(doc, "//ns:Trackpoint", "ns")
+rows <-  lapply(nodes, function(x) data.frame(xmlToList(x) )) 
+# remove list element with fewer than 8 items listed
+rows_b <- rows[-c(2:5)]
+# bind together 
+rundata <- do.call("rbind", rows_b)
+```
+
+```{r, include=FALSE}
+str(rundata)
+```
+
+```{r, include=FALSE}
+glimpse(rundata)
+glimpse(basic)
+```
+
+```{r, include=FALSE}
+#make endDate in a date-time variable POSIXct using lubridate with Indian time zone
+rundata$Time <-ymd_hms(rundata$Time,tz="UTC")
+
+#new features 
+rundata$month<-format(rundata$Time,"%m")
+rundata$year<-format(rundata$Time,"%Y")
+rundata$date<-format(rundata$Time,"%Y-%m-%d")
+rundata$dayofweek <-wday(rundata$Time, label=TRUE, abbr=FALSE)
+rundata$hour <-format(rundata$Time,"%H")
+glimpse(rundata)
+
+# convert chars to numeric
+# identify all char columns
+char_columns <- sapply(rundata, is.character)     
+chrCols <- names(rundata[, char_columns])
+print(chrCols)
+chrCols2 <- chrCols[-c(8:11)]
+chrCols2
+data_chars_as_num <- rundata
+data_chars_as_num[ , chrCols2] <- as.data.frame(apply(data_chars_as_num[ , chrCols2], 2, as.numeric))
+glimpse(data_chars_as_num)
+```
+
+```{r, include=FALSE}
+#make endDate in a date-time variable POSIXct using lubridate with Indian time zone
+basic$Time <-ymd_hms(basic$Time,tz="UTC")
+
+#new features 
+basic$month<-format(basic$Time,"%m")
+basic$year<-format(basic$Time,"%Y")
+basic$date<-format(basic$Time,"%Y-%m-%d")
+basic$dayofweek <-wday(basic$Time, label=TRUE, abbr=FALSE)
+basic$hour <-format(basic$Time,"%H")
+glimpse(basic)
+```
+
+```{r, include=FALSE}
+# Draw up hypothesis
+#Tracking data for exercise: lat, long, speed, cadence, altitude, distance 
+
+```
+
+```{r, include=FALSE}
+# explore data
+table(rundata$Value)
+```
+
+```{r, include=FALSE}
+ds <- data_chars_as_num
+#examine heart rate
+heart_rate <- ds %>%
+  select(Time, Value)
+
+```
+
+```{r, include=FALSE}
+# http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#:~:text=The%20colors%20of%20lines%20and,%2C%20like%20%22%23FF6699%22%20.
+
+p1 <- ggplot(heart_rate, aes(x=Time, y=Value)) + 
+  geom_line(color="#336600") +
+  scale_fill_hue(c=45, l=80) +
+  ggtitle("Heart rate over track")
+```
+
+```{r, echo=FALSE}
+# animate the plot
+p1+transition_reveal(as.numeric(Time))
+
+```
+
+
+
+
+
