@@ -2,15 +2,15 @@
 title: Working philosophy - page1
 author: jml
 date: '2020-07-08'
-slug: working-philosophy
 categories:
   - R
 tags:
-  - Philosophy
   - Life experience
+  - Philosophy
+slug: working-philosophy
 ---
 
-The following note is one of a series on philosophy. The thoughts are prepared by a family elder. 
+The following note is one of a series on philosophy. The thoughts are prepared by a family elder and presented in the manner they have been transmitted. 
 
 ## Page One
 
