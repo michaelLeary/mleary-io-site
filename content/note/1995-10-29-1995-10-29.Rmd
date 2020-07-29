@@ -13,10 +13,13 @@ tags:
 ---
 
 ```{r setup, include=FALSE}
-library(tufte)
-# invalidate cache when the tufte version changes
-knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
-options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r pkgs, include=FALSE}
+pkgs = c("magick") 
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
 ```
 
 # Cheung Kong meeting
@@ -55,7 +58,8 @@ options(htmltools.dir.version = FALSE)
 1. Change in accounting standard for depreciation?
 
 ```{r fig-fullwidth, fig.width = 10, fig.height = 2, fig.fullwidth = TRUE, fig.cap = "Hang Lung group schema", cache=TRUE, message=FALSE}
-knitr::include_graphics("/Users/michaelleary/Documents/GitHub/analyst_diary/data/hanglungmindmap.jpg")
+hl <- image_read("/Users/michaelleary/Documents/GitHub/analyst_diary/data/hanglungmindmap.jpg")
+print(hl)
 ```
 
 ```{r bib, include=FALSE}
