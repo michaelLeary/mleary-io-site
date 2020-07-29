@@ -57,7 +57,7 @@ inst = lapply(pkgs, library, character.only = TRUE) #load packages
 
 1. Change in accounting standard for depreciation?
 
-```{r fig-fullwidth, fig.width = 10, fig.height = 2, fig.fullwidth = TRUE, fig.cap = "Hang Lung group schema", cache=TRUE, message=FALSE, include=FALSE}
+```{r fig-fullwidth, fig.width = 10, fig.height = 2, fig.fullwidth = TRUE, fig.cap = "Hang Lung group schema", cache=TRUE, message=FALSE, echo=FALSE}
 hl <- image_read("/Users/michaelleary/Documents/GitHub/analyst_diary/data/hanglungmindmap.jpg")
 print(hl)
 ```
