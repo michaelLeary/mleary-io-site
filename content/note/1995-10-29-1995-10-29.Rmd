@@ -1,0 +1,65 @@
+---
+title: '1995-10-29'
+author: michael
+date: '1995-10-29'
+slug: '1995-10-29'
+categories:
+  - R
+tags:
+  - Lehman
+  - Analyst
+  - Cheung Kong
+  - Hang Lung
+---
+
+```{r setup, include=FALSE}
+library(tufte)
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+```
+
+# Cheung Kong meeting
+
+1. Structure of group
+1. Outlook for real estate market and comparison to press cycle
+1. Presales legislation and easing impact on business
+1. What is an ideal sandbank size given unattractive price outlook?
+1. How to interpret falling consents to commence work ? A reflection of developer confidence in outlook for market or some other reason?
+1. Net cash position ? i.e. acquisitions made over past year?
+
+# Hang Lung meeting
+
+1. Capital expenditure projection
+1. Funding for sites recently acquired how? Fully paid?
+1. Structure of group?
+1. Levels of un sold inventory in market and what impact on pricing?
+1. What will it take to change sentiment of consumers to consume?
+1. The company mentions "trade up market" - still valid in current market conditions? 
+1. Results of recent sales of a project?
+1. What is status on various PRC projects? Site area, gfa, investment amount, share, cost, estimated completion date, first contribution date? 
+1. Dividend policy? 
+1. Major shareholder influence on business?
+1. Composition of "other" revenue and operating profit? 
+1. Commitments for year ahead ? Is that represented for construction spending or balance of land premium to be paid? 
+
+# Hang Lung meeting : Amoy
+
+1. Commentary in results suggests bearish outlook for growth ? Why?
+1. One asset shows sizeable increase in rent - how much from rent rate and how much from volume ?
+1. Dividends from associate? 
+1. What assets acquired by company?
+
+# Hang Lung meeting : Grand Hotels
+
+1. Change in accounting standard for depreciation?
+
+```{r fig-fullwidth, fig.width = 10, fig.height = 2, fig.fullwidth = TRUE, fig.cap = "Hang Lung group schema", cache=TRUE, message=FALSE}
+knitr::include_graphics("/Users/michaelleary/Documents/GitHub/analyst_diary/data/hanglungmindmap.jpg")
+```
+
+```{r bib, include=FALSE}
+# create a bib file for the R packages used in this document
+knitr::write_bib(c('base', 'rmarkdown'), file = 'skeleton.bib')
+```
+
