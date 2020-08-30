@@ -6,10 +6,21 @@
     <description>Recent content in R on Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 30 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Macro events</title>
+      <link>/post/2020/08/30/macro-events/</link>
+      <pubDate>Sun, 30 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/08/30/macro-events/</guid>
+      <description>  Planning markers
+Election Census Central bank meeting dates  Central Bank calendars
+Fed ECB BOJ BOE RBA BoCan SNB  Source for calendar is the TeachingDemos package in R.  </description>
+    </item>
     
     <item>
       <title>Garmin fitness data</title>

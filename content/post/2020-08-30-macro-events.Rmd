@@ -1,0 +1,404 @@
+---
+title: Macro events
+author: michael
+date: '2020-08-30'
+slug: macro-events
+categories:
+  - R
+tags:
+  - Economics
+  - Finance
+---
+
+Planning markers 
+
+1. [Election](http://www.mherrera.org/elections.html)
+1. [Census](various)
+1. [Central bank meeting dates](various)
+
+Central Bank calendars
+
+1. [Fed](https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm){target="_blank"}
+1. [ECB](https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html){target="_blank"}
+1. [BOJ](https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm/){target="_blank"}
+1. [BOE](https://www.bankofengland.co.uk/news/2019/september/monetary-policy-committee-dates-for-2020){target="_blank"}
+1. [RBA](https://www.rba.gov.au/schedules-events/schedule.html){target="_blank"}
+1. [BoCan](https://www.bankofcanada.ca/2020/07/2021-schedule-policy-interest-rate-announcements/){target="_blank"}
+1. [SNB](https://www.snb.ch/en/ifor/media/id/media_news_all){target="_blank"}
+
+##### Source for calendar is the [TeachingDemos](https://cran.r-project.org/web/packages/TeachingDemos/TeachingDemos.pdf) package in R.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages, include=FALSE}
+pkgs = c("TeachingDemos") 
+# lubridate for %m+% function
+# rvest for web scraping
+install.packages(pkgs, repos="https://cran.r-project.org")
+inst = lapply(pkgs, library, character.only = TRUE) #load packages
+```
+
+```{r Sepevents, echo=FALSE}
+setday <- cal(9, 2020)
+setday(1)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'RBA', adj=c(0,0))
+
+setday(9)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'BoCan', adj=c(0,0))
+
+setday(10)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'ECB', adj=c(0,0))
+
+setday(15)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Japan election', adj=c(0,0))
+
+setday(17)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'BOJ', adj=c(0,0))
+text(0,0.1,'BOE', adj=c(0,0))
+
+setday(24)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'SwissNB', adj=c(0,0))
+
+```
+
+```{r Octevents, echo=FALSE}
+setday <- cal(10, 2020)
+setday(6)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'RBA', adj=c(0,0))
+
+setday(28)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'BOJ', adj=c(0,0))
+text(0,0.1,'BoCan', adj=c(0,0))
+
+setday(29)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'ECB', adj=c(0,0))
+
+```
+
+```{r Novevents, echo=FALSE}
+setday <- cal(11, 2020)
+setday(1)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'China census', adj=c(0,0))
+text(0,0.1,'S.Korea census', adj=c(0,0))
+
+setday(3)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'RBA', adj=c(0,0))
+text(0,0.1,'US Election', adj=c(0,0))
+
+setday(5)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'BOE', adj=c(0,0))
+text(0,0.1,'Fed', adj=c(0,0))
+
+
+```
+
+```{r Decevents, echo=FALSE}
+setday <- cal(12, 2020)
+setday(1)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'RBA', adj=c(0,0))
+
+setday(7)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Ghana Election', adj=c(0,0))
+
+setday(9)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'BofCan', adj=c(0,0))
+
+setday(10)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'ECB', adj=c(0,0))
+
+setday(15)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Fed', adj=c(0,0))
+
+setday(17)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'SwissNB', adj=c(0,0))
+text(0,0.1,'BOE', adj=c(0,0))
+
+setday(18)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'BOJ', adj=c(0,0))
+
+```
+
+```{r Jan2021events, echo=FALSE}
+setday <- cal(1, 2021)
+setday(20)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'BoCan', adj=c(0,0))
+
+setday(21)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'BOJ', adj=c(0,0))
+text(0,0.1,'ECB', adj=c(0,0))
+
+setday(27)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Fed', adj=c(0,0))
+
+```
+
+```{r Feb2021events, echo=FALSE}
+setday <- cal(2, 2021)
+setday(2)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Bangladesh census', adj=c(0,0))
+
+
+
+```
+
+```{r Mar2021events, echo=FALSE}
+setday <- cal(3, 2021)
+setday(10)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'BoCan', adj=c(0,0))
+
+setday(11)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'ECB', adj=c(0,0))
+
+setday(17)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Fed', adj=c(0,0))
+
+setday(19)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'BOJ', adj=c(0,0))
+
+setday(25)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'SwissNB', adj=c(0,0))
+
+```
+
+```{r April2021events, echo=FALSE}
+setday <- cal(4, 2021)
+setday(21)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'BoCan', adj=c(0,0))
+
+setday(22)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'ECB', adj=c(0,0))
+
+setday(27)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'BOJ', adj=c(0,0))
+
+setday(28)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Fed', adj=c(0,0))
+
+```
+
+```{r May2021events, echo=FALSE}
+setday <- cal(5, 2021)
+
+
+```
+
+```{r June2021vents, echo=FALSE}
+setday <- cal(6, 2021)
+setday(9)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'BoCan', adj=c(0,0))
+
+setday(10)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'ECB', adj=c(0,0))
+
+setday(12)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'UEFA open', adj=c(0,0))
+
+setday(15)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Fed', adj=c(0,0))
+
+setday(17)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'SwissNB', adj=c(0,0))
+
+setday(18)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'BOJ', adj=c(0,0))
+text(0,0.1,'Iran election', adj=c(0,0))
+
+```
+
+```{r July2021events, echo=FALSE}
+setday <- cal(7, 2021)
+setday(12)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'UEFA close', adj=c(0,0))
+
+setday(14)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'BoCan', adj=c(0,0))
+
+setday(16)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'BOJ', adj=c(0,0))
+
+setday(22)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'ECB', adj=c(0,0))
+
+setday(23)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Olympics open', adj=c(0,0))
+
+setday(28)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Fed', adj=c(0,0))
+
+```
+
+```{r Aug2021events, echo=FALSE}
+setday <- cal(8, 2020)
+setday(8)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Olympic close', adj=c(0,0))
+
+```
+
+```{r Sep2021events, echo=FALSE}
+setday <- cal(9, 2021)
+setday(8)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'BoCan', adj=c(0,0))
+
+setday(9)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'ECB', adj=c(0,0))
+
+setday(22)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'BOJ', adj=c(0,0))
+text(0,0.1,'Fed', adj=c(0,0))
+
+setday(23)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'SwissNB', adj=c(0,0))
+
+
+```
+
+```{r Oct2021events, echo=FALSE}
+setday <- cal(10, 2021)
+setday(22)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Japan election', adj=c(0,0))
+
+setday(24)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Germany election', adj=c(0,0))
+
+setday(27)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'BoCan', adj=c(0,0))
+
+setday(28)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'BOJ', adj=c(0,0))
+text(0,0.1,'ECB', adj=c(0,0))
+
+
+
+```
+
+```{r Nov2021events, echo=FALSE}
+setday <- cal(11, 2020)
+setday(3)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Fed', adj=c(0,0))
+
+
+```
+
+```{r Dec2021events, echo=FALSE}
+setday <- cal(12, 2021)
+setday(8)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'BoCan', adj=c(0,0))
+
+setday(15)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'Fed', adj=c(0,0))
+
+setday(16)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'ECB', adj=c(0,0))
+text(0,0.1,'SwissNB', adj=c(0,0))
+
+setday(17)
+text(0,0.5,'', adj=c(0,0))
+text(0,0.3,'', adj=c(0,0))
+text(0,0.1,'BOJ', adj=c(0,0))
+
+```
