@@ -13,8 +13,6 @@ slug: macro-events
 Planning markers 
 
 1. [Election](http://www.mherrera.org/elections.html)
-1. [Census](various)
-1. [Central bank meeting dates](various)
 
 Central Bank calendars
 
